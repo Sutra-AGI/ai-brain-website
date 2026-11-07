@@ -43,7 +43,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.(css|js|woff2)",
+      "source": "/((?!_vercel/).*)\\.(css|js|woff2)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.(ico|png|jpg|jpeg|svg|webmanifest)",
+      "source": "/((?!_vercel/).*)\\.(ico|png|jpg|jpeg|svg|webmanifest)",
       "headers": [
         {
           "key": "Cache-Control",
