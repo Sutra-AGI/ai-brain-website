@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Cross-Browser Favicon & Theme Color -->
-  <meta name="theme-color" content="#070913">
+  <meta name="theme-color" content="#08090b">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   
@@ -124,7 +124,7 @@
         "name": "AI Brain Landing Page",
         "speakable": {
           "@type": "SpeakableSpecification",
-          "cssSelector": [".hero-title", ".section-title", ".section-subtitle"]
+          "cssSelector": [".hero-title", ".h2", ".hero-sub"]
         }
       },
       {
@@ -181,692 +181,388 @@
   }
   </script>
 
-  <!-- Critical Above-the-Fold CSS Inlined for Instant Mobile Rendering -->
-  <style>
-    :root{--bg-dark:#070913;--bg-card:rgba(13,19,32,0.75);--text-main:#f8fafc;--text-muted:#94a3b8;--cyan:#00f2fe;--purple:#7000ff;--font-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--font-heading:'Outfit','Inter',sans-serif;}
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{background-color:var(--bg-dark);color:var(--text-main);font-family:var(--font-sans);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(7,9,19,0.8);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08);padding:14px 24px;}
-    .nav-container{max-width:1380px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
-    .brand-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-heading);font-weight:800;font-size:1.35rem;color:var(--text-main);}
-    .hero-section{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;padding:120px 20px 60px 20px;}
-    .hero-title{font-family:var(--font-heading);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;line-height:1.1;text-align:center;margin-bottom:16px;}
-    .gradient-text{background:linear-gradient(135deg,#00f2fe 0%,#4facfe 50%,#00c6ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  </style>
-
-  <!-- Optimized Non-Blocking Google Fonts Loading -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800;900&display=swap">
-  </noscript>
-
-  <!-- Non-Blocking Async CSS Stylesheet -->
-  <link rel="preload" as="style" href="styles.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <header class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="brand-logo" id="brandLogo">
-        <span class="logo-icon">🧠</span>
-        <span class="logo-text">AI <span class="accent-text">Brain</span></span>
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="/" class="logo" aria-label="AI Brain home">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" stroke="#c8ff3d" stroke-opacity=".35"/>
+          <circle cx="9" cy="12" r="2.6" fill="#c8ff3d"/><circle cx="22" cy="9" r="2" fill="#f2f1ec"/>
+          <circle cx="23" cy="21" r="2.6" fill="#c8ff3d"/><circle cx="12" cy="23" r="2" fill="#f2f1ec"/>
+          <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1"/>
+        </svg>
+        AI Brain
       </a>
-      
-      <nav class="nav-links" id="navLinks">
-        <a href="#architecture" class="nav-link" id="navLinkArchitecture">Architecture</a>
-        <a href="#cloud-infra" class="nav-link" id="navLinkCloud">Cloud Infra</a>
-        <a href="#agents" class="nav-link" id="navLinkAgents">Agents</a>
-        <a href="#calculator" class="nav-link" id="navLinkCalc">Calculator</a>
-        <a href="#demo" class="nav-link" id="navLinkDemo">Live Demo</a>
-        <a href="docs.html" class="nav-link" id="navLinkDocs">Docs</a>
-        <a href="about.html" class="nav-link" id="navLinkAboutNav">About</a>
-        <a href="contact.html" class="nav-link" id="navLinkContactNav">Contact</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#memory">Memory</a>
+        <a href="#how">How it works</a>
+        <a href="#agents">Agents</a>
+        <a href="#sdk">SDK</a>
+        <a href="architecture">Architecture</a>
+        <a href="docs">Docs</a>
+        <a href="about">About</a>
       </nav>
-
-      <div class="nav-actions">
-        <a href="#waitlist" class="btn btn-glow" id="btnNavWaitlist">Early Access</a>
+      <div class="nav-cta">
+        <a href="contact" class="btn btn-ghost btn-sm">Contact</a>
+        <a href="#waitlist" class="btn btn-primary btn-sm">Early access</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel"><span></span></button>
       </div>
-
-      <button class="mobile-toggle" id="mobileToggle" onclick="window.toggleMobileDrawer && window.toggleMobileDrawer(event)" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="mobile-toggle-icon">☰</span>
-        <span>MENU</span>
-      </button>
     </div>
-
   </header>
+  <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <a class="m-link" href="#memory">Memory <span>01</span></a>
+    <a class="m-link" href="#how">How it works <span>02</span></a>
+    <a class="m-link" href="#agents">Agents <span>03</span></a>
+    <a class="m-link" href="#sdk">SDK <span>04</span></a>
+    <a class="m-link" href="#demo">Live demo <span>05</span></a>
+    <a class="m-link" href="architecture">Architecture <span>↗</span></a>
+    <a class="m-link" href="docs">Docs <span>↗</span></a>
+    <a class="m-link" href="about">About <span>↗</span></a>
+    <a class="m-link" href="contact">Contact <span>↗</span></a>
+    <a href="#waitlist" class="btn btn-primary">Get early access →</a>
+  </div>
 
-  <!-- Mobile Navigation Overlay & Slide-In Side Drawer -->
-  <div class="mobile-nav-overlay" id="mobileOverlay"></div>
-  <aside class="mobile-nav-drawer" id="mobileDrawer">
-    <div class="drawer-header">
-      <span class="drawer-title">🧠 Navigation</span>
-      <button class="btn-close-drawer" id="btnCloseDrawer" aria-label="Close Menu">✕</button>
-    </div>
-    <a href="index.html" class="mobile-nav-link">🏠 Home</a>
-    <a href="architecture.html" class="mobile-nav-link">🏛️ Architecture & Specs</a>
-    <a href="#cloud-infra" class="mobile-nav-link">☁️ Cloud Infrastructure</a>
-    <a href="#agents" class="mobile-nav-link">🤖 Autonomous Agents</a>
-    <a href="#calculator" class="mobile-nav-link">🧮 Memory Calculator</a>
-    <a href="#demo" class="mobile-nav-link">⚡ Live Demo Simulator</a>
-    <a href="docs.html" class="mobile-nav-link">📚 Developer Docs</a>
-    <a href="about.html" class="mobile-nav-link">👥 About & Leadership</a>
-    <a href="contact.html" class="mobile-nav-link">📧 Contact Us</a>
-    <a href="#waitlist" class="btn btn-glow btn-full" style="margin-top: 10px;">🚀 Get Early Access</a>
-  </aside>
+  <main>
 
-  <!-- Main Content Body -->
-  <main id="mainContent">
-
-  <!-- Hero Section (Clean Authentic Presentation - Prompt 1) -->
-  <section class="hero-section" id="hero" itemscope itemtype="https://schema.org/SoftwareApplication">
-    <div class="hero-bg-glow"></div>
-    <div class="ambient-orb orb-cyan"></div>
-    <div class="ambient-orb orb-purple"></div>
-
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="badge-row">
-          <div class="badge-pill brain-pill">
-            <span class="badge-icon">🧠</span>
-            <span>AI Brain Cognitive Hypergraph</span>
-          </div>
-          <div class="badge-pill swarm-pill">
-            <span class="badge-icon">⚡</span>
-            <span>Autonomous Swarm Intelligence</span>
-          </div>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <canvas class="hero-canvas" id="graph" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <span class="eyebrow reveal"><b>NEW</b> Persistent memory layer for AI agents</span>
+        <h1 class="hero-title reveal d1">AI that <span class="serif">never</span> forgets.</h1>
+        <p class="hero-sub reveal d2">AI Brain gives your LLMs and agent swarms a long-term, associative memory — a cognitive hypergraph that keeps every conversation, decision and codebase in context, forever.</p>
+        <div class="hero-actions reveal d3">
+          <a href="#waitlist" class="btn btn-primary">Get early access <span class="arrow">→</span></a>
+          <a href="#demo" class="btn btn-ghost">Try the live demo</a>
         </div>
-        
-        <h1 class="hero-title hero-title-main" itemprop="name">
-          <span class="hero-word-autonomous">Autonomous</span>
-          <span class="hero-word-brand"><span class="gradient-text">AI Brain</span></span>
-          <span class="hero-word-cognitive">Cognitive Engine</span>
-        </h1>
+        <div class="hero-meta reveal d3">
+          <span><i></i>Sub-15ms recall</span>
+          <span><i></i>Multi-hop graph memory</span>
+          <span><i></i>Govt. of India MSME registered</span>
+        </div>
       </div>
+    </section>
 
-      <!-- 3D Neural Sphere Canvas Visual -->
-      <div class="hero-visual">
-        <div class="canvas-wrapper">
-          <canvas id="neuralCanvas" role="img" aria-label="Interactive 3D Neural Sphere Visualization"></canvas>
-          <div class="canvas-overlay-tag tag-agents">
-            <span class="dot green"></span> Autonomous Swarm Matrix
-          </div>
-          <div class="canvas-overlay-tag tag-memory">
-            <span class="dot cyan"></span> Cognitive Hypergraph Engine
-          </div>
-        </div>
+    <div class="strip" aria-hidden="true">
+      <div class="strip-track">
+        <span>Conversation memory</span><span>Hypergraph recall</span><span>Autonomous agents</span><span>Python &amp; TypeScript SDK</span><span>Zero-trust security</span><span>Google Cloud native</span><span>Token cost reduction</span>
+        <span>Conversation memory</span><span>Hypergraph recall</span><span>Autonomous agents</span><span>Python &amp; TypeScript SDK</span><span>Zero-trust security</span><span>Google Cloud native</span><span>Token cost reduction</span>
       </div>
     </div>
 
-  </section>
-
-  <!-- Futuristic AGI HUD Matrix Stats Bar (Moved to 2nd Fold/Section) -->
-  <section class="section section-hud-metrics" id="hud-metrics">
-    <div class="section-container">
-      <div class="agi-hud-grid">
-        <div class="hud-stat-card">
-          <span class="hud-stat-val">&lt; 15 ms</span>
-          <span class="hud-stat-label">Graph Recall Latency</span>
-          <span class="hud-status-badge">● Sub-15ms Traversal</span>
-        </div>
-        <div class="hud-stat-card">
-          <span class="hud-stat-val">0%</span>
-          <span class="hud-stat-label">Context Loss Decay</span>
-          <span class="hud-status-badge">● Zero-Loss Non-Volatile</span>
-        </div>
-        <div class="hud-stat-card">
-          <span class="hud-stat-val">10M+</span>
-          <span class="hud-stat-label">Neuromorphic Synapses</span>
-          <span class="hud-status-badge">● Graph Neural Network</span>
-        </div>
-        <div class="hud-stat-card">
-          <span class="hud-stat-val">AGI 2076</span>
-          <span class="hud-stat-label">Hypergraph Cognition</span>
-          <span class="hud-status-badge">● Quantum State Active</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Developer API Quickstart Preview Widget (Bonus Addition 2) -->
-  <section class="section section-dark" id="api-preview">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-badge">DEVELOPER API FIRST</span>
-        <h2 class="section-title">Simple, Powerful Developer SDK</h2>
-        <p class="section-subtitle">
-          Integrate persistent memory graphs into your LLM pipelines with 5 lines of code.
-        </p>
-      </div>
-
-      <div class="glass-card code-preview-card">
-        <div class="terminal-header">
-          <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
-          <span class="term-title">example_quickstart.py</span>
-        </div>
-        <pre class="terminal-body"><code><span class="code-keyword">import</span> aibrain
-
-<span class="code-comment"># Initialize AI Brain persistent memory client</span>
-client = aibrain.<span class="code-keyword">Client</span>(api_key=<span class="code-string">"sk_live_YOUR_API_KEY"</span>)
-
-<span class="code-comment"># Query persistent memory graph across past interactions</span>
-context = client.memory.<span class="code-keyword">get_context</span>(user_id=<span class="code-string">"usr_architect"</span>)
-
-<span class="code-comment"># Execute autonomous agent with long-term context</span>
-response = client.agents.<span class="code-keyword">run</span>(
-    agent_type=<span class="code-string">"research"</span>, 
-    prompt=<span class="code-string">"Synthesize codebase architecture changes"</span>, 
-    context=context
-)
-<span class="code-success">print(response.output)</span></code></pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- Architecture Overview -->
-  <section class="section" id="architecture">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-badge">CORE INFRASTRUCTURE</span>
-        <h2 class="section-title">AI Brain Architecture</h2>
-        <p class="section-subtitle">
-          Modular cognitive architecture engineered for persistent long-term memory and continuous learning.
-        </p>
-      </div>
-
-      <div class="grid-4">
-        <div class="glass-card">
-          <div class="card-icon cyan">💬</div>
-          <h3>Conversation Memory</h3>
-          <p>Retains full semantic context across sessions without context degradation.</p>
-        </div>
-
-        <div class="glass-card">
-          <div class="card-icon purple">💡</div>
-          <h3>Idea Memory</h3>
-          <p>Indexes raw thoughts into structured, actionable hypotheses automatically.</p>
-        </div>
-
-        <div class="glass-card">
-          <div class="card-icon emerald">📁</div>
-          <h3>Project Memory</h3>
-          <p>Tracks project states, codebase histories, and milestones in real time.</p>
-        </div>
-
-        <div class="glass-card">
-          <div class="card-icon blue">🕸️</div>
-          <h3>Knowledge Graph</h3>
-          <p>Maps entity relationships into a self-evolving web of interconnected intelligence.</p>
-        </div>
-      </div>
-
-      <!-- Google Cloud Infrastructure Flow Visual -->
-      <div class="gcp-arch-visual glass-card">
-        <div class="gcp-arch-header">
-          <span class="gcp-arch-badge">AI BRAIN INFRASTRUCTURE</span>
-          <h3>Cloud-Native Persistent Memory Pipeline</h3>
-        </div>
-        <div class="gcp-flow-grid">
-          <div class="gcp-flow-node">
-            <div class="node-badge">CLIENT LAYER</div>
-            <div class="node-title">@aibrain/sdk</div>
-            <div class="node-desc">TypeScript & Python SDKs via gRPC / REST</div>
+    <!-- PROBLEM -->
+    <section class="section" id="problem">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">The problem</span>
+            <h2 class="h2 reveal d1">LLMs have a <span class="serif">memory</span> problem.</h2>
           </div>
-          <div class="gcp-flow-arrow">➔</div>
-          <div class="gcp-flow-node highlight-gcp">
-            <div class="node-badge">COMPUTE LAYER</div>
-            <div class="node-title">Google Cloud Run</div>
-            <div class="node-desc">Serverless API Gateway</div>
-          </div>
-          <div class="gcp-flow-arrow">➔</div>
-          <div class="gcp-flow-node highlight-gemini">
-            <div class="node-badge">AI / COGNITION</div>
-            <div class="node-title">Vertex AI & Gemini 1.5</div>
-            <div class="node-desc">Context Synthesis & Vector Embeddings</div>
-          </div>
-          <div class="gcp-flow-arrow">➔</div>
-          <div class="gcp-flow-node highlight-storage">
-            <div class="node-badge">PERSISTENCE</div>
-            <div class="node-title">Cloud Firestore & BigQuery</div>
-            <div class="node-desc">Graph Index & Telemetry Analytics</div>
-          </div>
+          <p class="lead reveal d2">Context windows truncate. Vector stores flatten relationships. Every new session starts from zero — and you pay to resend the same tokens again and again.</p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- INTERACTIVE TOOL: AI Memory & Context Capacity Calculator -->
-  <section class="section section-dark" id="calculator">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-badge">INTERACTIVE MEMORY ESTIMATOR</span>
-        <h2 class="section-title">Interactive Memory Graph Calculator</h2>
-        <p class="section-subtitle">
-          Estimate context retention efficiency and token cost savings when using AI Brain's persistent vector graph.
-        </p>
-      </div>
-
-      <div class="calc-card glass-card">
-        <div class="calc-grid">
-          <div class="calc-inputs">
-            <div class="calc-group">
-              <label for="calcCodeSize">Total Codebase / Project Files Count:</label>
-              <input type="range" id="calcCodeSize" min="10" max="1000" step="10" value="150" class="calc-slider">
-              <span class="calc-val-badge" id="valCodeSize">150 Files</span>
+        <div class="compare reveal" id="compare">
+          <div class="compare-col bad">
+            <span class="tag tag-bad">Stateless LLM</span>
+            <h3>Context decays as sessions grow</h3>
+            <div class="decay">
+              <div class="decay-row"><span class="mono">Turn 1</span><div class="bar"><i style="--w:100%"></i></div><span>100%</span></div>
+              <div class="decay-row"><span class="mono">Turn 20</span><div class="bar"><i style="--w:64%"></i></div><span>64%</span></div>
+              <div class="decay-row"><span class="mono">Turn 80</span><div class="bar"><i style="--w:31%"></i></div><span>31%</span></div>
+              <div class="decay-row"><span class="mono">New session</span><div class="bar"><i style="--w:4%"></i></div><span>~0%</span></div>
             </div>
-
-            <div class="calc-group">
-              <label for="calcPrompts">Daily Developer Prompts / Queries:</label>
-              <input type="range" id="calcPrompts" min="10" max="500" step="10" value="80" class="calc-slider">
-              <span class="calc-val-badge" id="valPrompts">80 Queries/day</span>
-            </div>
+            <p class="compare-note">Older facts silently fall out of the window. Agents repeat work and contradict past decisions.</p>
           </div>
+          <div class="compare-col good">
+            <span class="tag tag-good">With AI Brain</span>
+            <h3>Memory persists and compounds</h3>
+            <div class="decay">
+              <div class="decay-row"><span class="mono">Turn 1</span><div class="bar"><i style="--w:100%"></i></div><span>100%</span></div>
+              <div class="decay-row"><span class="mono">Turn 20</span><div class="bar"><i style="--w:100%"></i></div><span>100%</span></div>
+              <div class="decay-row"><span class="mono">Turn 80</span><div class="bar"><i style="--w:100%"></i></div><span>100%</span></div>
+              <div class="decay-row"><span class="mono">New session</span><div class="bar"><i style="--w:100%"></i></div><span>100%</span></div>
+            </div>
+            <p class="compare-note">Relevant context is recalled from the graph on demand — only the tokens that matter are sent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="calc-results">
-            <div class="res-item">
-              <span class="res-label">Stateless LLM Wasted Tokens / Mo:</span>
-              <span class="res-value red-text" id="resTokens">12.4 Million</span>
+    <!-- MEMORY BENTO -->
+    <section class="section" id="memory">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">Architecture</span>
+            <h2 class="h2 reveal d1">Four kinds of memory. <span class="serif">One</span> graph.</h2>
+          </div>
+          <p class="lead reveal d2">A modular cognitive architecture that stores what happened, what was meant and how it all connects.</p>
+        </div>
+
+        <div class="bento">
+          <article class="card b-wide reveal">
+            <span class="num">01 / CONVERSATION</span>
+            <h3>Conversation memory</h3>
+            <p>Retains full semantic context across sessions, users and devices — without context degradation or re-prompting.</p>
+            <div class="chips"><span class="chip">cross-session</span><span class="chip">per-user scopes</span><span class="chip">semantic recall</span></div>
+          </article>
+          <article class="card b-tall reveal d1">
+            <span class="num">02 / KNOWLEDGE GRAPH</span>
+            <h3>Hypergraph knowledge</h3>
+            <p>Entities and relationships form a self-evolving web. Multi-hop traversal surfaces context a flat vector search would miss.</p>
+            <div class="mini-graph">
+              <svg viewBox="0 0 240 180" aria-hidden="true">
+                <line class="edge" x1="40" y1="40" x2="120" y2="30"/><line class="edge hot" x1="40" y1="40" x2="110" y2="100"/>
+                <line class="edge" x1="120" y1="30" x2="200" y2="60"/><line class="edge hot" x1="110" y1="100" x2="200" y2="60"/>
+                <line class="edge" x1="110" y1="100" x2="60" y2="150"/><line class="edge hot" x1="110" y1="100" x2="180" y2="150"/>
+                <line class="edge" x1="60" y1="150" x2="180" y2="150"/><line class="edge" x1="120" y1="30" x2="110" y2="100"/>
+                <circle class="node hot" cx="40" cy="40" r="7"/><circle class="node" cx="120" cy="30" r="6"/>
+                <circle class="node hot" cx="110" cy="100" r="9"/><circle class="node hot" cx="200" cy="60" r="6"/>
+                <circle class="node" cx="60" cy="150" r="6"/><circle class="node hot" cx="180" cy="150" r="7"/>
+              </svg>
             </div>
-            <div class="res-item">
-              <span class="res-label">AI Brain Persistent Memory Efficiency:</span>
-              <span class="res-value green-text" id="resEfficiency">94.2% Saved</span>
-            </div>
-            <div class="res-item">
-              <span class="res-label">Estimated Monthly Context Savings:</span>
-              <span class="res-value highlight" id="resCost">$380 / Developer</span>
+          </article>
+          <article class="card b-third reveal">
+            <span class="num">03 / IDEAS</span>
+            <h3>Idea memory</h3>
+            <p>Turns raw thoughts into structured, linked hypotheses automatically.</p>
+          </article>
+          <article class="card b-third reveal d1">
+            <span class="num">04 / PROJECTS</span>
+            <h3>Project memory</h3>
+            <p>Tracks project state, codebase history and milestones in real time.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section" id="numbers">
+      <div class="wrap">
+        <span class="kicker reveal">Design targets</span>
+        <h2 class="h2 reveal d1" style="margin-bottom:56px">Built for <span class="serif">speed</span> and scale.</h2>
+        <div class="stats reveal">
+          <div class="stat"><div class="stat-val"><span data-count="15">15</span><small>ms</small></div><div class="stat-label">Graph recall latency<span class="mono">p99 target</span></div></div>
+          <div class="stat"><div class="stat-val"><span data-count="91">91</span><small>%</small></div><div class="stat-label">Fewer redundant tokens<span class="mono">vs full re-send</span></div></div>
+          <div class="stat"><div class="stat-val"><span data-count="10">10</span><small>M+</small></div><div class="stat-label">Graph nodes per tenant<span class="mono">associative mesh</span></div></div>
+          <div class="stat"><div class="stat-val"><span data-count="24">24</span><small>/7</small></div><div class="stat-label">Autonomous agent runtime<span class="mono">self-healing pods</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">How it works</span>
+            <h2 class="h2 reveal d1">From prompt to <span class="serif">permanent</span> memory.</h2>
+          </div>
+          <p class="lead reveal d2">A cloud-native pipeline on Google Cloud — serverless at the edge, graph-native at the core.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal"><span class="mono">01 — CLIENT</span><h3>@aibrain/sdk</h3><p>Python &amp; TypeScript SDKs over gRPC / REST.</p></div>
+          <div class="step reveal d1"><span class="mono">02 — COMPUTE</span><h3>Cloud Run gateway</h3><p>Serverless API layer that scales to zero.</p></div>
+          <div class="step reveal d2"><span class="mono">03 — COGNITION</span><h3>Vertex AI &amp; Gemini</h3><p>Context synthesis and embeddings.</p></div>
+          <div class="step reveal d3"><span class="mono">04 — PERSISTENCE</span><h3>Hypergraph store</h3><p>Firestore, BigQuery &amp; GCS graph index.</p></div>
+        </div>
+        <p class="reveal" style="margin-top:32px"><a href="architecture" class="btn btn-ghost">Read the full architecture <span class="arrow">→</span></a></p>
+      </div>
+    </section>
+
+    <!-- AGENTS -->
+    <section class="section" id="agents">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">Agent network</span>
+            <h2 class="h2 reveal d1">Specialists that <span class="serif">remember</span> their work.</h2>
+          </div>
+          <p class="lead reveal d2">Domain-specialised agents share one memory graph, so every task builds on the last.</p>
+        </div>
+
+        <div class="agents reveal">
+          <div class="agent-list" role="tablist" aria-label="Agents" id="agentList"></div>
+          <div class="agent-panel" role="tabpanel" id="agentPanel" aria-live="polite">
+            <div class="agent-panel-head"><h3 id="agentName"></h3><p id="agentDesc"></p></div>
+            <ul id="agentFeatures"></ul>
+            <div class="term">
+              <div class="term-bar"><i></i><i></i><i></i><em id="agentFile"></em></div>
+              <pre id="agentTerm"></pre>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Enterprise Cloud Infrastructure Section (GCP Workload Blueprint - Bonus Addition 1) -->
-  <section class="section section-cloud" id="cloud-infra">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-badge">GOOGLE CLOUD INFRASTRUCTURE DESIGN</span>
-        <h2 class="section-title">High-Performance Cloud Architecture</h2>
-        <p class="section-subtitle">
-          Ultra-low latency cognitive memory graph retrieval and containerized agent orchestration on Google Cloud.
-        </p>
-      </div>
-
-      <div class="cloud-grid">
-        <div class="cloud-card glass-card">
-          <div class="cloud-logo-pill">⚡ Compute Engine</div>
-          <h3>Model Reasoning Workloads</h3>
-          <p>GPU & TPU v5e compute clusters executing automated code synthesis and agent reasoning loops.</p>
-          <div class="cloud-tech-stack">
-            <span class="tech-tag">Google Cloud Compute</span>
-            <span class="tech-tag">Multimodal Inference</span>
-            <span class="tech-tag">Low Latency</span>
-          </div>
+    <!-- SDK -->
+    <section class="section" id="sdk">
+      <div class="wrap sdk">
+        <div>
+          <span class="kicker reveal">Developer first</span>
+          <h2 class="h2 reveal d1">Memory in <span class="serif">five</span> lines of code.</h2>
+          <p class="lead reveal d2">Drop AI Brain into an existing LLM pipeline. Recall context, run an agent, and let the graph learn — no prompt-stuffing.</p>
+          <ul class="check-list reveal d3">
+            <li>Works with any model provider</li>
+            <li>Per-user and per-project memory scopes</li>
+            <li>Encrypted at rest (AES-256) and in transit (TLS 1.3)</li>
+          </ul>
         </div>
-
-        <div class="glass-card cloud-card">
-        <div class="cloud-logo-pill">🕸️ Cloud Storage & Hypergraph DB</div>
-        <h3>Cognitive Memory Engine</h3>
-        <p>Multi-hop associative hypergraph memory store on GCS supporting sub-15ms graph traversals and zero context decay.</p>
-        <div class="cloud-tags">
-          <span class="cloud-tag">Cloud Storage (GCS)</span>
-          <span class="cloud-tag">Associative Graph</span>
-          <span class="cloud-tag">Zero-Loss Persistence</span>
-        </div>
-      </div>
-
-        <div class="cloud-card glass-card">
-          <div class="cloud-logo-pill">🛡️ Containerized Runtime</div>
-          <h3>Autonomous Agent Containers</h3>
-          <p>Isolated serverless containers executing 24/7 background agent workflows with auto-scaling security.</p>
-          <div class="cloud-tech-stack">
-            <span class="tech-tag">Cloud Kubernetes</span>
-            <span class="tech-tag">Auto-Scaling</span>
-            <span class="tech-tag">99.99% Uptime</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Autonomous Agent Network -->
-  <section class="section section-dark" id="agents">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-badge">SPECIALIZED INTELLIGENCE</span>
-        <h2 class="section-title">Autonomous Agent Network</h2>
-        <p class="section-subtitle">
-          Domain-specialized AI subagents solving complex multi-stage engineering challenges.
-        </p>
-      </div>
-
-      <div class="agent-tabs-wrapper">
-        <div class="agent-tabs" role="tablist" aria-label="Autonomous Agents">
-          <button class="agent-tab active" id="tabResearch" data-target="agent-research" role="tab" aria-selected="true" aria-controls="agent-research">
-            <span class="tab-icon">🔬</span> Research Agent
-          </button>
-          <button class="agent-tab" id="tabCoding" data-target="agent-coding" role="tab" aria-selected="false" aria-controls="agent-coding">
-            <span class="tab-icon">💻</span> Coding Agent
-          </button>
-          <button class="agent-tab" id="tabStrategy" data-target="agent-strategy" role="tab" aria-selected="false" aria-controls="agent-strategy">
-            <span class="tab-icon">🎯</span> Strategy Agent
-          </button>
-          <button class="agent-tab" id="tabKnowledge" data-target="agent-knowledge" role="tab" aria-selected="false" aria-controls="agent-knowledge">
-            <span class="tab-icon">🧠</span> Knowledge Agent
-          </button>
-          <button class="agent-tab" id="tabAutomation" data-target="agent-automation" role="tab" aria-selected="false" aria-controls="agent-automation">
-            <span class="tab-icon">⚡</span> Automation Agent
-          </button>
-        </div>
-
-        <div class="agent-display-box glass-card">
-          <div class="agent-content active" id="agent-research" role="tabpanel" aria-labelledby="tabResearch">
-            <div class="agent-info">
-              <h3>Research Agent</h3>
-              <p>Autonomous investigator that searches literature, synthesizes datasets, and builds executive summaries.</p>
-              <ul class="agent-features">
-                <li><span class="check">✓</span> Automated paper discovery & citation extraction</li>
-                <li><span class="check">✓</span> Multi-document cross-referencing & synthesis</li>
-                <li><span class="check">✓</span> Real-time web & database crawling</li>
-              </ul>
-            </div>
-            <div class="agent-terminal">
-              <div class="terminal-header">
-                <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
-                <span class="term-title">research_agent_runtime.sh</span>
+        <div class="sdk-card reveal d1">
+          <div class="term">
+            <div class="term-bar">
+              <i></i><i></i><i></i>
+              <div class="sdk-tabs" role="tablist" aria-label="SDK language">
+                <button role="tab" aria-selected="true" data-lang="py">python</button>
+                <button role="tab" aria-selected="false" data-lang="ts">typescript</button>
               </div>
-              <pre class="terminal-body"><code><span class="code-keyword">INIT</span> research_agent --mode=deep_scan
-<span class="code-string">> Fetching latest preprints on persistent neural memory...</span>
-<span class="code-comment">[+] Papers analyzed</span>
-<span class="code-comment">[+] Knowledge graph updated with new entity nodes</span>
-<span class="code-success">SUCCESS: Executive synthesis report ready.</span></code></pre>
+              <button class="copy-btn" id="copyBtn" type="button">copy</button>
             </div>
-          </div>
-
-          <div class="agent-content" id="agent-coding" role="tabpanel" aria-labelledby="tabCoding" hidden>
-            <div class="agent-info">
-              <h3>Coding Agent</h3>
-              <p>Software engineering agent capable of writing clean code, refactoring architectures, and running test suites.</p>
-              <ul class="agent-features">
-                <li><span class="check">✓</span> Multi-file codebase awareness & refactoring</li>
-                <li><span class="check">✓</span> Automated unit test generation & execution</li>
-                <li><span class="check">✓</span> Strict static analysis & zero-error compliance</li>
-              </ul>
-            </div>
-            <div class="agent-terminal">
-              <div class="terminal-header">
-                <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
-                <span class="term-title">coding_agent_runtime.sh</span>
-              </div>
-              <pre class="terminal-body"><code><span class="code-keyword">INIT</span> coding_agent --task="Refactor Graph Storage Engine"
-<span class="code-string">> Analyzing dependency graph...</span>
-<span class="code-comment">[+] Standardized TypeScript interfaces</span>
-<span class="code-comment">[+] Executing unit test suite: passed</span>
-<span class="code-success">SUCCESS: Build target output verified zero lints.</span></code></pre>
-            </div>
-          </div>
-
-          <div class="agent-content" id="agent-strategy" role="tabpanel" aria-labelledby="tabStrategy" hidden>
-            <div class="agent-info">
-              <h3>Strategy Agent</h3>
-              <p>Tactical advisor that models execution scenarios, formulates OKRs, and assesses operational risks.</p>
-              <ul class="agent-features">
-                <li><span class="check">✓</span> Predictive scenario modeling & risk matrix</li>
-                <li><span class="check">✓</span> Milestone tracking & priority allocation</li>
-                <li><span class="check">✓</span> Competitive intelligence analysis</li>
-              </ul>
-            </div>
-            <div class="agent-terminal">
-              <div class="terminal-header">
-                <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
-                <span class="term-title">strategy_agent_runtime.sh</span>
-              </div>
-              <pre class="terminal-body"><code><span class="code-keyword">INIT</span> strategy_agent --target="Cloud Infrastructure Scaling"
-<span class="code-string">> Evaluating infrastructure requirements...</span>
-<span class="code-comment">[+] Cloud infrastructure allocation model calculated</span>
-<span class="code-comment">[+] ROI projection calculated</span>
-<span class="code-success">SUCCESS: Strategic roadmap generated.</span></code></pre>
-            </div>
-          </div>
-
-          <div class="agent-content" id="agent-knowledge" role="tabpanel" aria-labelledby="tabKnowledge" hidden>
-            <div class="agent-info">
-              <h3>Knowledge Agent</h3>
-              <p>Real-time graph database maintainer indexing concepts and linking unstructured data structures.</p>
-              <ul class="agent-features">
-                <li><span class="check">✓</span> Semantic vector indexing & embeddings</li>
-                <li><span class="check">✓</span> Automated schema alignment & graph expansion</li>
-                <li><span class="check">✓</span> Instant sub-second relational lookup</li>
-              </ul>
-            </div>
-            <div class="agent-terminal">
-              <div class="terminal-header">
-                <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
-                <span class="term-title">knowledge_agent_runtime.sh</span>
-              </div>
-              <pre class="terminal-body"><code><span class="code-keyword">INIT</span> knowledge_agent --action=sync_graph
-<span class="code-string">> Embedding new vector points...</span>
-<span class="code-comment">[+] Graph clustering completed</span>
-<span class="code-success">SUCCESS: Real-time knowledge mesh synchronized.</span></code></pre>
-            </div>
-          </div>
-
-          <div class="agent-content" id="agent-automation" role="tabpanel" aria-labelledby="tabAutomation" hidden>
-            <div class="agent-info">
-              <h3>Automation Agent</h3>
-              <p>Workflow orchestrator connecting webhooks, triggering CI/CD pipelines, and monitoring cloud health.</p>
-              <ul class="agent-features">
-                <li><span class="check">✓</span> Event-driven pipeline execution</li>
-                <li><span class="check">✓</span> 99.99% uptime self-healing system monitoring</li>
-                <li><span class="check">✓</span> Cloud infrastructure trigger management</li>
-              </ul>
-            </div>
-            <div class="agent-terminal">
-              <div class="terminal-header">
-                <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
-                <span class="term-title">automation_agent_runtime.sh</span>
-              </div>
-              <pre class="terminal-body"><code><span class="code-keyword">INIT</span> automation_agent --pipeline=prod_deploy
-<span class="code-string">> Running automated pre-flight checks...</span>
-<span class="code-comment">[+] SSL valid | CDN edge cache primed</span>
-<span class="code-success">SUCCESS: Pipeline completed without bottleneck.</span></code></pre>
-            </div>
+<pre id="sdkCode"></pre>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Live Demo Interactive Sandbox -->
-  <section class="section" id="demo">
-    <div class="section-container">
-      <div class="section-header">
-        <span class="section-badge">INTERACTIVE PLAYGROUND</span>
-        <h2 class="section-title">Test AI Brain Live Demo</h2>
-        <p class="section-subtitle">
-          Experience how AI Brain maintains long-term contextual memory across prompts. Try a sample query below:
-        </p>
-      </div>
-
-      <div class="demo-box glass-card">
-        <div class="demo-header">
-          <div class="demo-controls">
-            <span class="demo-indicator"></span>
-            <span class="demo-title">AI Brain Cognitive Simulator</span>
+    <!-- CALCULATOR -->
+    <section class="section" id="calculator">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">Estimator</span>
+            <h2 class="h2 reveal d1">What does <span class="serif">forgetting</span> cost you?</h2>
           </div>
-          <div class="demo-badge">Neural Memory Active</div>
+          <p class="lead reveal d2">Estimate redundant context tokens a stateless setup burns each month — and what persistent memory saves.</p>
         </div>
-        
-        <div class="demo-chat" id="demoChat">
-          <div class="chat-bubble ai-bubble">
-            <div class="avatar-mini">🧠</div>
-            <div class="bubble-text">
-              Hello! I am AI Brain. I remember all past interactions, codebases, and research notes. What topic would you like to explore today?
+        <div class="calc reveal">
+          <div class="calc-in">
+            <div class="field">
+              <label for="cFiles">Project files in context <output id="oFiles">150</output></label>
+              <input type="range" id="cFiles" min="10" max="1000" step="10" value="150">
+            </div>
+            <div class="field">
+              <label for="cQueries">Prompts per developer / day <output id="oQueries">80</output></label>
+              <input type="range" id="cQueries" min="10" max="500" step="10" value="80">
+            </div>
+            <div class="field">
+              <label for="cDevs">Developers on the team <output id="oDevs">5</output></label>
+              <input type="range" id="cDevs" min="1" max="100" step="1" value="5">
             </div>
           </div>
+          <div class="calc-out">
+            <div class="out-row"><span>Redundant tokens / month</span><strong class="bad" id="rTokens">—</strong></div>
+            <div class="out-row"><span>Context tokens saved</span><strong class="good" id="rEff">—</strong></div>
+            <div class="out-row"><span>Estimated savings / month</span><strong id="rCost">—</strong></div>
+            <p class="calc-foot">Estimate: ~850 tokens/file re-sent, $3 per 1M input tokens, 30 days.</p>
+          </div>
         </div>
-
-        <div class="demo-suggestions">
-          <button class="suggest-btn" data-query="Explain how AI Brain maintains long-term memory graph.">🧠 Explain Persistent Memory</button>
-          <button class="suggest-btn" data-query="What is the roadmap for Autonomous Agents in 2026?">🚀 2026 Agent Roadmap</button>
-          <button class="suggest-btn" data-query="How does AI Brain scale cloud infrastructure?">☁️ Cloud Infrastructure Scaling</button>
-        </div>
-
-        <form class="demo-input-row" id="demoForm">
-          <label for="demoInput" class="visually-hidden">Ask AI Brain a prompt</label>
-          <input type="text" id="demoInput" class="demo-input" placeholder="Type a message or select a suggestion above..." autocomplete="off">
-          <button type="submit" class="btn btn-primary" id="btnDemoSend">
-            <span>Send</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          </button>
-        </form>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Early Access / Waitlist Section (Clean Authentic Headline - Prompt 1) -->
-  <section class="section CTA-section" id="waitlist">
-    <div class="section-container">
-      <div class="cta-card glass-card">
-        <div class="cta-content">
-          <span class="section-badge">JOIN THE FUTURE OF INTELLIGENCE</span>
-          <h2 class="cta-title">Get Early Access to AI Brain</h2>
-          <p class="cta-subtitle">
-            Join developers and researchers building next-generation AI systems. Free forever for early members.
-          </p>
-
-          <form class="waitlist-form" id="waitlistForm">
-            <div class="form-group">
-              <label for="waitlistEmail" class="visually-hidden">Email Address</label>
-              <input type="email" id="waitlistEmail" class="form-input" placeholder="Enter your work email (e.g. name@company.com)" required autocomplete="email">
-            </div>
-            <div class="form-group">
-              <label for="waitlistRole" class="visually-hidden">Your Role</label>
-              <select id="waitlistRole" class="form-select" required aria-label="Select your role">
-                <option value="" disabled selected>Select your role...</option>
-                <option value="researcher">AI Researcher / Scientist</option>
-                <option value="developer">Software Engineer / Architect</option>
-                <option value="founder">Startup Founder / Executive</option>
-                <option value="other">Technology Enthusiast</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-glow btn-large btn-full" id="btnWaitlistSubmit">
-              <span>Request Access</span>
-            </button>
+    <!-- DEMO -->
+    <section class="section" id="demo">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">Playground</span>
+            <h2 class="h2 reveal d1">Talk to a brain that <span class="serif">remembers</span>.</h2>
+          </div>
+          <p class="lead reveal d2">A simulated session: tell it something, then ask about it later. Watch it recall from memory.</p>
+        </div>
+        <div class="demo reveal">
+          <div class="demo-head"><span class="live-dot"></span> AI Brain simulator <span class="mono" id="memCount">0 memories</span></div>
+          <div class="chat" id="chat" aria-live="polite"></div>
+          <div class="suggest" id="suggest">
+            <button type="button">I am Arjun and I build AI agents</button>
+            <button type="button">What do you remember about me?</button>
+            <button type="button">How does persistent memory work?</button>
+            <button type="button">How does it scale on Google Cloud?</button>
+          </div>
+          <form class="chat-form" id="chatForm">
+            <label for="chatInput" class="sr-only">Message</label>
+            <input id="chatInput" type="text" placeholder="Tell AI Brain something…" autocomplete="off" maxlength="300">
+            <button class="btn btn-primary" type="submit">Send</button>
           </form>
+        </div>
+      </div>
+    </section>
 
-          <div class="form-reassurance">
-            <span>🛡️ Data Privacy Guaranteed. We respect your confidentiality.</span>
-          </div>
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="wrap faq">
+        <div>
+          <span class="kicker reveal">FAQ</span>
+          <h2 class="h2 reveal d1">Questions, <span class="serif">answered</span>.</h2>
+          <p class="lead reveal d2">Anything else? Write to <a href="mailto:team@aibrainstartup.com" class="accent">team@aibrainstartup.com</a>.</p>
+        </div>
+        <div class="faq-list reveal">
+          <details open><summary>What is AI Brain?</summary><p>AI Brain is a next-generation intelligence architecture designed to remember, learn, reason and act autonomously through persistent long-term memory graphs and specialised agent networks.</p></details>
+          <details><summary>How does persistent memory work?</summary><p>A dual-layer cognitive architecture combines continuous vector embeddings with a graph neural network, storing conversation, idea and project context as linked nodes — so it can be recalled across sessions without loss.</p></details>
+          <details><summary>How is it different from a vector database?</summary><p>Vector stores retrieve isolated chunks by similarity. AI Brain also stores relationships between entities, so multi-hop traversal can surface context that is related but not lexically similar.</p></details>
+          <details><summary>Who founded AI Brain?</summary><p>AI Brain was founded by Bhoja Ram Choudhary, an AI engineer and technology entrepreneur building persistent cognitive memory systems. It is a Government of India MSME-registered enterprise (UDYAM-RJ-05-0067280).</p></details>
+          <details><summary>How can developers get early access?</summary><p>Join the waitlist below or email team@aibrainstartup.com for early API previews.</p></details>
+        </div>
+      </div>
+    </section>
 
-          <div class="form-toast hidden" id="formToast">
-            🎉 Thank you! Your request has been saved. We will contact you at your email.
+    <!-- CTA -->
+    <section class="section" id="waitlist">
+      <div class="wrap">
+        <div class="cta reveal">
+          <div class="cta-grid">
+            <div>
+              <h2>Give your AI a <span class="serif">memory</span>.</h2>
+              <p>Join developers and researchers building the next generation of AI systems. Free for early members.</p>
+            </div>
+            <form class="wl-form" id="wlForm" novalidate>
+              <label for="wlEmail" class="sr-only">Work email</label>
+              <input type="email" id="wlEmail" placeholder="you@company.com" required autocomplete="email">
+              <label for="wlRole" class="sr-only">Your role</label>
+              <select id="wlRole" required>
+                <option value="" disabled selected>Your role</option>
+                <option value="developer">Software engineer / architect</option>
+                <option value="researcher">AI researcher / scientist</option>
+                <option value="founder">Founder / executive</option>
+                <option value="other">Technology enthusiast</option>
+              </select>
+              <button class="btn" type="submit">Request access →</button>
+              <p class="wl-note">No spam. We only email you about access.</p>
+              <div class="wl-ok" id="wlOk" role="status"></div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   </main>
 
-  <!-- Footer Navigation & Real Standalone Links (Prompt 2) -->
-  <footer class="footer" id="footer">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-col brand-col">
-          <div class="footer-logo">
-            <span class="logo-icon">🧠</span>
-            <span class="logo-text">AI <span class="accent-text">Brain</span></span>
-          </div>
-          <p class="footer-tagline">Building persistent artificial intelligence and autonomous agent networks for the future of humanity.</p>
-          <div class="footer-contact-info">
-            <p>📧 Founder: <a href="mailto:founder@aibrainstartup.com">founder@aibrainstartup.com</a></p>
-            <p>📫 Team: <a href="mailto:team@aibrainstartup.com">team@aibrainstartup.com</a></p>
-            <p>🌐 Domain: <a href="https://aibrainstartup.com/">aibrainstartup.com</a></p>
-          </div>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="/" class="logo">AI Brain</a>
+          <p>Building persistent artificial intelligence and autonomous agent networks.</p>
+          <a class="mail" href="mailto:founder@aibrainstartup.com">founder@aibrainstartup.com</a>
+          <a class="mail" href="mailto:team@aibrainstartup.com">team@aibrainstartup.com</a>
         </div>
-
-        <div class="footer-col">
-          <h3>Navigation</h3>
-          <ul>
-            <li><a href="#architecture">Architecture</a></li>
-            <li><a href="#cloud-infra">Cloud Infra</a></li>
-            <li><a href="#agents">Agents</a></li>
-            <li><a href="#calculator">Memory Calculator</a></li>
-            <li><a href="#demo">Live Demo</a></li>
-            <li><a href="docs.html">Developer Docs</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3>Company</h3>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">Founder LinkedIn</a></li>
-            <li><a href="#waitlist">Early Access</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3>Legal & Trust</h3>
-          <ul>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="terms-of-service.html">Terms of Service</a></li>
-            <li><a href="docs.html">API Documentation</a></li>
-          </ul>
-        </div>
+        <div><h4>Product</h4><ul><li><a href="#memory">Memory</a></li><li><a href="#agents">Agents</a></li><li><a href="#sdk">SDK</a></li><li><a href="#demo">Live demo</a></li><li><a href="docs">Docs</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="about">About</a></li><li><a href="architecture">Architecture</a></li><li><a href="contact">Contact</a></li><li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+        <div><h4>Legal</h4><ul><li><a href="privacy-policy">Privacy policy</a></li><li><a href="terms-of-service">Terms of service</a></li></ul></div>
       </div>
-
-      <div class="footer-bottom">
-        <div class="msme-footer-badge">
-          <span>🇮🇳 Govt of India Registered MSME Enterprise</span>
-          <span class="msme-num-tag">Udyam: <strong style="color: var(--cyan); font-family: var(--font-mono); white-space: nowrap;">UDYAM-RJ-05-0067280</strong></span>
-        </div>
-        <p>© 2026 AI Brain. All rights reserved. Building the future of persistent AGI memory.</p>
+      <div class="foot-bottom">
+        <span class="msme">🇮🇳 Govt. of India registered MSME · Udyam <b>UDYAM-RJ-05-0067280</b></span>
+        <span>© <span id="year">2026</span> AI Brain. All rights reserved.</span>
       </div>
+      <div class="wordmark" aria-hidden="true">AI Brain</div>
     </div>
   </footer>
 
-  <!-- Terms & Privacy Modal Popup -->
-  <div id="termsModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-box glass-card">
-      <button class="modal-close" id="btnCloseModal" title="Close Modal" aria-label="Close modal">&times;</button>
-      <div class="modal-header">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap;">
-          <span class="modal-badge">LEGAL COMPLIANCE</span>
-          <button class="btn btn-outline btn-sm modal-back-btn" id="btnHeaderBackHome" onclick="document.getElementById('termsModal').classList.remove('active')" style="padding: 4px 10px; font-size: 0.72rem;">← Back to Home</button>
-        </div>
-        <h2 id="modalTitle" style="margin: 0; padding-right: 28px;">Terms of Service & Privacy Summary</h2>
-      </div>
-      <div class="modal-body">
-        <h3 style="color: var(--cyan); margin-bottom: 6px; font-size: 0.95rem;">1. Terms Overview</h3>
-        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">By accessing AI Brain (aibrainstartup.com), you agree to be bound by these terms governing access to our persistent cognitive intelligence platform and developer APIs.</p>
-        
-        <h3 style="color: var(--cyan); margin-bottom: 6px; font-size: 0.95rem;">2. Enterprise Data Privacy & Security</h3>
-        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">We prioritize enterprise data privacy. Vector embeddings, context graphs, and user interactions are encrypted in transit and at rest on Google Cloud Platform infrastructure.</p>
-        
-        <h3 style="color: var(--cyan); margin-bottom: 6px; font-size: 0.95rem;">3. Intellectual Property</h3>
-        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px;">All neural architecture, multi-agent frameworks, and persistent memory code bases are proprietary assets of AI Brain and Founder Bhoja Ram Choudhary.</p>
-        
-        <h3 style="color: var(--cyan); margin-bottom: 6px; font-size: 0.95rem;">4. Official Contact</h3>
-        <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">For questions or enterprise self-hosted cluster inquiries, contact <a href="mailto:team@aibrainstartup.com" class="link-glow">team@aibrainstartup.com</a>.</p>
-      </div>
-      <div class="modal-footer" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: space-between; align-items: center;">
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <a href="privacy-policy.html" class="btn btn-outline btn-sm">Full Privacy Policy</a>
-          <a href="terms-of-service.html" class="btn btn-outline btn-sm">Full Terms Page</a>
-        </div>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <button class="btn btn-outline btn-sm" id="btnFooterBackHome" onclick="document.getElementById('termsModal').classList.remove('active')">← Back to Home</button>
-          <button class="btn btn-primary btn-sm" id="btnAcceptModal">I Understand</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Custom JavaScript (Deferred to prevent render blocking) -->
-  <script src="app.js" defer></script>
+  <script src="home.js" defer></script>
 </body>
 </html>
