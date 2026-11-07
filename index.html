@@ -184,7 +184,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
-  <link rel="stylesheet" href="home.css?v=4">
+  <link rel="stylesheet" href="home.css?v=5">
 </head>
 <body>
 
@@ -531,8 +531,9 @@
                 <option value="founder">Founder / executive</option>
                 <option value="other">Technology enthusiast</option>
               </select>
+              <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="wlCompany">Company</label><input id="wlCompany" name="company" type="text" tabindex="-1" autocomplete="off"></div>
               <button class="btn" type="submit">Request access →</button>
-              <p class="wl-note">No spam. We only email you about access.</p>
+              <p class="wl-note">No spam. We only email you about access. See our <a href="/privacy-policy" style="text-decoration:underline">privacy policy</a>.</p>
               <div class="wl-ok" id="wlOk" role="status"></div>
             </form>
           </div>
@@ -563,6 +564,6 @@
     </div>
   </footer>
 
-  <script src="home.js?v=4" defer></script>
+  <script src="home.js?v=5" defer></script>
 </body>
 </html>

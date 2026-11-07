@@ -4,10 +4,6 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const store = {
-    get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
-    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* storage blocked */ } }
-  };
 
   /* ---------- Nav ---------- */
   function initNav() {
@@ -378,12 +374,24 @@ console.log(res.output);` }
       role.setAttribute('aria-invalid', String(!role.value));
       if (!valid) { email.focus(); ok.textContent = 'Please enter a valid email address.'; ok.classList.add('show'); return; }
       if (!role.value) { role.focus(); ok.textContent = 'Please choose your role.'; ok.classList.add('show'); return; }
-      const list = store.get('aibrain_waitlist_subscribers', []);
-      list.push({ email: email.value.trim(), role: role.value, timestamp: new Date().toISOString(), domain: location.hostname });
-      store.set('aibrain_waitlist_subscribers', list);
-      ok.textContent = "You're on the list. We'll be in touch at " + email.value.trim() + '.';
-      ok.classList.add('show');
-      form.reset();
+      const btn = form.querySelector('button[type=submit]');
+      const label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending…';
+      const addr = email.value.trim();
+      fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: addr, role: role.value, company: $('#wlCompany')?.value || '', source: 'homepage' })
+      })
+        .then(r => r.json().catch(() => ({})).then(b => { if (!r.ok || !b.ok) throw new Error(b.error || r.status); }))
+        .then(() => {
+          ok.textContent = "You're on the list. We'll be in touch at " + addr + '.';
+          form.reset();
+        })
+        .catch(() => {
+          ok.textContent = 'Something went wrong on our side. Please email team@aibrainstartup.com and we’ll add you manually.';
+        })
+        .finally(() => { ok.classList.add('show'); btn.disabled = false; btn.textContent = label; });
     });
   }
 
