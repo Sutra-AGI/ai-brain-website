@@ -387,9 +387,58 @@ console.log(res.output);` }
     });
   }
 
+  /* ---------- Contact form → opens the visitor's mail app (real delivery) ---------- */
+  function initContact() {
+    const form = $('#contactForm');
+    if (!form) return;
+    const msg = $('#contactMsgBox');
+    const show = (cls, text) => { msg.className = `form-msg show ${cls}`; msg.textContent = text; };
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = $('#cName'), email = $('#cEmail'), topic = $('#cTopic'), body = $('#cBody');
+      const checks = [
+        [name, name.value.trim().length > 1, 'Please enter your name.'],
+        [email, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()), 'Please enter a valid email address.'],
+        [body, body.value.trim().length > 9, 'Please write a short message (10+ characters).']
+      ];
+      for (const [el, ok] of checks) el.setAttribute('aria-invalid', String(!ok));
+      const bad = checks.find(c => !c[1]);
+      if (bad) { bad[0].focus(); show('err', bad[2]); return; }
+      const subject = `[${topic.value}] ${name.value.trim()}`;
+      const text = `${body.value.trim()}\n\n—\n${name.value.trim()}\n${email.value.trim()}`;
+      window.location.href = `mailto:founder@aibrainstartup.com?cc=team@aibrainstartup.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+      show('ok', 'Your email app should open with the message ready — just press send. If nothing opened, write to founder@aibrainstartup.com directly.');
+    });
+  }
+
+  /* ---------- Copy buttons for code blocks ---------- */
+  function initCopy() {
+    $$('[data-copy]').forEach(btn => btn.addEventListener('click', async () => {
+      const pre = document.getElementById(btn.dataset.copy);
+      try { await navigator.clipboard.writeText(pre.innerText); btn.textContent = 'copied'; }
+      catch { btn.textContent = 'select & copy'; }
+      setTimeout(() => { btn.textContent = 'copy'; }, 1600);
+    }));
+  }
+
+  /* ---------- Table-of-contents scrollspy (docs / legal) ---------- */
+  function initToc() {
+    const links = $$('.toc a[href^="#"]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+    const io = new IntersectionObserver(entries => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        links.forEach(a => a.classList.remove('active'));
+        map.get(e.target.id)?.classList.add('active');
+      }
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    map.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
-    [initNav, initGraph, initReveal, initSpotlight, initAgents, initSdk, initCalc, initDemo, initWaitlist].forEach(fn => {
+    [initNav, initGraph, initReveal, initSpotlight, initAgents, initSdk, initCalc, initDemo, initWaitlist, initContact, initCopy, initToc].forEach(fn => {
       try { fn(); } catch (err) { console.error('[AI Brain]', fn.name, err); }
     });
   });

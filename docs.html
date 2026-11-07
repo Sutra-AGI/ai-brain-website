@@ -6,10 +6,10 @@
   <title>AGI Developer Documentation — AI Brain Startup | Cognitive Hypergraph SDK</title>
   <meta name="description" content="Official AGI Developer Documentation, Cognitive Hypergraph SDK specs, Autonomous Swarm APIs, and Quickstart guides for AI Brain.">
   <link rel="canonical" href="https://aibrainstartup.com/docs">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="logo.png">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#070913">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#08090b">
   
   <!-- JSON-LD TechArticle & Breadcrumb Schema -->
   <script type="application/ld+json">
@@ -52,288 +52,240 @@
     ]
   }
   </script>
-
-  <!-- Optimized Non-Blocking Google Fonts Loading -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800;900&display=swap">
-  </noscript>
-
-  <!-- Non-Blocking Async CSS Stylesheet -->
-  <link rel="preload" as="style" href="styles.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
+  <link rel="stylesheet" href="/home.css?v=4">
+  <link rel="stylesheet" href="/pages.css?v=4">
 </head>
 <body>
 
-  <!-- Minimalist Navigation Bar -->
-  <header class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="brand-logo">
-        <span class="logo-icon">🧠</span>
-        <span class="logo-text">AI <span class="accent-text">Brain</span></span>
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="/" class="logo" aria-label="AI Brain home">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" stroke="#c8ff3d" stroke-opacity=".35"/>
+          <circle cx="9" cy="12" r="2.6" fill="#c8ff3d"/><circle cx="22" cy="9" r="2" fill="#f2f1ec"/>
+          <circle cx="23" cy="21" r="2.6" fill="#c8ff3d"/><circle cx="12" cy="23" r="2" fill="#f2f1ec"/>
+          <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1"/>
+        </svg>
+        AI Brain
       </a>
-
-      <a href="index.html" class="btn-back-nav">← Back</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#memory">Memory</a>
+        <a href="/#agents">Agents</a>
+        <a href="/#sdk">SDK</a>
+        <a href="/architecture">Architecture</a>
+        <a href="/docs" aria-current="page">Docs</a>
+        <a href="/about">About</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="/contact" class="btn btn-ghost btn-sm">Contact</a>
+        <a href="/#waitlist" class="btn btn-primary btn-sm">Early access</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel"><span></span></button>
+      </div>
     </div>
   </header>
+  <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <a class="m-link" href="/">Home <span>↗</span></a>
+    <a class="m-link" href="/#memory">Memory <span>01</span></a>
+    <a class="m-link" href="/#agents">Agents <span>02</span></a>
+    <a class="m-link" href="/#sdk">SDK <span>03</span></a>
+    <a class="m-link" href="/#demo">Live demo <span>04</span></a>
+    <a class="m-link" href="/architecture">Architecture <span>↗</span></a>
+    <a class="m-link" href="/docs">Docs <span>↗</span></a>
+    <a class="m-link" href="/about">About <span>↗</span></a>
+    <a class="m-link" href="/contact">Contact <span>↗</span></a>
+    <a href="/#waitlist" class="btn btn-primary">Get early access →</a>
+  </div>
 
-  <!-- Main Content -->
-  <main class="section docs-main-section" style="padding-top: 80px; min-height: 85vh;">
-    <div class="section-container" style="max-width: 1150px;">
-
-      <!-- Section Header -->
-      <div class="section-header" style="margin-bottom: 28px;">
-        <span class="section-badge">⚡ AGI COGNITIVE SDK SPECIFICATION</span>
-        <h1 class="section-title" style="margin-top: 8px;">AI Brain <span class="gradient-text">AGI Documentation</span></h1>
-        <p class="section-subtitle">
-          Complete technical guide for integrating Cognitive Hypergraph Engine memory, Autonomous Swarm Matrix, and cross-session context recall.
-        </p>
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="crumbs reveal"><a href="/">Home</a><span>/</span><span>Docs</span></div>
+        <span class="kicker reveal" style="margin-top:28px">Developer documentation</span>
+        <h1 class="reveal d1">Build agents that <span class="serif">remember</span>.</h1>
+        <p class="lead reveal d2">Integrate the cognitive hypergraph memory engine, the swarm consensus grid and cross-session recall into your stack.</p>
+        <div class="hero-actions reveal d3"><a href="#installation" class="btn btn-primary">Quickstart <span class="arrow">→</span></a><a href="#rest-endpoints" class="btn btn-ghost">REST reference</a></div>
       </div>
+    </section>
 
-      <!-- Documentation Layout: Sidebar & Main Specs -->
-      <!-- Mobile Index Accordion (Visible on Mobile Only) -->
-      <details class="docs-mobile-index">
-        <summary class="docs-index-summary">
-          <span>📚 Quick Navigation Index (6 Sections)</span>
-          <span>▼</span>
-        </summary>
-        <div class="docs-index-links">
-          <a href="#overview" class="link-glow">1. System Overview</a>
-          <a href="#installation" class="link-glow">2. Installation & Setup</a>
-          <a href="#hypergraph-api" class="link-glow">3. Cognitive Hypergraph API</a>
-          <a href="#swarm-matrix" class="link-glow">4. Swarm Matrix Consensus</a>
-          <a href="#rest-endpoints" class="link-glow">5. REST API Endpoints</a>
-          <a href="#benchmarks" class="link-glow">6. Enterprise Benchmarks</a>
-        </div>
-      </details>
+    <section class="page-section">
+      <div class="wrap docs">
+        <nav class="toc" aria-label="Documentation sections">
+          <h4>On this page</h4>
+          <ol>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#hypergraph-api">Hypergraph API</a></li>
+            <li><a href="#swarm-matrix">Swarm consensus</a></li>
+            <li><a href="#rest-endpoints">REST endpoints</a></li>
+            <li><a href="#benchmarks">Benchmarks</a></li>
+          </ol>
+        </nav>
+        <div>
+          <div class="callout reveal"><b>Preview</b><span>The SDK is in private preview. Package names and signatures below may change before general availability — <a href="/#waitlist" class="accent">request access</a> to get keys.</span></div>
 
-      <div class="docs-grid">
-        
-        <!-- Left Docs Menu Bar (Visible on Desktop Only) -->
-        <div class="glass-card docs-sidebar" style="padding: 24px;">
-          <div style="font-size: 0.8rem; font-weight: 700; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">Documentation Index</div>
-          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem;">
-            <a href="#overview" class="link-glow" style="padding: 6px 0;">1. System Overview</a>
-            <a href="#installation" class="link-glow" style="padding: 6px 0;">2. Installation & Setup</a>
-            <a href="#hypergraph-api" class="link-glow" style="padding: 6px 0;">3. Cognitive Hypergraph API</a>
-            <a href="#swarm-matrix" class="link-glow" style="padding: 6px 0;">4. Swarm Matrix Consensus</a>
-            <a href="#rest-endpoints" class="link-glow" style="padding: 6px 0;">5. REST API Endpoints</a>
-            <a href="#benchmarks" class="link-glow" style="padding: 6px 0;">6. Enterprise Benchmarks</a>
-          </div>
-        </div>
-
-        <!-- Right Main Specs Content -->
-        <div class="docs-content-wrapper" style="display: flex; flex-direction: column; gap: 36px;">
-          
-          <!-- Section 1: Overview -->
-          <div class="glass-card docs-card" id="overview">
-            <span class="section-badge" style="margin-bottom: 12px;">01 / ARCHITECTURE OVERVIEW</span>
-            <h2 style="color: var(--cyan); font-size: 1.5rem; font-family: var(--font-heading); margin-bottom: 12px;">AGI Cognitive Memory Model</h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
-              Unlike legacy flat vector databases that rely on static cosine similarity, <strong>AI Brain</strong> deploys a <strong>Neuromorphic Cognitive Hypergraph Engine</strong>. It connects multi-dimensional concepts, execution histories, and agent intentions into a unified, non-lossy persistent graph.
-            </p>
-            <div style="display: flex; flex-direction: column; gap: 12px;">
-              <div style="background: rgba(0, 240, 255, 0.05); padding: 16px; border-radius: 8px; border: 1px solid rgba(0, 240, 255, 0.2);">
-                <div style="color: var(--text-main); font-weight: 700; margin-bottom: 4px;">🧠 Cognitive Hypergraph Engine</div>
-                <div style="font-size: 0.82rem; color: var(--text-muted);">Multi-hop associative reasoning and temporal memory decay prevention.</div>
-              </div>
-              <div style="background: rgba(0, 240, 255, 0.05); padding: 16px; border-radius: 8px; border: 1px solid rgba(0, 240, 255, 0.2);">
-                <div style="color: var(--text-main); font-weight: 700; margin-bottom: 4px;">⚡ Swarm Matrix Consensus</div>
-                <div style="font-size: 0.82rem; color: var(--text-muted);">Real-time memory state synchronization across 100+ autonomous agents.</div>
-              </div>
+          <section class="doc-sec" id="overview">
+            <span class="kicker">01 / Overview</span>
+            <h2>The cognitive memory model</h2>
+            <p>Instead of relying only on cosine similarity over flat vectors, AI Brain links concepts, execution histories and agent intentions into a single persistent hypergraph — so recall can follow relationships, not just keywords.</p>
+            <div class="grid-2">
+              <article class="card"><span class="eyebrow-mono">Engine</span><h3>Cognitive hypergraph</h3><p>Multi-hop associative reasoning with temporal decay protection.</p></article>
+              <article class="card"><span class="eyebrow-mono">Coordination</span><h3>Swarm consensus</h3><p>Shared memory state synchronised across many concurrent agents.</p></article>
             </div>
-          </div>
+          </section>
 
-          <!-- Section 2: Installation -->
-          <div class="glass-card docs-card" id="installation">
-            <span class="section-badge" style="margin-bottom: 12px;">02 / SETUP GUIDE</span>
-            <h2 style="color: var(--cyan); font-size: 1.5rem; font-family: var(--font-heading); margin-bottom: 12px;">Installation & Environment Setup</h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
-              Install the official AI Brain AGI Memory SDK across Python or Node.js environments.
-            </p>
-            
-            <details class="code-accordion" open>
-              <summary class="code-summary">
-                <span>💻 Terminal Setup & Auth</span>
-                <span class="code-summary-badge">Python / CLI</span>
-              </summary>
-              <div class="code-content">
-                <pre class="terminal-body" style="background: transparent; padding: 0; border: none;"><code style="color: var(--cyan); font-family: var(--font-mono); font-size: 0.88rem;"># Install AI Brain Neuromorphic AGI Memory SDK
+          <section class="doc-sec" id="installation">
+            <span class="kicker">02 / Setup</span>
+            <h2>Installation &amp; environment</h2>
+            <p>Install the SDK for Python or Node.js and set your credentials as environment variables.</p>
+            <div class="code reveal">
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span style="margin-left:8px">terminal</span><button class="copy-btn" type="button" data-copy="installCode">copy</button></div>
+<pre id="installCode"><span class="t-c"># Install the AI Brain SDK</span>
 pip install aibrain-sdk --upgrade
+<span class="t-c"># or</span>
+npm install @aibrain/sdk
 
-# Environment Setup with Zero-Trust TLS Authentication
-export AIBRAIN_API_KEY="sk_live_hypergraph_9942a"
-export AIBRAIN_CLUSTER_ENDPOINT="us-central1-agihub.aibrain.io"</code></pre>
-              </div>
-            </details>
+<span class="t-c"># Configure credentials</span>
+export AIBRAIN_API_KEY=<span class="t-s">"sk_live_..."</span>
+export AIBRAIN_CLUSTER_ENDPOINT=<span class="t-s">"us-central1-agihub.aibrain.io"</span></pre>
           </div>
+        </div>
+          </section>
 
-          <!-- Section 3: Hypergraph API -->
-          <div class="glass-card docs-card" id="hypergraph-api">
-            <span class="section-badge" style="margin-bottom: 12px;">03 / CORE SDK CODE</span>
-            <h2 style="color: var(--cyan); font-size: 1.5rem; font-family: var(--font-heading); margin-bottom: 12px;">Cognitive Hypergraph Memory API</h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
-              Store and recall long-term agent experiences with sub-15ms associative graph retrieval.
-            </p>
-            
-            <details class="code-accordion" open>
-              <summary class="code-summary">
-                <span>🐍 Python SDK Code</span>
-                <span class="code-summary-badge">Python 3.9+</span>
-              </summary>
-              <div class="code-content">
-                <pre class="terminal-body" style="background: transparent; padding: 0; border: none;"><code style="color: #4facfe; font-family: var(--font-mono); font-size: 0.84rem; line-height: 1.5;">import aibrain
+          <section class="doc-sec" id="hypergraph-api">
+            <span class="kicker">03 / Core SDK</span>
+            <h2>Hypergraph memory API</h2>
+            <p>Store long-term agent experiences with <code class="mono">remember()</code> and retrieve them with multi-hop <code class="mono">recall()</code>.</p>
+            <div class="code reveal">
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span style="margin-left:8px">memory.py</span><span class="tag tag-good">Python 3.9+</span><button class="copy-btn" type="button" data-copy="memoryCode">copy</button></div>
+<pre id="memoryCode"><span class="t-k">import</span> aibrain
 
-# 1. Initialize AGI Neuromorphic Hypergraph Client
+<span class="t-c"># 1. Initialise the hypergraph client</span>
 brain = aibrain.HypergraphClient(
-    api_key="sk_live_hypergraph_9942a",
-    tier="ENTERPRISE_AGI_CLUSTER"
+    api_key=<span class="t-s">"sk_live_..."</span>,
+    tier=<span class="t-s">"ENTERPRISE_AGI_CLUSTER"</span>,
 )
 
-# 2. Ingest Cross-Session Memory
+<span class="t-c"># 2. Ingest cross-session memory</span>
 memory_node = brain.remember(
-    agent_id="executive_agent_01",
+    agent_id=<span class="t-s">"executive_agent_01"</span>,
     context={
-        "user_intent": "Deploy AGI agent swarm",
-        "tech_stack": ["Google Cloud", "Gemini 1.5 Pro"],
-        "rule": "Zero context decay across sessions"
+        <span class="t-s">"user_intent"</span>: <span class="t-s">"Deploy AGI agent swarm"</span>,
+        <span class="t-s">"tech_stack"</span>: [<span class="t-s">"Google Cloud"</span>, <span class="t-s">"Gemini"</span>],
+        <span class="t-s">"rule"</span>: <span class="t-s">"Zero context decay across sessions"</span>,
     },
     reasoning_weight=0.98,
-    decay_protection=True
+    decay_protection=True,
 )
 
-# 3. Sub-15ms Multi-Hop Associative Recall Query
+<span class="t-c"># 3. Multi-hop associative recall</span>
 graph_result = brain.recall(
-    agent_id="executive_agent_01",
-    query="What architecture rules were specified?",
-    depth=4, # 4-hop cognitive graph traversal
-    top_k=5
+    agent_id=<span class="t-s">"executive_agent_01"</span>,
+    query=<span class="t-s">"What architecture rules were specified?"</span>,
+    depth=4,  <span class="t-c"># 4-hop graph traversal</span>
+    top_k=5,
 )
 
-print("Recall Latency:", graph_result.latency_ms, "ms")
-print("Retrieved Graph Nodes:", graph_result.nodes)</code></pre>
-              </div>
-            </details>
+<span class="t-k">print</span>(<span class="t-s">"Recall latency:"</span>, graph_result.latency_ms, <span class="t-s">"ms"</span>)
+<span class="t-k">print</span>(<span class="t-s">"Retrieved nodes:"</span>, graph_result.nodes)</pre>
           </div>
-
-          <!-- Section 4: Swarm Matrix Consensus -->
-          <div class="glass-card docs-card" id="swarm-matrix">
-            <span class="section-badge" style="margin-bottom: 12px;">04 / MULTI-AGENT SWARM</span>
-            <h2 style="color: var(--cyan); font-size: 1.5rem; font-family: var(--font-heading); margin-bottom: 12px;">Swarm Matrix Consensus Protocol</h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
-              Synchronize state across multiple concurrent agents (Coder, Planner, Reviewer) without data collisions or context drift.
-            </p>
-            
-            <details class="code-accordion" open>
-              <summary class="code-summary">
-                <span>🐝 Swarm Matrix Code</span>
-                <span class="code-summary-badge">Consensus Grid</span>
-              </summary>
-              <div class="code-content">
-                <pre class="terminal-body" style="background: transparent; padding: 0; border: none;"><code style="color: #00f2fe; font-family: var(--font-mono); font-size: 0.84rem; line-height: 1.5;">import aibrain
-
-# 1. Connect Autonomous Agent Swarm Grid
-swarm = aibrain.SwarmGrid(
-    swarm_id="swarm_alpha_dev",
-    agents=["planner_agent", "coder_agent", "evaluator_agent"],
-    consensus_protocol="BYZANTINE_HYPERGRAPH_AGREEMENT"
-)
-
-# 2. Broadcast Verified Task Artifact across Swarm Nodes
-swarm.broadcast_state(
-    source_agent="coder_agent",
-    state_key="verified_agi_memory_spec",
-    payload={"status": "PASSED_TESTS", "code_coverage": "99.8%"},
-    consensus_mode="IMMEDIATE_SYNC"
-)
-
-# 3. Read Synchronized Swarm State with Zero Collision
-current_state = swarm.read_state(
-    agent_id="evaluator_agent",
-    state_key="verified_agi_memory_spec"
-)
-
-print("Swarm Sync Status:", current_state.status)</code></pre>
-              </div>
-            </details>
-          </div>
-
-          <!-- Section 5: REST API Endpoints -->
-          <div class="glass-card docs-card" id="rest-endpoints">
-            <span class="section-badge" style="margin-bottom: 12px;">05 / HTTP REST REFERENCE</span>
-            <h2 style="color: var(--cyan); font-size: 1.5rem; font-family: var(--font-heading); margin-bottom: 12px;">Enterprise HTTP REST API Reference</h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
-              Direct REST API endpoints for non-Python environments (Go, Rust, C++, Java).
-            </p>
-            <div style="display: flex; flex-direction: column; gap: 14px;">
-              <div style="background: rgba(255, 255, 255, 0.03); padding: 16px; border-radius: 8px; border-left: 4px solid var(--emerald);">
-                <div style="font-family: var(--font-mono); font-weight: 700; color: var(--emerald);">POST /v1/memory/remember</div>
-                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Ingests and indexes new memory context into the Cognitive Hypergraph Engine.</div>
-              </div>
-
-              <div style="background: rgba(255, 255, 255, 0.03); padding: 16px; border-radius: 8px; border-left: 4px solid var(--cyan);">
-                <div style="font-family: var(--font-mono); font-weight: 700; color: var(--cyan);">POST /v1/memory/recall</div>
-                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Executes sub-15ms multi-hop graph traversal query for agent context retrieval.</div>
-              </div>
-
-              <div style="background: rgba(255, 255, 255, 0.03); padding: 16px; border-radius: 8px; border-left: 4px solid var(--purple);">
-                <div style="font-family: var(--font-mono); font-weight: 700; color: var(--purple);">POST /v1/swarm/sync</div>
-                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Broadcasts state updates across Swarm Matrix agent consensus clusters.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Section 6: Benchmarks & Investor Specs -->
-          <div class="glass-card docs-card" id="benchmarks">
-            <span class="section-badge" style="margin-bottom: 12px;">06 / PERFORMANCE BENCHMARKS</span>
-            <h2 style="color: var(--cyan); font-size: 1.5rem; font-family: var(--font-heading); margin-bottom: 12px;">Enterprise Performance & Investor ROI</h2>
-            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px;">
-              Empirical benchmark metrics demonstrating AI Brain's superiority over standard LLM context windows.
-            </p>
-            <div class="benchmarks-grid">
-              <div style="background: rgba(0, 240, 255, 0.05); padding: 20px; border-radius: 10px; border: 1px solid rgba(0, 240, 255, 0.25);">
-                <div style="font-size: 1.8rem; font-weight: 800; color: var(--cyan);">&lt; 15ms</div>
-                <div style="font-size: 0.82rem; color: var(--text-main); font-weight: 600; margin-top: 6px;">Memory Latency</div>
-                <div style="font-size: 0.74rem; color: var(--text-dim); margin-top: 2px;">Vs. 450ms standard vector search</div>
-              </div>
-
-              <div style="background: rgba(0, 240, 255, 0.05); padding: 20px; border-radius: 10px; border: 1px solid rgba(0, 240, 255, 0.25);">
-                <div style="font-size: 1.8rem; font-weight: 800; color: var(--emerald);">91.4%</div>
-                <div style="font-size: 0.82rem; color: var(--text-main); font-weight: 600; margin-top: 6px;">API Token Reduction</div>
-                <div style="font-size: 0.74rem; color: var(--text-dim); margin-top: 2px;">Eliminates repetitive context payloads</div>
-              </div>
-
-              <div style="background: rgba(0, 240, 255, 0.05); padding: 20px; border-radius: 10px; border: 1px solid rgba(0, 240, 255, 0.25);">
-                <div style="font-size: 1.8rem; font-weight: 800; color: var(--purple);">100%</div>
-                <div style="font-size: 0.82rem; color: var(--text-main); font-weight: 600; margin-top: 6px;">Zero Context Decay</div>
-                <div style="font-size: 0.74rem; color: var(--text-dim); margin-top: 2px;">Cross-session graph retention</div>
-              </div>
-            </div>
-
-            <div style="margin-top: 36px; text-align: center;">
-              <a href="index.html#waitlist" class="btn btn-glow" style="padding: 14px 28px; font-size: 0.95rem;">Request Developer SDK Access 🚀</a>
-            </div>
-          </div>
-
         </div>
+          </section>
 
+          <section class="doc-sec" id="swarm-matrix">
+            <span class="kicker">04 / Multi-agent</span>
+            <h2>Swarm consensus protocol</h2>
+            <p>Synchronise state across concurrent agents — planner, coder, reviewer — without collisions or context drift.</p>
+            <div class="code reveal">
+          <div class="term">
+            <div class="term-bar"><i></i><i></i><i></i><span style="margin-left:8px">swarm.py</span><button class="copy-btn" type="button" data-copy="swarmCode">copy</button></div>
+<pre id="swarmCode"><span class="t-k">import</span> aibrain
+
+<span class="t-c"># 1. Connect an agent swarm</span>
+swarm = aibrain.SwarmGrid(
+    swarm_id=<span class="t-s">"swarm_alpha_dev"</span>,
+    agents=[<span class="t-s">"planner_agent"</span>, <span class="t-s">"coder_agent"</span>, <span class="t-s">"evaluator_agent"</span>],
+    consensus_protocol=<span class="t-s">"BYZANTINE_HYPERGRAPH_AGREEMENT"</span>,
+)
+
+<span class="t-c"># 2. Broadcast a verified artifact to every agent</span>
+swarm.broadcast_state(
+    source_agent=<span class="t-s">"coder_agent"</span>,
+    state_key=<span class="t-s">"verified_memory_spec"</span>,
+    payload={<span class="t-s">"status"</span>: <span class="t-s">"PASSED_TESTS"</span>, <span class="t-s">"code_coverage"</span>: <span class="t-s">"99.8%"</span>},
+    consensus_mode=<span class="t-s">"IMMEDIATE_SYNC"</span>,
+)
+
+<span class="t-c"># 3. Read synchronised state</span>
+current_state = swarm.read_state(
+    agent_id=<span class="t-s">"evaluator_agent"</span>,
+    state_key=<span class="t-s">"verified_memory_spec"</span>,
+)
+<span class="t-k">print</span>(<span class="t-s">"Swarm sync status:"</span>, current_state.status)</pre>
+          </div>
+        </div>
+          </section>
+
+          <section class="doc-sec" id="rest-endpoints">
+            <span class="kicker">05 / HTTP</span>
+            <h2>REST API reference</h2>
+            <p>For Go, Rust, Java, C++ or anything that speaks HTTP.</p>
+            <div class="endpoints reveal">
+              <div class="endpoint"><span class="method">POST</span><code>/v1/memory/remember</code><p>Ingest and index new context into the hypergraph.</p></div>
+              <div class="endpoint"><span class="method">POST</span><code>/v1/memory/recall</code><p>Run a multi-hop traversal and return relevant context for an agent.</p></div>
+              <div class="endpoint"><span class="method">POST</span><code>/v1/swarm/sync</code><p>Broadcast a state update to every agent in a swarm.</p></div>
+            </div>
+          </section>
+
+          <section class="doc-sec" id="benchmarks">
+            <span class="kicker">06 / Performance</span>
+            <h2>Benchmark targets</h2>
+            <p>What the engine is designed to deliver compared with re-sending full context to a stateless LLM.</p>
+            <div class="mini-stats reveal">
+              <div><strong>&lt; 15ms</strong><span>Memory latency</span><small>vs ~450ms vector search</small></div>
+              <div><strong>91.4%</strong><span>Token reduction</span><small>no repeated context payloads</small></div>
+              <div><strong>0%</strong><span>Context decay</span><small>cross-session retention</small></div>
+            </div>
+          </section>
+        </div>
       </div>
+    </section>
 
-    </div>
+    <section class="page-section">
+      <div class="wrap">
+        <div class="cta-slim reveal">
+          <h2>Ready to give your agents a memory?</h2>
+          <a href="/#waitlist" class="btn">Request early access →</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-bottom">
-        <div class="msme-footer-badge">
-          <span><span>🇮🇳 Govt of India Registered MSME Enterprise</span> <span class="msme-num-tag">Udyam: <strong style="color: var(--cyan); font-family: var(--font-mono); white-space: nowrap;">UDYAM-RJ-05-0067280</strong></span></span>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="/" class="logo">AI Brain</a>
+          <p>Building persistent artificial intelligence and autonomous agent networks.</p>
+          <a class="mail" href="mailto:founder@aibrainstartup.com">founder@aibrainstartup.com</a>
+          <a class="mail" href="mailto:team@aibrainstartup.com">team@aibrainstartup.com</a>
         </div>
-        <p>© 2026 AI Brain. All rights reserved. <a href="index.html" class="link-glow">Back to Home</a></p>
+        <div><h4>Product</h4><ul><li><a href="/#memory">Memory</a></li><li><a href="/#agents">Agents</a></li><li><a href="/#sdk">SDK</a></li><li><a href="/#demo">Live demo</a></li><li><a href="/docs">Docs</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/architecture">Architecture</a></li><li><a href="/contact">Contact</a></li><li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+        <div><h4>Legal</h4><ul><li><a href="/privacy-policy">Privacy policy</a></li><li><a href="/terms-of-service">Terms of service</a></li></ul></div>
       </div>
+      <div class="foot-bottom">
+        <span class="msme">🇮🇳 Govt. of India registered MSME · Udyam <b>UDYAM-RJ-05-0067280</b></span>
+        <span>© <span id="year">2026</span> AI Brain. All rights reserved.</span>
+      </div>
+      <div class="wordmark" aria-hidden="true">AI Brain</div>
     </div>
   </footer>
 
-  <script src="app.js" defer></script>
+  <script src="/home.js?v=4" defer></script>
 </body>
 </html>

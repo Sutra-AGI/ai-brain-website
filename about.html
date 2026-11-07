@@ -6,10 +6,10 @@
   <title>About Us & Leadership — AI Brain Startup | Next-Gen AGI Memory</title>
   <meta name="description" content="Meet Bhoja Ram Choudhary, Founder & Chief Architect of AI Brain — pioneering persistent Neuromorphic Cognitive Hypergraph memory for AGI agents.">
   <link rel="canonical" href="https://aibrainstartup.com/about">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="logo.png">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#070913">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#08090b">
   
   <!-- OpenGraph Metadata -->
   <meta property="og:site_name" content="AI Brain Startup">
@@ -62,226 +62,181 @@
     ]
   }
   </script>
-
-  <!-- Optimized Non-Blocking Google Fonts Loading -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800;900&display=swap">
-  </noscript>
-
-  <!-- Non-Blocking Async CSS Stylesheet -->
-  <link rel="preload" as="style" href="styles.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
+  <link rel="stylesheet" href="/home.css?v=4">
+  <link rel="stylesheet" href="/pages.css?v=4">
 </head>
 <body>
 
-  <!-- Minimalist Navigation Bar -->
-  <header class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="brand-logo">
-        <span class="logo-icon">🧠</span>
-        <span class="logo-text">AI <span class="accent-text">Brain</span></span>
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="/" class="logo" aria-label="AI Brain home">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="15" stroke="#c8ff3d" stroke-opacity=".35"/>
+          <circle cx="9" cy="12" r="2.6" fill="#c8ff3d"/><circle cx="22" cy="9" r="2" fill="#f2f1ec"/>
+          <circle cx="23" cy="21" r="2.6" fill="#c8ff3d"/><circle cx="12" cy="23" r="2" fill="#f2f1ec"/>
+          <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1"/>
+        </svg>
+        AI Brain
       </a>
-
-      <a href="index.html" class="btn-back-nav">← Back</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/#memory">Memory</a>
+        <a href="/#agents">Agents</a>
+        <a href="/#sdk">SDK</a>
+        <a href="/architecture">Architecture</a>
+        <a href="/docs">Docs</a>
+        <a href="/about" aria-current="page">About</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="/contact" class="btn btn-ghost btn-sm">Contact</a>
+        <a href="/#waitlist" class="btn btn-primary btn-sm">Early access</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel"><span></span></button>
+      </div>
     </div>
   </header>
+  <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <a class="m-link" href="/">Home <span>↗</span></a>
+    <a class="m-link" href="/#memory">Memory <span>01</span></a>
+    <a class="m-link" href="/#agents">Agents <span>02</span></a>
+    <a class="m-link" href="/#sdk">SDK <span>03</span></a>
+    <a class="m-link" href="/#demo">Live demo <span>04</span></a>
+    <a class="m-link" href="/architecture">Architecture <span>↗</span></a>
+    <a class="m-link" href="/docs">Docs <span>↗</span></a>
+    <a class="m-link" href="/about">About <span>↗</span></a>
+    <a class="m-link" href="/contact">Contact <span>↗</span></a>
+    <a href="/#waitlist" class="btn btn-primary">Get early access →</a>
+  </div>
 
-  <!-- Main Content -->
-  <main class="section docs-main-section" style="padding-top: 80px; min-height: 85vh;">
-    <div class="section-container" style="max-width: 1100px;">
-
-      <!-- Section Header -->
-      <div class="section-header" style="margin-bottom: 28px; text-align: center;">
-        <span class="section-badge">⚡ AGI LEADERSHIP & INVESTOR STRATEGY</span>
-        <h1 class="section-title" style="margin-top: 8px;">Visionary Leadership & <span class="gradient-text">AGI Execution</span></h1>
-        <p class="section-subtitle" style="max-width: 720px; margin: 8px auto 0;">
-          Building the foundational cognitive memory infrastructure that powers next-generation autonomous AI swarms with zero context decay and sub-15ms graph recall.
-        </p>
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="crumbs reveal"><a href="/">Home</a><span>/</span><span>About</span></div>
+        <span class="kicker reveal" style="margin-top:28px">Leadership &amp; company</span>
+        <h1 class="reveal d1">Building the <span class="serif">memory</span> layer for AI.</h1>
+        <p class="lead reveal d2">AI Brain is building foundational cognitive memory infrastructure for the next generation of autonomous AI agents — persistent, associative and fast.</p>
+        <div class="hero-actions reveal d3"><a href="/contact" class="btn btn-primary">Talk to the founder <span class="arrow">→</span></a><a href="/architecture" class="btn btn-ghost">See the architecture</a></div>
       </div>
+    </section>
 
-      <!-- Founder & Mission Card -->
-      <div class="founder-card glass-card docs-card" style="margin-bottom: 24px; padding: 24px;">
-        <div class="founder-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-          
-          <!-- Founder Bio & Leadership -->
-          <div class="founder-info">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-              <span class="founder-badge" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(112, 0, 255, 0.15)); color: var(--cyan); border: 1px solid rgba(0, 240, 255, 0.4); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);">
-                👑 FOUNDER & CHIEF AGI ARCHITECT
-              </span>
+    <section class="page-section">
+      <div class="wrap">
+        <div class="founder" itemscope itemtype="https://schema.org/Person">
+          <article class="card founder-main reveal">
+            <div class="avatar" aria-hidden="true">BR</div>
+            <h2 itemprop="name">Bhoja Ram Choudhary</h2>
+            <span class="role" itemprop="jobTitle">Founder &amp; Chief Architect</span>
+            <p class="bio" itemprop="description">Architect of AI Brain — engineering neuromorphic memory systems to eliminate LLM context decay and power autonomous AI agent swarms.</p>
+            <dl class="kv">
+              <div><dt>Email</dt><dd><a href="mailto:founder@aibrainstartup.com" itemprop="email">founder@aibrainstartup.com</a></dd></div>
+              <div><dt>Phone / WhatsApp</dt><dd><a href="tel:+919461127967" itemprop="telephone">+91 94611 27967</a></dd></div>
+              <div><dt>Website</dt><dd><a href="https://aibrainstartup.com/">aibrainstartup.com</a></dd></div>
+              <div><dt>Based in</dt><dd>Rajasthan, India 🇮🇳</dd></div>
+            </dl>
+            <div class="founder-actions">
+              <a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" itemprop="sameAs">LinkedIn ↗</a>
+              <a href="/contact" class="btn btn-primary">Schedule a call <span class="arrow">→</span></a>
             </div>
-            
-            <h2 class="founder-name" itemprop="name" style="font-size: 1.75rem; font-family: var(--font-heading); margin-bottom: 2px; background: linear-gradient(135deg, #ffffff 0%, #00f2fe 60%, #4facfe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-              Bhoja Ram Choudhary
-            </h2>
-            <div style="font-size: 0.78rem; font-weight: 700; color: var(--purple); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px;">
-              AGI Systems Architect & Founder
-            </div>
-
-            <p class="founder-bio" itemprop="description" style="font-size: 0.86rem; line-height: 1.5; color: var(--text-muted); margin-bottom: 14px;">
-              Architect of <strong>AI Brain</strong> — engineering Neuromorphic Memory to eliminate LLM context decay and power autonomous AI swarms.
-            </p>
-
-            <div class="founder-contacts" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; font-size: 0.82rem; margin-bottom: 16px; background: rgba(0, 240, 255, 0.03); padding: 12px; border-radius: 10px; border: 1px solid rgba(0, 240, 255, 0.15);">
-              <div class="contact-item" style="display: flex; align-items: center; gap: 6px;">
-                <span class="icon">📧</span>
-                <a href="mailto:founder@aibrainstartup.com" class="link-glow" itemprop="email" style="font-weight: 600; color: var(--cyan);">founder@aibrainstartup.com</a>
-              </div>
-              <div class="contact-item" style="display: flex; align-items: center; gap: 6px;">
-                <span class="icon">📞</span>
-                <a href="tel:+919461127967" class="link-glow" itemprop="telephone" style="font-weight: 600; color: var(--cyan);">+91 94611 27967</a>
-              </div>
-              <div class="contact-item" style="display: flex; align-items: center; gap: 6px;">
-                <span class="icon">🌐</span>
-                <strong style="color: var(--cyan); font-weight: 600;">aibrainstartup.com</strong>
-              </div>
-              <div class="contact-item" style="display: flex; align-items: center; gap: 6px;">
-                <span class="icon">📍</span>
-                <span style="color: var(--text-muted);">India 🇮🇳 (Global Scale)</span>
-              </div>
-            </div>
-
-            <!-- Government of India MSME Udyam Official Certificate Showcase Box -->
-            <div style="margin-bottom: 22px; background: linear-gradient(135deg, rgba(255, 153, 51, 0.12) 0%, rgba(8, 12, 28, 0.95) 40%, rgba(19, 136, 8, 0.12) 100%); padding: 18px 16px; border-radius: 12px; border: 1px solid rgba(255, 153, 51, 0.45); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 240, 255, 0.05); position: relative; overflow: hidden;">
-              
-              <!-- Subtle Tri-Color Accent Line Top -->
-              <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #ff9933 0%, #ffffff 50%, #138808 100%);"></div>
-
-              <!-- Header Row -->
-              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="font-size: 1.4rem;">🇮🇳</span>
-                  <div>
-                    <div style="font-size: 0.76rem; font-weight: 900; color: #ff9933; letter-spacing: 0.08em; text-transform: uppercase;">GOVERNMENT OF INDIA • MoMSME</div>
-                    <div style="font-size: 0.88rem; font-weight: 700; color: #ffffff; line-height: 1.2;">Ministry of Micro, Small & Medium Enterprises</div>
-                  </div>
-                </div>
-                <span style="font-size: 0.68rem; font-weight: 800; background: linear-gradient(135deg, rgba(0, 255, 170, 0.2), rgba(0, 240, 255, 0.2)); color: #00ffaa; border: 1px solid rgba(0, 255, 170, 0.5); padding: 4px 10px; border-radius: 16px; box-shadow: 0 0 10px rgba(0, 255, 170, 0.2); letter-spacing: 0.03em;">
-                  ✓ VERIFIED GOVT TECH ENTERPRISE
-                </span>
-              </div>
-
-              <!-- 4-Grid Specification Cards -->
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin-bottom: 12px;">
-                
-                <div style="background: rgba(0, 240, 255, 0.04); padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(0, 240, 255, 0.2);">
-                  <div style="font-size: 0.68rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em;">📜 UDYAM REGISTRATION NO.</div>
-                  <div style="font-size: 0.88rem; font-weight: 800; color: var(--cyan); font-family: var(--font-mono); margin-top: 2px;">UDYAM-RJ-05-0067280</div>
-                </div>
-
-                <div style="background: rgba(255, 193, 7, 0.04); padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(255, 193, 7, 0.25);">
-                  <div style="font-size: 0.68rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em;">🏢 REGISTERED ENTERPRISE NAME</div>
-                  <div style="font-size: 0.88rem; font-weight: 800; color: #ffca28; margin-top: 2px;">AI BRAIN STARTUPS</div>
-                </div>
-
-                <div style="background: rgba(0, 255, 170, 0.04); padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(0, 255, 170, 0.25);">
-                  <div style="font-size: 0.68rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em;">⚡ NATIONAL NIC CODE (62099)</div>
-                  <div style="font-size: 0.82rem; font-weight: 700; color: #00ffaa; margin-top: 2px;">IT, Software & Computer Services</div>
-                </div>
-
-                <div style="background: rgba(156, 39, 176, 0.04); padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(156, 39, 176, 0.25);">
-                  <div style="font-size: 0.68rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em;">🏛️ REGISTRY JURISDICTION</div>
-                  <div style="font-size: 0.82rem; font-weight: 700; color: #e1bee7; margin-top: 2px;">Barmer / Jaipur (Rajasthan, India 🇮🇳)</div>
-                </div>
-
-              </div>
-
-              <!-- Footer Verification Note -->
-              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; font-size: 0.72rem; color: var(--text-muted); background: rgba(255, 255, 255, 0.02); padding: 6px 10px; border-radius: 6px;">
-                <span>📅 <strong>Registration Date:</strong> 10/10/2025</span>
-                <span>🏛️ <strong>Enterprise Type:</strong> Micro Enterprise (Services)</span>
-                <span>🔒 <strong>Official Portal:</strong> udyamregistration.gov.in</span>
-              </div>
-
-            </div>
-
-            <div class="founder-links" style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" itemprop="sameAs" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; padding: 10px 18px; border-color: rgba(0, 240, 255, 0.3);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>
-                <span>Connect on LinkedIn</span>
-              </a>
-              <a href="contact.html" class="btn btn-glow" style="font-size: 0.82rem; padding: 10px 18px;">
-                <span>🚀 Schedule Investor Pitch Call</span>
-              </a>
-            </div>
+          </article>
+          <div class="pillars">
+            <article class="card pillar reveal d1">
+              <span class="eyebrow-mono">01 / Vision</span>
+              <h3>Persistent cognitive memory</h3>
+              <p>A neuromorphic memory stack that lets LLM agents keep cross-session memory without context-window overflow or manual re-prompting.</p>
+            </article>
+            <article class="card pillar reveal d2">
+              <span class="eyebrow-mono">02 / Value</span>
+              <h3>Lower cost, better recall</h3>
+              <p>Designed to cut redundant API token spend (target: ~91%) with sub-15ms graph traversals — a defensible deep-tech layer for AI infrastructure.</p>
+            </article>
+            <article class="card pillar reveal d3">
+              <span class="eyebrow-mono">03 / Roadmap 2026–28</span>
+              <h3>Beta to enterprise</h3>
+              <p>From private beta to multi-region enterprise clusters, targeting 10M+ persistent memory nodes and agent-swarm integrations.</p>
+            </article>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Investor & Strategic Value Pillars -->
-          <div class="trust-badge-box" style="display: flex; flex-direction: column; gap: 14px;">
-            <div class="trust-badge-item" style="background: rgba(0, 240, 255, 0.04); padding: 16px; border-radius: 10px; border: 1px solid rgba(0, 240, 255, 0.2);">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 1.2rem;">🎯</span>
-                <h3 style="color: var(--cyan); font-size: 1.05rem; font-weight: 700; margin: 0;">Core Strategic Vision</h3>
-              </div>
-              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
-                Creating the world's first persistent <strong>Neuromorphic Cognitive Memory Stack</strong>. Enabling LLM agents to maintain infinite cross-session memory without human intervention or context window overflow.
-              </p>
-            </div>
-            
-            <div class="trust-badge-item" style="background: rgba(112, 0, 255, 0.04); padding: 16px; border-radius: 10px; border: 1px solid rgba(112, 0, 255, 0.25);">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 1.2rem;">💎</span>
-                <h3 style="color: var(--purple); font-size: 1.05rem; font-weight: 700; margin: 0;">Investor ROI & Enterprise Moat</h3>
-              </div>
-              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
-                Delivering <strong>91.4% reduction in API token burn</strong>, sub-15ms memory graph traversals, and zero context drift. A defensible deep-tech moat positioning AI Brain as essential AGI infrastructure.
-              </p>
-            </div>
-
-            <div class="trust-badge-item" style="background: rgba(0, 255, 170, 0.04); padding: 16px; border-radius: 10px; border: 1px solid rgba(0, 255, 170, 0.25);">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-size: 1.2rem;">🚀</span>
-                <h3 style="color: var(--emerald); font-size: 1.05rem; font-weight: 700; margin: 0;">Execution Roadmap (2026-2028)</h3>
-              </div>
-              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
-                Rapid rollout from Private Beta to Enterprise Multi-Region Cluster deployments, targeting 10M+ persistent memory nodes and autonomous agent swarm integrations.
-              </p>
-            </div>
+    <section class="page-section">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">What makes it different</span>
+            <h2 class="h2 reveal d1">Three bets we are <span class="serif">building</span> on.</h2>
           </div>
-
+        </div>
+        <div class="grid-3">
+          <article class="card reveal"><span class="num">01</span><h3>Hypergraph IP</h3><p>A multi-hop associative graph that goes beyond flat vector embeddings, with temporal decay protection.</p></article>
+          <article class="card reveal d1"><span class="num">02</span><h3>Sub-15ms recall</h3><p>Fast associative retrieval engineered for real-time decision making by autonomous agents.</p></article>
+          <article class="card reveal d2"><span class="num">03</span><h3>No context decay</h3><p>Long-term memory that persists across sessions, turns and sub-agent hand-offs.</p></article>
         </div>
       </div>
+    </section>
 
-      <!-- 3 Key Pillars for VC / Enterprise Investors -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 24px;">
-        <div class="glass-card docs-card" style="padding: 16px;">
-          <div style="font-size: 1.4rem; margin-bottom: 6px;">🧠</div>
-          <h3 style="color: var(--cyan); font-size: 1.05rem; font-weight: 700; margin-bottom: 4px;">Proprietary Hypergraph IP</h3>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.48; margin: 0;">
-            Multi-hop associative graph structure that replaces flat, dumb vector embeddings with temporal memory decay prevention.
-          </p>
+    <section class="page-section" id="registration">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">Registration</span>
+            <h2 class="h2 reveal d1">Government of India <span class="serif">registered</span>.</h2>
+          </div>
+          <p class="lead reveal d2">AI Brain is registered as a micro enterprise with the Ministry of Micro, Small &amp; Medium Enterprises (MoMSME).</p>
         </div>
-
-        <div class="glass-card docs-card" style="padding: 16px;">
-          <div style="font-size: 1.4rem; margin-bottom: 6px;">⚡</div>
-          <h3 style="color: var(--cyan); font-size: 1.05rem; font-weight: 700; margin-bottom: 4px;">Sub-15ms Latency</h3>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.48; margin: 0;">
-            Blazing-fast associative retrieval engineered for real-time autonomous swarm agent decision making.
-          </p>
-        </div>
-
-        <div class="glass-card docs-card" style="padding: 16px;">
-          <div style="font-size: 1.4rem; margin-bottom: 6px;">🛡️</div>
-          <h3 style="color: var(--cyan); font-size: 1.05rem; font-weight: 700; margin-bottom: 4px;">Zero Context Decay</h3>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.48; margin: 0;">
-            100% loss-free long-term memory persistence across millions of conversational turns and sub-agent handoffs.
-          </p>
+        <div class="cert reveal">
+          <div class="cert-band"></div>
+          <div class="cert-head">
+            <div><small>Government of India · MoMSME</small><strong>Ministry of Micro, Small &amp; Medium Enterprises</strong></div>
+            <span class="verified">✓ Udyam registered</span>
+          </div>
+          <dl class="cert-grid">
+            <div><dt>Udyam registration no.</dt><dd class="mono">UDYAM-RJ-05-0067280</dd></div>
+            <div><dt>Enterprise name</dt><dd>AI BRAIN STARTUPS</dd></div>
+            <div><dt>NIC code 62099</dt><dd>IT, software &amp; computer services</dd></div>
+            <div><dt>Jurisdiction</dt><dd>Barmer / Jaipur, Rajasthan</dd></div>
+          </dl>
+          <div class="cert-foot">
+            <span>Registered 10/10/2025</span>
+            <span>Micro enterprise (services)</span>
+            <a href="https://udyamregistration.gov.in/" target="_blank" rel="noopener">Verify at udyamregistration.gov.in ↗</a>
+          </div>
         </div>
       </div>
+    </section>
 
-    </div>
+    <section class="page-section">
+      <div class="wrap">
+        <div class="cta-slim reveal">
+          <h2>Ready to give your agents a memory?</h2>
+          <a href="/#waitlist" class="btn">Request early access →</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-bottom">
-        <p>© 2026 AI Brain. All rights reserved. <a href="index.html" class="link-glow">Back to Home</a></p>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="/" class="logo">AI Brain</a>
+          <p>Building persistent artificial intelligence and autonomous agent networks.</p>
+          <a class="mail" href="mailto:founder@aibrainstartup.com">founder@aibrainstartup.com</a>
+          <a class="mail" href="mailto:team@aibrainstartup.com">team@aibrainstartup.com</a>
+        </div>
+        <div><h4>Product</h4><ul><li><a href="/#memory">Memory</a></li><li><a href="/#agents">Agents</a></li><li><a href="/#sdk">SDK</a></li><li><a href="/#demo">Live demo</a></li><li><a href="/docs">Docs</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="/about">About</a></li><li><a href="/architecture">Architecture</a></li><li><a href="/contact">Contact</a></li><li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+        <div><h4>Legal</h4><ul><li><a href="/privacy-policy">Privacy policy</a></li><li><a href="/terms-of-service">Terms of service</a></li></ul></div>
       </div>
+      <div class="foot-bottom">
+        <span class="msme">🇮🇳 Govt. of India registered MSME · Udyam <b>UDYAM-RJ-05-0067280</b></span>
+        <span>© <span id="year">2026</span> AI Brain. All rights reserved.</span>
+      </div>
+      <div class="wordmark" aria-hidden="true">AI Brain</div>
     </div>
   </footer>
 
-  <script src="app.js" defer></script>
+  <script src="/home.js?v=4" defer></script>
 </body>
 </html>
