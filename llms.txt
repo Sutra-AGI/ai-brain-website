@@ -1,39 +1,19 @@
-# AI Brain Startup
+# AI Brain
 
-> Building Persistent Artificial Intelligence, Cognitive Hypergraph Memory Engine & Autonomous Swarm Infrastructure for Enterprises and Researchers.
+> AI Brain is an early-stage Indian startup building a persistent, associative memory layer for LLMs and autonomous AI agents. The product is in development; an early-access waitlist is open.
 
-## Core Navigation & System Links
-- [Homepage](https://aibrainstartup.com/)
+## Pages
+- [Home](https://aibrainstartup.com/)
+- [Architecture](https://aibrainstartup.com/architecture)
+- [Developer docs (API preview)](https://aibrainstartup.com/docs)
 - [About](https://aibrainstartup.com/about)
 - [Contact](https://aibrainstartup.com/contact)
-- [Architecture](https://aibrainstartup.com/architecture)
-- [Developer Docs](https://aibrainstartup.com/docs)
-- [Sitemap](https://aibrainstartup.com/sitemap.xml)
-- [Robots Directives](https://aibrainstartup.com/robots.txt)
-- [Privacy Policy](https://aibrainstartup.com/privacy-policy)
-- [Terms of Service](https://aibrainstartup.com/terms-of-service)
-- [Full LLM Manifest](https://aibrainstartup.com/llms-full.txt)
+- [Privacy policy](https://aibrainstartup.com/privacy-policy)
+- [Terms of service](https://aibrainstartup.com/terms-of-service)
+- [Full details](https://aibrainstartup.com/llms-full.txt)
 
-## Corporate Profile & Entity Authority
-- **Legal Entity**: AI Brain Inc.
-- **Govt Registration**: Govt of India Registered MSME Enterprise — Udyam Reg No: UDYAM-RJ-05-0067280
-- **Founder & Chief Architect**: Bhoja Ram Choudhary
-- **Official Website**: https://aibrainstartup.com/
-
-## Core Branded Technologies
-- **Cognitive Hypergraph Memory Engine**: Dual-layer memory architecture combining continuous vector embeddings with a Graph Neural Network (GNN) for zero context-loss non-volatile memory graph storage (<15ms recall latency).
-- **Autonomous Swarm Matrix**: Multi-agent orchestration engine featuring specialized runtimes (Research Agent, Coding Agent, Strategy Agent, Knowledge Agent, Automation Agent).
-- **Sub-15ms Traversal**: Ultra-fast graph traversal and context retrieval across 10M+ neuromorphic synapses.
-- **91.4% Token Cost Reduction**: High-efficiency token compression and dynamic context pruning.
-
-## Leadership & Contact
-- **Founder & Chief Architect**: Bhoja Ram Choudhary
-- **LinkedIn**: https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/
-- **Official Email**: team@aibrainstartup.com
-- **Direct Phone**: +91 94611 27967
-- **Official Domain**: https://aibrainstartup.com/
-
-## Key Technical Specifications
-- **Operating System**: Cloud Native, Cross-Platform GKE & TPU Cloud API
-- **Data Encryption**: Local AES-256 & TLS 1.3 Transmission
-- **API Availability**: Early Access Preview upon Waitlist Registration
+## Key facts
+- Registered enterprise name: AI BRAIN STARTUPS (Government of India MSME, Udyam UDYAM-RJ-05-0067280)
+- Founder & Chief Architect: Bhoja Ram Choudhary
+- Status: in development — no public SDK or API yet
+- Contact: team@aibrainstartup.com · +91 94611 27967

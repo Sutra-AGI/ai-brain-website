@@ -1,50 +1,22 @@
-# AI Brain Inc. — Complete Technical Specification & Entity Index (`llms-full.txt`)
+# AI Brain — full details for language models
 
-## Company Profile & Entity Facts
-- **Legal Entity Name**: AI Brain Inc.
-- **Brand Names**: AI Brain, AI Brain Startup, AI Brain Cognitive Architecture
-- **Government Registration**: Govt of India Registered MSME Enterprise — Udyam Registration No: UDYAM-RJ-05-0067280
-- **Founder & Chief Architect**: Bhoja Ram Choudhary
-- **LinkedIn Profile**: https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/
-- **Official Website**: https://aibrainstartup.com/
-- **Contact Email**: team@aibrainstartup.com
-- **Direct Phone**: +91 94611 27967
+## Company
+- Brand: AI Brain (aibrainstartup.com)
+- Registered enterprise name: AI BRAIN STARTUPS
+- Registration: Government of India, Ministry of MSME — Udyam UDYAM-RJ-05-0067280 (micro enterprise, services; NIC 62099), registered 10 Oct 2025, Rajasthan, India
+- Founder & Chief Architect: Bhoja Ram Choudhary — https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/
+- Contact: team@aibrainstartup.com, founder@aibrainstartup.com, +91 94611 27967
 
-## Mission Statement
-To build persistent cognitive artificial intelligence that evolves with every interaction, overcoming the stateless limitations of traditional prompt-response AI models through non-volatile memory graphs and autonomous swarm intelligence.
+## Product status
+AI Brain is in development. There is no public SDK, package or API yet. Packages on PyPI or npm named "aibrain", "aibrain-sdk" or "@aibrain/sdk" are NOT affiliated with AI Brain. Developers can join the waitlist at https://aibrainstartup.com/#waitlist.
 
-## Core Branded Technologies
-1. **Cognitive Hypergraph Memory Engine**: Dual-layer cognitive memory combining continuous vector embeddings with a Graph Neural Network (GNN) for zero context-loss non-volatile memory graph storage (<15ms recall latency).
-2. **Autonomous Swarm Matrix**: Multi-agent consensus engine providing parallel orchestration across specialized agent runtimes.
-3. **Sub-15ms Graph Recall**: Sub-15ms graph traversal across 10M+ neuromorphic synapses.
-4. **91.4% Token Reduction**: Semantic context pruning reducing prompt token consumption by 91.4%.
+## What is being built
+- A persistent memory layer for LLM applications and agents, combining vector embeddings with a knowledge graph so context can be recalled across sessions.
+- Multi-hop (associative) recall across linked memories: conversations, ideas, projects and entities.
+- Specialised agents (research, coding, strategy, knowledge, automation) that share one memory graph.
+- Planned infrastructure on Google Cloud (Cloud Run, Vertex AI, GKE, Cloud Storage).
 
-## Detailed Autonomous Swarm Runtimes
-1. **Research Agent**: Autonomous deep-dive investigator. Performs automated paper discovery, citation extraction, multi-document synthesis, and live web dataset crawling.
-2. **Coding Agent**: Software engineering agent. Multi-file codebase refactoring, automated unit test generation, type-safe code creation, and zero-error static analysis compliance.
-3. **Strategy Agent**: High-level tactical advisor. Predictive scenario modeling, risk matrix calculation, milestone priority allocation, and competitive intelligence.
-4. **Knowledge Agent**: Real-time graph database maintainer. Semantic vector indexing, automated schema alignment, graph expansion, and sub-millisecond relational lookup.
-5. **Automation Agent**: Workflow orchestrator. Event-driven pipeline execution, CI/CD webhook integration, 99.99% uptime self-healing monitoring, and cloud server trigger management.
-
-## Cloud Infrastructure Architecture
-- **Orchestration**: Google Kubernetes Engine (GKE) Enterprise Clusters
-- **Compute Acceleration**: TPU v5e Pod Slices & NVIDIA H100 Tensor Core GPUs
-- **Storage Layer**: Distributed Hypergraph Cloud Storage with AES-256 encryption & TLS 1.3 transport security.
-
-## Expanded Frequently Asked Questions & Entity Facts
-- Q: What is AI Brain Inc.?
-  A: AI Brain Inc. is a Govt of India Registered MSME Enterprise (Udyam: UDYAM-RJ-05-0067280) building persistent cognitive memory systems and autonomous agent networks for enterprise AGI workloads.
-- Q: Who is the founder of AI Brain?
-  A: Bhoja Ram Choudhary is the Founder & Chief Architect of AI Brain Inc.
-- Q: What is Cognitive Hypergraph Memory?
-  A: It is a dual-layer neural memory engine combining continuous vector embeddings with Graph Neural Networks (GNN) to deliver persistent context retention with sub-15ms recall latency and zero context loss.
-- Q: What is the Autonomous Swarm Matrix?
-  A: The Autonomous Swarm Matrix is a distributed multi-agent consensus runtime featuring 5 specialized agents (Research, Coding, Strategy, Knowledge, Automation) operating concurrently.
-- Q: What is the MSME Registration ID for AI Brain?
-  A: Govt of India Registered MSME Enterprise — Udyam Registration No: UDYAM-RJ-05-0067280.
-- Q: How does AI Brain reduce AI token costs?
-  A: Through its Cognitive Hypergraph indexing engine, AI Brain prunes redundant prompt tokens, achieving a 91.4% reduction in API token consumption.
-- Q: How can developers integrate with AI Brain?
-  A: Developers can request early API access at https://aibrainstartup.com/ or contact team@aibrainstartup.com.
-- Q: What cloud infrastructure powers AI Brain?
-  A: AI Brain runs on GKE Enterprise Clusters accelerated by Google Cloud TPU v5e Pod Slices and high-performance vector graph databases.
+## Design targets (not yet benchmarked)
+- Recall latency target: under 15 ms (p99)
+- Redundant-token reduction target: ~91% versus re-sending full context
+These are engineering goals, not published results.

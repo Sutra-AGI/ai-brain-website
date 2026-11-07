@@ -4,6 +4,11 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const LOADED_AT = Date.now();
+  const postJSON = (url, body) => fetch(url, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...body, elapsed: Date.now() - LOADED_AT })
+  }).then(r => r.json().catch(() => ({})).then(b => { if (!r.ok || !b.ok) throw new Error(b.error || String(r.status)); return b; }));
 
   /* ---------- Nav ---------- */
   function initNav() {
@@ -12,16 +17,20 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
+    const outside = () => [$('main'), $('.footer')].filter(Boolean);
     const setOpen = (open) => {
+      if (open === nav.classList.contains('open')) return;
       nav.classList.toggle('open', open);
       btn.setAttribute('aria-expanded', String(open));
       btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      panel.setAttribute('aria-hidden', String(!open));
+      panel.inert = !open;                       // hidden menu links are not focusable
+      outside().forEach(el => { el.inert = open; }); // keep focus inside the open menu
       document.body.style.overflow = open ? 'hidden' : '';
+      if (open) $('a', panel)?.focus(); else btn.focus({ preventScroll: true });
     };
     btn.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
     $$('a', panel).forEach(a => a.addEventListener('click', () => setOpen(false)));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) setOpen(false); });
     window.matchMedia('(min-width: 1025px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
   }
 
@@ -378,12 +387,7 @@ console.log(res.output);` }
       const label = btn.textContent;
       btn.disabled = true; btn.textContent = 'Sending…';
       const addr = email.value.trim();
-      fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: addr, role: role.value, company: $('#wlCompany')?.value || '', source: 'homepage' })
-      })
-        .then(r => r.json().catch(() => ({})).then(b => { if (!r.ok || !b.ok) throw new Error(b.error || r.status); }))
+      postJSON('/api/waitlist', { email: addr, role: role.value, company: $('#wlCompany')?.value || '', source: 'homepage' })
         .then(() => {
           ok.textContent = "You're on the list. We'll be in touch at " + addr + '.';
           form.reset();
@@ -439,9 +443,14 @@ console.log(res.output);` }
         lat.textContent = s.ms + 'ms'; hops.textContent = s.hops;
         nodeCount += 1 + Math.floor(Math.random() * 3); nodes.textContent = nodeCount.toLocaleString('en-US');
       }, t + 300);
-      later(() => play(i + 1), t + 4200);
+      later(() => { if (onScreen && !document.hidden) play(i + 1); else { paused = true; nextScene = i + 1; } }, t + 4200);
     }
 
+    // Pause the loop while the console is off-screen or the tab is hidden (saves CPU/battery).
+    let onScreen = true, paused = false, nextScene = 0;
+    const resume = () => { if (paused && onScreen && !document.hidden) { paused = false; play(nextScene); } };
+    new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; resume(); }).observe(q.closest('.console'));
+    document.addEventListener('visibilitychange', resume);
     play(0);
   }
 
@@ -477,10 +486,23 @@ console.log(res.output);` }
       for (const [el, ok] of checks) el.setAttribute('aria-invalid', String(!ok));
       const bad = checks.find(c => !c[1]);
       if (bad) { bad[0].focus(); show('err', bad[2]); return; }
-      const subject = `[${topic.value}] ${name.value.trim()}`;
-      const text = `${body.value.trim()}\n\n—\n${name.value.trim()}\n${email.value.trim()}`;
-      window.location.href = `mailto:founder@aibrainstartup.com?cc=team@aibrainstartup.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
-      show('ok', 'Your email app should open with the message ready — just press send. If nothing opened, write to founder@aibrainstartup.com directly.');
+      const btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      const payload = { name: name.value.trim(), email: email.value.trim(), topic: topic.value, message: body.value.trim(), company: $('#cCompany')?.value || '' };
+      const subject = `[${payload.topic}] ${payload.name}`;
+      const text = `${payload.message}\n\n—\n${payload.name}\n${payload.email}`;
+      const mailto = `mailto:founder@aibrainstartup.com?cc=team@aibrainstartup.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
+      postJSON('/api/contact', payload)
+        .then(() => {
+          show('ok', 'Thanks — your message has been received. We usually reply within 1–2 business days.');
+          form.reset();
+        })
+        .catch(() => {
+          // Server copy failed: fall back to the visitor's email app so the message is not lost.
+          show('err', 'We could not send it from the site. Your email app will open with the message ready — please press send, or write to founder@aibrainstartup.com.');
+          window.location.href = mailto;
+        })
+        .finally(() => { btn.disabled = false; });
     });
   }
 
