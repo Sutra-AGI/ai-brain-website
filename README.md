@@ -8,7 +8,7 @@ Source for **[aibrainstartup.com](https://aibrainstartup.com)**, the marketing s
 
 - Static HTML/CSS/JS, no framework or build step for the pages
 - Two Vercel Functions (`api/`) that store form submissions in a private Vercel Blob store
-- Hosted on Vercel (`vercel.json` holds security headers and caching)
+- Hosted on Vercel (`vercel.json` holds security headers and caching); every push to `main` deploys to production automatically
 
 ```
 index.html                 homepage (hand-written)
