@@ -395,6 +395,71 @@ console.log(res.output);` }
     });
   }
 
+  /* ---------- Hero memory console (looping recall animation) ---------- */
+  const SCENES = [
+    { q: 'What did we decide about auth last sprint?', path: ['project:api-gateway', 'decision:JWT-rotation', 'note:sec-review'], hit: 1,
+      out: 'Rotate JWT signing keys every 24h; refresh tokens stay 30 days. Agreed in the 12 Sep security review.', meta: '↳ recalled from 3 sessions · 9ms', ms: 9, hops: 3 },
+    { q: 'Which customer asked for SSO?', path: ['crm:acme-corp', 'call:2026-10-02', 'request:SAML-SSO'], hit: 2,
+      out: 'Acme Corp asked for SAML SSO on the 2 Oct call — priority P1 for the Q4 enterprise tier.', meta: '↳ linked across CRM + call notes · 12ms', ms: 12, hops: 3 },
+    { q: 'Why did the flaky test fail before?', path: ['repo:core', 'test:graph_sync', 'fix:race-condition', 'pr:#412'], hit: 2,
+      out: 'A race in graph_sync when two agents wrote the same node. Fixed with a version check in PR #412.', meta: '↳ coding agent memory · 4 hops · 11ms', ms: 11, hops: 4 }
+  ];
+  function initConsole() {
+    const q = $('#cxQuery');
+    if (!q) return;
+    const path = $('#cxPath'), out = $('#cxOut'), lat = $('#cxLatency'), hops = $('#cxHops'), nodes = $('#cxNodes'), spark = $('#cxSpark');
+    spark.innerHTML = Array.from({ length: 28 }, () => '<i></i>').join('');
+    const bars = $$('i', spark);
+    const jiggle = () => bars.forEach(b => { b.style.height = (18 + Math.random() * 82) + '%'; });
+    jiggle();
+    let nodeCount = 2418, timers = [];
+    const later = (fn, ms) => timers.push(setTimeout(fn, ms));
+
+    function play(i) {
+      const s = SCENES[i % SCENES.length];
+      timers.forEach(clearTimeout); timers = [];
+      q.textContent = ''; out.classList.remove('on'); out.innerHTML = '';
+      path.innerHTML = s.path.map((p, k) => (k ? '<span class="hop">→</span>' : '') + `<span class="node-chip">${p}</span>`).join('');
+      const chips = $$('.node-chip', path), arrows = $$('.hop', path);
+      if (reduceMotion) {
+        q.textContent = s.q; chips.forEach(c => c.classList.add('on')); arrows.forEach(a => a.classList.add('on'));
+        chips[s.hit].classList.add('hit'); out.innerHTML = `${s.out}<small>${s.meta}</small>`; out.classList.add('on');
+        lat.textContent = s.ms + 'ms'; hops.textContent = s.hops; return;
+      }
+      let t = 0;
+      [...s.q].forEach((ch, k) => later(() => { q.textContent += ch; }, (t = 300 + k * 28)));
+      t += 350;
+      chips.forEach((c, k) => {
+        later(() => { if (arrows[k - 1]) arrows[k - 1].classList.add('on'); c.classList.add('on'); jiggle(); }, t + k * 380);
+      });
+      t += chips.length * 380 + 200;
+      later(() => { chips[s.hit].classList.add('hit'); }, t);
+      later(() => {
+        out.innerHTML = `${s.out}<small>${s.meta}</small>`; out.classList.add('on');
+        lat.textContent = s.ms + 'ms'; hops.textContent = s.hops;
+        nodeCount += 1 + Math.floor(Math.random() * 3); nodes.textContent = nodeCount.toLocaleString('en-US');
+      }, t + 300);
+      later(() => play(i + 1), t + 4200);
+    }
+
+    play(0);
+  }
+
+  /* ---------- Cursor glow (fine pointers only) ---------- */
+  function initCursorGlow() {
+    if (reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    const g = document.createElement('div');
+    g.className = 'cursor-glow'; g.setAttribute('aria-hidden', 'true');
+    document.body.prepend(g);
+    let x = 0, y = 0, raf = 0;
+    window.addEventListener('pointermove', e => {
+      x = e.clientX; y = e.clientY;
+      document.body.classList.add('has-pointer');
+      if (!raf) raf = requestAnimationFrame(() => { g.style.setProperty('--cx', x + 'px'); g.style.setProperty('--cy', y + 'px'); raf = 0; });
+    }, { passive: true });
+    document.addEventListener('pointerleave', () => document.body.classList.remove('has-pointer'));
+  }
+
   /* ---------- Contact form → opens the visitor's mail app (real delivery) ---------- */
   function initContact() {
     const form = $('#contactForm');
@@ -446,7 +511,7 @@ console.log(res.output);` }
 
   document.addEventListener('DOMContentLoaded', () => {
     const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
-    [initNav, initGraph, initReveal, initSpotlight, initAgents, initSdk, initCalc, initDemo, initWaitlist, initContact, initCopy, initToc].forEach(fn => {
+    [initNav, initGraph, initReveal, initSpotlight, initAgents, initSdk, initCalc, initDemo, initWaitlist, initContact, initCopy, initToc, initConsole, initCursorGlow].forEach(fn => {
       try { fn(); } catch (err) { console.error('[AI Brain]', fn.name, err); }
     });
   });

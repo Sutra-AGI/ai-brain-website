@@ -184,7 +184,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
-  <link rel="stylesheet" href="home.css?v=5">
+  <link rel="stylesheet" href="home.css?v=6">
 </head>
 <body>
 
@@ -232,21 +232,44 @@
 
     <!-- HERO -->
     <section class="hero" id="top">
+      <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
       <canvas class="hero-canvas" id="graph" aria-hidden="true"></canvas>
-      <div class="wrap">
-        <span class="eyebrow reveal"><b>NEW</b> Persistent memory layer for AI agents</span>
-        <h1 class="hero-title reveal d1">AI that <span class="serif">never</span> forgets.</h1>
-        <p class="hero-sub reveal d2">AI Brain gives your LLMs and agent swarms a long-term, associative memory — a cognitive hypergraph that keeps every conversation, decision and codebase in context, forever.</p>
-        <div class="hero-actions reveal d3">
-          <a href="#waitlist" class="btn btn-primary">Get early access <span class="arrow">→</span></a>
-          <a href="#demo" class="btn btn-ghost">Try the live demo</a>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow reveal"><b>NEW</b> Persistent memory layer for AI agents</span>
+          <h1 class="hero-title reveal d1">AI that <span class="serif shimmer">never</span> forgets.</h1>
+          <p class="hero-sub reveal d2">AI Brain gives your LLMs and agent swarms a long-term, associative memory — a cognitive hypergraph that keeps every conversation, decision and codebase in context, forever.</p>
+          <div class="hero-actions reveal d3">
+            <a href="#waitlist" class="btn btn-primary btn-shine">Get early access <span class="arrow">→</span></a>
+            <a href="#demo" class="btn btn-ghost">Try the live demo</a>
+          </div>
+          <div class="hero-meta reveal d3">
+            <span><i></i>Sub-15ms recall</span>
+            <span><i></i>Multi-hop graph memory</span>
+            <span><i></i>Govt. of India MSME registered</span>
+          </div>
         </div>
-        <div class="hero-meta reveal d3">
-          <span><i></i>Sub-15ms recall</span>
-          <span><i></i>Multi-hop graph memory</span>
-          <span><i></i>Govt. of India MSME registered</span>
+
+        <div class="console-wrap reveal d2" aria-hidden="true">
+          <div class="console">
+            <div class="console-head">
+              <span class="live-dot"></span>
+              <span class="mono">memory.recall()</span>
+              <span class="console-tag mono" id="cxLatency">11ms</span>
+            </div>
+            <div class="console-q mono"><span class="t-c">query</span> <span id="cxQuery"></span><span class="caret"></span></div>
+            <div class="console-path" id="cxPath"></div>
+            <div class="console-out" id="cxOut"></div>
+            <div class="console-foot">
+              <div class="spark" id="cxSpark"></div>
+              <div class="console-stats mono"><span><b id="cxNodes">2,418</b> nodes</span><span><b id="cxHops">3</b> hops</span><span><b>0%</b> decay</span></div>
+            </div>
+          </div>
+          <div class="float-chip chip-a mono"><i></i>+1 memory written</div>
+          <div class="float-chip chip-b mono">↳ context restored · 4 sessions ago</div>
         </div>
       </div>
+      <a href="#problem" class="scroll-cue mono" aria-label="Scroll to next section"><span></span>scroll</a>
     </section>
 
     <div class="strip" aria-hidden="true">
@@ -564,6 +587,6 @@
     </div>
   </footer>
 
-  <script src="home.js?v=5" defer></script>
+  <script src="home.js?v=6" defer></script>
 </body>
 </html>
