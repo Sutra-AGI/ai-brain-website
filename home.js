@@ -375,25 +375,35 @@ console.log(res.output);` }
   function initWaitlist() {
     const form = $('#wlForm');
     if (!form) return;
+    const HI = document.documentElement.lang === 'hi';
+    const T = HI ? {
+      email: 'कृपया सही ईमेल पता डालें।', role: 'कृपया अपनी भूमिका चुनें।', sending: 'भेजा जा रहा है…',
+      ok: (a) => `आप वेटलिस्ट में जुड़ गए हैं। हम ${a} पर संपर्क करेंगे।`,
+      err: 'कुछ गड़बड़ हुई। कृपया team@aibrainstartup.com पर ईमेल करें, हम आपको जोड़ देंगे।'
+    } : {
+      email: 'Please enter a valid email address.', role: 'Please choose your role.', sending: 'Sending…',
+      ok: (a) => "You're on the list. We'll be in touch at " + a + '.',
+      err: 'Something went wrong on our side. Please email team@aibrainstartup.com and we’ll add you manually.'
+    };
     const ok = $('#wlOk'), email = $('#wlEmail'), role = $('#wlRole');
     form.addEventListener('submit', e => {
       e.preventDefault();
       const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
       email.setAttribute('aria-invalid', String(!valid));
       role.setAttribute('aria-invalid', String(!role.value));
-      if (!valid) { email.focus(); ok.textContent = 'Please enter a valid email address.'; ok.classList.add('show'); return; }
-      if (!role.value) { role.focus(); ok.textContent = 'Please choose your role.'; ok.classList.add('show'); return; }
+      if (!valid) { email.focus(); ok.textContent = T.email; ok.classList.add('show'); return; }
+      if (!role.value) { role.focus(); ok.textContent = T.role; ok.classList.add('show'); return; }
       const btn = form.querySelector('button[type=submit]');
       const label = btn.textContent;
-      btn.disabled = true; btn.textContent = 'Sending…';
+      btn.disabled = true; btn.textContent = T.sending;
       const addr = email.value.trim();
-      postJSON('/api/waitlist', { email: addr, role: role.value, company: $('#wlCompany')?.value || '', source: 'homepage' })
+      postJSON('/api/waitlist', { email: addr, role: role.value, company: $('#wlCompany')?.value || '', source: form.dataset.source || 'homepage' })
         .then(() => {
-          ok.textContent = "You're on the list. We'll be in touch at " + addr + '.';
+          ok.textContent = T.ok(addr);
           form.reset();
         })
         .catch(() => {
-          ok.textContent = 'Something went wrong on our side. Please email team@aibrainstartup.com and we’ll add you manually.';
+          ok.textContent = T.err;
         })
         .finally(() => { ok.classList.add('show'); btn.disabled = false; btn.textContent = label; });
     });

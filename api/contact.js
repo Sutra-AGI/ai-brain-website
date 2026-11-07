@@ -1,7 +1,7 @@
 // POST /api/contact — keeps a private copy of every contact-form message, so nothing is lost
 // even when the visitor's email app does not open. View in: Storage → aibrain-waitlist → contact/
 import { randomUUID } from 'node:crypto';
-import { EMAIL_RE, json, looksLikeBot, meta, methodNotAllowed, rateLimited, readJson, savePrivate } from './_lib.js';
+import { EMAIL_RE, json, looksLikeBot, meta, methodNotAllowed, notify, rateLimited, readJson, savePrivate } from './_lib.js';
 
 const TOPICS = new Set(['Investment / funding', 'Enterprise cluster', 'Strategic partnership', 'SDK & technical support', 'Other']);
 
@@ -36,6 +36,7 @@ export async function POST(request) {
     return json(500, { ok: false, error: 'storage_unavailable' });
   }
   console.log('[contact] message stored', { topic });
+  await notify(`New contact message: ${topic} — ${name}`, { Name: name, Email: email, Topic: topic, Message: message, Time: now.toISOString() });
   return json(200, { ok: true });
 }
 

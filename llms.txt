@@ -4,6 +4,7 @@
 
 ## Pages
 - [Home](https://aibrainstartup.com/)
+- [Home — Hindi](https://aibrainstartup.com/hi)
 - [Architecture](https://aibrainstartup.com/architecture)
 - [Developer docs (API preview)](https://aibrainstartup.com/docs)
 - [About](https://aibrainstartup.com/about)

@@ -1,7 +1,7 @@
 // POST /api/waitlist — stores an early-access signup as a private JSON blob.
 // View signups in the Vercel dashboard: Storage → aibrain-waitlist → waitlist/
 import { randomUUID } from 'node:crypto';
-import { EMAIL_RE, hashOf, readPrivate, json, looksLikeBot, meta, methodNotAllowed, rateLimited, readJson, savePrivate } from './_lib.js';
+import { EMAIL_RE, hashOf, readPrivate, json, looksLikeBot, meta, methodNotAllowed, notify, rateLimited, readJson, savePrivate } from './_lib.js';
 
 const ROLES = new Set(['developer', 'researcher', 'founder', 'other']);
 
@@ -26,10 +26,11 @@ export async function POST(request) {
   const pathname = `waitlist/${hashOf(email)}.json`;
   const now = new Date().toISOString();
 
+  let record;
   try {
     // Keep the original signup date and id when the same email signs up again.
     const prev = await readPrivate(pathname);
-    await savePrivate(pathname, {
+    record = {
       id: prev?.id || randomUUID(),
       email,
       role,
@@ -38,13 +39,17 @@ export async function POST(request) {
       signups: (prev?.signups || 1) + (prev ? 1 : 0),
       source: String(data?.source || 'homepage').slice(0, 40),
       ...meta(request),
-    });
+    };
+    await savePrivate(pathname, record);
   } catch (e) {
     console.error('[waitlist] blob write failed', e);
     return json(500, { ok: false, error: 'storage_unavailable' });
   }
 
   console.log('[waitlist] signup stored', { role });
+  if (record.signups === 1) {
+    await notify(`New waitlist signup: ${email}`, { Email: email, Role: role, Country: record.country, Time: record.createdAt, Source: record.source });
+  }
   return json(200, { ok: true });
 }
 

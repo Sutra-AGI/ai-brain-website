@@ -693,3 +693,17 @@ main, .footer { position: relative; z-index: 1; }
 pre[tabindex]:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .mobile-panel[inert] { visibility: hidden; }
 .nav.open + .mobile-panel { visibility: visible; }
+
+/* Hindi (Devanagari) page: Geist has no Devanagari glyphs, so the browser falls back per-glyph */
+html[lang="hi"] body { font-family: var(--font-sans), 'Noto Sans Devanagari', 'Kohinoor Devanagari', 'Mangal', sans-serif; }
+html[lang="hi"] .hero h1, html[lang="hi"] .h2, html[lang="hi"] .cta h2 { letter-spacing: -0.01em; line-height: 1.18; }
+html[lang="hi"] .hero-grid .hero-title { font-size: clamp(2.5rem, 5.4vw, 5rem); }
+.serif-hi { color: var(--accent); }
+.h2 .serif-hi { -webkit-text-fill-color: var(--accent); }
+.cta .serif-hi { color: var(--accent-ink); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 8px; }
+.grid-4-home { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 1024px) { .grid-4-home { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 680px) { .grid-4-home { grid-template-columns: 1fr; } }
+.lang-switch { font-size: 0.84rem; }
+[hidden] { display: none !important; }
+html[lang="hi"] .hero-meta, html[lang="hi"] .kicker, html[lang="hi"] .illus-note, html[lang="hi"] .foot-h, html[lang="hi"] .decay-row .mono, html[lang="hi"] .tag, html[lang="hi"] .demo-flag { letter-spacing: 0; text-transform: none; font-family: var(--font-sans), 'Noto Sans Devanagari', sans-serif; }

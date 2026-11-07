@@ -11,7 +11,7 @@ import hashlib
 
 ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent)
 # Cache-busting version = content hash of the shared assets (assets are served with a 1-year immutable cache).
-V = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in ("home.css", "pages.css", "home.js"))).hexdigest()[:8]
+V = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in ("home.css", "pages.css", "home.js", "admin.css", "admin.js"))).hexdigest()[:8]
 
 FONTS = '''  <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -75,7 +75,7 @@ FOOTER = f'''
         </div>
         <div><p class="foot-h">Product</p><ul><li><a href="/#memory">Memory</a></li><li><a href="/#agents">Agents</a></li><li><a href="/#sdk">SDK</a></li><li><a href="/#demo">Live demo</a></li><li><a href="docs">Docs</a></li></ul></div>
         <div><p class="foot-h">Company</p><ul><li><a href="about">About</a></li><li><a href="architecture">Architecture</a></li><li><a href="contact">Contact</a></li><li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
-        <div><p class="foot-h">Legal</p><ul><li><a href="privacy-policy">Privacy policy</a></li><li><a href="terms-of-service">Terms of service</a></li></ul></div>
+        <div><p class="foot-h">Legal</p><ul><li><a href="privacy-policy">Privacy policy</a></li><li><a href="terms-of-service">Terms of service</a></li><li><a href="/hi" hreflang="hi" lang="hi">हिन्दी</a></li></ul></div>
       </div>
       <div class="foot-bottom">
         <span class="msme">🇮🇳 Govt. of India registered MSME · Udyam <b>UDYAM-RJ-05-0067280</b></span>
@@ -85,6 +85,7 @@ FOOTER = f'''
     </div>
   </footer>
 
+  <script defer src="/_vercel/insights/script.js"></script>
   <script src="home.js?v={V}" defer></script>
 </body>
 </html>
@@ -552,9 +553,9 @@ CONTACT_P = '<p>Email <a href="mailto:team@aibrainstartup.com">team@aibrainstart
 PRIVACY = legal("Privacy policy", 'Privacy <span class="serif">policy</span>.', [
     ("Who we are", "<p>aibrainstartup.com is operated by AI BRAIN STARTUPS, a micro enterprise registered with the Government of India (Udyam UDYAM-RJ-05-0067280), Rajasthan, India. In this policy “we” means AI BRAIN STARTUPS.</p>"),
     ("What we collect", "<p>We only collect what you send us:</p><ul><li><strong>Waitlist:</strong> your email address and the role you select.</li><li><strong>Contact form:</strong> your name, email address, inquiry type and message.</li><li><strong>With each submission:</strong> the time, your approximate country (derived by our hosting provider from your IP address), your browser’s user-agent string and the page you came from.</li><li><strong>Abuse protection:</strong> a one-way hash of your IP address, kept for rate limiting and deleted automatically within about 24 hours.</li></ul><p>We do not store your raw IP address with your submission.</p>"),
-    ("Cookies and tracking", "<p>This website does not set cookies, does not use analytics or advertising trackers, and loads no third-party scripts or fonts. Our hosting provider keeps short-lived technical request logs for security and reliability.</p>"),
+    ("Cookies and analytics", "<p>This website does not set cookies and uses no advertising trackers or third-party scripts or fonts. We use <strong>Vercel Web Analytics</strong>, which is cookie-free and records aggregated page views (page, referrer, country, device type) without identifying individual visitors. Our hosting provider also keeps short-lived technical request logs for security and reliability.</p>"),
     ("Why we use it", "<p>To give you early access and send updates about AI Brain, to reply to your messages, and to protect the site from spam and abuse. We do not sell or rent your personal data.</p>"),
-    ("Where it is stored", "<p>The site and its forms are hosted by Vercel Inc. Submissions are stored in a private Vercel Blob store located in the United States (Washington, D.C. region), accessible only to us. Data is encrypted in transit (TLS) and at rest by the provider.</p>"),
+    ("Where it is stored", "<p>The site and its forms are hosted by Vercel Inc. Submissions are stored in a private Vercel Blob store located in the United States (Washington, D.C. region), accessible only to us. When a new submission arrives we may send ourselves an email notification through Resend (Resend Inc., United States). Data is encrypted in transit (TLS) and at rest by the providers.</p>"),
     ("How long we keep it", "<ul><li>Waitlist entries: until you ask us to delete them, or until early access ends.</li><li>Contact messages: up to 24 months, unless an ongoing conversation needs longer.</li><li>IP hashes used for rate limiting: about 24 hours.</li></ul>"),
     ("Your rights", "<p>You can ask us to access, correct or delete your data, or withdraw your consent at any time, including under India’s Digital Personal Data Protection Act, 2023. Email <a href=\"mailto:founder@aibrainstartup.com\">founder@aibrainstartup.com</a> and we will respond within 30 days.</p>"),
     ("Children", "<p>This website is not directed at children under 18, and we do not knowingly collect their data.</p>"),
@@ -614,7 +615,8 @@ for name, (active, body) in PAGES.items():
     path.write_text(out)
     print(f"built {name}.html ({len(out):,} bytes)")
 
-# Homepage is hand-written: only refresh its asset versions.
-idx = ROOT / "index.html"
-idx.write_text(re.sub(r'((?:home|pages)\.(?:css|js))\?v=[\w]+', rf'\1?v={V}', idx.read_text()))
+# Hand-written pages (homepage, Hindi homepage, admin): only refresh their asset versions.
+for page in ("index.html", "hi.html", "admin.html"):
+    f = ROOT / page
+    f.write_text(re.sub(r'((?:home|pages|admin)\.(?:css|js))\?v=[\w]+', rf'\1?v={V}', f.read_text()))
 print(f"asset version: {V}")

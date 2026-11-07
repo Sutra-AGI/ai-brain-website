@@ -122,3 +122,38 @@ export async function rateLimited(request, scope) {
   await savePrivate(path, { count, hour });
   return false;
 }
+
+/* ---------- Email notification (optional) ----------
+ * Active only when RESEND_API_KEY and NOTIFY_EMAIL are set in Vercel → Settings → Environment Variables.
+ * NOTIFY_FROM defaults to Resend's test sender, which can only deliver to the Resend account owner's
+ * address; set it to e.g. "AI Brain <hello@aibrainstartup.com>" after verifying the domain in Resend.
+ * Never throws: a failed email must not fail the signup.
+ */
+const escHtml = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+export async function notify(subject, fields) {
+  const key = process.env.RESEND_API_KEY;
+  const to = process.env.NOTIFY_EMAIL;
+  if (!key || !to) return false;
+  const rows = Object.entries(fields)
+    .map(([k, v]) => `<tr><td style="padding:4px 12px 4px 0;color:#666">${escHtml(k)}</td><td style="padding:4px 0">${escHtml(v ?? '')}</td></tr>`)
+    .join('');
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: process.env.NOTIFY_FROM || 'AI Brain <onboarding@resend.dev>',
+        to: to.split(',').map((s) => s.trim()).filter(Boolean),
+        subject,
+        html: `<div style="font-family:system-ui,sans-serif;font-size:14px"><h2 style="margin:0 0 12px">${escHtml(subject)}</h2><table>${rows}</table></div>`,
+      }),
+      signal: AbortSignal.timeout(4000),
+    });
+    if (!res.ok) console.error('[notify] resend error', res.status, (await res.text()).slice(0, 200));
+    return res.ok;
+  } catch (e) {
+    console.error('[notify] failed', e?.message);
+    return false;
+  }
+}

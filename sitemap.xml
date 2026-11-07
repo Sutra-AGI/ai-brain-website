@@ -4,6 +4,8 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://aibrainstartup.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aibrainstartup.com/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://aibrainstartup.com/hi"/>
     <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -47,5 +49,13 @@
     <lastmod>2026-11-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/hi</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aibrainstartup.com/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://aibrainstartup.com/hi"/>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>

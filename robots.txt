@@ -2,6 +2,8 @@
 
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 # AI & LLM Web Crawlers (Gemini, ChatGPT, Perplexity, Claude, Meta, Bing)
 User-agent: Gemini-Bot
