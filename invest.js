@@ -4,6 +4,7 @@
 
   var currentCurrency = 'USD';
   var selectedTier = '50k';
+  var STORAGE_KEY = 'aibrain_invest_slots_v1';
 
   var TIER_DATA = {
     '15k': {
@@ -60,11 +61,140 @@
     }
   };
 
-  // Render and update Tier Slot Badges & Auto-Lock States
-  function renderTierSlots() {
+  // Local storage persistence for verified slot allocation
+  function initSlotsStorage() {
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        var parsed = JSON.parse(saved);
+        for (var k in parsed) {
+          if (TIER_DATA[k] && typeof parsed[k] === 'number') {
+            TIER_DATA[k].takenSlots = parsed[k];
+            TIER_DATA[k].remainingSlots = Math.max(0, TIER_DATA[k].totalSlots - parsed[k]);
+            if (TIER_DATA[k].remainingSlots === 0) {
+              TIER_DATA[k].statusBadge = '🔒 100% ALLOCATED & LOCKED';
+              TIER_DATA[k].locked = true;
+            } else {
+              TIER_DATA[k].statusBadge = '🟢 ' + TIER_DATA[k].totalSlots + ' Slots Total · ' + TIER_DATA[k].remainingSlots + ' Available';
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('LocalStorage unavailable for slots', e);
+    }
+  }
+
+  function saveSlotsStorage() {
+    try {
+      var toSave = {};
+      for (var k in TIER_DATA) {
+        toSave[k] = TIER_DATA[k].takenSlots;
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+    } catch (e) {
+      console.warn('Failed to save slots to localStorage', e);
+    }
+  }
+
+  // Real-time Date Engine: Always formats current execution date dynamically (e.g. "23 November 2026")
+  function formatCurrentDate() {
+    var now = new Date();
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var day = now.getDate();
+    var month = months[now.getMonth()];
+    var year = now.getFullYear();
+    return day + ' ' + month + ' ' + year;
+  }
+
+  // Dynamic Term Sheet Engine: Updates dates, Annexure A slots, and investor selections in real-time
+  function updateTermSheetDynamicData() {
+    var dateStr = formatCurrentDate();
+
+    // 1. Dynamic Date Auto-Stamping across Document
+    var docDateEl = document.getElementById('docExecutionDate');
+    if (docDateEl) docDateEl.textContent = dateStr;
+
+    var founderSignDateEl = document.getElementById('founderSignDate');
+    if (founderSignDateEl) founderSignDateEl.textContent = dateStr;
+
+    var docTimestampEl = document.getElementById('docGeneratedTimestamp');
+    if (docTimestampEl) docTimestampEl.textContent = dateStr + ' · LIVE EXECUTABLE INSTRUMENT';
+
+    // 2. Annexure A Dynamic Slots Auto-Update
     for (var tierKey in TIER_DATA) {
       if (TIER_DATA.hasOwnProperty(tierKey)) {
         var t = TIER_DATA[tierKey];
+        var slotCell = document.getElementById('annexureSlot' + tierKey);
+        var row = document.getElementById('annexureRow' + tierKey);
+
+        if (slotCell) {
+          var rightsLabel = tierKey === '15k' ? 'Information Rights' :
+                            tierKey === '25k' ? 'Advisory Observer' :
+                            tierKey === '50k' ? 'Formal Advisory Seat' :
+                            'Permanent Board Observer';
+          if (t.remainingSlots > 0) {
+            slotCell.innerHTML = rightsLabel + ' · ' + t.totalSlots + ' Slots Limit (' +
+              '<strong style="color:var(--accent,#c8ff3d); font-weight:600;">' + t.remainingSlots + ' Available</strong> · ' +
+              t.takenSlots + ' Booked)';
+          } else {
+            slotCell.innerHTML = rightsLabel + ' · ' + t.totalSlots + ' Slots Limit (' +
+              '<strong style="color:#ff6b6b; font-weight:600;">🔒 100% ALLOCATED &amp; CLOSED</strong>)';
+          }
+        }
+
+        // Highlight selected tier row in the legal term sheet
+        if (row) {
+          if (tierKey === selectedTier) {
+            row.classList.add('annexure-row-selected');
+          } else {
+            row.classList.remove('annexure-row-selected');
+          }
+        }
+      }
+    }
+
+    // 3. Update Investor Signature Block with Selected Allocation
+    var currentTierData = TIER_DATA[selectedTier] || TIER_DATA['50k'];
+    var investorTierEl = document.getElementById('investorSelectedTier');
+    if (investorTierEl) {
+      investorTierEl.textContent = currentTierData.usd + ' (' + currentTierData.name + ' · ' + currentTierData.equity + ')';
+    }
+
+    // 4. Live form fields sync if user typed in wire desk
+    var formEl = document.getElementById('investForm');
+    if (formEl) {
+      var nameVal = formEl.elements['name'] ? formEl.elements['name'].value.trim() : '';
+      var entityVal = formEl.elements['entity'] ? formEl.elements['entity'].value.trim() : '';
+      var utrVal = formEl.elements['utr'] ? formEl.elements['utr'].value.trim() : '';
+
+      var investorSignName = document.getElementById('investorSignName');
+      var investorSignEntity = document.getElementById('investorSignEntity');
+      var investorEntityDisplay = document.getElementById('investorEntityDisplay');
+      var investorSignDate = document.getElementById('investorSignDate');
+
+      if (investorSignName && nameVal) investorSignName.textContent = nameVal;
+      if (investorSignEntity && entityVal) investorSignEntity.textContent = entityVal;
+      if (investorEntityDisplay && entityVal) investorEntityDisplay.textContent = entityVal.toUpperCase();
+      if (investorSignDate) {
+        if (utrVal) {
+          investorSignDate.textContent = dateStr + ' · UTR Ref: ' + utrVal;
+        } else {
+          investorSignDate.textContent = 'Auto-executed upon wire submission';
+        }
+      }
+    }
+  }
+
+  // Render and update Tier Slot Badges & Auto-Lock States
+  function renderTierSlots() {
+    var totalSlots = 22;
+    var totalTaken = 0;
+
+    for (var tierKey in TIER_DATA) {
+      if (TIER_DATA.hasOwnProperty(tierKey)) {
+        var t = TIER_DATA[tierKey];
+        totalTaken += t.takenSlots;
         var slotBadge = document.querySelector('[data-slot-badge="' + tierKey + '"]');
         var card = document.querySelector('[data-tier-card="' + tierKey + '"]');
         var actionBtn = document.querySelector('[data-select-tier="' + tierKey + '"]');
@@ -88,6 +218,22 @@
         }
       }
     }
+
+    // Dynamic Hero Banner Progress Update
+    var totalRemaining = Math.max(0, totalSlots - totalTaken);
+    var pct = Math.round((totalTaken / totalSlots) * 100);
+
+    var heroCounter = document.getElementById('heroSlotsCounter');
+    if (heroCounter) {
+      heroCounter.textContent = totalRemaining + ' of ' + totalSlots + ' Slots Open (' + pct + '% Allocated' + (totalTaken === 0 ? ' · Day 0' : '') + ')';
+    }
+    var heroProgress = document.getElementById('heroProgressBarFill');
+    if (heroProgress) {
+      heroProgress.style.width = Math.max(pct, totalTaken === 0 ? 0 : 4) + '%';
+    }
+
+    // Synchronize Term Sheet PDF Annexure A
+    updateTermSheetDynamicData();
   }
 
   // Tier Selection
@@ -132,6 +278,7 @@
     if (hiddenTier) hiddenTier.value = selectedTier;
     if (hiddenAmount) hiddenAmount.value = data.amountUSD;
     if (hiddenCur) hiddenCur.value = 'USD';
+    updateTermSheetDynamicData();
   }
 
   // Copy-to-clipboard functionality
@@ -286,7 +433,9 @@
             } else {
               TIER_DATA[selectedTier].statusBadge = '🟢 ' + TIER_DATA[selectedTier].totalSlots + ' Slots Total · ' + TIER_DATA[selectedTier].remainingSlots + ' Available';
             }
+            saveSlotsStorage();
             renderTierSlots();
+            updateTermSheetDynamicData();
           }
         } else {
           if (formStatus) {
@@ -324,6 +473,7 @@
 
   function openModal() {
     if (isafeModal) {
+      updateTermSheetDynamicData();
       isafeModal.classList.add('active');
       isafeModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -344,6 +494,7 @@
   if (closeTermSheetBtn) closeTermSheetBtn.addEventListener('click', closeModal);
 
   function triggerPrint() {
+    updateTermSheetDynamicData();
     window.print();
   }
   if (printTermSheetBtn) printTermSheetBtn.addEventListener('click', triggerPrint);
@@ -359,6 +510,15 @@
   if (isafeModal) {
     isafeModal.addEventListener('click', function (e) {
       if (e.target === isafeModal) closeModal();
+    });
+  }
+
+  // Real-time listener on Wire Desk Form Inputs to reflect name/entity in Term Sheet live
+  if (form) {
+    ['name', 'entity', 'utr'].forEach(function (fieldName) {
+      if (form.elements[fieldName]) {
+        form.elements[fieldName].addEventListener('input', updateTermSheetDynamicData);
+      }
     });
   }
 
@@ -379,7 +539,10 @@
     });
   });
 
-  // Initialize
+  // Initialize: Load persistent allocations, render slots, format real-time dates, and bind print hook
+  initSlotsStorage();
   renderTierSlots();
   updateWireSummary();
+  updateTermSheetDynamicData();
+  window.addEventListener('beforeprint', updateTermSheetDynamicData);
 })();

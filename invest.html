@@ -147,11 +147,11 @@
               <div style="font-size:1.15rem; font-weight:600; color:var(--text);">$700,000 USD Total Round Target · Post-Money Valuation Cap: $4,000,000 USD ($4.0M)</div>
             </div>
             <div style="text-align:right;">
-              <span style="font-family:var(--font-mono); font-size:0.9rem; color:var(--accent); font-weight:600;">22 of 22 Slots Open (0% Allocated · Day 0)</span>
+              <span id="heroSlotsCounter" style="font-family:var(--font-mono); font-size:0.9rem; color:var(--accent); font-weight:600;">22 of 22 Slots Open (0% Allocated · Day 0)</span>
             </div>
           </div>
           <div class="round-progress-bar-bg">
-            <div class="round-progress-bar-fill" style="width:4%;"></div>
+            <div id="heroProgressBarFill" class="round-progress-bar-fill" style="width:0%;"></div>
           </div>
         </div>
 
@@ -923,7 +923,7 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
 
           <!-- Document Title Block -->
           <div class="doc-title-block">
-            <div class="doc-status-pill">OFFICIAL LEGAL INSTRUMENT · EXECUTED UNDER INDIA iSAFE FRAMEWORK</div>
+            <div class="doc-status-pill">OFFICIAL LEGAL INSTRUMENT · EXECUTED UNDER INDIA iSAFE FRAMEWORK · <span id="docGeneratedTimestamp">LIVE INSTRUMENT</span></div>
             <h1 class="doc-main-title" id="modalTitle">PRE-SEED INVESTMENT AGREEMENT &amp; iSAFE TERM SHEET</h1>
             <div class="doc-subtitle">
               India Simple Agreement for Future Equity with Contractual Accelerated Revenue-Share Dividends, Private Limited Incorporation Covenant, and Senior Liquidity Preference
@@ -933,7 +933,7 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
           <!-- Preamble & Recitals -->
           <div class="doc-preamble">
             <p>
-              This Investment Agreement &amp; Term Sheet (the <strong>"Agreement"</strong>) is entered into as of the Effective Execution Date, by and between <strong>AI BRAIN STARTUPS</strong>, an officially registered micro-enterprise under the Ministry of MSME, Government of India (Udyam Registration No. <strong>UDYAM-RJ-05-0067280</strong>), acting through its Founder &amp; Chief Architect <strong>BHOJA RAM CHOUDHARY</strong> (the <strong>"Company"</strong> or <strong>"Issuer"</strong>), and the qualified angel allocator, syndicate, or institutional investor subscribing hereto (the <strong>"Investor"</strong> or <strong>"Subscriber"</strong>).
+              This Investment Agreement &amp; Term Sheet (the <strong>"Agreement"</strong>) is entered into as of <strong id="docExecutionDate">the Effective Execution Date</strong>, by and between <strong>AI BRAIN STARTUPS</strong>, an officially registered micro-enterprise under the Ministry of MSME, Government of India (Udyam Registration No. <strong>UDYAM-RJ-05-0067280</strong>), acting through its Founder &amp; Chief Architect <strong>BHOJA RAM CHOUDHARY</strong> (the <strong>"Company"</strong> or <strong>"Issuer"</strong>), and the qualified angel allocator, syndicate, or institutional investor subscribing hereto (the <strong>"Investor"</strong> or <strong>"Subscriber"</strong>).
             </p>
             <p>
               <strong>WHEREAS</strong>, the Company is pioneering proprietary neuromorphic associative hypergraph memory engines and autonomous AI agent architectures designed to replace high-cost flat vector databases; and <strong>WHEREAS</strong>, the Investor desires to provide strategic pre-seed growth capital under the standardized iSAFE framework with clear equity conversion, guaranteed revenue-share distributions, and fiduciary governance protections.
@@ -1109,37 +1109,37 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr id="annexureRow15k" data-annexure-tier="15k">
                 <td><strong>Tier 1: Strategic Angel</strong></td>
                 <td>$15,000 USD</td>
                 <td><strong>0.375% Equity</strong></td>
                 <td>5.0% Gross Revenue</td>
                 <td><strong>3.0x ($45,000 USD)</strong></td>
-                <td>Information Rights · 10 Slots Limit (10 Open)</td>
+                <td id="annexureSlot15k">Information Rights · 10 Slots Limit (10 Available · 0 Booked)</td>
               </tr>
-              <tr>
+              <tr id="annexureRow25k" data-annexure-tier="25k">
                 <td><strong>Tier 2: Co-Founding Syndicate</strong></td>
                 <td>$25,000 USD</td>
                 <td><strong>0.625% Equity</strong></td>
                 <td>7.0% Gross Revenue</td>
                 <td><strong>3.0x ($75,000 USD)</strong></td>
-                <td>Advisory Observer · 6 Slots Limit (6 Open)</td>
+                <td id="annexureSlot25k">Advisory Observer · 6 Slots Limit (6 Available · 0 Booked)</td>
               </tr>
-              <tr>
+              <tr id="annexureRow50k" data-annexure-tier="50k">
                 <td><strong>Tier 3: Strategic Lead Anchor</strong></td>
                 <td>$50,000 USD</td>
                 <td><strong>1.250% Equity</strong></td>
                 <td>10.0% Gross Revenue</td>
                 <td><strong>3.0x ($150,000 USD)</strong></td>
-                <td>Formal Advisory Seat · 4 Slots Limit (4 Open)</td>
+                <td id="annexureSlot50k">Formal Advisory Seat · 4 Slots Limit (4 Available · 0 Booked)</td>
               </tr>
-              <tr>
+              <tr id="annexureRow100k" data-annexure-tier="100k">
                 <td><strong>Tier 4: Principal Whale Lead</strong></td>
                 <td>$100,000 USD</td>
                 <td><strong>2.500% Equity</strong></td>
                 <td>15.0% Gross Revenue</td>
                 <td><strong>3.5x ($350,000 USD)</strong></td>
-                <td>Permanent Board Observer · 2 Slots Limit (2 Open)</td>
+                <td id="annexureSlot100k">Permanent Board Observer · 2 Slots Limit (2 Available · 0 Booked)</td>
               </tr>
             </tbody>
           </table>
@@ -1193,7 +1193,7 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
               <div class="sig-lines">
                 <div><strong>Signatory:</strong> Bhoja Ram Choudhary</div>
                 <div><strong>Title:</strong> Founder &amp; Chief Architect</div>
-                <div><strong>Date:</strong> ________________________</div>
+                <div><strong>Execution Date:</strong> <span id="founderSignDate">23 November 2026</span></div>
                 <div><strong>Place:</strong> Barmer / Jaipur, Rajasthan, India</div>
               </div>
             </div>
@@ -1201,16 +1201,17 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
             <!-- Party 2: Investor -->
             <div class="sig-card">
               <div class="sig-card-h">FOR THE INVESTOR / SUBSCRIBER:</div>
-              <div class="sig-entity-name">ACCREDITED INVESTOR / ALLOCATOR</div>
+              <div class="sig-entity-name" id="investorEntityDisplay">ACCREDITED INVESTOR / ALLOCATOR</div>
               <div class="sig-reg">Corporate Entity / Individual Subscriber</div>
               <div class="sig-draw-box blank-sig">
                 <span class="sig-prompt-line">Signature of Authorized Signatory / Individual</span>
               </div>
               <div class="sig-lines">
-                <div><strong>Full Name:</strong> ___________________________________</div>
-                <div><strong>Entity / Title:</strong> _________________________________</div>
+                <div><strong>Subscribed Allocation:</strong> <span id="investorSelectedTier" style="font-weight:600; color:var(--text);">$50,000 USD (Strategic Lead Anchor · Tier 3)</span></div>
+                <div><strong>Full Name:</strong> <span id="investorSignName">___________________________________</span></div>
+                <div><strong>Entity / Title:</strong> <span id="investorSignEntity">_________________________________</span></div>
                 <div><strong>Passport / Tax ID:</strong> _____________________________</div>
-                <div><strong>Date &amp; Wire UTR:</strong> ___________________________</div>
+                <div><strong>Date &amp; Wire UTR:</strong> <span id="investorSignDate">Auto-executed upon wire submission</span></div>
               </div>
             </div>
           </div>
