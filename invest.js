@@ -257,7 +257,9 @@
   var openTermSheetBtnTop = document.getElementById('openTermSheetBtnTop');
   var closeTermSheetBtn = document.getElementById('closeTermSheetBtn');
   var printTermSheetBtn = document.getElementById('printTermSheetBtn');
+  var printTermSheetBtnBottom = document.getElementById('printTermSheetBtnBottom');
   var acceptTermSheetBtn = document.getElementById('acceptTermSheetBtn');
+  var acceptTermSheetBtnBottom = document.getElementById('acceptTermSheetBtnBottom');
 
   function openModal() {
     if (isafeModal) {
@@ -278,18 +280,20 @@
   if (openTermSheetBtn) openTermSheetBtn.addEventListener('click', openModal);
   if (openTermSheetBtnTop) openTermSheetBtnTop.addEventListener('click', openModal);
   if (closeTermSheetBtn) closeTermSheetBtn.addEventListener('click', closeModal);
-  if (printTermSheetBtn) {
-    printTermSheetBtn.addEventListener('click', function () {
-      window.print();
-    });
+
+  function triggerPrint() {
+    window.print();
   }
-  if (acceptTermSheetBtn) {
-    acceptTermSheetBtn.addEventListener('click', function () {
-      closeModal();
-      var desk = document.getElementById('wire-desk');
-      if (desk) desk.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+  if (printTermSheetBtn) printTermSheetBtn.addEventListener('click', triggerPrint);
+  if (printTermSheetBtnBottom) printTermSheetBtnBottom.addEventListener('click', triggerPrint);
+
+  function acceptAndGoToWire() {
+    closeModal();
+    var desk = document.getElementById('wire-desk');
+    if (desk) desk.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+  if (acceptTermSheetBtn) acceptTermSheetBtn.addEventListener('click', acceptAndGoToWire);
+  if (acceptTermSheetBtnBottom) acceptTermSheetBtnBottom.addEventListener('click', acceptAndGoToWire);
   if (isafeModal) {
     isafeModal.addEventListener('click', function (e) {
       if (e.target === isafeModal) closeModal();

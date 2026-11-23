@@ -684,42 +684,350 @@
   <!-- Official iSAFE Term Sheet Modal -->
   <div class="modal-backdrop" id="isafeModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
     <div class="modal-card">
-      <button type="button" class="modal-close" id="closeTermSheetBtn" aria-label="Close modal">&times;</button>
-      <div class="term-sheet-header">
-        <span class="term-sheet-badge">OFFICIAL LEGAL INSTRUMENT · DRAFT SUMMARY</span>
-        <h2 id="modalTitle" style="font-size:1.6rem; margin:0 0 8px;">India Simple Agreement for Future Equity (iSAFE)</h2>
-        <p style="color:var(--text-2); font-size:0.9rem; margin:0;">Pre-Seed Strategic Allocation, Private Limited Conversion Covenant, and Accelerated Revenue-Share Framework.</p>
-      </div>
-
-      <div class="kv">
-        <div><dt>Company / Issuer</dt><dd>AI BRAIN STARTUPS (MSME: UDYAM-RJ-05-0067280)</dd></div>
-        <div><dt>Founder &amp; Chief Architect</dt><dd>Bhoja Ram Choudhary (Barmer / Jaipur, Rajasthan)</dd></div>
-        <div><dt>Round &amp; Valuation Cap</dt><dd>$1,800,000 USD (₹15,00,00,000 INR) Post-Money Cap</dd></div>
-        <div><dt>Series A Discount Rate</dt><dd>20% Discount on Next Qualified Institutional Equity Round</dd></div>
-      </div>
-
-      <div class="term-grid">
-        <div class="term-clause">
-          <h6>Clause 1: Equity Conversion &amp; Restructuring</h6>
-          <p>Investment is received as a Pre-Incorporation Convertible Advance. Upon closing of the round, the Founder contractually covenants to incorporate <strong>AI Brain Startups Private Limited</strong> within 30 days and allot corresponding Compulsorily Convertible Preference Shares (CCPS) or Equity Shares to the Investor.</p>
+      <!-- Screen-only top action bar -->
+      <div class="modal-screen-bar no-print">
+        <div class="modal-bar-left">
+          <span class="term-sheet-badge">OFFICIAL VC INSTRUMENT · iSAFE 2026</span>
+          <span style="font-size:0.82rem; color:var(--text-2);">Form: Pre-Seed Convertible Framework</span>
         </div>
-        <div class="term-clause">
-          <h6>Clause 2: Contractual Revenue-Share Hurdle (3.0x–3.5x)</h6>
-          <p>Prior to and independent of equity liquidity events, the Company shall disburse 5% to 15% (per allocated tier) of top-line Enterprise Software Licensing &amp; Memory Node API receipts on a quarterly basis until 300% to 350% of the principal capital has been returned in cash.</p>
-        </div>
-        <div class="term-clause">
-          <h6>Clause 3: Cross-Border &amp; Foreign Remittance (FEMA/RBI)</h6>
-          <p>For international allocations (USA, EU, Brazil), funds are processed via SWIFT under RBI FEMA Purpose Code P0802 (Computer &amp; Information Services / Software R&amp;D). Official Foreign Inward Remittance Certificates (FIRC) will be delivered within 48 hours of credit.</p>
-        </div>
-        <div class="term-clause">
-          <h6>Clause 4: Information Rights &amp; Governance</h6>
-          <p>Investors holding Tier 2 or above receive permanent Advisory Observer rights, monthly financial burn-rate audits, and quarterly product architecture briefings directly from the Founder.</p>
+        <div class="modal-bar-actions">
+          <button type="button" class="btn btn-primary btn-sm" id="printTermSheetBtn">Print / Save as PDF (A4) 🖨️</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="acceptTermSheetBtn">Proceed to Bank Wire Desk →</button>
+          <button type="button" class="modal-close-static" id="closeTermSheetBtn" aria-label="Close modal">&times;</button>
         </div>
       </div>
 
-      <div class="modal-actions">
-        <button type="button" class="btn btn-ghost" id="printTermSheetBtn">Print / Save as PDF 🖨️</button>
-        <button type="button" class="btn btn-primary" id="acceptTermSheetBtn">Proceed to Bank Wire Desk →</button>
+      <!-- Institutional Legal Document Container (Formatted for A4 Print & Screen Review) -->
+      <div class="isafe-document">
+        
+        <!-- ==========================================
+             PAGE 1: Official Header & Executive Summary Table
+             ========================================== -->
+        <article class="doc-page" id="docPage1">
+          <div class="doc-running-header">
+            <span>AI BRAIN STARTUPS · CONFIDENTIAL PRE-SEED iSAFE MEMORANDUM</span>
+            <span>DOC REF: ABS/iSAFE/2026/V1</span>
+          </div>
+
+          <!-- Official Government Crest & Entity Identification -->
+          <div class="doc-crest">
+            <div class="crest-emblem" aria-hidden="true">🇮🇳</div>
+            <div class="crest-details">
+              <div class="crest-gov">GOVERNMENT OF INDIA · MINISTRY OF MICRO, SMALL &amp; MEDIUM ENTERPRISES</div>
+              <div class="crest-entity">AI BRAIN STARTUPS</div>
+              <div class="crest-sub">
+                Official Udyam Registration: <strong>UDYAM-RJ-05-0067280</strong> · National Industry Classification: <strong>NIC 62099</strong><br>
+                Registered Operational Base: Hotel New Raj, Mahaveer Nagar, Barmer &amp; Jaipur, Rajasthan — 344001, Republic of India
+              </div>
+            </div>
+          </div>
+
+          <!-- Document Title Block -->
+          <div class="doc-title-block">
+            <div class="doc-status-pill">OFFICIAL LEGAL INSTRUMENT · EXECUTED UNDER INDIA iSAFE FRAMEWORK</div>
+            <h1 class="doc-main-title" id="modalTitle">PRE-SEED INVESTMENT AGREEMENT &amp; iSAFE TERM SHEET</h1>
+            <div class="doc-subtitle">
+              India Simple Agreement for Future Equity with Contractual Accelerated Revenue-Share Dividends, Private Limited Incorporation Covenant, and Senior Liquidity Preference
+            </div>
+          </div>
+
+          <!-- Preamble & Recitals -->
+          <div class="doc-preamble">
+            <p>
+              This Investment Agreement &amp; Term Sheet (the <strong>"Agreement"</strong>) is entered into as of the Effective Execution Date, by and between <strong>AI BRAIN STARTUPS</strong>, an officially registered micro-enterprise under the Ministry of MSME, Government of India (Udyam Registration No. <strong>UDYAM-RJ-05-0067280</strong>), acting through its Founder &amp; Chief Architect <strong>BHOJA RAM CHOUDHARY</strong> (the <strong>"Company"</strong> or <strong>"Issuer"</strong>), and the qualified angel allocator, syndicate, or institutional investor subscribing hereto (the <strong>"Investor"</strong> or <strong>"Subscriber"</strong>).
+            </p>
+            <p>
+              <strong>WHEREAS</strong>, the Company is pioneering proprietary neuromorphic associative hypergraph memory engines and autonomous AI agent architectures designed to replace high-cost flat vector databases; and <strong>WHEREAS</strong>, the Investor desires to provide strategic pre-seed growth capital under the standardized iSAFE framework with clear equity conversion, guaranteed revenue-share distributions, and fiduciary governance protections.
+            </p>
+          </div>
+
+          <!-- Section 1: Executive Term Sheet Table -->
+          <div class="doc-section-h">SECTION 1: SUMMARY OF PRINCIPAL INVESTMENT TERMS</div>
+          <table class="doc-table">
+            <tbody>
+              <tr>
+                <td class="tb-label">Issuer / Enterprise</td>
+                <td class="tb-val"><strong>AI BRAIN STARTUPS</strong> (Transitioning to AI Brain Startups Private Limited)</td>
+                <td class="tb-label">Statutory Registration</td>
+                <td class="tb-val">UDYAM-RJ-05-0067280 (Govt. of India MSME)</td>
+              </tr>
+              <tr>
+                <td class="tb-label">Founder &amp; Key Executive</td>
+                <td class="tb-val"><strong>Bhoja Ram Choudhary</strong>, Founder &amp; Chief Architect</td>
+                <td class="tb-label">Governing Jurisdiction</td>
+                <td class="tb-val">Barmer &amp; Jaipur, Rajasthan, Republic of India</td>
+              </tr>
+              <tr>
+                <td class="tb-label">Investment Security</td>
+                <td class="tb-val"><strong>iSAFE</strong> (India Simple Agreement for Future Equity + CCPS Conversion)</td>
+                <td class="tb-label">Target Round Size</td>
+                <td class="tb-val"><strong>$100,000 USD</strong> (₹85,00,000 INR) Pre-Seed Strategic Round</td>
+              </tr>
+              <tr>
+                <td class="tb-label">Post-Money Valuation Cap</td>
+                <td class="tb-val"><strong>$1,800,000 USD</strong> (₹15,00,00,000 INR) Cap</td>
+                <td class="tb-label">Series A Discount Rate</td>
+                <td class="tb-val"><strong>20.0% Discount</strong> to Next Qualified Institutional Round</td>
+              </tr>
+              <tr>
+                <td class="tb-label">Contractual Revenue Hurdle</td>
+                <td class="tb-val"><strong>3.0x to 3.5x Multiple</strong> on Principal Capital (Priority Senior Cash Return)</td>
+                <td class="tb-label">Gross Revenue-Share Pool</td>
+                <td class="tb-val"><strong>5.0% to 15.0%</strong> of Top-Line Software &amp; API Licensing Gross Receipts</td>
+              </tr>
+              <tr>
+                <td class="tb-label">Distribution Frequency</td>
+                <td class="tb-val">Quarterly Payouts wired directly within 15 days of calendar quarter close</td>
+                <td class="tb-label">FEMA / RBI Purpose Code</td>
+                <td class="tb-val"><strong>P0802</strong> (Software &amp; Computer Services Technology R&amp;D)</td>
+              </tr>
+              <tr>
+                <td class="tb-label">Handling Bank (Custody)</td>
+                <td class="tb-val">State Bank of India (SBI), Barmer / Central SWIFT Hub: <strong>SBININBB</strong></td>
+                <td class="tb-label">Settlement Mode</td>
+                <td class="tb-val">Direct Bank Wire (SWIFT / RTGS / NEFT / IMPS) — Zero Intermediary Deductions</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Article I: Operational Use of Proceeds & Capital Discipline -->
+          <div class="doc-section-h" style="margin-top: 14px;">ARTICLE I: ALLOCATION OF PROCEEDS &amp; CAPITAL DISCIPLINE</div>
+          <div class="doc-prose">
+            <p>
+              1.1 <strong>Strict Capital Deployment Mandate:</strong> One hundred percent (100%) of all funds invested pursuant to this Agreement shall be deployed exclusively in furtherance of core technology development and commercial enterprise onboarding under the Company's 90-Day Execution Roadmap:
+            </p>
+            <ul class="doc-list">
+              <li><strong>50% Core Engineering:</strong> Competitive compensation and equity retention for elite distributed systems, C++, and neuromorphic graph architects.</li>
+              <li><strong>30% High-Throughput Compute &amp; Hardware:</strong> Dedicated GPU inference clusters, high-speed NVMe flash memory arrays, and global edge CDN instances.</li>
+              <li><strong>10% Patents &amp; Intellectual Property:</strong> International Patent Cooperation Treaty (PCT) priority filings and comprehensive trademark protection.</li>
+              <li><strong>10% Developer Ecosystem:</strong> SDK documentation, open benchmark verifications, and enterprise developer onboarding hackathons.</li>
+            </ul>
+            <p>
+              1.2 <strong>Prohibition of Promoter Extraction:</strong> The Founder explicitly covenants that no portion of pre-seed round proceeds shall be utilized for promoter loans, personal living expenses, luxury corporate amenities, or non-operational vanity expenses.
+            </p>
+          </div>
+
+          <div class="doc-page-foot">
+            <span>CONFIDENTIAL · AI BRAIN STARTUPS · iSAFE TERM SHEET</span>
+            <span>PAGE 1 OF 3</span>
+          </div>
+        </article>
+
+
+        <!-- ==========================================
+             PAGE 2: Formal Legal Articles & Covenants
+             ========================================== -->
+        <article class="doc-page" id="docPage2">
+          <div class="doc-running-header">
+            <span>AI BRAIN STARTUPS · CONFIDENTIAL PRE-SEED iSAFE MEMORANDUM</span>
+            <span>DOC REF: ABS/iSAFE/2026/V1</span>
+          </div>
+
+          <div class="doc-section-h">ARTICLE II: PRIVATE LIMITED INCORPORATION &amp; EQUITY CONVERSION COVENANT</div>
+          <div class="doc-prose">
+            <p>
+              2.1 <strong>Mandatory Corporate Restructuring:</strong> Within thirty (30) days following the formal closure of this Pre-Seed Round, the Founder covenants to incorporate <strong>AI Brain Startups Private Limited</strong> (or such approved statutory corporate designation) under the Companies Act, 2013, Ministry of Corporate Affairs, Government of India.
+            </p>
+            <p>
+              2.2 <strong>Conversion Mechanics (CCPS / Equity Shares):</strong> Upon the closing of the Company's next Qualified Institutional Equity Financing Round (raising gross proceeds exceeding $500,000 USD / ₹4,25,00,000 INR), this iSAFE instrument shall automatically convert into Compulsorily Convertible Preference Shares (CCPS) or Series Seed Equity Shares at a price per share equal to the lesser of:
+            </p>
+            <ul class="doc-list">
+              <li>(a) The price calculated by dividing the <strong>Post-Money Valuation Cap ($1,800,000 USD / ₹15,00,00,000 INR)</strong> by the fully diluted share capital of the Company immediately prior to the financing round; or</li>
+              <li>(b) The per-share price paid by new institutional investors in such Qualified Financing discounted by exactly <strong>twenty percent (20.0%)</strong>.</li>
+            </ul>
+            <p>
+              2.3 <strong>Senior Liquidity &amp; Dissolution Preference:</strong> In the event of an acquisition, merger, corporate sale of substantially all assets, or dissolution prior to equity conversion, the Investor shall possess senior liquidation preference over all ordinary equity holders to receive the greater of: (i) one hundred percent (100%) of the Original Principal Amount plus any accrued unpaid revenue-share distributions, or (ii) the fair market valuation of the underlying shares had this instrument converted at the Valuation Cap.
+            </p>
+          </div>
+
+          <div class="doc-section-h">ARTICLE III: CONTRACTUAL ACCELERATED REVENUE-SHARE DISTRIBUTIONS</div>
+          <div class="doc-prose">
+            <p>
+              3.1 <strong>Senior Cash Distribution Stream:</strong> Distinct from and in addition to permanent equity conversion rights, the Company undertakes an irrevocable legal covenant to disburse five percent (5.0%) to fifteen percent (15.0%) (depending upon the subscribed tier) of its top-line gross software licensing, graph memory API, and enterprise support billings directly to the Investor's designated settlement bank account.
+            </p>
+            <p>
+              3.2 <strong>Hurdle Multiplier &amp; Timing:</strong> Revenue disbursements shall be computed within ten (10) calendar days of each calendar quarter end and wired within fifteen (15) days thereof, continuing until cumulative payouts equal exactly the contracted Return Multiplier (3.0x for Tiers 1 and 2; 3.5x for Tiers 3 and 4). Upon reaching the Return Cap, cash revenue distributions shall terminate, while the Investor's permanent equity ownership stake and voting rights remain intact in perpetuity.
+            </p>
+          </div>
+
+          <div class="doc-section-h">ARTICLE IV: FOREIGN REMITTANCE, RBI &amp; FEMA COMPLIANCE</div>
+          <div class="doc-prose">
+            <p>
+              4.1 <strong>Authorized International Banking Channel:</strong> For cross-border capital remittances (originating from the United States, European Union, United Kingdom, Brazil, Singapore, or other international jurisdictions), all funds shall be transmitted exclusively via bank-to-bank SWIFT wire through State Bank of India (Forex Hub: <strong>SBININBB154</strong>) under Reserve Bank of India FEMA Purpose Code <strong>P0802</strong> (Software Technology Services &amp; Computer Systems R&amp;D).
+            </p>
+            <p>
+              4.2 <strong>FIRC Certification:</strong> The handling bank shall formally generate and the Company shall deliver an official Foreign Inward Remittance Certificate (FIRC) confirming sovereign inward clearance under Indian foreign exchange law within forty-eight (48) banking hours of receipt.
+            </p>
+          </div>
+
+          <div class="doc-section-h">ARTICLE V: INFORMATION RIGHTS, FINANCIAL AUDIT &amp; GOVERNANCE</div>
+          <div class="doc-prose">
+            <p>
+              5.1 <strong>Investor Reporting Package:</strong> The Company shall deliver: (a) Monthly financial flash reports detailing monthly burn rate, cash runway, and engineering roadmap progress; (b) Quarterly unaudited financial statements within 30 days of quarter end; and (c) Annual audited statutory financial statements certified by an independent Chartered Accountant.
+            </p>
+            <p>
+              5.2 <strong>Board Observer Status:</strong> Investors subscribing at Tier 2 ($24,000 USD / ₹20,00,000 INR) and above shall have the contractual right to appoint one Advisory Board Observer to attend quarterly executive reviews and technical briefings with the Founder.
+            </p>
+          </div>
+
+          <div class="doc-section-h">ARTICLE VI: INTELLECTUAL PROPERTY &amp; JURISDICTION</div>
+          <div class="doc-prose">
+            <p>
+              6.1 <strong>Exclusive IP Assignment:</strong> The Founder represents and warrants that 100% of all software repositories, associative graph codebases, mathematical weights, documentation, and international patent applications are the sole, unencumbered property of AI Brain Startups and will be seamlessly transferred to the Private Limited entity.
+            </p>
+            <p>
+              6.2 <strong>Governing Law &amp; Binding Arbitration:</strong> This Agreement shall be governed by the laws of the Republic of India. Any controversy or claim arising hereunder shall be finally settled by binding arbitration in accordance with the Arbitration and Conciliation Act, 1996, conducted in the English language, seated in Jaipur / New Delhi, India.
+            </p>
+          </div>
+
+          <div class="doc-page-foot">
+            <span>CONFIDENTIAL · AI BRAIN STARTUPS · iSAFE TERM SHEET</span>
+            <span>PAGE 2 OF 3</span>
+          </div>
+        </article>
+
+
+        <!-- ==========================================
+             PAGE 3: Annexures & Dual Signature Execution Block
+             ========================================== -->
+        <article class="doc-page" id="docPage3">
+          <div class="doc-running-header">
+            <span>AI BRAIN STARTUPS · CONFIDENTIAL PRE-SEED iSAFE MEMORANDUM</span>
+            <span>DOC REF: ABS/iSAFE/2026/V1</span>
+          </div>
+
+          <!-- Annexure A: Schedule of Tiers -->
+          <div class="doc-section-h">ANNEXURE A: STRATEGIC ALLOCATION TIERS &amp; RIGHTS SCHEDULE</div>
+          <table class="doc-table compact-table">
+            <thead>
+              <tr>
+                <th>Tier Designation</th>
+                <th>Principal Allocation</th>
+                <th>Equity Stake</th>
+                <th>Quarterly Rev-Share</th>
+                <th>Return Hurdle Cap</th>
+                <th>Governance Privileges</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Tier 1: Pioneer Angel</strong></td>
+                <td>$12,000 USD / ₹10,00,000 INR</td>
+                <td><strong>1.5% Equity</strong></td>
+                <td>5.0% Gross Revenue</td>
+                <td><strong>3.0x ($36,000 / ₹30L)</strong></td>
+                <td>Information Rights &amp; Monthly Updates</td>
+              </tr>
+              <tr>
+                <td><strong>Tier 2: Co-Founding Partner</strong></td>
+                <td>$24,000 USD / ₹20,00,000 INR</td>
+                <td><strong>3.5% Equity</strong></td>
+                <td>8.0% Gross Revenue</td>
+                <td><strong>3.0x ($72,000 / ₹60L)</strong></td>
+                <td>Advisory Board Observer &amp; Arch Access</td>
+              </tr>
+              <tr>
+                <td><strong>Tier 3: Strategic Lead Angel</strong></td>
+                <td>$36,000 USD / ₹30,00,000 INR</td>
+                <td><strong>6.0% Equity</strong></td>
+                <td>10.0% Gross Revenue</td>
+                <td><strong>3.5x ($126,000 / ₹1.05 Cr)</strong></td>
+                <td>Formal Advisory Seat &amp; Hiring Review</td>
+              </tr>
+              <tr>
+                <td><strong>Tier 4: Principal Anchor Partner</strong></td>
+                <td>$100,000 USD / ₹85,00,000 INR</td>
+                <td><strong>12.5% Equity</strong></td>
+                <td>15.0% Gross Revenue</td>
+                <td><strong>3.5x ($350,000 / ₹2.97 Cr)</strong></td>
+                <td>Permanent Board Observer &amp; Strategic Veto</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Annexure B: Bank Wire Settlement Coordinates -->
+          <div class="doc-section-h" style="margin-top: 14px;">ANNEXURE B: OFFICIAL SETTLEMENT BANKING COORDINATES</div>
+          <table class="doc-table compact-table">
+            <tbody>
+              <tr>
+                <td class="tb-label">Account Holder / Beneficiary</td>
+                <td class="tb-val"><strong>BHOJA RAM CHOUDHARY</strong> (Proprietor, AI BRAIN STARTUPS)</td>
+                <td class="tb-label">Bank Name</td>
+                <td class="tb-val"><strong>State Bank of India (SBI)</strong></td>
+              </tr>
+              <tr>
+                <td class="tb-label">Account Number</td>
+                <td class="tb-val"><strong>40318275832</strong></td>
+                <td class="tb-label">IFSC Code</td>
+                <td class="tb-val"><strong>SBIN0015203</strong></td>
+              </tr>
+              <tr>
+                <td class="tb-label">Central SWIFT / BIC Code</td>
+                <td class="tb-val"><strong>SBININBB</strong></td>
+                <td class="tb-label">Forex Routing Hub</td>
+                <td class="tb-val"><strong>SBININBB154</strong> (SBI International Forex Division)</td>
+              </tr>
+              <tr>
+                <td class="tb-label">Branch Address</td>
+                <td class="tb-val">Hotel New Raj, Mahaveer Nagar, Barmer, Rajasthan — 344001, India</td>
+                <td class="tb-label">Remittance Purpose</td>
+                <td class="tb-val"><strong>P0802</strong> (Software Development &amp; AI Tech R&amp;D)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Section: Dual Execution Signature Block -->
+          <div class="doc-section-h" style="margin-top: 14px;">IN WITNESS WHEREOF: DUAL SIGNATURE EXECUTION BLOCK</div>
+          <p style="font-size: 8pt; color: #444; margin: 0 0 10px;">
+            The parties hereto have caused this Pre-Seed iSAFE Term Sheet and Investment Agreement to be duly executed by their authorized representatives as of the date written below.
+          </p>
+          <div class="sig-block-grid">
+            <!-- Party 1: Company -->
+            <div class="sig-card">
+              <div class="sig-card-h">FOR THE ISSUER / COMPANY:</div>
+              <div class="sig-entity-name">AI BRAIN STARTUPS</div>
+              <div class="sig-reg">Udyam MSME: UDYAM-RJ-05-0067280</div>
+              <div class="sig-draw-box">
+                <span class="digital-sign-font">Bhoja Ram Choudhary</span>
+                <div class="digital-seal">✓ VERIFIED FOUNDER SIGNATURE</div>
+              </div>
+              <div class="sig-lines">
+                <div><strong>Signatory:</strong> Bhoja Ram Choudhary</div>
+                <div><strong>Title:</strong> Founder &amp; Chief Architect</div>
+                <div><strong>Date:</strong> ________________________</div>
+                <div><strong>Place:</strong> Barmer / Jaipur, Rajasthan, India</div>
+              </div>
+            </div>
+
+            <!-- Party 2: Investor -->
+            <div class="sig-card">
+              <div class="sig-card-h">FOR THE INVESTOR / SUBSCRIBER:</div>
+              <div class="sig-entity-name">ACCREDITED INVESTOR / ALLOCATOR</div>
+              <div class="sig-reg">Corporate Entity / Individual Subscriber</div>
+              <div class="sig-draw-box blank-sig">
+                <span class="sig-prompt-line">Signature of Authorized Signatory / Individual</span>
+              </div>
+              <div class="sig-lines">
+                <div><strong>Full Name:</strong> ___________________________________</div>
+                <div><strong>Entity / Title:</strong> _________________________________</div>
+                <div><strong>Passport / Tax ID:</strong> _____________________________</div>
+                <div><strong>Date &amp; Wire UTR:</strong> ___________________________</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="doc-page-foot">
+            <span>CONFIDENTIAL · AI BRAIN STARTUPS · iSAFE TERM SHEET</span>
+            <span>PAGE 3 OF 3 (FINAL EXECUTION PAGE)</span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Screen-only bottom action bar -->
+      <div class="modal-actions no-print">
+        <button type="button" class="btn btn-ghost" id="printTermSheetBtnBottom">Print / Save as PDF 🖨️</button>
+        <button type="button" class="btn btn-primary" id="acceptTermSheetBtnBottom">Proceed to Bank Wire Desk →</button>
       </div>
     </div>
   </div>
