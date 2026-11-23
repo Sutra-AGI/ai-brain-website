@@ -3,35 +3,44 @@
   'use strict';
 
   var currentCurrency = 'USD';
-  var selectedTier = '10L';
+  var selectedTier = '20L';
 
   var TIER_DATA = {
     '10L': {
       usd: '$12,000 USD',
       inr: '₹10,00,000 INR',
-      name: 'Strategic Angel',
-      equity: '1.0% iSAFE Equity Stake',
-      revshare: '5% Monthly Gross Revenue Share (up to 2.0x return)',
+      name: 'Strategic Angel (Tier 1)',
+      equity: '1.5% iSAFE Equity Stake',
+      revshare: '5% Gross Revenue Share (Up to 3.0x / $36K / ₹30 Lakh Return)',
       amountUSD: '12,000',
       amountINR: '10,00,000',
     },
     '20L': {
       usd: '$24,000 USD',
       inr: '₹20,00,000 INR',
-      name: 'Co-Founding Growth Partner',
-      equity: '2.5% iSAFE Equity Stake',
-      revshare: '7.5% Monthly Gross Revenue Share (up to 2.0x return)',
+      name: 'Co-Founding Partner (Tier 2)',
+      equity: '3.5% iSAFE Equity Stake',
+      revshare: '8% Gross Revenue Share (Up to 3.0x / $72K / ₹60 Lakh Return)',
       amountUSD: '24,000',
       amountINR: '20,00,000',
     },
     '30L': {
       usd: '$36,000 USD',
       inr: '₹30,00,000 INR',
-      name: 'Lead Anchor Investor',
-      equity: '4.0% iSAFE Equity Stake',
-      revshare: '10% Monthly Gross Revenue Share (up to 2.0x return)',
-      amountUSD: '36,000',
+      name: 'Lead Anchor Investor (Tier 3)',
+      equity: '6.0% iSAFE Equity Stake',
+      revshare: '12% Gross Revenue Share (Up to 3.5x / $126K / ₹1.05 Cr Return)',
+      amountUSD: '36,00,000',
       amountINR: '30,00,000',
+    },
+    '100k': {
+      usd: '$100,000 USD',
+      inr: '₹85,00,000 INR',
+      name: 'Global Sovereign Syndicate (Tier 4)',
+      equity: '12.5% iSAFE Equity Stake',
+      revshare: '15% Gross Revenue Share (Up to 3.5x / $350K / ₹2.97 Cr Return)',
+      amountUSD: '100,000',
+      amountINR: '85,00,000',
     },
   };
 
@@ -94,7 +103,7 @@
   });
 
   function updateWireSummary() {
-    var data = TIER_DATA[selectedTier] || TIER_DATA['10L'];
+    var data = TIER_DATA[selectedTier] || TIER_DATA['20L'];
     var amountEl = document.getElementById('selectedAmountDisplay');
     var tierNameEl = document.getElementById('selectedTierNameDisplay');
     var equityEl = document.getElementById('selectedEquityDisplay');
@@ -146,6 +155,31 @@
             btn.textContent = original;
           }, 2000);
         });
+      }
+    });
+  });
+
+  // Interactive Benchmark Simulator
+  var calcBtns = document.querySelectorAll('[data-calc-vol]');
+  var calcVectorCost = document.getElementById('calcVectorCost');
+  var calcBrainCost = document.getElementById('calcBrainCost');
+  var calcSavings = document.getElementById('calcSavings');
+
+  var CALC_DATA = {
+    '1m': { vector: '$3,800 / mo', brain: '$340 / mo', savings: '91.0% ($41,520 / yr)' },
+    '5m': { vector: '$19,000 / mo', brain: '$1,710 / mo', savings: '91.0% ($207,480 / yr)' },
+    '20m': { vector: '$76,000 / mo', brain: '$6,840 / mo', savings: '91.0% ($829,920 / yr)' }
+  };
+
+  calcBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      calcBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var vol = btn.getAttribute('data-calc-vol');
+      if (CALC_DATA[vol]) {
+        if (calcVectorCost) calcVectorCost.textContent = CALC_DATA[vol].vector;
+        if (calcBrainCost) calcBrainCost.textContent = CALC_DATA[vol].brain;
+        if (calcSavings) calcSavings.textContent = CALC_DATA[vol].savings;
       }
     });
   });
@@ -207,7 +241,7 @@
       } catch (err) {
         if (formStatus) {
           formStatus.textContent = 'Network error. Please try again or email founder@aibrainstartup.com directly.';
-          formStatus.style.color = '#ff6b6b';
+          formStatus.color = '#ff6b6b';
         }
         if (submitBtn) {
           submitBtn.disabled = false;

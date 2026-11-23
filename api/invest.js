@@ -2,7 +2,7 @@
 import { randomUUID } from 'node:crypto';
 import { EMAIL_RE, json, looksLikeBot, meta, methodNotAllowed, notify, rateLimited, readJson, savePrivate } from './_lib.js';
 
-const TIERS = new Set(['10L', '20L', '30L', 'custom']);
+const TIERS = new Set(['10L', '20L', '30L', '100k', 'custom']);
 
 export async function POST(request) {
   const [data, err] = await readJson(request);
