@@ -28,7 +28,8 @@ LOGO = '''<svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="tr
         </svg>'''
 
 NAV_ITEMS = [("/#memory", "Memory", None), ("/#how", "How it works", None), ("/#agents", "Agents", None), ("/#sdk", "SDK", None),
-             ("architecture", "Architecture", "architecture"), ("docs", "Docs", "docs"), ("about", "About", "about")]
+             ("architecture", "Architecture", "architecture"), ("docs", "Docs", "docs"), ("about", "About", "about"),
+             ("invest", "Invest", "invest")]
 
 
 def nav(active):
@@ -36,7 +37,7 @@ def nav(active):
         f'<a href="{h}"{" aria-current=\"page\"" if active and k == active else ""}>{t}</a>' for h, t, k in NAV_ITEMS)
     mob = [("/", "Home", "↗"), ("/#memory", "Memory", "01"), ("/#agents", "Agents", "02"), ("/#sdk", "SDK", "03"),
            ("/#demo", "Live demo", "04"), ("architecture", "Architecture", "↗"), ("docs", "Docs", "↗"),
-           ("about", "About", "↗"), ("contact", "Contact", "↗")]
+           ("about", "About", "↗"), ("invest", "Invest", "↗"), ("contact", "Contact", "↗")]
     mlinks = "\n    ".join(f'<a class="m-link" href="{h}">{t} <span>{n}</span></a>' for h, t, n in mob)
     contact_cur = ' aria-current="page"' if active == "contact" else ""
     return f'''
@@ -74,7 +75,7 @@ FOOTER = f'''
           <a class="mail" href="mailto:team@aibrainstartup.com">team@aibrainstartup.com</a>
         </div>
         <div><p class="foot-h">Product</p><ul><li><a href="/#memory">Memory</a></li><li><a href="/#agents">Agents</a></li><li><a href="/#sdk">SDK</a></li><li><a href="/#demo">Live demo</a></li><li><a href="docs">Docs</a></li></ul></div>
-        <div><p class="foot-h">Company</p><ul><li><a href="about">About</a></li><li><a href="architecture">Architecture</a></li><li><a href="contact">Contact</a></li><li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+        <div><p class="foot-h">Company</p><ul><li><a href="about">About</a></li><li><a href="architecture">Architecture</a></li><li><a href="invest">Invest</a></li><li><a href="contact">Contact</a></li><li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
         <div><p class="foot-h">Legal</p><ul><li><a href="privacy-policy">Privacy policy</a></li><li><a href="terms-of-service">Terms of service</a></li><li><a href="/hi" hreflang="hi" lang="hi">हिन्दी</a></li></ul></div>
       </div>
       <div class="foot-bottom">
@@ -604,7 +605,7 @@ for name, (active, body) in PAGES.items():
     src = src.replace('AI Brain Inc. / ', '').replace('AI Brain Inc.', 'AI BRAIN STARTUPS')
     out = clean_head(src) + FONTS + "</head>\n<body>\n  <a class=\"skip\" href=\"#main\">Skip to content</a>\n" + nav(active) + body + FOOTER
     # Root-absolute URLs so pages (esp. 404 served at nested paths) never resolve relatively
-    out = re.sub(r'(href|src)="(about|architecture|docs|contact|privacy-policy|terms-of-service|home\.css|pages\.css|home\.js|favicon\.ico|logo\.png|manifest\.json)([?"#])',
+    out = re.sub(r'(href|src)="(about|architecture|docs|contact|invest|privacy-policy|terms-of-service|home\.css|pages\.css|invest\.css|home\.js|invest\.js|favicon\.ico|logo\.png|manifest\.json)([?"#])',
                  r'\1="/\2\3', out)
     # Assets: new icons / OG image; make sure every page has a social preview image.
     out = (out.replace('href="/logo.png"', 'href="/icons/apple-touch-icon.png"')
@@ -615,8 +616,8 @@ for name, (active, body) in PAGES.items():
     path.write_text(out)
     print(f"built {name}.html ({len(out):,} bytes)")
 
-# Hand-written pages (homepage, Hindi homepage, admin): only refresh their asset versions.
-for page in ("index.html", "hi.html", "admin.html"):
+# Hand-written pages (homepage, Hindi homepage, admin, invest): only refresh their asset versions.
+for page in ("index.html", "hi.html", "admin.html", "invest.html"):
     f = ROOT / page
     f.write_text(re.sub(r'((?:home|pages|admin)\.(?:css|js))\?v=[\w]+', rf'\1?v={V}', f.read_text()))
 print(f"asset version: {V}")

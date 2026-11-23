@@ -8,6 +8,7 @@
 - [Architecture](https://aibrainstartup.com/architecture)
 - [Developer docs (API preview)](https://aibrainstartup.com/docs)
 - [About](https://aibrainstartup.com/about)
+- [Pre-Seed Investment & Backers Portal](https://aibrainstartup.com/invest)
 - [Contact](https://aibrainstartup.com/contact)
 - [Privacy policy](https://aibrainstartup.com/privacy-policy)
 - [Terms of service](https://aibrainstartup.com/terms-of-service)
