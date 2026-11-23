@@ -30,7 +30,7 @@
       name: 'Lead Anchor Investor (Tier 3)',
       equity: '6.0% iSAFE Equity Stake',
       revshare: '12% Gross Revenue Share (Up to 3.5x / $126K / ₹1.05 Cr Return)',
-      amountUSD: '36,00,000',
+      amountUSD: '36,000',
       amountINR: '30,00,000',
     },
     '100k': {
