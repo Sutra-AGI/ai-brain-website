@@ -251,6 +251,68 @@
     });
   }
 
+  // Modal & Legal Term Sheet Logic
+  var isafeModal = document.getElementById('isafeModal');
+  var openTermSheetBtn = document.getElementById('openTermSheetBtn');
+  var openTermSheetBtnTop = document.getElementById('openTermSheetBtnTop');
+  var closeTermSheetBtn = document.getElementById('closeTermSheetBtn');
+  var printTermSheetBtn = document.getElementById('printTermSheetBtn');
+  var acceptTermSheetBtn = document.getElementById('acceptTermSheetBtn');
+
+  function openModal() {
+    if (isafeModal) {
+      isafeModal.classList.add('active');
+      isafeModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeModal() {
+    if (isafeModal) {
+      isafeModal.classList.remove('active');
+      isafeModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (openTermSheetBtn) openTermSheetBtn.addEventListener('click', openModal);
+  if (openTermSheetBtnTop) openTermSheetBtnTop.addEventListener('click', openModal);
+  if (closeTermSheetBtn) closeTermSheetBtn.addEventListener('click', closeModal);
+  if (printTermSheetBtn) {
+    printTermSheetBtn.addEventListener('click', function () {
+      window.print();
+    });
+  }
+  if (acceptTermSheetBtn) {
+    acceptTermSheetBtn.addEventListener('click', function () {
+      closeModal();
+      var desk = document.getElementById('wire-desk');
+      if (desk) desk.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+  if (isafeModal) {
+    isafeModal.addEventListener('click', function (e) {
+      if (e.target === isafeModal) closeModal();
+    });
+  }
+
+  // Mobile Tier Switcher Tabs
+  var mobTabs = document.querySelectorAll('[data-mob-tab]');
+  mobTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      mobTabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      var tier = tab.getAttribute('data-mob-tab');
+      selectedTier = tier;
+      updateWireSummary();
+      var targetBtn = document.querySelector('[data-select-tier="' + tier + '"]');
+      if (targetBtn) {
+        var card = targetBtn.closest('.tier-card');
+        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  });
+
   // Initialize
   setCurrency('USD');
 })();

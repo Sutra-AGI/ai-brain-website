@@ -160,6 +160,12 @@
           <button type="button" class="cur-btn active" id="curBtnUSD">USD ($) · Global (USA / EU / Brazil)</button>
           <button type="button" class="cur-btn" id="curBtnINR">INR (₹) · Domestic (India)</button>
         </div>
+
+        <!-- Quick Action & Verification Buttons -->
+        <div class="reveal d3" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;">
+          <button type="button" class="btn btn-ghost btn-sm" id="openTermSheetBtnTop">📄 View Official iSAFE Term Sheet</button>
+          <a href="/architecture" class="btn btn-ghost btn-sm">🔬 Technical Architecture Whitepaper ↗</a>
+        </div>
       </div>
     </section>
 
@@ -172,6 +178,14 @@
             <h2 class="h2 reveal d1">Accelerated returns. <span class="serif">Massive upside</span>.</h2>
           </div>
           <p class="lead reveal d2">Choose your allocation tier. All investments are governed by formal iSAFE contracts with direct top-line revenue payouts up to <b>3.5x of your capital</b>, in addition to permanent company equity.</p>
+        </div>
+
+        <!-- Mobile Tier Navigation Tabs -->
+        <div class="tier-tabs-mobile">
+          <button type="button" class="tier-tab-btn" data-mob-tab="10L">Tier 1: $12K / 10L</button>
+          <button type="button" class="tier-tab-btn active" data-mob-tab="20L">Tier 2: $24K / 20L</button>
+          <button type="button" class="tier-tab-btn" data-mob-tab="30L">Tier 3: $36K / 30L</button>
+          <button type="button" class="tier-tab-btn" data-mob-tab="100k">Tier 4: $100K</button>
         </div>
 
         <div class="tiers-grid">
@@ -297,6 +311,9 @@
               <div class="sim-stat-val" id="calcSavings" style="color:#00d2ff;">91.0% ($207,480 / yr)</div>
               <small style="color:var(--text-3); font-family:var(--font-mono);">Funds investor revenue-share payouts</small>
             </div>
+          </div>
+          <div style="margin-top:24px; text-align:center;">
+            <a href="/architecture" class="btn btn-ghost" style="display:inline-flex; align-items:center; gap:8px;">🔬 Review Full Neuromorphic Hypergraph Technical Architecture (Whitepaper) →</a>
           </div>
         </div>
       </div>
@@ -489,6 +506,7 @@
             <div class="legal-box">
               <h5>🛡️ Legal Governance &amp; iSAFE Protection</h5>
               <p>All allocations are executed under the <strong>iSAFE Framework (India Simple Agreement for Future Equity)</strong>. Clause 4.2 guarantees priority dividend disbursements straight to your designated wire account upon commercial enterprise revenue clearance until the 3.0x–3.5x hurdle rate is satisfied. Capital is deployed as pre-seed convertible investment with contractual conversion into formal equity/CCPS upon private limited incorporation.</p>
+              <button type="button" class="btn btn-ghost btn-sm" id="openTermSheetBtn" style="margin-top:14px; width:100%; justify-content:center;">📄 View Official iSAFE Term Sheet &amp; Framework Agreement →</button>
             </div>
           </div>
 
@@ -662,6 +680,49 @@
       </div>
     </section>
   </main>
+
+  <!-- Official iSAFE Term Sheet Modal -->
+  <div class="modal-backdrop" id="isafeModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="closeTermSheetBtn" aria-label="Close modal">&times;</button>
+      <div class="term-sheet-header">
+        <span class="term-sheet-badge">OFFICIAL LEGAL INSTRUMENT · DRAFT SUMMARY</span>
+        <h2 id="modalTitle" style="font-size:1.6rem; margin:0 0 8px;">India Simple Agreement for Future Equity (iSAFE)</h2>
+        <p style="color:var(--text-2); font-size:0.9rem; margin:0;">Pre-Seed Strategic Allocation, Private Limited Conversion Covenant, and Accelerated Revenue-Share Framework.</p>
+      </div>
+
+      <div class="kv">
+        <div><dt>Company / Issuer</dt><dd>AI BRAIN STARTUPS (MSME: UDYAM-RJ-05-0067280)</dd></div>
+        <div><dt>Founder &amp; Chief Architect</dt><dd>Bhoja Ram Choudhary (Barmer / Jaipur, Rajasthan)</dd></div>
+        <div><dt>Round &amp; Valuation Cap</dt><dd>$1,800,000 USD (₹15,00,00,000 INR) Post-Money Cap</dd></div>
+        <div><dt>Series A Discount Rate</dt><dd>20% Discount on Next Qualified Institutional Equity Round</dd></div>
+      </div>
+
+      <div class="term-grid">
+        <div class="term-clause">
+          <h6>Clause 1: Equity Conversion &amp; Restructuring</h6>
+          <p>Investment is received as a Pre-Incorporation Convertible Advance. Upon closing of the round, the Founder contractually covenants to incorporate <strong>AI Brain Startups Private Limited</strong> within 30 days and allot corresponding Compulsorily Convertible Preference Shares (CCPS) or Equity Shares to the Investor.</p>
+        </div>
+        <div class="term-clause">
+          <h6>Clause 2: Contractual Revenue-Share Hurdle (3.0x–3.5x)</h6>
+          <p>Prior to and independent of equity liquidity events, the Company shall disburse 5% to 15% (per allocated tier) of top-line Enterprise Software Licensing &amp; Memory Node API receipts on a quarterly basis until 300% to 350% of the principal capital has been returned in cash.</p>
+        </div>
+        <div class="term-clause">
+          <h6>Clause 3: Cross-Border &amp; Foreign Remittance (FEMA/RBI)</h6>
+          <p>For international allocations (USA, EU, Brazil), funds are processed via SWIFT under RBI FEMA Purpose Code P0802 (Computer &amp; Information Services / Software R&amp;D). Official Foreign Inward Remittance Certificates (FIRC) will be delivered within 48 hours of credit.</p>
+        </div>
+        <div class="term-clause">
+          <h6>Clause 4: Information Rights &amp; Governance</h6>
+          <p>Investors holding Tier 2 or above receive permanent Advisory Observer rights, monthly financial burn-rate audits, and quarterly product architecture briefings directly from the Founder.</p>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="printTermSheetBtn">Print / Save as PDF 🖨️</button>
+        <button type="button" class="btn btn-primary" id="acceptTermSheetBtn">Proceed to Bank Wire Desk →</button>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="wrap">
