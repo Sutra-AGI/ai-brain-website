@@ -6,56 +6,56 @@
   var selectedTier = '50k';
 
   var TIER_DATA = {
+    '15k': {
+      usd: '$15,000 USD',
+      name: 'Strategic Angel (Tier 1)',
+      equity: '0.375% iSAFE Equity Stake',
+      revshare: '5% Quarterly Gross Revenue Share (Up to 3.0x / $45,000 Return)',
+      multiplier: '3.0x Return Cap ($45,000 USD)',
+      amountUSD: '15,000',
+      totalSlots: 10,
+      takenSlots: 0,
+      remainingSlots: 10,
+      statusBadge: '🟢 10 Slots Total · 10 Available (0 Booked)',
+      locked: false
+    },
     '25k': {
       usd: '$25,000 USD',
-      name: 'Strategic Angel (Tier 1)',
-      equity: '0.50% iSAFE Equity Stake',
-      revshare: '5% Quarterly Gross Revenue Share (Up to 2.5x / $62,500 Return)',
-      multiplier: '2.5x Return Cap ($62,500 USD)',
+      name: 'Co-Founding Syndicate (Tier 2)',
+      equity: '0.625% iSAFE Equity Stake',
+      revshare: '7% Quarterly Gross Revenue Share (Up to 3.0x / $75,000 Return)',
+      multiplier: '3.0x Return Cap ($75,000 USD)',
       amountUSD: '25,000',
-      totalSlots: 8,
-      takenSlots: 3,
-      remainingSlots: 5,
-      statusBadge: '🟢 8 Slots Total · 5 Available',
+      totalSlots: 6,
+      takenSlots: 0,
+      remainingSlots: 6,
+      statusBadge: '🟢 6 Slots Total · 6 Available (0 Booked)',
       locked: false
     },
     '50k': {
       usd: '$50,000 USD',
-      name: 'Co-Founding Syndicate (Tier 2)',
-      equity: '1.00% iSAFE Equity Stake',
-      revshare: '8% Quarterly Gross Revenue Share (Up to 2.5x / $125,000 Return)',
-      multiplier: '2.5x Return Cap ($125,000 USD)',
+      name: 'Strategic Lead Anchor (Tier 3)',
+      equity: '1.250% iSAFE Equity Stake',
+      revshare: '10% Quarterly Gross Revenue Share (Up to 3.0x / $150,000 Return)',
+      multiplier: '3.0x Return Cap ($150,000 USD)',
       amountUSD: '50,000',
       totalSlots: 4,
-      takenSlots: 2,
-      remainingSlots: 2,
-      statusBadge: '🔥 High Demand · 4 Slots Total · 2 Left',
+      takenSlots: 0,
+      remainingSlots: 4,
+      statusBadge: '🔥 Featured · 4 Slots Total · 4 Available',
       locked: false
     },
     '100k': {
       usd: '$100,000 USD',
-      name: 'Strategic Lead Anchor (Tier 3)',
-      equity: '2.00% iSAFE Equity Stake',
-      revshare: '10% Quarterly Gross Revenue Share (Up to 3.0x / $300,000 Return)',
-      multiplier: '3.0x Return Cap ($300,000 USD)',
+      name: 'Principal Whale Lead (Tier 4)',
+      equity: '2.500% Major Equity Stake',
+      revshare: '15% Quarterly Gross Revenue Share (Up to 3.5x / $350,000 Return)',
+      multiplier: '3.5x Return Cap ($350,000 USD)',
       amountUSD: '100,000',
       totalSlots: 2,
-      takenSlots: 1,
-      remainingSlots: 1,
-      statusBadge: '⚡ Lead Anchor · 2 Slots Total · 1 Open',
-      locked: false
-    },
-    'whale': {
-      usd: '$100,000 USD',
-      name: 'Principal Institutional Whale (Tier 4)',
-      equity: '2.00% iSAFE Equity Stake',
-      revshare: '12% Quarterly Gross Revenue Share (Up to 3.0x / $300,000 Return)',
-      multiplier: '3.0x Return Cap ($300,000 USD)',
-      amountUSD: '100,000',
-      totalSlots: 1,
       takenSlots: 0,
-      remainingSlots: 1,
-      statusBadge: '🏛️ Institutional Whale · 1 Exclusive Slot',
+      remainingSlots: 2,
+      statusBadge: '🏛️ 2 Exclusive Slots · 2 Available',
       locked: false
     }
   };
@@ -277,6 +277,17 @@
               refCode.textContent = 'ALLOC-' + data.id.slice(0, 8).toUpperCase();
             }
           }
+          // Real-time slot reservation upon successful UTR registration
+          if (TIER_DATA[selectedTier] && TIER_DATA[selectedTier].remainingSlots > 0) {
+            TIER_DATA[selectedTier].takenSlots += 1;
+            TIER_DATA[selectedTier].remainingSlots -= 1;
+            if (TIER_DATA[selectedTier].remainingSlots === 0) {
+              TIER_DATA[selectedTier].statusBadge = '🔒 100% ALLOCATED & LOCKED';
+            } else {
+              TIER_DATA[selectedTier].statusBadge = '🟢 ' + TIER_DATA[selectedTier].totalSlots + ' Slots Total · ' + TIER_DATA[selectedTier].remainingSlots + ' Available';
+            }
+            renderTierSlots();
+          }
         } else {
           if (formStatus) {
             formStatus.textContent = 'Error: ' + (data.error || 'Failed to submit. Please check details.');
@@ -304,6 +315,7 @@
   var isafeModal = document.getElementById('isafeModal');
   var openTermSheetBtn = document.getElementById('openTermSheetBtn');
   var openTermSheetBtnTop = document.getElementById('openTermSheetBtnTop');
+  var openTermSheetQuickBtn = document.getElementById('openTermSheetQuickBtn');
   var closeTermSheetBtn = document.getElementById('closeTermSheetBtn');
   var printTermSheetBtn = document.getElementById('printTermSheetBtn');
   var printTermSheetBtnBottom = document.getElementById('printTermSheetBtnBottom');
@@ -328,6 +340,7 @@
 
   if (openTermSheetBtn) openTermSheetBtn.addEventListener('click', openModal);
   if (openTermSheetBtnTop) openTermSheetBtnTop.addEventListener('click', openModal);
+  if (openTermSheetQuickBtn) openTermSheetQuickBtn.addEventListener('click', openModal);
   if (closeTermSheetBtn) closeTermSheetBtn.addEventListener('click', closeModal);
 
   function triggerPrint() {

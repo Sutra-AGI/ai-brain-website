@@ -5,7 +5,7 @@ import { list } from '@vercel/blob';
 import { timingSafeEqual } from 'node:crypto';
 import { json, rateLimited, readPrivate } from './_lib.js';
 
-const PREFIX = { waitlist: 'waitlist/', contact: 'contact/' };
+const PREFIX = { waitlist: 'waitlist/', contact: 'contact/', invest: 'invest/' };
 const MAX_ITEMS = 1000;
 
 function tokenOk(request, expected) {

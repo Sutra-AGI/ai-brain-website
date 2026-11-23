@@ -2,7 +2,7 @@
 import { randomUUID } from 'node:crypto';
 import { EMAIL_RE, json, looksLikeBot, meta, methodNotAllowed, notify, rateLimited, readJson, savePrivate } from './_lib.js';
 
-const TIERS = new Set(['10L', '20L', '30L', '100k', 'custom']);
+const TIERS = new Set(['15k', '25k', '50k', '100k', 'custom']);
 
 export async function POST(request) {
   const [data, err] = await readJson(request);
@@ -19,7 +19,7 @@ export async function POST(request) {
   const email = String(data?.email || '').trim().toLowerCase();
   const phone = String(data?.phone || '').trim().slice(0, 50);
   const country = String(data?.country || 'International').trim().slice(0, 80);
-  const tier = TIERS.has(data?.tier) ? data.tier : '10L';
+  const tier = TIERS.has(data?.tier) ? data.tier : '50k';
   const amount = String(data?.amount || '').trim().slice(0, 50);
   const currency = String(data?.currency || 'USD').trim().toUpperCase();
   const utr = String(data?.utr || '').trim().slice(0, 100);
