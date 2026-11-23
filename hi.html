@@ -29,7 +29,7 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=6ab035f8">
+  <link rel="stylesheet" href="/home.css?v=ebaff4c7">
 </head>
 <body>
   <a class="skip" href="#main">मुख्य सामग्री पर जाएँ</a>
@@ -55,6 +55,7 @@
       </nav>
       <div class="nav-cta">
         <a href="/" class="btn btn-ghost btn-sm lang-switch" hreflang="en" lang="en">English</a>
+        <a href="/invest" class="btn btn-invest-nav btn-sm">निवेश (Invest) ⚡</a>
         <a href="#waitlist" class="btn btn-primary btn-sm">अर्ली एक्सेस</a>
         <button class="menu-btn" id="menuBtn" aria-label="मेनू खोलें" aria-expanded="false" aria-controls="mobilePanel"><span></span></button>
       </div>
@@ -69,7 +70,8 @@
     <a class="m-link" href="/invest">Invest <span>↗</span></a>
     <a class="m-link" href="/contact">संपर्क <span>↗</span></a>
     <a class="m-link" href="/" hreflang="en" lang="en">English <span>EN</span></a>
-    <a href="#waitlist" class="btn btn-primary">अर्ली एक्सेस पाएँ →</a>
+    <a href="/invest" class="btn btn-invest" style="margin-top:16px;">प्री-सीड राउंड में निवेश करें ⚡</a>
+    <a href="#waitlist" class="btn btn-primary" style="margin-top:10px;">अर्ली एक्सेस पाएँ →</a>
   </div>
 
   <main id="main">
@@ -78,12 +80,17 @@
       <canvas class="hero-canvas" id="graph" aria-hidden="true"></canvas>
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow"><b>नया</b> AI एजेंट्स के लिए स्थायी मेमोरी लेयर</span>
+          <a href="/invest" class="hero-invest-pill">
+            <span class="pill-badge">PRE-SEED खुला है</span>
+            <span class="pill-text">AI मेमोरी लेयर में रणनीतिक निवेश · 3.5x रिटर्न कैप + कंपनी इक्विटी</span>
+            <span class="pill-arrow">→</span>
+          </a>
           <h1 class="hero-title">ऐसा AI जो <span class="serif-hi shimmer">कभी नहीं</span> भूलता।</h1>
           <p class="hero-sub">AI Brain आपके LLM और AI एजेंट्स को लंबे समय तक चलने वाली, आपस में जुड़ी मेमोरी देता है — एक नॉलेज ग्राफ़ जो हर बातचीत, हर फ़ैसले और हर कोडबेस का संदर्भ हमेशा याद रखता है।</p>
           <div class="hero-actions">
             <a href="#waitlist" class="btn btn-primary btn-shine">अर्ली एक्सेस पाएँ <span class="arrow">→</span></a>
             <a href="/#demo" class="btn btn-ghost">लाइव डेमो (English)</a>
+            <a href="/invest" class="btn btn-invest">निवेश पोर्टल (Invest) ⚡</a>
           </div>
           <div class="hero-meta">
             <span><i></i>लक्ष्य: 15ms से कम में रिकॉल</span>
@@ -198,6 +205,44 @@
       </div>
     </section>
 
+    <!-- STRATEGIC INVESTOR SPOTLIGHT (HINDI) -->
+    <section class="section" id="invest-spotlight">
+      <div class="wrap">
+        <div class="invest-spotlight-card reveal">
+          <div class="invest-spotlight-copy">
+            <span class="kicker">रणनीतिक एंजेल निवेश अवसर · प्री-सीड राउंड 2026–2027</span>
+            <h2 class="h2">ऑटोनॉमस AI की मूलभूत <span class="serif-hi">मेमोरी लेयर</span> में भागीदार बनें।</h2>
+            <p class="lead">हम अपनी मुख्य इंजीनियरिंग टीम के विस्तार, समर्पित GPU क्लस्टर्स की स्थापना और कमर्शियल एंटरप्राइज रोलआउट के लिए प्री-सीड एंजेल फंडिंग ($12,000 से $100,000 USD / ₹10 लाख से ₹85 लाख) जुटा रहे हैं। सभी निवेश आधिकारिक iSAFE अनुबंधों, 3.5x तक ग्रॉस रेवेन्यू-शेयर डिविडेंड और स्थायी कंपनी इक्विटी द्वारा शासित हैं।</p>
+            
+            <div class="spotlight-stats">
+              <div>
+                <span class="s-val">$1.8M</span>
+                <span class="s-lbl">वैल्यूएशन कैप (₹15 करोड़)</span>
+              </div>
+              <div>
+                <span class="s-val">3.0x – 3.5x</span>
+                <span class="s-lbl">कैश रिटर्न हर्डल</span>
+              </div>
+              <div>
+                <span class="s-val">12.4 ms</span>
+                <span class="s-lbl">रिकॉल लेटेंसी (11x तेज)</span>
+              </div>
+              <div>
+                <span class="s-val">SBI कस्टडी</span>
+                <span class="s-lbl">डायरेक्ट बैंक वायर सेटलमेंट</span>
+              </div>
+            </div>
+
+            <div class="spotlight-actions">
+              <a href="/invest" class="btn btn-primary">निवेश पैकेज व बैंक डिटेल्स देखें →</a>
+              <a href="/invest" class="btn btn-ghost">📄 iSAFE एग्रीमेंट देखें</a>
+              <a href="https://wa.me/919461127967?text=नमस्ते%20भोजा%20राम%20जी,%20मैं%20AI%20Brain%20के%20प्री-सीड%20राउंड%20में%20निवेश%20हेतु%20चर्चा%20करना%20चाहता%20हूँ।" target="_blank" rel="noopener" class="btn btn-ghost">💬 1-on-1 फाउंडर कॉल (WhatsApp)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="waitlist">
       <div class="wrap">
         <div class="cta reveal">
@@ -250,6 +295,6 @@
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="/home.js?v=6ab035f8" defer></script>
+  <script src="/home.js?v=ebaff4c7" defer></script>
 </body>
 </html>
