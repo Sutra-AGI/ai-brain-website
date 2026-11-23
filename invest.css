@@ -2,7 +2,7 @@
    AI Brain — Strategic Investment & Backers Portal Styling (invest.css)
    ========================================================================== */
 
-/* Currency toggle bar */
+/* Currency toggle & Denomination Badge */
 .cur-toggle-bar {
   display: inline-flex;
   align-items: center;
@@ -33,6 +33,66 @@
 .cur-btn:hover:not(.active) {
   color: var(--text);
   background: rgba(255, 255, 255, 0.06);
+}
+
+/* Institutional Denomination Strip */
+.denom-badge-strip {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 16px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+.denom-pill {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.denom-note {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-2);
+}
+
+/* Dynamic Slot Badges & Auto-Lock State */
+.slot-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+.slot-counter.hot {
+  background: rgba(255, 107, 107, 0.12);
+  border-color: rgba(255, 107, 107, 0.35);
+  color: #ff9e9e;
+}
+.slot-counter.gold {
+  background: rgba(0, 210, 255, 0.12);
+  border-color: rgba(0, 210, 255, 0.35);
+  color: #00d2ff;
+}
+.tier-card.tier-locked {
+  opacity: 0.55;
+  filter: grayscale(0.7);
+  pointer-events: none;
+  border-color: rgba(255, 107, 107, 0.4);
 }
 
 /* Trust highlight banner */

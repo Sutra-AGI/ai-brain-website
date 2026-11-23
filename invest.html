@@ -144,21 +144,21 @@
           <div class="round-progress-header">
             <div>
               <span class="eyebrow-mono" style="margin:0 0 4px; display:inline-block;">Round Status: Pre-Seed Strategic Pool</span>
-              <div style="font-size:1.15rem; font-weight:600; color:var(--text);">$250,000 USD Total Round Target · Post-Money Valuation Cap: $1.8M USD (₹15 Cr)</div>
+              <div style="font-size:1.15rem; font-weight:600; color:var(--text);">$700,000 USD Total Round Target · Post-Money Valuation Cap: $5,000,000 USD ($5.0M)</div>
             </div>
             <div style="text-align:right;">
-              <span style="font-family:var(--font-mono); font-size:0.9rem; color:var(--accent); font-weight:600;">32% Reserved ($80,000 Locked)</span>
+              <span style="font-family:var(--font-mono); font-size:0.9rem; color:var(--accent); font-weight:600;">39% Reserved ($275,000 Locked · 9 of 15 Slots Available)</span>
             </div>
           </div>
           <div class="round-progress-bar-bg">
-            <div class="round-progress-bar-fill"></div>
+            <div class="round-progress-bar-fill" style="width:39%;"></div>
           </div>
         </div>
 
-        <!-- Currency Switcher -->
-        <div class="cur-toggle-bar reveal d3">
-          <button type="button" class="cur-btn active" id="curBtnUSD">USD ($) · Global (USA / EU / Brazil)</button>
-          <button type="button" class="cur-btn" id="curBtnINR">INR (₹) · Domestic (India)</button>
+        <!-- Global Settlement Denomination -->
+        <div class="denom-badge-strip reveal d3">
+          <span class="denom-pill">💵 Global Settlement Denomination: United States Dollar (USD $)</span>
+          <span class="denom-note">Direct institutional bank wire settlement via SWIFT / RTGS (RBI P0802 compliant)</span>
         </div>
 
         <!-- Quick Action & Verification Buttons -->
@@ -273,97 +273,101 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
             <span class="kicker reveal">Strategic Allocation Packages</span>
             <h2 class="h2 reveal d1">Accelerated returns. <span class="serif">Massive upside</span>.</h2>
           </div>
-          <p class="lead reveal d2">Choose your allocation tier. All investments are governed by formal iSAFE contracts with direct top-line revenue payouts up to <b>3.5x of your capital</b>, in addition to permanent company equity.</p>
+          <p class="lead reveal d2">Choose your allocation tier. All investments are governed by formal iSAFE contracts with direct top-line revenue payouts up to <b>3.0x of your capital</b>, in addition to permanent company equity.</p>
         </div>
 
         <!-- Mobile Tier Navigation Tabs -->
         <div class="tier-tabs-mobile">
-          <button type="button" class="tier-tab-btn" data-mob-tab="10L">Tier 1: $12K / 10L</button>
-          <button type="button" class="tier-tab-btn active" data-mob-tab="20L">Tier 2: $24K / 20L</button>
-          <button type="button" class="tier-tab-btn" data-mob-tab="30L">Tier 3: $36K / 30L</button>
-          <button type="button" class="tier-tab-btn" data-mob-tab="100k">Tier 4: $100K</button>
+          <button type="button" class="tier-tab-btn" data-mob-tab="25k">Tier 1: $25K</button>
+          <button type="button" class="tier-tab-btn active" data-mob-tab="50k">Tier 2: $50K</button>
+          <button type="button" class="tier-tab-btn" data-mob-tab="100k">Tier 3: $100K</button>
+          <button type="button" class="tier-tab-btn" data-mob-tab="whale">Tier 4: $100K Whale</button>
         </div>
 
         <div class="tiers-grid">
-          <!-- Tier 1: 10 Lakh / $12,000 -->
-          <article class="tier-card reveal">
+          <!-- Tier 1: $25,000 USD (8 Slots Total) -->
+          <article class="tier-card reveal" data-tier-card="25k">
             <div class="tier-header">
               <span class="tier-name">Strategic Angel</span>
-              <div class="tier-price" data-tier-price="10L">$12,000 USD</div>
-              <span class="tier-stake">1.5% iSAFE Equity Stake</span>
-              <span class="tier-multiplier">3.0x Return Cap ($36K / ₹30L)</span>
+              <div class="tier-price" data-tier-price="25k">$25,000 USD</div>
+              <span class="tier-stake">0.50% iSAFE Equity Stake</span>
+              <span class="tier-multiplier">2.5x Return Cap ($62,500 USD)</span>
+              <div class="slot-counter" data-slot-badge="25k">🟢 8 Slots Total · 5 Available</div>
             </div>
             <ul class="tier-features">
-              <li><span class="check">✓</span> <span><strong>1.5% Equity Stake:</strong> Standard iSAFE agreement with future liquidity conversion rights.</span></li>
-              <li><span class="check">✓</span> <span><strong>3.0x Capital Recovery:</strong> 5% monthly gross revenue share until $36,000 (₹30 Lakh) is paid to your bank.</span></li>
+              <li><span class="check">✓</span> <span><strong>0.50% Equity Stake:</strong> Standard iSAFE agreement with future liquidity conversion rights.</span></li>
+              <li><span class="check">✓</span> <span><strong>2.5x Capital Recovery:</strong> 5% quarterly gross revenue share until $62,500 USD is paid to your wire account.</span></li>
               <li><span class="check">✓</span> <span><strong>Founding Angel Certificate:</strong> Formal cryptographic certificate of ownership signed by the Founder.</span></li>
               <li><span class="check">✓</span> <span><strong>Lifetime Enterprise Access:</strong> 10M permanent memory nodes and priority API bandwidth.</span></li>
               <li><span class="check">✓</span> <span><strong>Quarterly Executive Briefs:</strong> Direct access to architectural roadmaps and engineering milestones.</span></li>
             </ul>
             <div class="tier-action">
-              <a href="#wire-desk" class="btn btn-ghost" style="width:100%;text-align:center;" data-select-tier="10L">Select Tier 1 →</a>
+              <a href="#wire-desk" class="btn btn-ghost" style="width:100%;text-align:center;" data-select-tier="25k">Select $25K Tier →</a>
             </div>
           </article>
 
-          <!-- Tier 2: 20 Lakh / $24,000 (Featured) -->
-          <article class="tier-card featured reveal d1">
+          <!-- Tier 2: $50,000 USD (Featured · 4 Slots Total) -->
+          <article class="tier-card featured reveal d1" data-tier-card="50k">
             <span class="tier-badge">Most Popular · High Impact</span>
             <div class="tier-header">
-              <span class="tier-name">Co-Founding Partner</span>
-              <div class="tier-price" data-tier-price="20L">$24,000 USD</div>
-              <span class="tier-stake">3.5% iSAFE Equity Stake</span>
-              <span class="tier-multiplier">3.0x Return Cap ($72K / ₹60L)</span>
+              <span class="tier-name">Co-Founding Syndicate</span>
+              <div class="tier-price" data-tier-price="50k">$50,000 USD</div>
+              <span class="tier-stake">1.00% iSAFE Equity Stake</span>
+              <span class="tier-multiplier">2.5x Return Cap ($125,000 USD)</span>
+              <div class="slot-counter hot" data-slot-badge="50k">🔥 High Demand · 4 Slots Total · 2 Left</div>
             </div>
             <ul class="tier-features">
-              <li><span class="check">✓</span> <span><strong>3.5% Equity Stake:</strong> Substantial equity ownership in foundational AI memory infrastructure.</span></li>
-              <li><span class="check">✓</span> <span><strong>3.0x Capital Recovery:</strong> 8% monthly gross revenue share until $72,000 (₹60 Lakh) is paid to your bank.</span></li>
+              <li><span class="check">✓</span> <span><strong>1.00% Equity Stake:</strong> Substantial equity ownership in foundational AI memory infrastructure.</span></li>
+              <li><span class="check">✓</span> <span><strong>2.5x Capital Recovery:</strong> 8% quarterly gross revenue share until $125,000 USD is paid to your wire account.</span></li>
               <li><span class="check">✓</span> <span><strong>Advisory Council Seat:</strong> Direct observer rights and input into core technical decisions and pilot partners.</span></li>
               <li><span class="check">✓</span> <span><strong>Global Commercial Reseller Rights:</strong> Ability to white-label and bundle AI Brain memory nodes with your own commercial clients.</span></li>
               <li><span class="check">✓</span> <span><strong>All Tier 1 Privileges:</strong> Full Founding Angel credentials and perpetual enterprise access.</span></li>
             </ul>
             <div class="tier-action">
-              <a href="#wire-desk" class="btn btn-primary" style="width:100%;text-align:center;" data-select-tier="20L">Select Tier 2 →</a>
+              <a href="#wire-desk" class="btn btn-primary" style="width:100%;text-align:center;" data-select-tier="50k">Select $50K Tier →</a>
             </div>
           </article>
 
-          <!-- Tier 3: 30 Lakh / $36,000 -->
-          <article class="tier-card reveal d2">
+          <!-- Tier 3: $100,000 USD (2 Slots Total) -->
+          <article class="tier-card reveal d2" data-tier-card="100k">
             <div class="tier-header">
-              <span class="tier-name">Lead Anchor Investor</span>
-              <div class="tier-price" data-tier-price="30L">$36,000 USD</div>
-              <span class="tier-stake">6.0% iSAFE Equity Stake</span>
-              <span class="tier-multiplier">3.5x Return Cap ($126K / ₹1.05 Cr)</span>
+              <span class="tier-name">Strategic Lead Anchor</span>
+              <div class="tier-price" data-tier-price="100k">$100,000 USD</div>
+              <span class="tier-stake">2.00% iSAFE Equity Stake</span>
+              <span class="tier-multiplier">3.0x Return Cap ($300,000 USD)</span>
+              <div class="slot-counter" data-slot-badge="100k">⚡ Lead Anchor · 2 Slots Total · 1 Open</div>
             </div>
             <ul class="tier-features">
-              <li><span class="check">✓</span> <span><strong>6.0% Equity Stake:</strong> Anchor institutional-grade stake in the core intellectual property.</span></li>
-              <li><span class="check">✓</span> <span><strong>3.5x Capital Recovery:</strong> 12% monthly gross revenue share until $126,000 (₹1.05 Crore) is credited to your account.</span></li>
+              <li><span class="check">✓</span> <span><strong>2.00% Equity Stake:</strong> Anchor institutional-grade stake in the core intellectual property.</span></li>
+              <li><span class="check">✓</span> <span><strong>3.0x Capital Recovery:</strong> 10% quarterly gross revenue share until $300,000 USD is credited to your account.</span></li>
               <li><span class="check">✓</span> <span><strong>Homepage Lead Recognition:</strong> Permanent branding and acknowledgment on aibrainstartup.com as "Lead Strategic Backer".</span></li>
               <li><span class="check">✓</span> <span><strong>First Right of Refusal:</strong> Guaranteed allocation reservation in our future Series A institutional round.</span></li>
               <li><span class="check">✓</span> <span><strong>Dedicated Custom Swarm Cluster:</strong> Dedicated on-premises cluster deployed specifically for your workflows.</span></li>
             </ul>
             <div class="tier-action">
-              <a href="#wire-desk" class="btn btn-ghost" style="width:100%;text-align:center;" data-select-tier="30L">Select Tier 3 →</a>
+              <a href="#wire-desk" class="btn btn-ghost" style="width:100%;text-align:center;" data-select-tier="100k">Select $100K Tier →</a>
             </div>
           </article>
 
-          <!-- Tier 4: $100,000 USD / ~85 Lakh INR (Mega Anchor / Sovereign Syndicate) -->
-          <article class="tier-card institutional reveal d3">
+          <!-- Tier 4: $100,000 USD Whale (1 Exclusive Slot) -->
+          <article class="tier-card institutional reveal d3" data-tier-card="whale">
             <span class="tier-badge blue">Sovereign / Syndicate Tier</span>
             <div class="tier-header">
-              <span class="tier-name">Sovereign Syndicate</span>
-              <div class="tier-price" data-tier-price="100k">$100,000 USD</div>
-              <span class="tier-stake" style="background:rgba(0,210,255,0.15);color:#00d2ff;">12.5% Major Equity Stake</span>
-              <span class="tier-multiplier" style="color:var(--accent);">3.5x Return Cap ($350K / ₹2.97 Cr)</span>
+              <span class="tier-name">Principal Institutional Whale</span>
+              <div class="tier-price" data-tier-price="whale">$100,000 USD</div>
+              <span class="tier-stake" style="background:rgba(0,210,255,0.15);color:#00d2ff;">2.00% Major Equity Stake</span>
+              <span class="tier-multiplier" style="color:var(--accent);">3.0x Return Cap ($300,000 USD)</span>
+              <div class="slot-counter gold" data-slot-badge="whale">🏛️ Institutional Whale · 1 Exclusive Slot</div>
             </div>
             <ul class="tier-features">
-              <li><span class="check" style="color:#00d2ff;">✓</span> <span><strong>12.5% Major Equity Ownership:</strong> Substantial co-owner stake directly written into company capital structure.</span></li>
-              <li><span class="check" style="color:#00d2ff;">✓</span> <span><strong>3.5x Supercharged Return:</strong> 15% top-line monthly gross revenue share until $350,000 (~₹2.97 Crore) is fully disbursed.</span></li>
+              <li><span class="check" style="color:#00d2ff;">✓</span> <span><strong>2.00% Major Equity Ownership:</strong> Substantial co-owner stake directly written into company capital structure.</span></li>
+              <li><span class="check" style="color:#00d2ff;">✓</span> <span><strong>3.0x Supercharged Return:</strong> 12% quarterly gross revenue share until $300,000 USD is fully disbursed.</span></li>
               <li><span class="check" style="color:#00d2ff;">✓</span> <span><strong>Permanent Board Observer Seat:</strong> Official governance and strategic direction authority alongside Founder.</span></li>
               <li><span class="check" style="color:#00d2ff;">✓</span> <span><strong>Dedicated Bare-Metal GPU Node:</strong> Exclusive 8x H100 GPU cluster partition allocated for your organization's AI deployments.</span></li>
               <li><span class="check" style="color:#00d2ff;">✓</span> <span><strong>Global Exclusive Resale License:</strong> Exclusive geographic distribution rights for AI Brain enterprise licenses in your country.</span></li>
             </ul>
             <div class="tier-action">
-              <a href="#wire-desk" class="btn btn-primary" style="width:100%;text-align:center;background:#00d2ff;color:#08090b;border-color:#00d2ff;" data-select-tier="100k">Select $100K Tier →</a>
+              <a href="#wire-desk" class="btn btn-primary" style="width:100%;text-align:center;background:#00d2ff;color:#08090b;border-color:#00d2ff;" data-select-tier="whale">Select Whale Tier →</a>
             </div>
           </article>
         </div>
@@ -410,7 +414,7 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
           <span class="eyebrow-mono" style="color:var(--accent);">Mathematical Payout Roadmap · Annual Run Rate (ARR) Milestones</span>
           <h3 style="font-size:1.35rem; margin:10px 0 6px;">How Revenue Translates into Cash In Your Bank Account</h3>
           <p style="color:var(--text-2); font-size:0.88rem; margin:0 0 16px;">
-            Quarterly revenue-share dividends are disbursed automatically within 15 days of calendar quarter end. When your 3.0x–3.5x hurdle cap is reached, cash payouts conclude while your permanent equity ownership (1.5% to 12.5%) continues compounding forever.
+            Quarterly revenue-share dividends are disbursed automatically within 15 days of calendar quarter end. When your 2.5x–3.0x hurdle cap is reached, cash payouts conclude while your permanent equity ownership (0.50% to 2.00%) continues compounding forever.
           </p>
 
           <table class="payout-table">
@@ -419,8 +423,8 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
                 <th>Commercial ARR Stage</th>
                 <th>Enterprise Customer Mix</th>
                 <th>Quarterly Payout Pool (10% Avg)</th>
-                <th>Estimated Return Timeline (Tier 2: $24K)</th>
-                <th>Estimated Return Timeline (Tier 3: $36K)</th>
+                <th>Estimated Return Timeline (Tier 2: $50K)</th>
+                <th>Estimated Return Timeline (Tier 3: $100K)</th>
               </tr>
             </thead>
             <tbody>
@@ -442,8 +446,8 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
                 <td><strong>$1,800,000 ARR</strong> (Scale Phase)</td>
                 <td>35 Enterprise Licenses + 1,200 API Devs</td>
                 <td style="color:var(--accent); font-family:var(--font-mono); font-weight:700;">$45,000 / quarter ($180K/yr)</td>
-                <td><strong style="color:var(--accent);">3.0x Return Cap ($72,000) Satisfied</strong></td>
-                <td><strong style="color:var(--accent);">3.5x Return Cap ($126,000) Satisfied</strong></td>
+                <td><strong style="color:var(--accent);">2.5x Return Cap ($125,000) Satisfied</strong></td>
+                <td><strong style="color:var(--accent);">3.0x Return Cap ($300,000) Satisfied</strong></td>
               </tr>
             </tbody>
           </table>
@@ -600,14 +604,14 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
         <div class="wire-desk-container">
           <!-- Official Bank Details Card -->
           <div class="bank-details-card reveal">
-            <span class="eyebrow-mono" id="wireCurrencyBadge">International SWIFT Wire (USD / EUR / Global)</span>
+            <span class="eyebrow-mono" id="wireCurrencyBadge">Global Settlement Bank Wire (USD / SWIFT &amp; RTGS)</span>
             <h3 style="font-size: 1.4rem; margin: 12px 0 20px;">Official Settlement Account</h3>
 
             <div class="kv" style="margin-bottom: 24px;">
-              <div><dt>Selected Tier</dt><dd id="selectedTierNameDisplay" style="color:var(--accent);font-weight:600;">Co-Founding Partner (Tier 2)</dd></div>
-              <div><dt>Allocation Amount</dt><dd id="selectedAmountDisplay" style="color:var(--text);font-weight:600;font-family:var(--font-mono);">$24,000 USD</dd></div>
-              <div><dt>Equity Terms</dt><dd id="selectedEquityDisplay">3.5% iSAFE Equity Stake</dd></div>
-              <div><dt>Revenue Protection</dt><dd id="selectedRevDisplay">8% Gross Revenue Share (Up to 3.0x Return)</dd></div>
+              <div><dt>Selected Tier</dt><dd id="selectedTierNameDisplay" style="color:var(--accent);font-weight:600;">Co-Founding Syndicate (Tier 2)</dd></div>
+              <div><dt>Allocation Amount</dt><dd id="selectedAmountDisplay" style="color:var(--text);font-weight:600;font-family:var(--font-mono);">$50,000 USD</dd></div>
+              <div><dt>Equity Terms</dt><dd id="selectedEquityDisplay">1.00% iSAFE Equity Stake</dd></div>
+              <div><dt>Revenue Protection</dt><dd id="selectedRevDisplay">8% Quarterly Gross Revenue Share (Up to 2.5x / $125,000 Return)</dd></div>
             </div>
 
             <!-- International SWIFT Box (US/EU/Brazil) -->
@@ -669,63 +673,12 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
               </div>
             </div>
 
-            <!-- Domestic RTGS Box (India) -->
-            <div id="domWireBox" style="display:none;">
-              <div class="bank-row">
-                <span class="bank-label">Account Holder Name</span>
-                <div class="bank-val-box">
-                  <span class="bank-val">BHOJA RAM CHOUDHARY</span>
-                  <button type="button" class="copy-btn" data-copy="BHOJA RAM CHOUDHARY">Copy</button>
-                </div>
-              </div>
-              <div class="bank-row">
-                <span class="bank-label">Enterprise Name</span>
-                <div class="bank-val-box">
-                  <span class="bank-val">AI BRAIN STARTUPS</span>
-                  <button type="button" class="copy-btn" data-copy="AI BRAIN STARTUPS">Copy</button>
-                </div>
-              </div>
-              <div class="bank-row">
-                <span class="bank-label">Bank Name</span>
-                <div class="bank-val-box">
-                  <span class="bank-val">State Bank of India (SBI)</span>
-                  <button type="button" class="copy-btn" data-copy="State Bank of India">Copy</button>
-                </div>
-              </div>
-              <div class="bank-row">
-                <span class="bank-label">Branch</span>
-                <div class="bank-val-box">
-                  <span class="bank-val">Mahaveer Nagar, Barmer (Rajasthan)</span>
-                </div>
-              </div>
-              <div class="bank-row">
-                <span class="bank-label">Account Number</span>
-                <div class="bank-val-box">
-                  <span class="bank-val">40318275832</span>
-                  <button type="button" class="copy-btn" data-copy="40318275832">Copy</button>
-                </div>
-              </div>
-              <div class="bank-row">
-                <span class="bank-label">IFSC Code</span>
-                <div class="bank-val-box">
-                  <span class="bank-val">SBIN0015203</span>
-                  <button type="button" class="copy-btn" data-copy="SBIN0015203">Copy</button>
-                </div>
-              </div>
-              <div class="bank-row">
-                <span class="bank-label">Transfer Type</span>
-                <div class="bank-val-box">
-                  <span class="bank-val">RTGS / NEFT / IMPS (Direct Bank)</span>
-                </div>
-              </div>
-            </div>
-
-            <p class="note" style="margin-top:24px;">Note: Wire transfer reference receipts (FIRC) will be officially issued by our handling bank within 24–48 hours of credit.</p>
+            <p class="note" style="margin-top:24px;">Note: Direct bank-to-bank wire instructions apply globally. For domestic Indian wire transfers (RTGS / NEFT / IMPS), funds are credited in USD equivalent at the prevailing RBI reference exchange rate directly into our SBI Current Account. Official bank FIRC / credit verification receipts are generated within 24–48 hours.</p>
 
             <!-- Legal Agreement Guarantee Snippet -->
             <div class="legal-box">
               <h5>🛡️ Legal Governance &amp; iSAFE Protection</h5>
-              <p>All allocations are executed under the <strong>iSAFE Framework (India Simple Agreement for Future Equity)</strong>. Clause 4.2 guarantees priority dividend disbursements straight to your designated wire account upon commercial enterprise revenue clearance until the 3.0x–3.5x hurdle rate is satisfied. Capital is deployed as pre-seed convertible investment with contractual conversion into formal equity/CCPS upon private limited incorporation.</p>
+              <p>All allocations are executed under the <strong>iSAFE Framework (India Simple Agreement for Future Equity)</strong>. Clause 4.2 guarantees priority dividend disbursements straight to your designated wire account upon commercial enterprise revenue clearance until the 2.5x–3.0x hurdle rate is satisfied. Capital is deployed as pre-seed convertible investment with contractual conversion into formal equity/CCPS upon private limited incorporation.</p>
               <button type="button" class="btn btn-ghost btn-sm" id="openTermSheetBtn" style="margin-top:14px; width:100%; justify-content:center;">📄 View Official iSAFE Term Sheet &amp; Framework Agreement →</button>
             </div>
           </div>
@@ -736,8 +689,8 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
             <h3 style="font-size: 1.4rem; margin: 12px 0 20px;">Investor Commitment Form</h3>
 
             <form id="investForm">
-              <input type="hidden" id="formTier" name="tier" value="20L">
-              <input type="hidden" id="formAmount" name="amount" value="24,000">
+              <input type="hidden" id="formTier" name="tier" value="50k">
+              <input type="hidden" id="formAmount" name="amount" value="50,000">
               <input type="hidden" id="formCurrency" name="currency" value="USD">
 
               <div class="form-row">
@@ -860,8 +813,8 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
             </article>
             <article class="card pillar reveal d3">
               <span class="eyebrow-mono">Pillar 03 / Investor Protection</span>
-              <h3>Automated 3.0x–3.5x Dividend Stream</h3>
-              <p>Direct monthly gross revenue-share distributions wired automatically to your account as enterprise contracts close.</p>
+              <h3>Automated 2.5x–3.0x Dividend Stream</h3>
+              <p>Direct quarterly gross revenue-share distributions wired automatically to your account as enterprise contracts close.</p>
             </article>
           </div>
         </div>
@@ -885,8 +838,8 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
             <p>We use standard <strong>iSAFE (India Simple Agreement for Future Equity)</strong> contracts, modeled on the Silicon Valley Y-Combinator SAFE. It grants you verified equity ownership rights with contractual CCPS conversion upon incorporation.</p>
           </div>
           <div class="faq-card reveal d1">
-            <h4>How does the 3.0x–3.5x revenue-share dividend work?</h4>
-            <p>In addition to your permanent equity stake, you receive a contractual quarterly dividend from gross top-line software revenue (5% to 15% depending on tier) until you have received exactly 3.0x to 3.5x of your principal capital back.</p>
+            <h4>How does the 2.5x–3.0x revenue-share dividend work?</h4>
+            <p>In addition to your permanent equity stake, you receive a contractual quarterly dividend from gross top-line software revenue (5% to 12% depending on tier) until you have received exactly 2.5x to 3.0x of your principal capital back.</p>
           </div>
           <div class="faq-card reveal d2">
             <h4>What happens if the company fails or has to shut down?</h4>
@@ -997,19 +950,19 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
                 <td class="tb-label">Investment Security</td>
                 <td class="tb-val"><strong>iSAFE</strong> (India Simple Agreement for Future Equity + CCPS Conversion)</td>
                 <td class="tb-label">Target Round Size</td>
-                <td class="tb-val"><strong>$100,000 USD</strong> (₹85,00,000 INR) Pre-Seed Strategic Round</td>
+                <td class="tb-val"><strong>$700,000 USD</strong> Pre-Seed Strategic Round</td>
               </tr>
               <tr>
                 <td class="tb-label">Post-Money Valuation Cap</td>
-                <td class="tb-val"><strong>$1,800,000 USD</strong> (₹15,00,00,000 INR) Cap</td>
+                <td class="tb-val"><strong>$5,000,000 USD</strong> ($5.0M) Cap</td>
                 <td class="tb-label">Series A Discount Rate</td>
                 <td class="tb-val"><strong>20.0% Discount</strong> to Next Qualified Institutional Round</td>
               </tr>
               <tr>
                 <td class="tb-label">Contractual Revenue Hurdle</td>
-                <td class="tb-val"><strong>3.0x to 3.5x Multiple</strong> on Principal Capital (Priority Senior Cash Return)</td>
+                <td class="tb-val"><strong>2.5x to 3.0x Multiple</strong> on Principal Capital (Priority Senior Cash Return)</td>
                 <td class="tb-label">Gross Revenue-Share Pool</td>
-                <td class="tb-val"><strong>5.0% to 15.0%</strong> of Top-Line Software &amp; API Licensing Gross Receipts</td>
+                <td class="tb-val"><strong>5.0% to 12.0%</strong> of Top-Line Software &amp; API Licensing Gross Receipts</td>
               </tr>
               <tr>
                 <td class="tb-label">Distribution Frequency</td>
@@ -1065,10 +1018,10 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
               2.1 <strong>Mandatory Corporate Restructuring:</strong> Within thirty (30) days following the formal closure of this Pre-Seed Round, the Founder covenants to incorporate <strong>AI Brain Startups Private Limited</strong> (or such approved statutory corporate designation) under the Companies Act, 2013, Ministry of Corporate Affairs, Government of India.
             </p>
             <p>
-              2.2 <strong>Conversion Mechanics (CCPS / Equity Shares):</strong> Upon the closing of the Company's next Qualified Institutional Equity Financing Round (raising gross proceeds exceeding $500,000 USD / ₹4,25,00,000 INR), this iSAFE instrument shall automatically convert into Compulsorily Convertible Preference Shares (CCPS) or Series Seed Equity Shares at a price per share equal to the lesser of:
+              2.2 <strong>Conversion Mechanics (CCPS / Equity Shares):</strong> Upon the closing of the Company's next Qualified Institutional Equity Financing Round (raising gross proceeds exceeding $1,000,000 USD), this iSAFE instrument shall automatically convert into Compulsorily Convertible Preference Shares (CCPS) or Series Seed Equity Shares at a price per share equal to the lesser of:
             </p>
             <ul class="doc-list">
-              <li>(a) The price calculated by dividing the <strong>Post-Money Valuation Cap ($1,800,000 USD / ₹15,00,00,000 INR)</strong> by the fully diluted share capital of the Company immediately prior to the financing round; or</li>
+              <li>(a) The price calculated by dividing the <strong>Post-Money Valuation Cap ($5,000,000 USD)</strong> by the fully diluted share capital of the Company immediately prior to the financing round; or</li>
               <li>(b) The per-share price paid by new institutional investors in such Qualified Financing discounted by exactly <strong>twenty percent (20.0%)</strong>.</li>
             </ul>
             <p>
@@ -1079,10 +1032,10 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
           <div class="doc-section-h">ARTICLE III: CONTRACTUAL ACCELERATED REVENUE-SHARE DISTRIBUTIONS</div>
           <div class="doc-prose">
             <p>
-              3.1 <strong>Senior Cash Distribution Stream:</strong> Distinct from and in addition to permanent equity conversion rights, the Company undertakes an irrevocable legal covenant to disburse five percent (5.0%) to fifteen percent (15.0%) (depending upon the subscribed tier) of its top-line gross software licensing, graph memory API, and enterprise support billings directly to the Investor's designated settlement bank account.
+              3.1 <strong>Senior Cash Distribution Stream:</strong> Distinct from and in addition to permanent equity conversion rights, the Company undertakes an irrevocable legal covenant to disburse five percent (5.0%) to twelve percent (12.0%) (depending upon the subscribed tier) of its top-line gross software licensing, graph memory API, and enterprise support billings directly to the Investor's designated settlement bank account.
             </p>
             <p>
-              3.2 <strong>Hurdle Multiplier &amp; Timing:</strong> Revenue disbursements shall be computed within ten (10) calendar days of each calendar quarter end and wired within fifteen (15) days thereof, continuing until cumulative payouts equal exactly the contracted Return Multiplier (3.0x for Tiers 1 and 2; 3.5x for Tiers 3 and 4). Upon reaching the Return Cap, cash revenue distributions shall terminate, while the Investor's permanent equity ownership stake and voting rights remain intact in perpetuity.
+              3.2 <strong>Hurdle Multiplier &amp; Timing:</strong> Revenue disbursements shall be computed within ten (10) calendar days of each calendar quarter end and wired within fifteen (15) days thereof, continuing until cumulative payouts equal exactly the contracted Return Multiplier (2.5x for Tiers 1 and 2; 3.0x for Tiers 3 and 4). Upon reaching the Return Cap, cash revenue distributions shall terminate, while the Investor's permanent equity ownership stake and voting rights remain intact in perpetuity.
             </p>
           </div>
 
@@ -1102,7 +1055,7 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
               5.1 <strong>Investor Reporting Package:</strong> The Company shall deliver: (a) Monthly financial flash reports detailing monthly burn rate, cash runway, and engineering roadmap progress; (b) Quarterly unaudited financial statements within 30 days of quarter end; and (c) Annual audited statutory financial statements certified by an independent Chartered Accountant.
             </p>
             <p>
-              5.2 <strong>Board Observer Status:</strong> Investors subscribing at Tier 2 ($24,000 USD / ₹20,00,000 INR) and above shall have the contractual right to appoint one Advisory Board Observer to attend quarterly executive reviews and technical briefings with the Founder.
+              5.2 <strong>Board Observer Status:</strong> Investors subscribing at Tier 2 ($50,000 USD) and above shall have the contractual right to appoint one Advisory Board Observer to attend quarterly executive reviews and technical briefings with the Founder.
             </p>
           </div>
 
@@ -1142,41 +1095,41 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
                 <th>Equity Stake</th>
                 <th>Quarterly Rev-Share</th>
                 <th>Return Hurdle Cap</th>
-                <th>Governance Privileges</th>
+                <th>Governance &amp; Slot Cap</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Tier 1: Pioneer Angel</strong></td>
-                <td>$12,000 USD / ₹10,00,000 INR</td>
-                <td><strong>1.5% Equity</strong></td>
+                <td><strong>Tier 1: Strategic Angel</strong></td>
+                <td>$25,000 USD</td>
+                <td><strong>0.50% Equity</strong></td>
                 <td>5.0% Gross Revenue</td>
-                <td><strong>3.0x ($36,000 / ₹30L)</strong></td>
-                <td>Information Rights &amp; Monthly Updates</td>
+                <td><strong>2.5x ($62,500 USD)</strong></td>
+                <td>Information Rights · 8 Slots Limit (5 Available)</td>
               </tr>
               <tr>
-                <td><strong>Tier 2: Co-Founding Partner</strong></td>
-                <td>$24,000 USD / ₹20,00,000 INR</td>
-                <td><strong>3.5% Equity</strong></td>
+                <td><strong>Tier 2: Co-Founding Syndicate</strong></td>
+                <td>$50,000 USD</td>
+                <td><strong>1.00% Equity</strong></td>
                 <td>8.0% Gross Revenue</td>
-                <td><strong>3.0x ($72,000 / ₹60L)</strong></td>
-                <td>Advisory Board Observer &amp; Arch Access</td>
+                <td><strong>2.5x ($125,000 USD)</strong></td>
+                <td>Advisory Board Observer · 4 Slots Limit (2 Left)</td>
               </tr>
               <tr>
-                <td><strong>Tier 3: Strategic Lead Angel</strong></td>
-                <td>$36,000 USD / ₹30,00,000 INR</td>
-                <td><strong>6.0% Equity</strong></td>
+                <td><strong>Tier 3: Strategic Lead Anchor</strong></td>
+                <td>$100,000 USD</td>
+                <td><strong>2.00% Equity</strong></td>
                 <td>10.0% Gross Revenue</td>
-                <td><strong>3.5x ($126,000 / ₹1.05 Cr)</strong></td>
-                <td>Formal Advisory Seat &amp; Hiring Review</td>
+                <td><strong>3.0x ($300,000 USD)</strong></td>
+                <td>Formal Advisory Seat · 2 Slots Limit (1 Open)</td>
               </tr>
               <tr>
-                <td><strong>Tier 4: Principal Anchor Partner</strong></td>
-                <td>$100,000 USD / ₹85,00,000 INR</td>
-                <td><strong>12.5% Equity</strong></td>
-                <td>15.0% Gross Revenue</td>
-                <td><strong>3.5x ($350,000 / ₹2.97 Cr)</strong></td>
-                <td>Permanent Board Observer &amp; Strategic Veto</td>
+                <td><strong>Tier 4: Principal Whale</strong></td>
+                <td>$100,000 USD</td>
+                <td><strong>2.00% Equity</strong></td>
+                <td>12.0% Gross Revenue</td>
+                <td><strong>3.0x ($300,000 USD)</strong></td>
+                <td>Permanent Board Observer · 1 Exclusive Slot</td>
               </tr>
             </tbody>
           </table>

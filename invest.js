@@ -1,90 +1,93 @@
-// invest.js — Handles currency toggle, tier selection, wire details generation, and allocation submission
+// invest.js — Handles USD-denominated tier selection, auto-lock slot management, wire details, and allocation submission
 (function () {
   'use strict';
 
   var currentCurrency = 'USD';
-  var selectedTier = '20L';
+  var selectedTier = '50k';
 
   var TIER_DATA = {
-    '10L': {
-      usd: '$12,000 USD',
-      inr: '₹10,00,000 INR',
+    '25k': {
+      usd: '$25,000 USD',
       name: 'Strategic Angel (Tier 1)',
-      equity: '1.5% iSAFE Equity Stake',
-      revshare: '5% Gross Revenue Share (Up to 3.0x / $36K / ₹30 Lakh Return)',
-      amountUSD: '12,000',
-      amountINR: '10,00,000',
+      equity: '0.50% iSAFE Equity Stake',
+      revshare: '5% Quarterly Gross Revenue Share (Up to 2.5x / $62,500 Return)',
+      multiplier: '2.5x Return Cap ($62,500 USD)',
+      amountUSD: '25,000',
+      totalSlots: 8,
+      takenSlots: 3,
+      remainingSlots: 5,
+      statusBadge: '🟢 8 Slots Total · 5 Available',
+      locked: false
     },
-    '20L': {
-      usd: '$24,000 USD',
-      inr: '₹20,00,000 INR',
-      name: 'Co-Founding Partner (Tier 2)',
-      equity: '3.5% iSAFE Equity Stake',
-      revshare: '8% Gross Revenue Share (Up to 3.0x / $72K / ₹60 Lakh Return)',
-      amountUSD: '24,000',
-      amountINR: '20,00,000',
-    },
-    '30L': {
-      usd: '$36,000 USD',
-      inr: '₹30,00,000 INR',
-      name: 'Lead Anchor Investor (Tier 3)',
-      equity: '6.0% iSAFE Equity Stake',
-      revshare: '12% Gross Revenue Share (Up to 3.5x / $126K / ₹1.05 Cr Return)',
-      amountUSD: '36,000',
-      amountINR: '30,00,000',
+    '50k': {
+      usd: '$50,000 USD',
+      name: 'Co-Founding Syndicate (Tier 2)',
+      equity: '1.00% iSAFE Equity Stake',
+      revshare: '8% Quarterly Gross Revenue Share (Up to 2.5x / $125,000 Return)',
+      multiplier: '2.5x Return Cap ($125,000 USD)',
+      amountUSD: '50,000',
+      totalSlots: 4,
+      takenSlots: 2,
+      remainingSlots: 2,
+      statusBadge: '🔥 High Demand · 4 Slots Total · 2 Left',
+      locked: false
     },
     '100k': {
       usd: '$100,000 USD',
-      inr: '₹85,00,000 INR',
-      name: 'Global Sovereign Syndicate (Tier 4)',
-      equity: '12.5% iSAFE Equity Stake',
-      revshare: '15% Gross Revenue Share (Up to 3.5x / $350K / ₹2.97 Cr Return)',
+      name: 'Strategic Lead Anchor (Tier 3)',
+      equity: '2.00% iSAFE Equity Stake',
+      revshare: '10% Quarterly Gross Revenue Share (Up to 3.0x / $300,000 Return)',
+      multiplier: '3.0x Return Cap ($300,000 USD)',
       amountUSD: '100,000',
-      amountINR: '85,00,000',
+      totalSlots: 2,
+      takenSlots: 1,
+      remainingSlots: 1,
+      statusBadge: '⚡ Lead Anchor · 2 Slots Total · 1 Open',
+      locked: false
     },
+    'whale': {
+      usd: '$100,000 USD',
+      name: 'Principal Institutional Whale (Tier 4)',
+      equity: '2.00% iSAFE Equity Stake',
+      revshare: '12% Quarterly Gross Revenue Share (Up to 3.0x / $300,000 Return)',
+      multiplier: '3.0x Return Cap ($300,000 USD)',
+      amountUSD: '100,000',
+      totalSlots: 1,
+      takenSlots: 0,
+      remainingSlots: 1,
+      statusBadge: '🏛️ Institutional Whale · 1 Exclusive Slot',
+      locked: false
+    }
   };
 
-  // Currency Toggle Listeners
-  var curBtnUSD = document.getElementById('curBtnUSD');
-  var curBtnINR = document.getElementById('curBtnINR');
+  // Render and update Tier Slot Badges & Auto-Lock States
+  function renderTierSlots() {
+    for (var tierKey in TIER_DATA) {
+      if (TIER_DATA.hasOwnProperty(tierKey)) {
+        var t = TIER_DATA[tierKey];
+        var slotBadge = document.querySelector('[data-slot-badge="' + tierKey + '"]');
+        var card = document.querySelector('[data-tier-card="' + tierKey + '"]');
+        var actionBtn = document.querySelector('[data-select-tier="' + tierKey + '"]');
 
-  function setCurrency(cur) {
-    currentCurrency = cur;
-    if (curBtnUSD && curBtnINR) {
-      if (cur === 'USD') {
-        curBtnUSD.classList.add('active');
-        curBtnINR.classList.remove('active');
-      } else {
-        curBtnINR.classList.add('active');
-        curBtnUSD.classList.remove('active');
+        if (slotBadge) {
+          slotBadge.textContent = t.statusBadge;
+        }
+
+        if (t.remainingSlots <= 0) {
+          t.locked = true;
+          if (card) card.classList.add('tier-locked');
+          if (slotBadge) {
+            slotBadge.textContent = '🔒 100% ALLOCATED & LOCKED';
+            slotBadge.style.color = '#ff6b6b';
+          }
+          if (actionBtn) {
+            actionBtn.classList.add('disabled');
+            actionBtn.textContent = '🔒 Fully Allocated';
+            actionBtn.style.pointerEvents = 'none';
+          }
+        }
       }
     }
-
-    var priceTags = document.querySelectorAll('[data-tier-price]');
-    priceTags.forEach(function (el) {
-      var tier = el.getAttribute('data-tier-price');
-      if (TIER_DATA[tier]) {
-        el.textContent = cur === 'USD' ? TIER_DATA[tier].usd : TIER_DATA[tier].inr;
-      }
-    });
-
-    var wireCurBadge = document.getElementById('wireCurrencyBadge');
-    if (wireCurBadge) {
-      wireCurBadge.textContent = cur === 'USD' ? 'International SWIFT Wire (USD / EUR / Global)' : 'Domestic Indian Wire (RTGS / NEFT / IMPS)';
-    }
-
-    updateWireSummary();
-  }
-
-  if (curBtnUSD) {
-    curBtnUSD.addEventListener('click', function () {
-      setCurrency('USD');
-    });
-  }
-  if (curBtnINR) {
-    curBtnINR.addEventListener('click', function () {
-      setCurrency('INR');
-    });
   }
 
   // Tier Selection
@@ -93,6 +96,8 @@
     btn.addEventListener('click', function (e) {
       e.preventDefault();
       var tier = btn.getAttribute('data-select-tier');
+      if (TIER_DATA[tier] && TIER_DATA[tier].locked) return;
+
       selectedTier = tier;
       var desk = document.getElementById('wire-desk');
       if (desk) {
@@ -103,7 +108,7 @@
   });
 
   function updateWireSummary() {
-    var data = TIER_DATA[selectedTier] || TIER_DATA['20L'];
+    var data = TIER_DATA[selectedTier] || TIER_DATA['50k'];
     var amountEl = document.getElementById('selectedAmountDisplay');
     var tierNameEl = document.getElementById('selectedTierNameDisplay');
     var equityEl = document.getElementById('selectedEquityDisplay');
@@ -113,7 +118,7 @@
     var hiddenCur = document.getElementById('formCurrency');
 
     if (amountEl) {
-      amountEl.textContent = currentCurrency === 'USD' ? data.usd : data.inr;
+      amountEl.textContent = data.usd;
     }
     if (tierNameEl) {
       tierNameEl.textContent = data.name;
@@ -125,21 +130,8 @@
       revEl.textContent = data.revshare;
     }
     if (hiddenTier) hiddenTier.value = selectedTier;
-    if (hiddenAmount) hiddenAmount.value = currentCurrency === 'USD' ? data.amountUSD : data.amountINR;
-    if (hiddenCur) hiddenCur.value = currentCurrency;
-
-    // Toggle domestic vs international wire details view
-    var intlBox = document.getElementById('intlWireBox');
-    var domBox = document.getElementById('domWireBox');
-    if (intlBox && domBox) {
-      if (currentCurrency === 'USD') {
-        intlBox.style.display = 'block';
-        domBox.style.display = 'none';
-      } else {
-        intlBox.style.display = 'none';
-        domBox.style.display = 'block';
-      }
-    }
+    if (hiddenAmount) hiddenAmount.value = data.amountUSD;
+    if (hiddenCur) hiddenCur.value = 'USD';
   }
 
   // Copy-to-clipboard functionality
@@ -263,8 +255,8 @@
         country: form.elements['country'] ? form.elements['country'].value : '',
         entity: form.elements['entity'] ? form.elements['entity'].value : '',
         tier: selectedTier,
-        amount: currentCurrency === 'USD' ? TIER_DATA[selectedTier].amountUSD : TIER_DATA[selectedTier].amountINR,
-        currency: currentCurrency,
+        amount: TIER_DATA[selectedTier] ? TIER_DATA[selectedTier].amountUSD : '50,000',
+        currency: 'USD',
         utr: form.elements['utr'] ? form.elements['utr'].value : '',
         notes: form.elements['notes'] ? form.elements['notes'].value : '',
       };
@@ -375,5 +367,6 @@
   });
 
   // Initialize
-  setCurrency('USD');
+  renderTierSlots();
+  updateWireSummary();
 })();
