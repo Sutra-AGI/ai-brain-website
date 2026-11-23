@@ -39,6 +39,24 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://aibrainstartup.com/invest/terms</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/invest/wire</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/invest/tech</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://aibrainstartup.com/contact</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>

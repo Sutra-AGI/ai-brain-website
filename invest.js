@@ -61,6 +61,19 @@
     }
   };
 
+  // URL query parameter support for direct tier pre-selection (e.g. ?tier=15k)
+  try {
+    if (typeof window !== 'undefined' && window.location && window.location.search) {
+      var urlParams = new URLSearchParams(window.location.search);
+      var qTier = urlParams.get('tier');
+      if (qTier && TIER_DATA[qTier]) {
+        selectedTier = qTier;
+      }
+    }
+  } catch (e) {
+    console.warn('URLSearchParams check failed', e);
+  }
+
   // Local storage persistence for verified slot allocation
   function initSlotsStorage() {
     try {
@@ -232,6 +245,12 @@
       heroProgress.style.width = Math.max(pct, totalTaken === 0 ? 0 : 4) + '%';
     }
 
+    // Dynamic Navigation Bar Slots Pill
+    var navSlotsPill = document.getElementById('navSlotsPill');
+    if (navSlotsPill) {
+      navSlotsPill.textContent = '🟢 ' + totalRemaining + ' Slots Open';
+    }
+
     // Synchronize Term Sheet PDF Annexure A
     updateTermSheetDynamicData();
   }
@@ -248,8 +267,10 @@
       var desk = document.getElementById('wire-desk');
       if (desk) {
         desk.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        updateWireSummary();
+      } else {
+        window.location.href = '/invest/wire?tier=' + encodeURIComponent(tier);
       }
-      updateWireSummary();
     });
   });
 
@@ -538,6 +559,28 @@
       }
     });
   });
+
+  // Dedicated Investor Portal Mobile Menu Drawer Toggle
+  var portalMenuBtn = document.getElementById('portalMenuBtn');
+  var portalMobilePanel = document.getElementById('portalMobilePanel');
+  if (portalMenuBtn && portalMobilePanel) {
+    portalMenuBtn.addEventListener('click', function () {
+      var isOpen = portalMobilePanel.classList.toggle('active');
+      portalMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (isOpen) {
+        portalMobilePanel.removeAttribute('inert');
+      } else {
+        portalMobilePanel.setAttribute('inert', '');
+      }
+    });
+    portalMobilePanel.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        portalMobilePanel.classList.remove('active');
+        portalMenuBtn.setAttribute('aria-expanded', 'false');
+        portalMobilePanel.setAttribute('inert', '');
+      });
+    });
+  }
 
   // Initialize: Load persistent allocations, render slots, format real-time dates, and bind print hook
   initSlotsStorage();

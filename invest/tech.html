@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Technology Moat &amp; Hypergraph Architecture · AI Brain Startups</title>
+  <meta name="description" content="Technical due diligence dossier on AI Brain's proprietary associative hypergraph memory kernel. Sub-15ms multi-hop traversal, 85% vector cost savings, and 90-day engineering capital allocation.">
+  <link rel="canonical" href="https://aibrainstartup.com/invest/tech">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta property="og:title" content="AI Brain Technology Moat &amp; Hypergraph Architecture">
+  <meta property="og:description" content="Deep-tech due diligence: Hypergraph associative memory vs flat vector databases. 85% compute savings, sub-15ms multi-hop latency.">
+  <meta property="og:url" content="https://aibrainstartup.com/invest/tech">
+  <meta property="og:image" content="https://aibrainstartup.com/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0b0d0e">
+
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/home.css">
+  <link rel="stylesheet" href="/pages.css">
+  <link rel="stylesheet" href="/invest.css">
+</head>
+<body class="page-invest-tech">
+  <a class="skip" href="#main">Skip to technology moat</a>
+
+  <!-- Dedicated Institutional Investor Portal Header -->
+  <header class="invest-portal-nav" id="investNav">
+    <div class="wrap invest-nav-inner">
+      <div class="invest-nav-brand">
+        <a href="/invest" class="invest-nav-logo" aria-label="AI Brain Investor Portal">
+          <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="15" stroke="#c8ff3d" stroke-opacity=".35"/>
+            <circle cx="9" cy="12" r="2.6" fill="#c8ff3d"/><circle cx="22" cy="9" r="2" fill="#f2f1ec"/>
+            <circle cx="23" cy="21" r="2.6" fill="#c8ff3d"/><circle cx="12" cy="23" r="2" fill="#f2f1ec"/>
+            <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1"/>
+          </svg>
+          <span class="portal-logo-title">AI Brain</span>
+          <span class="portal-badge">TECH MOAT &amp; R&amp;D</span>
+        </a>
+      </div>
+
+      <nav class="invest-portal-links" aria-label="Investor Portal Sub-Navigation">
+        <a href="/invest" class="invest-tab" id="tabOverview">Overview &amp; Tiers</a>
+        <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Agreement</a>
+        <a href="/invest/wire" class="invest-tab" id="tabWire">Bank Wire Desk</a>
+        <a href="/invest/tech" class="invest-tab" id="tabTech" aria-current="page">Tech Moat</a>
+      </nav>
+
+      <div class="invest-portal-actions">
+        <span class="portal-slots-pill" id="navSlotsPill">🟢 22 Slots Open</span>
+        <a href="/invest" class="btn btn-sm btn-primary">⚡ View Allocation Tiers</a>
+        <a href="/invest" class="btn btn-sm btn-ghost btn-back-main">← Back to Overview</a>
+        <button class="menu-btn" id="portalMenuBtn" aria-label="Open portal menu" aria-expanded="false" aria-controls="portalMobilePanel"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="portal-mobile-panel" id="portalMobilePanel" inert>
+    <a class="m-link" href="/invest">Overview &amp; Tiers <span>01</span></a>
+    <a class="m-link" href="/invest/terms">iSAFE Agreement (Printable A4) <span>02</span></a>
+    <a class="m-link" href="/invest/wire">Bank Wire Desk &amp; UTR Lock <span>03</span></a>
+    <a class="m-link" href="/invest/tech" style="color:var(--accent); font-weight:600;">Tech Moat &amp; Hypergraph R&amp;D <span>04 ✓</span></a>
+    <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
+    <a href="/invest" class="btn btn-primary" style="margin-top:16px;">⚡ View Allocation Tiers ($15K - $100K)</a>
+  </div>
+
+  <main id="main" style="padding-top: 104px; padding-bottom: 60px;">
+    
+    <!-- Section 1: The Architectural Moat -->
+    <section class="page-section" id="tech-moat" style="padding: 0 0 60px;">
+      <div class="wrap">
+        <div class="section-header reveal" style="text-align: center; max-width: 820px; margin: 0 auto 40px;">
+          <span class="kicker">Technical Due Diligence Dossier · Proprietary IP</span>
+          <h1 class="h2">Why Flat Vectors Fail: <span class="serif">The Hypergraph Moat</span></h1>
+          <p class="lead">
+            Current AI agent architectures suffer from severe context collapse. Standard vector similarity search cannot perform associative reasoning across multi-hop temporal graphs. AI Brain replaces brute-force embedding scans with an in-memory neuromorphic associative hypergraph kernel.
+          </p>
+        </div>
+
+        <div class="moat-grid reveal d1">
+          <div class="moat-copy">
+            <h3 class="h3">The Technical Differentiation</h3>
+            <p>
+              Traditional vector databases (Pinecone, Weaviate, Milvus) compute Euclidean or cosine distance across thousands of isolated embeddings. They lack relational edge topology, context decay mechanics, and synaptic association paths.
+            </p>
+            <ul class="moat-list">
+              <li>
+                <strong>Lock-Free RCU In-Memory Engine:</strong> Custom C++ engine delivering sub-15ms multi-hop traversal across millions of entity nodes without thread lock contention.
+              </li>
+              <li>
+                <strong>Associative Synaptic Decay:</strong> Automatically weakens stale conversational memory while reinforcing high-utility decision paths, mimicking biological human memory.
+              </li>
+              <li>
+                <strong>Multi-Agent Synaptic Bridge:</strong> Multiple autonomous AI agents query a unified memory graph simultaneously without re-ingesting or duplicating context tokens.
+              </li>
+              <li>
+                <strong>Patent-Pending Mathematical Hypergraph:</strong> Filing International PCT patent protections on our proprietary graph-entropy memory compression schema.
+              </li>
+            </ul>
+
+            <div style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+              <a href="/invest" class="btn btn-primary">⚡ View Allocation Tiers →</a>
+              <a href="/invest/terms" class="btn btn-ghost">📄 Review iSAFE Terms</a>
+            </div>
+          </div>
+
+          <div class="moat-visual">
+            <div class="code-box">
+              <div class="code-box-header">
+                <div class="code-box-dots"><i></i><i></i><i></i></div>
+                <div class="code-box-tabs">
+                  <button type="button" class="tab-btn active" data-code-tab="py">Python SDK</button>
+                  <button type="button" class="tab-btn" data-code-tab="cpp">C++ Graph Engine</button>
+                </div>
+              </div>
+              <pre class="code-box-body" id="codeSnippetBody"><code><span class="c-comment"># Native AI Brain Associative Hypergraph Traversal</span>
+<span class="c-keyword">import</span> aibrain
+
+client = aibrain.<span class="c-func">Client</span>(api_key=<span class="c-str">"sk_live_cluster_alpha"</span>)
+
+<span class="c-comment"># Multi-hop synaptic recall across temporal agent graph</span>
+memory = client.hypergraph.<span class="c-func">traverse</span>(
+    agent_id=<span class="c-str">"agent_enterprise_swarm_42"</span>,
+    query=<span class="c-str">"previous architecture decisions on database migration"</span>,
+    hops=<span class="c-num">3</span>,
+    decay_threshold=<span class="c-num">0.15</span>
+)
+
+<span class="c-keyword">print</span>(<span class="c-str">f"Recall Latency: {memory.latency_ms} ms"</span>)  <span class="c-accent"># Output: 12.4 ms</span>
+<span class="c-keyword">print</span>(<span class="c-str">f"Associative Nodes: {len(memory.nodes)}"</span>)  <span class="c-accent"># 48 connected facts</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Unit Economics Benchmark Calculator -->
+    <section class="page-section" style="padding: 60px 0; background: rgba(255,255,255,0.01); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+      <div class="wrap">
+        <div class="section-header reveal" style="text-align: center; max-width: 720px; margin: 0 auto 36px;">
+          <span class="kicker">Disruptive Unit Economics</span>
+          <h2 class="h2">Cost Advantage: <span class="serif">Vector vs Hypergraph</span></h2>
+          <p class="lead">
+            Vector search compute explodes exponentially as enterprise context grows. AI Brain reduces memory storage footprint by 70% and query compute cost by up to 85%.
+          </p>
+        </div>
+
+        <div class="calc-card reveal d1">
+          <div class="calc-header">
+            <span>Select Enterprise Workload Scale:</span>
+            <div class="calc-options">
+              <button type="button" class="calc-btn" data-calc-vol="10m">10M Vectors</button>
+              <button type="button" class="calc-btn active" data-calc-vol="100m">100M Vectors</button>
+              <button type="button" class="calc-btn" data-calc-vol="1b">1 Billion Vectors</button>
+            </div>
+          </div>
+          <div class="calc-results-grid">
+            <div class="calc-stat-box">
+              <span class="c-stat-lbl">Traditional Vector Database (Annual)</span>
+              <span class="c-stat-val text-muted" id="calcVectorCost">$144,000 / yr</span>
+              <span class="c-stat-sub">High RAM usage &amp; high GPU vector search index overhead</span>
+            </div>
+            <div class="calc-stat-box highlight-box">
+              <span class="c-stat-lbl">AI Brain Hypergraph Memory (Annual)</span>
+              <span class="c-stat-val text-accent" id="calcBrainCost">$21,600 / yr</span>
+              <span class="c-stat-sub">70% RAM reduction via Sparse Synaptic Graph Pruning</span>
+            </div>
+            <div class="calc-stat-box savings-box">
+              <span class="c-stat-lbl">Gross Enterprise Cost Savings</span>
+              <span class="c-stat-val text-green" id="calcSavings">$122,400 (85% Saved)</span>
+              <span class="c-stat-sub">Direct software gross margin captured by AI Brain</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: 90-Day Capital Deployment Roadmap -->
+    <section class="page-section" style="padding: 60px 0;">
+      <div class="wrap">
+        <div class="section-header reveal" style="text-align: center; max-width: 760px; margin: 0 auto 40px;">
+          <span class="kicker">90-Day Execution Roadmap &amp; Capital Efficiency</span>
+          <h2 class="h2">Strict Use of Pre-Seed Proceeds ($700K USD)</h2>
+          <p class="lead">
+            We operate with extreme fiscal discipline. Every dollar raised is bound by contractual capital covenants under Article I of our iSAFE agreement to finance tangible technology milestones.
+          </p>
+        </div>
+
+        <div class="roadmap-grid reveal d1">
+          <div class="roadmap-card">
+            <div class="rm-pct">50%</div>
+            <h4 class="rm-title">Core Systems Engineering</h4>
+            <div class="rm-amount">$350,000 USD Allocation</div>
+            <p class="rm-desc">
+              Recruitment and 18-month retention of 4 senior distributed systems engineers, neuromorphic graph specialists, and C++ performance architects.
+            </p>
+          </div>
+          <div class="roadmap-card">
+            <div class="rm-pct">30%</div>
+            <h4 class="rm-title">Dedicated Compute &amp; Hardware</h4>
+            <div class="rm-amount">$210,000 USD Allocation</div>
+            <p class="rm-desc">
+              Provisioning 16x NVIDIA A100/H100 GPU clusters, dedicated NVMe graph storage nodes, and global low-latency edge nodes for live enterprise trials.
+            </p>
+          </div>
+          <div class="roadmap-card">
+            <div class="rm-pct">10%</div>
+            <h4 class="rm-title">International Patents &amp; Legal</h4>
+            <div class="rm-amount">$70,000 USD Allocation</div>
+            <p class="rm-desc">
+              Filing International Patent Cooperation Treaty (PCT) applications for our graph-entropy memory compression and Private Limited corporate restructuring.
+            </p>
+          </div>
+          <div class="roadmap-card">
+            <div class="rm-pct">10%</div>
+            <h4 class="rm-title">Developer Ecosystem &amp; Hackathons</h4>
+            <div class="rm-amount">$70,000 USD Allocation</div>
+            <p class="rm-desc">
+              Developer SDK packaging, automated benchmarks, open documentation, and enterprise POC onboarding workshops to expand commercial pilot pipeline.
+            </p>
+          </div>
+        </div>
+
+        <!-- Next Actions Bar -->
+        <div class="reveal d2" style="margin-top: 48px; text-align: center; padding: 32px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,0.02);">
+          <h3 style="font-size: 1.25rem; margin: 0 0 10px; color: var(--text);">Ready to participate in the Pre-Seed Round?</h3>
+          <p style="margin: 0 auto 20px; max-width: 540px; font-size: 0.9rem; color: var(--text-2);">
+            Review the 4 allocation tiers ($15K to $100K across 22 slots) or review the counter-signed iSAFE agreement.
+          </p>
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a href="/invest" class="btn btn-primary">⚡ View Allocation Tiers ($15K - $100K) →</a>
+            <a href="/invest/terms" class="btn btn-ghost">📄 Read Official iSAFE Agreement</a>
+            <a href="/invest/wire" class="btn btn-ghost">🏛️ Bank Wire Desk</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="logo foot-logo">{LOGO} AI Brain</div>
+          <p class="foot-tag">The associative memory hypergraph for autonomous AI agents.</p>
+          <p class="foot-copy">© 2026 AI BRAIN STARTUPS · UDYAM-RJ-05-0067280</p>
+        </div>
+        <div>
+          <p class="foot-h">Investor Portal</p>
+          <ul>
+            <li><a href="/invest">Overview &amp; Tiers</a></li>
+            <li><a href="/invest/terms">iSAFE Agreement</a></li>
+            <li><a href="/invest/wire">Bank Wire Desk</a></li>
+            <li><a href="/invest/tech" aria-current="page">Tech Moat &amp; Benchmarks</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="foot-h">Main Company</p>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/architecture">Architecture</a></li>
+            <li><a href="/docs">Docs</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="foot-h">Legal &amp; Compliance</p>
+          <ul>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+            <li><a href="https://wa.me/919461127967" target="_blank" rel="noopener">Founder Direct (WhatsApp)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/invest.js"></script>
+</body>
+</html>

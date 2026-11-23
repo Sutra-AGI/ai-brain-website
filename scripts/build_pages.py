@@ -616,8 +616,8 @@ for name, (active, body) in PAGES.items():
     path.write_text(out)
     print(f"built {name}.html ({len(out):,} bytes)")
 
-# Hand-written pages (homepage, Hindi homepage, admin, invest): only refresh their asset versions.
-for page in ("index.html", "hi.html", "admin.html", "invest.html"):
+# Hand-written pages (homepage, Hindi homepage, admin, invest & portal sub-pages): only refresh their asset versions.
+for page in ("index.html", "hi.html", "admin.html", "invest.html", "invest/terms.html", "invest/wire.html", "invest/tech.html"):
     f = ROOT / page
     f.write_text(re.sub(r'((?:home|pages|admin)\.(?:css|js))\?v=[\w]+', rf'\1?v={V}', f.read_text()))
 print(f"asset version: {V}")

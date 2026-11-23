@@ -71,47 +71,47 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav" id="nav">
-    <div class="wrap nav-inner">
-      <a href="/" class="logo" aria-label="AI Brain home">
-        <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <circle cx="16" cy="16" r="15" stroke="#c8ff3d" stroke-opacity=".35"/>
-          <circle cx="9" cy="12" r="2.6" fill="#c8ff3d"/><circle cx="22" cy="9" r="2" fill="#f2f1ec"/>
-          <circle cx="23" cy="21" r="2.6" fill="#c8ff3d"/><circle cx="12" cy="23" r="2" fill="#f2f1ec"/>
-          <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1"/>
-        </svg>
-        AI Brain
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="/#memory">Memory</a>
-        <a href="/#how">How it works</a>
-        <a href="/#agents">Agents</a>
-        <a href="/#sdk">SDK</a>
-        <a href="/architecture">Architecture</a>
-        <a href="/docs">Docs</a>
-        <a href="/about">About</a>
-        <a href="/invest" aria-current="page">Invest</a>
+  <!-- Dedicated Institutional Investor Portal Header -->
+  <header class="invest-portal-nav" id="investNav">
+    <div class="wrap invest-nav-inner">
+      <div class="invest-nav-brand">
+        <a href="/invest" class="invest-nav-logo" aria-label="AI Brain Investor Portal">
+          <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="15" stroke="#c8ff3d" stroke-opacity=".35"/>
+            <circle cx="9" cy="12" r="2.6" fill="#c8ff3d"/><circle cx="22" cy="9" r="2" fill="#f2f1ec"/>
+            <circle cx="23" cy="21" r="2.6" fill="#c8ff3d"/><circle cx="12" cy="23" r="2" fill="#f2f1ec"/>
+            <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1"/>
+          </svg>
+          <span class="portal-logo-title">AI Brain</span>
+          <span class="portal-badge">INVESTOR PORTAL</span>
+        </a>
+      </div>
+
+      <nav class="invest-portal-links" aria-label="Investor Portal Sub-Navigation">
+        <a href="/invest" class="invest-tab" id="tabOverview" aria-current="page">Overview &amp; Tiers</a>
+        <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Agreement</a>
+        <a href="/invest/wire" class="invest-tab" id="tabWire">Bank Wire Desk</a>
+        <a href="/invest/tech" class="invest-tab" id="tabTech">Tech Moat</a>
       </nav>
-      <div class="nav-cta">
-        <a href="/contact" class="btn btn-ghost btn-sm">Contact</a>
-        <a href="#wire-desk" class="btn btn-primary btn-sm">Direct Wire →</a>
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel"><span></span></button>
+
+      <div class="invest-portal-actions">
+        <span class="portal-slots-pill" id="navSlotsPill">🟢 22 Slots Open</span>
+        <a href="#wire-desk" class="btn btn-sm btn-primary">Direct Wire Desk →</a>
+        <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20reviewing%20the%20AI%20Brain%20Pre-Seed%20portal%20and%20would%20like%20to%20connect%20for%20due%20diligence." target="_blank" rel="noopener" class="btn btn-sm btn-ghost btn-founder-call">💬 Founder Call</a>
+        <a href="/" class="btn btn-sm btn-ghost btn-back-main">← Main Site</a>
+        <button class="menu-btn" id="portalMenuBtn" aria-label="Open portal menu" aria-expanded="false" aria-controls="portalMobilePanel"><span></span></button>
       </div>
     </div>
   </header>
 
-  <div class="mobile-panel" id="mobilePanel" inert>
-    <a class="m-link" href="/">Home <span>↗</span></a>
-    <a class="m-link" href="/#memory">Memory <span>01</span></a>
-    <a class="m-link" href="/#agents">Agents <span>02</span></a>
-    <a class="m-link" href="/#sdk">SDK <span>03</span></a>
-    <a class="m-link" href="/#demo">Live demo <span>04</span></a>
-    <a class="m-link" href="/architecture">Architecture <span>↗</span></a>
-    <a class="m-link" href="/docs">Docs <span>↗</span></a>
-    <a class="m-link" href="/about">About <span>↗</span></a>
-    <a class="m-link" href="/invest">Invest <span>↗</span></a>
-    <a class="m-link" href="/contact">Contact <span>↗</span></a>
-    <a href="#wire-desk" class="btn btn-primary">Lock Allocation →</a>
+  <!-- Mobile Drawer Menu -->
+  <div class="portal-mobile-panel" id="portalMobilePanel" inert>
+    <a class="m-link" href="/invest" style="color:var(--accent); font-weight:600;">Overview &amp; Tiers <span>01 ✓</span></a>
+    <a class="m-link" href="/invest/terms">iSAFE Agreement (Printable A4) <span>02</span></a>
+    <a class="m-link" href="/invest/wire">Bank Wire Desk &amp; UTR Lock <span>03</span></a>
+    <a class="m-link" href="/invest/tech">Tech Moat &amp; Hypergraph R&amp;D <span>04</span></a>
+    <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
+    <a href="#wire-desk" class="btn btn-primary" style="margin-top:16px;">Direct Wire Desk →</a>
   </div>
 
   <main id="main">
@@ -164,18 +164,17 @@
         <!-- Sticky Quick Navigation Jump Bar -->
         <nav class="invest-quick-nav reveal d3" aria-label="Investment portal quick jump navigation">
           <a href="#tiers" class="btn-nav-primary">⚡ Allocation Tiers (22 Slots)</a>
-          <a href="#tech-moat">🔬 Tech Moat &amp; Benchmarks</a>
-          <a href="#revenue-engine">📈 Revenue Engine &amp; Payouts</a>
-          <a href="#safeguards">🛡️ Fiduciary Safeguards</a>
-          <a href="#wire-desk">🏦 Bank Wire Desk &amp; UTR</a>
-          <button type="button" id="openTermSheetQuickBtn">📄 iSAFE Term Sheet</button>
+          <a href="/invest/terms">📄 iSAFE Agreement (PDF) ↗</a>
+          <a href="/invest/wire">🏛️ Bank Wire Desk ↗</a>
+          <a href="/invest/tech">🔬 Tech Moat &amp; Benchmarks ↗</a>
+          <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20reviewing%20the%20AI%20Brain%20Pre-Seed%20portal." target="_blank" rel="noopener">💬 WhatsApp Founder Call</a>
         </nav>
 
         <!-- Quick Action & Verification Buttons -->
         <div class="reveal d3" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;">
-          <button type="button" class="btn btn-ghost btn-sm" id="openTermSheetBtnTop">📄 View Official iSAFE Term Sheet</button>
+          <a href="/invest/terms" class="btn btn-ghost btn-sm" id="openTermSheetBtnTop">📄 View Official iSAFE Term Sheet (Printable A4) →</a>
           <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20reviewing%20the%20AI%20Brain%20Pre-Seed%20round%20and%20would%20like%20to%20schedule%20a%2015-minute%20founder%20due%20diligence%20call." target="_blank" rel="noopener" class="btn btn-primary btn-sm">💬 1-on-1 Founder Due Diligence Call (WhatsApp) →</a>
-          <a href="/architecture" class="btn btn-ghost btn-sm">🔬 Technical Architecture Whitepaper ↗</a>
+          <a href="/invest/tech" class="btn btn-ghost btn-sm">🔬 Technical Architecture Dossier →</a>
         </div>
       </div>
     </section>
@@ -380,6 +379,45 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
               <a href="#wire-desk" class="btn btn-primary" style="width:100%;text-align:center;background:#00d2ff;color:#08090b;border-color:#00d2ff;" data-select-tier="100k">Select Whale Tier →</a>
             </div>
           </article>
+        </div>
+
+        <!-- Institutional Sub-Portal Routing Hub -->
+        <div class="portal-subpages-grid reveal">
+          <!-- Card 1: Legal Agreement -->
+          <a href="/invest/terms" class="portal-subpage-card">
+            <div>
+              <div class="subpage-card-icon">📄</div>
+              <div class="subpage-card-title">Official iSAFE Term Sheet</div>
+              <div class="subpage-card-desc">
+                Review the formal 3-page convertible equity instrument: $4.0M Valuation Cap, 25% Series A discount, Annexure A slot schedule, and dual signature execution block.
+              </div>
+            </div>
+            <div class="subpage-card-action">Read &amp; Print A4 PDF →</div>
+          </a>
+
+          <!-- Card 2: Bank Wire Desk -->
+          <a href="/invest/wire" class="portal-subpage-card" style="border-color: rgba(200, 255, 61, 0.4); background: rgba(200, 255, 61, 0.03);">
+            <div>
+              <div class="subpage-card-icon">🏛️</div>
+              <div class="subpage-card-title">Bank Wire Transfer Desk</div>
+              <div class="subpage-card-desc">
+                Direct State Bank of India SWIFT coordinates, RBI FEMA Purpose Code P0802, and secure allocation lock form with instant UTR slot reservation.
+              </div>
+            </div>
+            <div class="subpage-card-action">Open Settlement Desk →</div>
+          </a>
+
+          <!-- Card 3: Tech Moat -->
+          <a href="/invest/tech" class="portal-subpage-card">
+            <div>
+              <div class="subpage-card-icon">🔬</div>
+              <div class="subpage-card-title">Technical Moat &amp; R&amp;D</div>
+              <div class="subpage-card-desc">
+                Examine working code benchmarks: C++ lock-free hypergraph kernel, sub-15ms multi-hop recall, 85% vector compute savings, and 90-day capital roadmap.
+              </div>
+            </div>
+            <div class="subpage-card-action">Inspect Engineering Moat →</div>
+          </a>
         </div>
       </div>
     </section>
