@@ -65,8 +65,8 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=c6173241">
-  <link rel="stylesheet" href="/pages.css?v=c6173241">
+  <link rel="stylesheet" href="/home.css?v=775dce27">
+  <link rel="stylesheet" href="/pages.css?v=775dce27">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -149,10 +149,10 @@
           <p>Sent straight to the founder. We usually reply within 1–2 business days.</p>
           <form id="contactForm" novalidate>
             <div class="form-grid">
-              <div class="f"><label for="cName">Full name</label><input id="cName" type="text" autocomplete="name" placeholder="Alex Rivera" required></div>
-              <div class="f"><label for="cEmail">Work email</label><input id="cEmail" type="email" autocomplete="email" placeholder="name@company.com" required></div>
+              <div class="f"><label for="cName">Full name</label><input id="cName" name="name" type="text" autocomplete="name" placeholder="Alex Rivera" required></div>
+              <div class="f"><label for="cEmail">Work email</label><input id="cEmail" name="email" type="email" autocomplete="email" placeholder="name@company.com" required></div>
               <div class="f full"><label for="cTopic">Inquiry type</label>
-                <select id="cTopic">
+                <select id="cTopic" name="topic">
                   <option>Investment / funding</option>
                   <option>Enterprise cluster</option>
                   <option>Strategic partnership</option>
@@ -160,9 +160,9 @@
                   <option>Other</option>
                 </select>
               </div>
-              <div class="f full"><label for="cBody">Message</label><textarea id="cBody" placeholder="Briefly describe what you need…" required></textarea></div>
+              <div class="f full"><label for="cBody">Message</label><textarea id="cBody" name="message" placeholder="Briefly describe what you need…" required></textarea></div>
             </div>
-            <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="cCompany">Company</label><input id="cCompany" type="text" tabindex="-1" autocomplete="off"></div>
+            <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="cCompany">Company</label><input id="cCompany" name="company" type="text" tabindex="-1" autocomplete="off"></div>
             <div class="form-foot">
               <small>Your details are used only to reply. See our <a href="/privacy-policy">privacy policy</a>.</small>
               <button class="btn btn-primary" type="submit">Send message <span class="arrow">→</span></button>
@@ -196,6 +196,6 @@
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="/home.js?v=c6173241" defer></script>
+  <script src="/home.js?v=775dce27" defer></script>
 </body>
 </html>

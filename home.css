@@ -522,9 +522,9 @@ main, .footer { position: relative; z-index: 1; }
 @keyframes sweep { 0%, 55% { transform: translateX(-120%); } 85%, 100% { transform: translateX(120%); } }
 
 /* Memory console */
-.console-wrap { position: relative; perspective: 1200px; }
+.console-wrap { position: relative; perspective: 1200px; min-height: 440px; contain: layout style; }
 .console {
-  position: relative; border-radius: 22px; overflow: hidden;
+  position: relative; border-radius: 22px; overflow: hidden; min-height: 420px;
   background: linear-gradient(180deg, rgba(21,24,29,0.82), rgba(10,11,13,0.9));
   border: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 40px 120px -30px rgba(0,0,0,0.9), 0 0 0 1px rgba(200,255,61,0.05), inset 0 1px 0 rgba(255,255,255,0.06);
@@ -648,6 +648,8 @@ main, .footer { position: relative; z-index: 1; }
   .aurora i:nth-child(2) { width: 70vw; height: 70vw; }
 }
 @media (max-width: 680px) {
+  .console-wrap { min-height: 380px; }
+  .console { min-height: 360px; }
   .chip-b { left: 0; }
   .chip-a { right: 0; }
   .console-q { font-size: 0.8rem; }
@@ -810,6 +812,11 @@ html[lang="hi"] .hero-meta, html[lang="hi"] .kicker, html[lang="hi"] .illus-note
 @media (max-width: 768px) {
   .spotlight-stats {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 400px) {
+  .spotlight-stats {
+    grid-template-columns: 1fr;
   }
 }
 .spotlight-stats .s-val {

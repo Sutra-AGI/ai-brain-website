@@ -15,12 +15,45 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#0b0d0e">
 
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://aibrainstartup.com/invest/wire#webpage",
+      "url": "https://aibrainstartup.com/invest/wire",
+      "name": "Official Bank Wire Desk & UTR Allocation Lock · AI Brain",
+      "description": "Official State Bank of India SWIFT coordinates, RBI FEMA Purpose Code P0802, and real-time UTR allocation lock desk for AI Brain Pre-Seed Strategic Round.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://aibrainstartup.com/#website",
+        "url": "https://aibrainstartup.com/",
+        "name": "AI Brain"
+      }
+    },
+    {
+      "@type": "FinancialService",
+      "@id": "https://aibrainstartup.com/invest/wire#service",
+      "name": "AI Brain Capital Settlement Desk",
+      "provider": {
+        "@type": "Organization",
+        "name": "AI BRAIN STARTUPS",
+        "url": "https://aibrainstartup.com"
+      },
+      "serviceType": "Bank Wire Remittance Settlement (SWIFT / RTGS / NEFT)",
+      "areaServed": "Global"
+    }
+  ]
+}
+  </script>
+
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=c6173241">
-  <link rel="stylesheet" href="/pages.css?v=c6173241">
-  <link rel="stylesheet" href="/invest.css?v=c6173241">
+  <link rel="stylesheet" href="/home.css?v=775dce27">
+  <link rel="stylesheet" href="/pages.css?v=775dce27">
+  <link rel="stylesheet" href="/invest.css?v=775dce27">
 </head>
 <body class="page-invest-wire">
   <a class="skip" href="#main">Skip to wire transfer desk</a>
@@ -116,7 +149,16 @@
               </div>
             </div>
 
+            <!-- Verification Gate for Bank Coordinates -->
+            <div id="bankVerifyPrompt" class="bank-verify-prompt" style="padding: 24px; background: rgba(200, 255, 61, 0.04); border: 1px solid rgba(200, 255, 61, 0.25); border-radius: 12px; margin-bottom: 24px; text-align: center;">
+              <div style="font-size: 1.6rem; margin-bottom: 8px;">🔐</div>
+              <h4 style="margin: 0 0 6px; font-size: 1.05rem; color: var(--text);">Accredited Investor Verification</h4>
+              <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 14px; max-width: 440px; margin-left: auto; margin-right: auto;">To protect official banking coordinates and prevent automated scraping, please verify accreditation to view full SWIFT / RTGS wire details.</p>
+              <button type="button" class="btn btn-primary btn-sm" id="btnRevealBankCoords">Verify Accreditation &amp; Reveal Wire Details →</button>
+            </div>
+
             <!-- Official Bank Account Coordinates -->
+            <div id="bankDetailsContent" style="display:none;">
             <div class="bank-details-card">
               <div class="bank-card-h">
                 <span>STATE BANK OF INDIA (SBI)</span>
@@ -169,6 +211,7 @@
                 <span class="b-val mono" style="color:var(--accent);">P0802 (Software &amp; AI Tech R&amp;D)</span>
                 <button type="button" class="btn-copy" data-copy="P0802" aria-label="Copy Purpose Code">Copy</button>
               </div>
+            </div>
             </div>
 
             <div style="margin-top: 16px; padding: 14px; border-radius: 6px; background: rgba(255,255,255,0.02); border: 1px solid var(--line); font-size: 0.82rem; color: var(--text-2);">
@@ -319,6 +362,6 @@
     </div>
   </footer>
 
-  <script src="/invest.js?v=c6173241"></script>
+  <script src="/invest.js?v=775dce27"></script>
 </body>
 </html>

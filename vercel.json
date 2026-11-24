@@ -2,6 +2,13 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/invest/tech",
+      "destination": "/architecture",
+      "permanent": true
+    }
+  ],
   "crons": [
     {
       "path": "/api/cleanup",

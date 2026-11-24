@@ -9,9 +9,9 @@
   <meta name="theme-color" content="#08090b">
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=c6173241">
-  <link rel="stylesheet" href="/pages.css?v=c6173241">
-  <link rel="stylesheet" href="/admin.css?v=c6173241">
+  <link rel="stylesheet" href="/home.css?v=775dce27">
+  <link rel="stylesheet" href="/pages.css?v=775dce27">
+  <link rel="stylesheet" href="/admin.css?v=775dce27">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -26,8 +26,9 @@
       <h1>Admin</h1>
       <p>Enter the <code class="mono">ADMIN_TOKEN</code> you set in Vercel → Settings → Environment Variables.</p>
       <form id="loginForm" class="f">
+        <input type="text" name="username" value="admin" autocomplete="username" style="display:none" aria-hidden="true">
         <label for="token">Admin token</label>
-        <input id="token" type="password" autocomplete="current-password" required minlength="16">
+        <input id="token" name="password" type="password" autocomplete="current-password" required minlength="16">
         <button class="btn btn-primary" type="submit" style="margin-top:16px">Open dashboard</button>
         <div class="form-msg" id="loginMsg" role="status" aria-live="polite"></div>
       </form>
@@ -53,6 +54,6 @@
       </div>
     </section>
   </main>
-  <script src="/admin.js?v=c6173241" defer></script>
+  <script src="/admin.js?v=775dce27" defer></script>
 </body>
 </html>

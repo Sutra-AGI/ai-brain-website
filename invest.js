@@ -7,6 +7,69 @@
   var selectedTier = '50k';
   var STORAGE_KEY = 'aibrain_invest_slots_v1';
   var SESS_STORAGE_KEY = 'aibrain_investor_session';
+  var BANK_VERIFY_KEY = 'aibrain_investor_verified';
+
+  // Server-side slot synchronization engine (BUG-0002)
+  function syncSlotsFromServer() {
+    fetch('/api/invest-slots')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data && data.ok && data.slots) {
+          for (var k in data.slots) {
+            if (TIER_DATA[k]) {
+              TIER_DATA[k].takenSlots = data.slots[k].taken;
+              TIER_DATA[k].remainingSlots = data.slots[k].remaining;
+              if (TIER_DATA[k].remainingSlots === 0) {
+                TIER_DATA[k].statusBadge = '🔒 100% ALLOCATED & LOCKED';
+                TIER_DATA[k].locked = true;
+              } else {
+                TIER_DATA[k].statusBadge = '🟢 ' + TIER_DATA[k].totalSlots + ' Slots Total · ' + TIER_DATA[k].remainingSlots + ' Available';
+                TIER_DATA[k].locked = false;
+              }
+            }
+          }
+          saveSlotsStorage();
+          renderTierSlots();
+          updateTermSheetDynamicData();
+        }
+      })
+      .catch(function (e) {
+        console.warn('Server slot sync unavailable, using local cache', e);
+      });
+  }
+
+  // 2-Step Verified Bank Wire Coordinate Unmasking (BUG-0006)
+  function initBankCoordinatesVerification() {
+    var promptEl = document.getElementById('bankVerifyPrompt');
+    var coordsBox = document.getElementById('intlWireBox') || document.getElementById('bankDetailsContent');
+    var revealBtn = document.getElementById('btnRevealBankCoords');
+
+    function showCoords() {
+      if (promptEl) promptEl.style.display = 'none';
+      if (coordsBox) coordsBox.style.display = 'block';
+    }
+
+    var isVerified = false;
+    try {
+      isVerified = sessionStorage.getItem(BANK_VERIFY_KEY) === 'true';
+    } catch (e) {}
+
+    if (isVerified) {
+      showCoords();
+    } else {
+      if (promptEl) promptEl.style.display = 'block';
+      if (coordsBox) coordsBox.style.display = 'none';
+    }
+
+    if (revealBtn) {
+      revealBtn.addEventListener('click', function () {
+        try {
+          sessionStorage.setItem(BANK_VERIFY_KEY, 'true');
+        } catch (e) {}
+        showCoords();
+      });
+    }
+  }
 
   var TIER_DATA = {
     '15k': {
@@ -661,8 +724,8 @@
   var acceptTermSheetBtnBottom = document.getElementById('acceptTermSheetBtnBottom');
 
   function openModal(e) {
-    if (e && e.preventDefault) e.preventDefault();
     if (isafeModal) {
+      if (e && e.preventDefault) e.preventDefault();
       updateTermSheetDynamicData();
       isafeModal.classList.add('active');
       isafeModal.setAttribute('aria-hidden', 'false');
@@ -787,5 +850,7 @@
   updateWireSummary();
   updateTermSheetDynamicData();
   initRevealObserver();
+  initBankCoordinatesVerification();
+  syncSlotsFromServer();
   window.addEventListener('beforeprint', updateTermSheetDynamicData);
 })();

@@ -26,10 +26,55 @@
   <meta property="og:locale" content="hi_IN">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://aibrainstartup.com/og.jpg">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://aibrainstartup.com/#organization",
+      "name": "AI Brain",
+      "legalName": "AI BRAIN STARTUPS",
+      "alternateName": ["AI Brain Startup", "एआई ब्रेन"],
+      "url": "https://aibrainstartup.com/hi",
+      "logo": "https://aibrainstartup.com/icons/icon-512.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Bhoja Ram Choudhary",
+        "jobTitle": "संस्थापक एवं मुख्य वास्तुकार (Founder & Chief Architect)",
+        "sameAs": "https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Rajasthan",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "founder@aibrainstartup.com",
+        "telephone": "+91-9461127967",
+        "contactType": "founder"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://aibrainstartup.com/hi#website",
+      "url": "https://aibrainstartup.com/hi",
+      "name": "AI Brain — एआई एजेंट्स के लिए स्थायी मेमोरी लेयर",
+      "inLanguage": "hi",
+      "publisher": {
+        "@id": "https://aibrainstartup.com/#organization"
+      }
+    }
+  ]
+}
+  </script>
+
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=c6173241">
+  <link rel="stylesheet" href="/home.css?v=775dce27">
 </head>
 <body>
   <a class="skip" href="#main">मुख्य सामग्री पर जाएँ</a>
@@ -253,9 +298,9 @@
             </div>
             <form class="wl-form" id="wlForm" data-source="hi" novalidate>
               <label for="wlEmail" class="sr-only">ईमेल</label>
-              <input type="email" id="wlEmail" placeholder="you@company.com" required autocomplete="email" lang="en">
+              <input type="email" id="wlEmail" name="email" placeholder="you@company.com" required autocomplete="email" lang="en">
               <label for="wlRole" class="sr-only">आपकी भूमिका</label>
-              <select id="wlRole" required>
+              <select id="wlRole" name="role" required>
                 <option value="" disabled selected>आपकी भूमिका</option>
                 <option value="developer">सॉफ़्टवेयर इंजीनियर / आर्किटेक्ट</option>
                 <option value="researcher">AI रिसर्चर / वैज्ञानिक</option>
@@ -295,6 +340,6 @@
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="/home.js?v=c6173241" defer></script>
+  <script src="/home.js?v=775dce27" defer></script>
 </body>
 </html>

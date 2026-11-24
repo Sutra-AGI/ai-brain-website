@@ -28,16 +28,16 @@ LOGO = '''<svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="tr
         </svg>'''
 
 NAV_ITEMS = [("/#memory", "Memory", None), ("/#how", "How it works", None), ("/#agents", "Agents", None), ("/#sdk", "SDK", None),
-             ("architecture", "Architecture", "architecture"), ("docs", "Docs", "docs"), ("about", "About", "about"),
-             ("invest", "Invest", "invest")]
+             ("/architecture", "Architecture", "architecture"), ("/docs", "Docs", "docs"), ("/about", "About", "about"),
+             ("/invest", "Invest", "invest")]
 
 
 def nav(active):
     links = "\n        ".join(
         f'<a href="{h}"{" aria-current=\"page\"" if active and k == active else ""}>{t}</a>' for h, t, k in NAV_ITEMS)
     mob = [("/", "Home", "↗"), ("/#memory", "Memory", "01"), ("/#agents", "Agents", "02"), ("/#sdk", "SDK", "03"),
-           ("/#demo", "Live demo", "04"), ("architecture", "Architecture", "↗"), ("docs", "Docs", "↗"),
-           ("about", "About", "↗"), ("invest", "Invest", "↗"), ("contact", "Contact", "↗")]
+           ("/#demo", "Live demo", "04"), ("/architecture", "Architecture", "↗"), ("/docs", "Docs", "↗"),
+           ("/about", "About", "↗"), ("/invest", "Invest", "↗"), ("/contact", "Contact", "↗")]
     mlinks = "\n    ".join(f'<a class="m-link" href="{h}">{t} <span>{n}</span></a>' for h, t, n in mob)
     contact_cur = ' aria-current="page"' if active == "contact" else ""
     return f'''
@@ -51,7 +51,7 @@ def nav(active):
         {links}
       </nav>
       <div class="nav-cta">
-        <a href="contact" class="btn btn-ghost btn-sm"{contact_cur}>Contact</a>
+        <a href="/contact" class="btn btn-ghost btn-sm"{contact_cur}>Contact</a>
         <a href="/#waitlist" class="btn btn-primary btn-sm">Early access</a>
         <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel"><span></span></button>
       </div>
@@ -74,9 +74,9 @@ FOOTER = f'''
           <a class="mail" href="mailto:founder@aibrainstartup.com">founder@aibrainstartup.com</a>
           <a class="mail" href="mailto:team@aibrainstartup.com">team@aibrainstartup.com</a>
         </div>
-        <div><p class="foot-h">Product</p><ul><li><a href="/#memory">Memory</a></li><li><a href="/#agents">Agents</a></li><li><a href="/#sdk">SDK</a></li><li><a href="/#demo">Live demo</a></li><li><a href="docs">Docs</a></li></ul></div>
-        <div><p class="foot-h">Company</p><ul><li><a href="about">About</a></li><li><a href="architecture">Architecture</a></li><li><a href="invest">Invest</a></li><li><a href="contact">Contact</a></li><li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
-        <div><p class="foot-h">Legal</p><ul><li><a href="privacy-policy">Privacy policy</a></li><li><a href="terms-of-service">Terms of service</a></li><li><a href="/hi" hreflang="hi" lang="hi">हिन्दी</a></li></ul></div>
+        <div><p class="foot-h">Product</p><ul><li><a href="/#memory">Memory</a></li><li><a href="/#agents">Agents</a></li><li><a href="/#sdk">SDK</a></li><li><a href="/#demo">Live demo</a></li><li><a href="/docs">Docs</a></li></ul></div>
+        <div><p class="foot-h">Company</p><ul><li><a href="/about">About</a></li><li><a href="/architecture">Architecture</a></li><li><a href="/invest">Invest</a></li><li><a href="/contact">Contact</a></li><li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+        <div><p class="foot-h">Legal</p><ul><li><a href="/privacy-policy">Privacy policy</a></li><li><a href="/terms-of-service">Terms of service</a></li><li><a href="/hi" hreflang="hi" lang="hi">हिन्दी</a></li></ul></div>
       </div>
       <div class="foot-bottom">
         <span class="msme">🇮🇳 Govt. of India registered MSME · Udyam <b>UDYAM-RJ-05-0067280</b></span>
@@ -147,7 +147,7 @@ CTA = '''
 ABOUT = hero("About", "Leadership &amp; company",
              'Building the <span class="serif">memory</span> layer for AI.',
              "AI Brain is building foundational cognitive memory infrastructure for the next generation of autonomous AI agents — persistent, associative and fast.",
-             '<div class="hero-actions reveal d3"><a href="contact" class="btn btn-primary">Talk to the founder <span class="arrow">→</span></a><a href="architecture" class="btn btn-ghost">See the architecture</a></div>') + '''
+             '<div class="hero-actions reveal d3"><a href="/contact" class="btn btn-primary">Talk to the founder <span class="arrow">→</span></a><a href="/architecture" class="btn btn-ghost">See the architecture</a></div>') + '''
     <section class="page-section">
       <div class="wrap">
         <div class="founder" itemscope itemtype="https://schema.org/Person">
@@ -164,7 +164,7 @@ ABOUT = hero("About", "Leadership &amp; company",
             </dl>
             <div class="founder-actions">
               <a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" itemprop="sameAs">LinkedIn ↗</a>
-              <a href="contact" class="btn btn-primary">Schedule a call <span class="arrow">→</span></a>
+              <a href="/contact" class="btn btn-primary">Schedule a call <span class="arrow">→</span></a>
             </div>
           </article>
           <div class="pillars">
@@ -501,10 +501,10 @@ CONTACT = hero("Contact", "Get in touch",
           <p>Sent straight to the founder. We usually reply within 1–2 business days.</p>
           <form id="contactForm" novalidate>
             <div class="form-grid">
-              <div class="f"><label for="cName">Full name</label><input id="cName" type="text" autocomplete="name" placeholder="Alex Rivera" required></div>
-              <div class="f"><label for="cEmail">Work email</label><input id="cEmail" type="email" autocomplete="email" placeholder="name@company.com" required></div>
+              <div class="f"><label for="cName">Full name</label><input id="cName" name="name" type="text" autocomplete="name" placeholder="Alex Rivera" required></div>
+              <div class="f"><label for="cEmail">Work email</label><input id="cEmail" name="email" type="email" autocomplete="email" placeholder="name@company.com" required></div>
               <div class="f full"><label for="cTopic">Inquiry type</label>
-                <select id="cTopic">
+                <select id="cTopic" name="topic">
                   <option>Investment / funding</option>
                   <option>Enterprise cluster</option>
                   <option>Strategic partnership</option>
@@ -512,9 +512,9 @@ CONTACT = hero("Contact", "Get in touch",
                   <option>Other</option>
                 </select>
               </div>
-              <div class="f full"><label for="cBody">Message</label><textarea id="cBody" placeholder="Briefly describe what you need…" required></textarea></div>
+              <div class="f full"><label for="cBody">Message</label><textarea id="cBody" name="message" placeholder="Briefly describe what you need…" required></textarea></div>
             </div>
-            <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="cCompany">Company</label><input id="cCompany" type="text" tabindex="-1" autocomplete="off"></div>
+            <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="cCompany">Company</label><input id="cCompany" name="company" type="text" tabindex="-1" autocomplete="off"></div>
             <div class="form-foot">
               <small>Your details are used only to reply. See our <a href="/privacy-policy">privacy policy</a>.</small>
               <button class="btn btn-primary" type="submit">Send message <span class="arrow">→</span></button>
@@ -585,8 +585,8 @@ NOTFOUND = '''
         <p>The page or graph node you’re looking for was moved or never stored. Let’s get you back on track.</p>
         <div class="hero-actions">
           <a href="/" class="btn btn-primary">Back to home <span class="arrow">→</span></a>
-          <a href="docs" class="btn btn-ghost">Developer docs</a>
-          <a href="architecture" class="btn btn-ghost">Architecture</a>
+          <a href="/docs" class="btn btn-ghost">Developer docs</a>
+          <a href="/architecture" class="btn btn-ghost">Architecture</a>
         </div>
       </div>
     </section>
@@ -620,4 +620,92 @@ for name, (active, body) in PAGES.items():
 for page in ("index.html", "hi.html", "admin.html", "invest.html", "invest/terms.html", "invest/wire.html", "invest/tech.html"):
     f = ROOT / page
     f.write_text(re.sub(r'((?:home|pages|admin|invest)\.(?:css|js))\?v=[\w]+', rf'\1?v={V}', f.read_text()))
+import datetime
+
+def update_sitemap():
+    today = datetime.date.today().isoformat()
+    sitemap = f'''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://aibrainstartup.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aibrainstartup.com/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://aibrainstartup.com/hi"/>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://aibrainstartup.com/og.jpg</image:loc>
+      <image:title>AI Brain — AI that never forgets</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/hi</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aibrainstartup.com/"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://aibrainstartup.com/hi"/>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/architecture</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/docs</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/about</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/invest</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/invest/terms</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/invest/wire</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/contact</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/privacy-policy</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/terms-of-service</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>
+'''
+    (ROOT / "sitemap.xml").write_text(sitemap)
+    print(f"generated sitemap.xml with lastmod={today}")
+
+update_sitemap()
 print(f"asset version: {V}")

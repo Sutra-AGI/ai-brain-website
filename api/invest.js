@@ -1,6 +1,7 @@
 // POST /api/invest — keeps a record of all strategic investor allocations & wire confirmations
 import { randomUUID } from 'node:crypto';
 import { EMAIL_RE, json, looksLikeBot, meta, methodNotAllowed, notify, rateLimited, readJson, savePrivate } from './_lib.js';
+import { getSlotsState, recordSlotBooking } from './invest-slots.js';
 
 const TIERS = new Set(['15k', '25k', '50k', '100k', 'custom']);
 
@@ -54,6 +55,12 @@ export async function POST(request) {
     // Continue even if blob write fails, so we can still attempt email alert
   }
 
+  try {
+    await recordSlotBooking(tier);
+  } catch (e) {
+    console.error('[invest] slot ledger update failed', e);
+  }
+
   console.log('[invest] strategic allocation registered', { tier, amount, currency, country });
   await notify(`🚀 NEW STRATEGIC INVESTOR ALLOCATION: ${currency} ${amount} (${tier}) from ${name}`, {
     Name: name,
@@ -71,4 +78,9 @@ export async function POST(request) {
   return json(200, { ok: true, id, message: 'Allocation confirmed. Wire details locked.' });
 }
 
-export const GET = methodNotAllowed;
+export async function GET() {
+  const data = await getSlotsState();
+  return json(200, data, {
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+  });
+}
