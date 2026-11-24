@@ -55,9 +55,9 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=1228681d">
-  <link rel="stylesheet" href="/pages.css?v=1228681d">
-  <link rel="stylesheet" href="/invest.css?v=1228681d">
+  <link rel="stylesheet" href="/home.css?v=93e9b43e">
+  <link rel="stylesheet" href="/pages.css?v=93e9b43e">
+  <link rel="stylesheet" href="/invest.css?v=93e9b43e">
 </head>
 <body class="deck-body">
   <a class="skip" href="#deck-container">Skip to content</a>
@@ -459,11 +459,78 @@
     </div>
   </main>
 
-  <footer class="deck-footer">
+    <!-- Institutional Investor Footer (Dedicated Sovereign Custody & Escrow Governance) -->
+  <footer class="investor-portal-footer">
     <div class="wrap">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:0.8rem; color:var(--text-3);">
-        <div>© 2026 AI BRAIN STARTUPS · UDYAM-RJ-05-0067280 · State Bank of India Corporate Custody</div>
-        <div>Confidential Investor Pitch Deck · <a href="/invest" style="color:var(--accent);">Overview &amp; Tiers</a> · <a href="/invest/wire" style="color:var(--text-2);">Wire Desk</a> · <a href="/invest/terms" style="color:var(--text-2);">iSAFE Terms</a></div>
+      <div class="investor-foot-grid">
+        <!-- Col 1: Entity & Banking Custody -->
+        <div class="investor-foot-col col-entity">
+          <div class="investor-foot-brand">
+            <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <circle cx="16" cy="16" r="15" stroke="#c8ff3d" stroke-opacity=".35"/>
+              <circle cx="9" cy="12" r="2.6" fill="#c8ff3d"/><circle cx="22" cy="9" r="2" fill="#f2f1ec"/>
+              <circle cx="23" cy="21" r="2.6" fill="#c8ff3d"/><circle cx="12" cy="23" r="2" fill="#f2f1ec"/>
+              <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1"/>
+            </svg>
+            <span class="portal-brand-text">AI Brain <span class="portal-badge-sm">INVESTOR RELATIONS</span></span>
+          </div>
+          <p class="investor-foot-tag">The associative memory hypergraph for autonomous AI agents. Pre-Seed Strategic Round (K USD at .0M Valuation Cap).</p>
+          
+          <div class="banking-custody-card">
+            <span class="custody-eyebrow">Segregated Corporate Custody</span>
+            <div class="custody-detail"><strong>Bank:</strong> State Bank of India (SBI)</div>
+            <div class="custody-detail"><strong>Current A/c:</strong> 40318275832</div>
+            <div class="custody-detail"><strong>SWIFT:</strong> SBININBB · <strong>IFSC:</strong> SBIN0015203</div>
+          </div>
+        </div>
+
+        <!-- Col 2: Investor Dossiers & Execution -->
+        <div class="investor-foot-col">
+          <p class="investor-foot-heading">Investor Dossiers</p>
+          <ul class="investor-foot-links">
+            <li><a href="/invest">Overview &amp; 22 Tiers</a></li>
+            <li><a href="/invest/deck" aria-current="page">10-Slide Pitch Deck (PDF)</a></li>
+            <li><a href="/invest/terms">Official iSAFE Agreement (A4)</a></li>
+            <li><a href="/invest/wire">Bank Wire Settlement Desk</a></li>
+            <li><a href="/architecture">Technical Moat &amp; Benchmarks</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Fiduciary Governance & Protection -->
+        <div class="investor-foot-col">
+          <p class="investor-foot-heading">Fiduciary Governance</p>
+          <ul class="investor-foot-links">
+            <li><a href="/invest/terms#article-2">Senior Liquidation Preference</a></li>
+            <li><a href="/invest/terms#article-4">3.0x–3.5x Revenue Dividends</a></li>
+            <li><a href="/invest/terms#article-3">30-Day MCA Pvt Ltd Shield</a></li>
+            <li><a href="/invest/wire">RBI FEMA Compliance (P0802)</a></li>
+            <li><a href="/invest/wire">Accredited Investor Verification</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Due Diligence Desk & Public Site Backlink -->
+        <div class="investor-foot-col">
+          <p class="investor-foot-heading">Due Diligence Desk</p>
+          <ul class="investor-foot-links">
+            <li><a href="https://wa.me/919461127967" target="_blank" rel="noopener" class="foot-highlight-link">💬 WhatsApp Founder Direct</a></li>
+            <li><a href="mailto:founder@aibrainstartup.com">✉️ founder@aibrainstartup.com</a></li>
+            <li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">💼 Founder LinkedIn Profile</a></li>
+            <li class="foot-divider"></li>
+            <li><a href="/" class="foot-return-link">← Return to Public Product Site</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Regulatory Notice & Sovereign MSME Credentials Bar -->
+      <div class="investor-foot-bottom">
+        <div class="investor-disclaimer-box">
+          <strong>Statutory Regulatory Notice:</strong> Investment in pre-seed unlisted early-stage technology enterprises carries high operational risk and capital illiquidity. Capital is deployed under bilateral iSAFE convertible contracts with contractual senior priority liquidation preference and 30-day incorporation CCPS covenants. Not a public solicitation or collective investment scheme under SEBI regulations. Intended exclusively for accredited angel investors.
+        </div>
+        <div class="investor-foot-subline">
+          <span class="msme-badge">🇮🇳 Govt. of India Registered MSME · <b>UDYAM-RJ-05-0067280</b></span>
+          <span class="escrow-badge">🏛️ Sovereign SBI Banking Custody</span>
+          <span class="copy-notice">© 2026 AI BRAIN STARTUPS. All rights reserved.</span>
+        </div>
       </div>
     </div>
   </footer>

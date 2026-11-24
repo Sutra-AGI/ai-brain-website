@@ -3227,3 +3227,185 @@ html, body {
     margin: 0.5cm;
   }
 }
+
+/* ==========================================================================
+   Institutional Investor Footer (/invest, /invest/deck, /invest/terms, /invest/wire)
+   ========================================================================== */
+.investor-portal-footer {
+  background: #070809;
+  border-top: 1px solid var(--line);
+  padding: 60px 0 40px;
+  position: relative;
+  z-index: 10;
+}
+.investor-foot-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+  gap: 36px;
+  margin-bottom: 40px;
+}
+@media (max-width: 960px) {
+  .investor-foot-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+@media (max-width: 580px) {
+  .investor-foot-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+.investor-foot-col {
+  display: flex;
+  flex-direction: column;
+}
+.investor-foot-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.portal-brand-text {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.portal-badge-sm {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(200, 255, 61, 0.08);
+  border: 1px solid rgba(200, 255, 61, 0.25);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.investor-foot-tag {
+  font-size: 0.86rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.banking-custody-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 0.78rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.custody-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.custody-detail {
+  color: var(--text-2);
+  line-height: 1.4;
+}
+.custody-detail strong {
+  color: var(--text);
+}
+.investor-foot-heading {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.investor-foot-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.investor-foot-links li a {
+  font-size: 0.88rem;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color var(--ease);
+  line-height: 1.4;
+  display: inline-block;
+}
+.investor-foot-links li a:hover {
+  color: var(--accent);
+}
+.investor-foot-links li a[aria-current="page"] {
+  color: var(--accent);
+  font-weight: 600;
+}
+.foot-highlight-link {
+  color: var(--accent) !important;
+  font-weight: 500;
+}
+.foot-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 6px 0;
+}
+.foot-return-link {
+  color: var(--text) !important;
+  font-weight: 500;
+}
+.investor-foot-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.investor-disclaimer-box {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 0.76rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.investor-disclaimer-box strong {
+  color: var(--text-2);
+}
+.investor-foot-subline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.msme-badge,
+.escrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.msme-badge b {
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+.copy-notice {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+}
+
+@media print {
+  .investor-portal-footer {
+    display: none !important;
+  }
+}
