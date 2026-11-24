@@ -470,33 +470,7 @@
     }
   }
 
-  // Interactive Benchmark Simulator
-  var calcBtns = document.querySelectorAll('[data-calc-vol]');
-  var calcVectorCost = document.getElementById('calcVectorCost');
-  var calcBrainCost = document.getElementById('calcBrainCost');
-  var calcSavings = document.getElementById('calcSavings');
 
-  var CALC_DATA = {
-    '1m': { vector: '$3,800 / mo', brain: '$340 / mo', savings: '91.0% ($41,520 / yr)' },
-    '5m': { vector: '$19,000 / mo', brain: '$1,710 / mo', savings: '91.0% ($207,480 / yr)' },
-    '20m': { vector: '$76,000 / mo', brain: '$6,840 / mo', savings: '91.0% ($829,920 / yr)' },
-    '10m': { vector: '$14,400 / yr', brain: '$2,160 / yr', savings: '$12,240 (85% Saved)' },
-    '100m': { vector: '$144,000 / yr', brain: '$21,600 / yr', savings: '$122,400 (85% Saved)' },
-    '1b': { vector: '$1,440,000 / yr', brain: '$216,000 / yr', savings: '$1,224,000 (85% Saved)' }
-  };
-
-  calcBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      calcBtns.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      var vol = btn.getAttribute('data-calc-vol');
-      if (CALC_DATA[vol]) {
-        if (calcVectorCost) calcVectorCost.textContent = CALC_DATA[vol].vector;
-        if (calcBrainCost) calcBrainCost.textContent = CALC_DATA[vol].brain;
-        if (calcSavings) calcSavings.textContent = CALC_DATA[vol].savings;
-      }
-    });
-  });
 
   // Code Tab Switching Logic (Technical Proof)
   var codeTabBtns = document.querySelectorAll('[data-code-tab]');
