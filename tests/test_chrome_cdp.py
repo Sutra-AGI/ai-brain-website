@@ -77,11 +77,19 @@ async def main():
         "--user-data-dir=/tmp/chrome-test-profile"
     ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     
-    time.sleep(1.5)
+    # Wait for Chrome CDP port to become ready
+    tabs = None
+    for _ in range(10):
+        time.sleep(0.5)
+        try:
+            tabs = json.loads(urllib.request.urlopen(f"http://127.0.0.1:{CDP_PORT}/json").read())
+            if tabs and len(tabs) > 0:
+                break
+        except Exception:
+            pass
+    assert tabs and len(tabs) > 0, "FATAL: Chrome CDP did not start in time"
     
     try:
-        # Get WebSocket debugger URL
-        tabs = json.loads(urllib.request.urlopen(f"http://127.0.0.1:{CDP_PORT}/json").read())
         ws_url = tabs[0]["webSocketDebuggerUrl"]
         
         pages = [
