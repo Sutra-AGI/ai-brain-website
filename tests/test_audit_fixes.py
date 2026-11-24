@@ -74,7 +74,7 @@ def test_admin_accessibility():
     print("✓ BUG-0012 Verified: Admin login password form includes username field and proper autocomplete")
 
 def test_jsonld_schemas():
-    for f in ['index.html', 'hi.html', 'about.html', 'invest.html', 'invest/terms.html', 'invest/wire.html', 'resume.html']:
+    for f in ['index.html', 'hi.html', 'about.html', 'invest.html', 'invest/terms.html', 'invest/wire.html', 'invest/policy.html', 'invest/disclosures.html', 'resume.html']:
         path = ROOT / f
         content = path.read_text()
         matches = re.findall(r'<script type="application/ld\+json">(.*?)</script>', content, flags=re.S)

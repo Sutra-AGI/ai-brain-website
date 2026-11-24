@@ -3291,6 +3291,19 @@ html, body {
   line-height: 1.5;
   margin-bottom: 16px;
 }
+.entity-credentials-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent);
+  padding: 6px 12px;
+  background: rgba(200, 255, 61, 0.05);
+  border: 1px solid rgba(200, 255, 61, 0.2);
+  border-radius: 4px;
+  margin-top: 8px;
+}
 .banking-custody-card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--line);
