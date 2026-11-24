@@ -113,7 +113,7 @@
     },
     '100k': {
       usd: '$100,000 USD',
-      name: 'Principal Whale Lead (Tier 4)',
+      name: 'Institutional Anchor Lead (Tier 4)',
       equity: '2.500% Major Equity Stake',
       revshare: '15% Quarterly Gross Revenue Share (Up to 3.5x / $350,000 Return)',
       multiplier: '3.5x Return Cap ($350,000 USD)',

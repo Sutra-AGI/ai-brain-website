@@ -600,14 +600,15 @@
   background: var(--ink-2);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 32px 24px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .tier-card:hover {
-  border-color: rgba(200, 255, 61, 0.35);
+  border-color: rgba(200, 255, 61, 0.4);
   transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 .tier-card.featured {
   border-color: var(--accent);
@@ -637,21 +638,21 @@
 }
 .tier-header {
   border-bottom: 1px solid var(--line);
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
 }
 .tier-name {
-  font-size: 1.18rem;
+  font-size: 1.12rem;
   font-weight: 600;
   color: var(--text);
   letter-spacing: -0.02em;
 }
 .tier-price {
-  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+  font-size: clamp(1.7rem, 2.2vw, 2.1rem);
   font-weight: 700;
   color: var(--accent);
   letter-spacing: -0.04em;
-  margin: 10px 0 6px;
+  margin: 8px 0 6px;
   font-family: var(--font-mono);
 }
 .tier-stake {
@@ -673,17 +674,17 @@
 .tier-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 28px;
+  margin: 0 0 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   flex-grow: 1;
 }
 .tier-features li {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   color: var(--text-2);
   line-height: 1.4;
 }
