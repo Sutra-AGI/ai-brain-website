@@ -418,6 +418,13 @@
     if (hiddenTier) hiddenTier.value = selectedTier;
     if (hiddenAmount) hiddenAmount.value = data.amountUSD;
     if (hiddenCur) hiddenCur.value = 'USD';
+    
+    // Phase 5: Dynamically sync Bank Wire Desk link with selected tier
+    var wireBtn = document.getElementById('btnGoToWireDesk');
+    if (wireBtn) {
+      wireBtn.href = '/invest/wire?tier=' + encodeURIComponent(selectedTier);
+    }
+    
     updateTermSheetDynamicData();
   }
 
