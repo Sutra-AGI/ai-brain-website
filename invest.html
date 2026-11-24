@@ -64,9 +64,9 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=f6a7197f">
-  <link rel="stylesheet" href="/pages.css?v=f6a7197f">
-  <link rel="stylesheet" href="/invest.css?v=f6a7197f">
+  <link rel="stylesheet" href="/home.css?v=1228681d">
+  <link rel="stylesheet" href="/pages.css?v=1228681d">
+  <link rel="stylesheet" href="/invest.css?v=1228681d">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -89,6 +89,7 @@
 
       <nav class="invest-portal-links" aria-label="Investor Portal Sub-Navigation">
         <a href="/invest" class="invest-tab" id="tabOverview" aria-current="page">Overview &amp; Tiers</a>
+        <a href="/invest/deck" class="invest-tab" id="tabDeck">Pitch Deck</a>
         <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Agreement</a>
         <a href="/invest/wire" class="invest-tab" id="tabWire">Bank Wire Desk</a>
         <a href="/architecture" class="invest-tab" id="tabTech">Tech Moat</a>
@@ -107,9 +108,10 @@
   <!-- Mobile Drawer Menu -->
   <div class="portal-mobile-panel" id="portalMobilePanel" inert>
     <a class="m-link" href="/invest" style="color:var(--accent); font-weight:600;">Overview &amp; Tiers <span>01 ✓</span></a>
-    <a class="m-link" href="/invest/terms">iSAFE Agreement (Printable A4) <span>02</span></a>
-    <a class="m-link" href="/invest/wire">Bank Wire Desk &amp; UTR Lock <span>03</span></a>
-    <a class="m-link" href="/architecture">Tech Moat &amp; Hypergraph R&amp;D <span>04</span></a>
+    <a class="m-link" href="/invest/deck">10-Slide Pitch Deck (PDF) <span>02</span></a>
+    <a class="m-link" href="/invest/terms">iSAFE Agreement (Printable A4) <span>03</span></a>
+    <a class="m-link" href="/invest/wire">Bank Wire Desk &amp; UTR Lock <span>04</span></a>
+    <a class="m-link" href="/architecture">Tech Moat &amp; Hypergraph R&amp;D <span>05</span></a>
     <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
     <a href="#wire-desk" class="btn btn-primary" style="margin-top:16px;">Direct Wire Desk →</a>
   </div>
@@ -172,6 +174,7 @@
         <!-- Secondary Sub-Page Direct Gateways -->
         <div class="hero-quick-links reveal d3">
           <span style="font-family:var(--font-mono); font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--text-3);">Direct Dossiers:</span>
+          <a href="/invest/deck">📊 10-Slide Pitch Deck (PDF) ↗</a>
           <a href="/invest/terms" id="openTermSheetBtnTop">📄 Official iSAFE Agreement (Printable A4) ↗</a>
           <a href="/invest/wire">🏛️ Direct Bank Wire Settlement Desk ↗</a>
           <a href="/architecture">🔬 Technical Moat &amp; Benchmarks ↗</a>
@@ -925,6 +928,6 @@
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="/invest.js?v=f6a7197f" defer></script>
+  <script src="/invest.js?v=1228681d" defer></script>
 </body>
 </html>

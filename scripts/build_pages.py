@@ -617,7 +617,7 @@ for name, (active, body) in PAGES.items():
     print(f"built {name}.html ({len(out):,} bytes)")
 
 # Hand-written pages (homepage, Hindi homepage, admin, invest & portal sub-pages): only refresh their asset versions.
-for page in ("index.html", "hi.html", "admin.html", "invest.html", "invest/terms.html", "invest/wire.html", "invest/tech.html"):
+for page in ("index.html", "hi.html", "admin.html", "invest.html", "invest/terms.html", "invest/wire.html", "invest/tech.html", "invest/deck.html"):
     f = ROOT / page
     f.write_text(re.sub(r'((?:home|pages|admin|invest)\.(?:css|js))\?v=[\w]+', rf'\1?v={V}', f.read_text()))
 import datetime
@@ -671,6 +671,12 @@ def update_sitemap():
     <lastmod>{today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/invest/deck</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
   </url>
   <url>
     <loc>https://aibrainstartup.com/invest/terms</loc>

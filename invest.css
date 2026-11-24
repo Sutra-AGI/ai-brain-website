@@ -2887,3 +2887,343 @@ html, body {
   color: var(--text-muted);
   margin-bottom: 12px;
 }
+
+/* ==========================================================================
+   Investor Pitch Deck Presentation & Print Layout (/invest/deck)
+   ========================================================================== */
+.deck-body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+.deck-control-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 13, 14, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+}
+.deck-control-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.deck-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.deck-back-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-2);
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  transition: all var(--ease);
+}
+.deck-back-btn:hover {
+  color: var(--text);
+  border-color: rgba(200, 255, 61, 0.3);
+}
+.deck-tag-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(200, 255, 61, 0.08);
+  border: 1px solid rgba(200, 255, 61, 0.25);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+.deck-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.deck-wrap {
+  max-width: 1120px;
+  margin: 36px auto 60px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.deck-slide {
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) * 1.2);
+  padding: 40px 48px;
+  position: relative;
+  box-shadow: 0 16px 40px -12px rgba(0,0,0,0.5);
+  transition: border-color var(--ease);
+}
+.deck-slide:hover {
+  border-color: rgba(200, 255, 61, 0.25);
+}
+.slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.slide-number {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.slide-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(200, 255, 61, 0.08);
+  border: 1px solid rgba(200, 255, 61, 0.2);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.slide-title {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+.slide-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin-bottom: 28px;
+  max-width: 900px;
+}
+.deck-key-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 32px 0 28px;
+}
+@media (max-width: 800px) {
+  .deck-key-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.deck-stat-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.deck-stat-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.deck-stat-val {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--font-mono);
+}
+.deck-stat-val.highlight {
+  color: var(--accent);
+}
+.slide-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: var(--text-2);
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+}
+.slide-three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 860px) {
+  .slide-three-col {
+    grid-template-columns: 1fr;
+  }
+}
+.slide-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 800px) {
+  .slide-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+.slide-four-col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 960px) {
+  .slide-four-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 540px) {
+  .slide-four-col {
+    grid-template-columns: 1fr;
+  }
+}
+.slide-col-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.slide-col-card.highlight-border {
+  border-color: rgba(200, 255, 61, 0.3);
+  background: rgba(200, 255, 61, 0.02);
+}
+.slide-col-card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 12px 0 8px;
+  color: var(--text);
+}
+.slide-col-card p {
+  font-size: 0.86rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin: 0;
+}
+.slide-card-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.tam-number {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 10px 0 8px;
+  line-height: 1.1;
+}
+.slide-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--text-2);
+}
+.slide-list li::before {
+  content: "✓ ";
+  color: var(--accent);
+  font-weight: bold;
+}
+.slide-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.slide-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+  text-align: left;
+}
+.slide-table th {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px 18px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--line);
+}
+.slide-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-2);
+}
+.slide-table tr:last-child td {
+  border-bottom: none;
+}
+.slide-table td.table-win {
+  color: var(--accent);
+  font-weight: 600;
+}
+.slide-final-cta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.deck-footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 0 40px;
+  background: var(--ink-2);
+}
+
+/* Print Styles for A4 Landscape Slide Export */
+@media print {
+  body.deck-body {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  .deck-control-bar,
+  .deck-footer,
+  .skip {
+    display: none !important;
+  }
+  .deck-wrap {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+  .deck-slide {
+    page-break-after: always !important;
+    break-after: page !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 32px 40px !important;
+    min-height: 100vh !important;
+    box-sizing: border-box !important;
+  }
+  @page {
+    size: A4 landscape;
+    margin: 0.5cm;
+  }
+}

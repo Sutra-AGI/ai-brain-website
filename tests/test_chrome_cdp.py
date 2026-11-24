@@ -87,7 +87,8 @@ async def main():
         pages = [
             f"http://127.0.0.1:{PORT}/",
             f"http://127.0.0.1:{PORT}/invest.html",
-            f"http://127.0.0.1:{PORT}/invest/terms.html",
+            f"http://127.0.0.1:{PORT}/invest/deck.html",
+    f"http://127.0.0.1:{PORT}/invest/terms.html",
             f"http://127.0.0.1:{PORT}/invest/wire.html",
             f"http://127.0.0.1:{PORT}/contact.html",
             f"http://127.0.0.1:{PORT}/about.html",
