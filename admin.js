@@ -6,6 +6,18 @@
   const COLS = {
     waitlist: [['createdAt', 'Signed up'], ['email', 'Email'], ['role', 'Role'], ['country', 'Country'], ['signups', 'Signups'], ['source', 'Source']],
     contact: [['createdAt', 'Received'], ['name', 'Name'], ['email', 'Email'], ['topic', 'Topic'], ['message', 'Message'], ['country', 'Country']],
+    invest: [
+      ['createdAt', 'Timestamp'],
+      ['name', 'Name'],
+      ['email', 'Email'],
+      ['phone', 'Phone'],
+      ['country', 'Country'],
+      ['entity', 'Entity'],
+      ['tier', 'Tier'],
+      ['amount', 'Amount'],
+      ['currency', 'Currency'],
+      ['utr', 'UTR'],
+    ],
   };
   let type = 'waitlist';
   let items = [];
@@ -41,7 +53,8 @@
     const cols = COLS[type];
     const q = $('#filter').value.trim().toLowerCase();
     const rows = q ? items.filter((it) => JSON.stringify(it).toLowerCase().includes(q)) : items;
-    $('#countLine').textContent = `${rows.length} of ${items.length} ${type === 'waitlist' ? 'signups' : 'messages'}`;
+    const typeLabel = type === 'waitlist' ? 'signups' : (type === 'contact' ? 'messages' : 'allocations');
+    $('#countLine').textContent = `${rows.length} of ${items.length} ${typeLabel}`;
     const thead = $('#table thead'), tbody = $('#table tbody');
     thead.replaceChildren(); tbody.replaceChildren();
     const hr = document.createElement('tr');
@@ -58,6 +71,7 @@
         const td = document.createElement('td');
         if (k === 'message') td.className = 'msg';
         if (k === 'email') { const a = document.createElement('a'); a.href = `mailto:${it.email}`; a.textContent = it.email; td.appendChild(a); }
+        else if (k === 'phone' && it.phone) { const a = document.createElement('a'); a.href = `tel:${it.phone}`; a.textContent = it.phone; td.appendChild(a); }
         else td.textContent = k === 'createdAt' ? fmtDate(it[k]) : (it[k] ?? '');
         tr.appendChild(td);
       });

@@ -36,7 +36,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 body {
   background: var(--ink);
   color: var(--text);
@@ -440,6 +440,8 @@ input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 
   .foot-brand { grid-column: 1 / -1; }
 }
 @media (max-width: 680px) {
+  .btn { max-width: 100%; white-space: normal; text-align: center; }
+  .btn-sm { min-height: 44px; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; }
   .nav-cta .btn { display: none; }
   .hero { padding-top: 120px; }
   .hero-actions .btn { flex: 1 1 100%; }

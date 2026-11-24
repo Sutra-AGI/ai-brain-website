@@ -193,7 +193,8 @@ a.contact-row:hover .go { color: var(--accent); transform: translate(2px, -2px);
   .flow > div { border-bottom: 1px solid var(--line); }
   .flow > div:nth-child(2n) { border-right: 0; }
   .flow > div:last-child { grid-column: 1 / -1; border-bottom: 0; }
-  .docs, .legal { grid-template-columns: 1fr; gap: 32px; }
+  .docs, .legal { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .docs > div { min-width: 0; }
   .toc { position: static; }
   .toc ol { display: flex; flex-wrap: wrap; gap: 8px; border: 0; }
   .toc a { border: 1px solid var(--line-strong); border-radius: 999px; padding: 6px 14px; margin: 0; font-size: 0.84rem; }
@@ -216,4 +217,33 @@ a.contact-row:hover .go { color: var(--accent); transform: translate(2px, -2px);
   .endpoint { grid-template-columns: 1fr; }
   .endpoint p { grid-column: auto; }
   .cta-slim .btn { width: 100%; }
+  .docs {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .docs > div {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .toc {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .doc-sec {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .code {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .code .term pre {
+    max-width: 100%;
+    overflow-x: auto;
+  }
 }

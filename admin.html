@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Admin — AI Brain</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <meta name="theme-color" content="#08090b">
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=018a85aa">
-  <link rel="stylesheet" href="/pages.css?v=018a85aa">
-  <link rel="stylesheet" href="/admin.css?v=018a85aa">
+  <link rel="stylesheet" href="/home.css?v=c6173241">
+  <link rel="stylesheet" href="/pages.css?v=c6173241">
+  <link rel="stylesheet" href="/admin.css?v=c6173241">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -35,8 +35,9 @@
 
     <section id="dashView" hidden>
       <div class="admin-tabs" role="tablist" aria-label="Submissions">
-        <button role="tab" aria-selected="true" data-type="waitlist" type="button">Waitlist</button>
-        <button role="tab" aria-selected="false" data-type="contact" type="button">Contact messages</button>
+        <button role="tab" aria-selected="true" data-type="waitlist" class="tab-btn" type="button">Waitlist</button>
+        <button role="tab" aria-selected="false" data-type="contact" class="tab-btn" type="button">Contact messages</button>
+        <button role="tab" aria-selected="false" data-type="invest" class="tab-btn" type="button">Invest Allocations</button>
       </div>
       <div class="admin-bar">
         <p class="mono" id="countLine">Loading…</p>
@@ -52,6 +53,6 @@
       </div>
     </section>
   </main>
-  <script src="/admin.js?v=018a85aa" defer></script>
+  <script src="/admin.js?v=c6173241" defer></script>
 </body>
 </html>

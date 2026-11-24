@@ -58,8 +58,11 @@ export async function readJson(request) {
  */
 export function looksLikeBot(data) {
   if (data?.company) return true;
-  const elapsed = Number(data?.elapsed);
-  return !Number.isFinite(elapsed) || elapsed < 1500;
+  if (data?.elapsed !== undefined && data?.elapsed !== null) {
+    const elapsed = Number(data.elapsed);
+    if (!Number.isFinite(elapsed) || elapsed < 1500) return true;
+  }
+  return false;
 }
 
 export const hashOf = (s) => createHash('sha256').update(s).digest('hex').slice(0, 20);

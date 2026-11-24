@@ -2091,6 +2091,7 @@
   .doc-table {
     border: 1px solid #444444 !important;
     margin: 6px 0 8px !important;
+    display: table !important;
   }
   .doc-table td,
   .doc-table th {
@@ -2189,5 +2190,168 @@
     font-size: 6.8pt !important;
     padding-top: 4px !important;
     margin-top: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Mobile Overflow Fix & Responsive Viewport Containment (BUG-0002, BUG-0004)
+   ========================================================================== */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.wrap, .invest-nav-inner {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.code-snippet-body, .code-box-body, .code-terminal, .code-box {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.payout-matrix-card {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tier-tabs-mobile {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.invest-quick-nav {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.doc-page {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.doc-table, .bench-table, .payout-table {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 960px) {
+  .moat-grid, .wire-desk-grid, .wire-desk-container, .tech-proof-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .moat-grid > *, .wire-desk-grid > *, .wire-desk-container > *, .tech-proof-grid > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn {
+    white-space: normal !important;
+    max-width: 100% !important;
+    text-align: center;
+  }
+  .sim-stats-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .sim-stats-grid > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .doc-page {
+    padding: 20px 14px;
+  }
+  .doc-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .bench-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .payout-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .modal-screen-bar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .modal-bar-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .modal-bar-left span {
+    margin-left: 0 !important;
+  }
+  .modal-bar-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .modal-bar-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .invest-portal-nav {
+    height: auto;
+    padding: 10px 0;
+  }
+  .invest-nav-inner {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .invest-portal-actions {
+    gap: 6px;
+  }
+  .bank-details-card,
+  .sim-box,
+  .tech-proof-card,
+  .selected-tier-card,
+  .invest-form-card,
+  .wire-form-card {
+    padding: 18px 14px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .bank-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+  .bank-label, .b-lbl {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .bank-val-box {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+  .bank-val, .b-val {
+    padding: 0 !important;
+    word-break: break-all !important;
+  }
+  .sim-btn {
+    width: 100%;
+    text-align: center;
   }
 }

@@ -5,10 +5,14 @@
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const LOADED_AT = Date.now();
-  const postJSON = (url, body) => fetch(url, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...body, elapsed: Date.now() - LOADED_AT })
-  }).then(r => r.json().catch(() => ({})).then(b => { if (!r.ok || !b.ok) throw new Error(b.error || String(r.status)); return b; }));
+  const postJSON = async (url, body) => {
+    const wait = Math.max(0, 1600 - (Date.now() - LOADED_AT));
+    if (wait > 0) await new Promise(r => setTimeout(r, wait));
+    return fetch(url, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...body, elapsed: Date.now() - LOADED_AT })
+    }).then(r => r.json().catch(() => ({})).then(b => { if (!r.ok || !b.ok) throw new Error(b.error || String(r.status)); return b; }));
+  };
 
   /* ---------- Nav ---------- */
   function initNav() {
