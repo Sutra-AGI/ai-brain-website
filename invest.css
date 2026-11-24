@@ -798,6 +798,68 @@
   margin: 0;
 }
 
+/* ==========================================================================
+   PHASE 2: 3-CORE BUSINESS VALUE PILLARS & ARCHITECTURE BENCHMARK STYLES
+   ========================================================================== */
+.moat-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+}
+@media (max-width: 900px) {
+  .moat-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.moat-pillar-card {
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.moat-pillar-card:hover {
+  border-color: rgba(200, 255, 61, 0.35);
+  transform: translateY(-2px);
+}
+.moat-pillar-card.featured-pillar {
+  border-color: rgba(200, 255, 61, 0.4);
+  background: linear-gradient(180deg, rgba(200, 255, 61, 0.04) 0%, var(--ink-2) 100%);
+}
+.moat-pillar-icon {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+.moat-pillar-stat {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.moat-pillar-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.moat-pillar-desc {
+  font-size: 0.86rem;
+  color: var(--text-2);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.tech-proof-grid.single-col {
+  grid-template-columns: 1fr !important;
+}
+
 /* Technical Proof & Benchmark Grid */
 .tech-proof-grid {
   display: grid;
