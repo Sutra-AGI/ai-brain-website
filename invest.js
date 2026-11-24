@@ -208,9 +208,27 @@
     var investorEntityDisplay = document.getElementById('investorEntityDisplay');
     var investorSignDate = document.getElementById('investorSignDate');
 
-    if (investorSignName && nameVal) investorSignName.textContent = nameVal;
-    if (investorSignEntity && entityVal) investorSignEntity.textContent = entityVal;
-    if (investorEntityDisplay && entityVal) investorEntityDisplay.textContent = entityVal.toUpperCase();
+    if (investorSignName) {
+      investorSignName.textContent = nameVal || '___________________________________';
+    }
+    if (investorSignEntity) {
+      if (entityVal) {
+        investorSignEntity.textContent = entityVal;
+      } else if (nameVal) {
+        investorSignEntity.textContent = 'Individual Angel Investor';
+      } else {
+        investorSignEntity.textContent = '_________________________________';
+      }
+    }
+    if (investorEntityDisplay) {
+      if (entityVal) {
+        investorEntityDisplay.textContent = entityVal.toUpperCase();
+      } else if (nameVal) {
+        investorEntityDisplay.textContent = nameVal.toUpperCase() + ' (INDIVIDUAL ALLOCATOR)';
+      } else {
+        investorEntityDisplay.textContent = 'ACCREDITED INVESTOR / ALLOCATOR';
+      }
+    }
     if (investorSignDate) {
       if (utrVal) {
         investorSignDate.textContent = dateStr + ' · UTR Ref: ' + utrVal;
@@ -340,22 +358,47 @@
     updateTermSheetDynamicData();
   }
 
-  // Copy-to-clipboard functionality
+  // Copy-to-clipboard functionality with resilient fallback
   var copyBtns = document.querySelectorAll('[data-copy]');
   copyBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       var text = btn.getAttribute('data-copy');
-      if (navigator.clipboard && text) {
-        navigator.clipboard.writeText(text).then(function () {
-          var original = btn.textContent;
-          btn.textContent = 'Copied ✓';
-          setTimeout(function () {
-            btn.textContent = original;
-          }, 2000);
+      if (!text) return;
+      var original = btn.textContent;
+      function showSuccess() {
+        btn.textContent = 'Copied ✓';
+        setTimeout(function () {
+          btn.textContent = original;
+        }, 2000);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showSuccess).catch(function () {
+          fallbackCopy(text, showSuccess);
         });
+      } else {
+        fallbackCopy(text, showSuccess);
       }
     });
   });
+
+  function fallbackCopy(text, onSuccess) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      ta.style.top = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (ok && onSuccess) onSuccess();
+    } catch (e) {
+      console.warn('Clipboard fallback failed', e);
+    }
+  }
 
   // Interactive Benchmark Simulator
   var calcBtns = document.querySelectorAll('[data-calc-vol]');
@@ -535,6 +578,14 @@
         }
         return;
       }
+
+      // Guarantee submission elapsed is at least 1600ms so autofill doesn't trigger server bot-drop
+      var elapsed = Date.now() - pageLoadTime;
+      if (elapsed < 1600) {
+        await new Promise(function (resolve) { setTimeout(resolve, 1600 - elapsed); });
+        elapsed = Date.now() - pageLoadTime;
+      }
+      payload.elapsed = elapsed;
 
       try {
         var res = await fetch('/api/invest', {
