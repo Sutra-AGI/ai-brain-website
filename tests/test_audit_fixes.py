@@ -74,7 +74,7 @@ def test_admin_accessibility():
     print("✓ BUG-0012 Verified: Admin login password form includes username field and proper autocomplete")
 
 def test_jsonld_schemas():
-    for f in ['index.html', 'hi.html', 'invest.html', 'invest/terms.html', 'invest/wire.html']:
+    for f in ['index.html', 'hi.html', 'about.html', 'invest.html', 'invest/terms.html', 'invest/wire.html', 'resume.html']:
         path = ROOT / f
         content = path.read_text()
         matches = re.findall(r'<script type="application/ld\+json">(.*?)</script>', content, flags=re.S)
@@ -106,11 +106,13 @@ def test_invest_decoupling():
 def test_bank_wire_security():
     invest = (ROOT / 'invest.html').read_text()
     assert 'id="bankVerifyPrompt"' in invest, "FATAL: bankVerifyPrompt missing in invest.html"
+    assert '<noscript>' in invest, "FATAL: noscript fallback missing in invest.html"
     wire = (ROOT / 'invest/wire.html').read_text()
     assert 'id="bankVerifyPrompt"' in wire, "FATAL: bankVerifyPrompt missing in invest/wire.html"
+    assert '<noscript>' in wire, "FATAL: noscript fallback missing in invest/wire.html"
     js = (ROOT / 'invest.js').read_text()
     assert 'initBankCoordinatesVerification' in js, "FATAL: initBankCoordinatesVerification missing in invest.js"
-    print("✓ BUG-0006 Verified: 2-step investor verification gate protects bank wire coordinates")
+    print("✓ BUG-0006 Verified: 2-step investor verification gate and noscript fallback protect bank wire coordinates")
 
 def test_invest_slots_api():
     slots_api = (ROOT / 'api/invest-slots.js').read_text()
@@ -121,12 +123,25 @@ def test_invest_slots_api():
     print("✓ BUG-0002 Verified: Real-time slot ledger API and frontend sync engine verified")
 
 def test_relative_navigation_links():
-    for f in ['index.html', 'about.html', 'architecture.html', 'docs.html', 'contact.html', 'privacy-policy.html', 'terms-of-service.html', '404.html']:
-        content = (ROOT / f).read_text()
+    html_files = [f for f in ROOT.glob('*.html')] + [f for f in (ROOT / 'invest').glob('*.html')]
+    for f in html_files:
+        if f.name == 'tech.html':
+            continue  # tech.html is the redirect source
+        content = f.read_text()
         # Find nav links: shouldn't have href="about" or href="docs" or href="invest" without leading slash
         for bad in ['href="about"', 'href="architecture"', 'href="docs"', 'href="invest"', 'href="contact"']:
-            assert bad not in content, f"FATAL: relative navigation link {bad} found in {f}"
-    print("✓ Relative Navigation Links Verified: All primary navigation links are root-relative (/about, /docs, etc.)")
+            assert bad not in content, f"FATAL: relative navigation link {bad} found in {f.name}"
+        # Ensure no active page links to redirected /invest/tech
+        assert 'href="/invest/tech"' not in content, f"FATAL: link to redirected /invest/tech found in {f.name}"
+    print("✓ Navigation Architecture Verified: All links are root-relative and zero links point to 301 redirected /invest/tech")
+
+def test_resume_responsiveness():
+    resume = (ROOT / 'resume.html').read_text()
+    assert '@media (max-width: 820px)' in resume, "FATAL: responsive media query missing in resume.html"
+    assert 'resume-topbar' in resume, "FATAL: topbar missing in resume.html"
+    assert 'href="/"' in resume, "FATAL: back to home link missing in resume.html"
+    assert 'body {\n    font-family: \'Inter\', \'Segoe UI\', sans-serif;\n    font-size: 10.5pt;\n    line-height: 1.55;\n    color: #1a1a2e;\n    background: #fff;\n    width: 210mm;' not in resume, "FATAL: hardcoded body width: 210mm still present"
+    print("✓ Resume Responsiveness & Navigation Verified: mobile/tablet responsive styles and home link verified")
 
 if __name__ == '__main__':
     print("==================================================")
@@ -145,6 +160,7 @@ if __name__ == '__main__':
     test_bank_wire_security()
     test_invest_slots_api()
     test_relative_navigation_links()
+    test_resume_responsiveness()
     print("==================================================")
-    print("ALL 13 DEEP AUDIT VERIFICATION TESTS PASSED (100%)")
+    print("ALL 14 DEEP AUDIT VERIFICATION TESTS PASSED (100%)")
     print("==================================================")

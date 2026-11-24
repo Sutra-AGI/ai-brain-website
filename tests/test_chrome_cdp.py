@@ -95,7 +95,10 @@ async def main():
             f"http://127.0.0.1:{PORT}/docs.html",
             f"http://127.0.0.1:{PORT}/resume.html",
             f"http://127.0.0.1:{PORT}/hi.html",
-            f"http://127.0.0.1:{PORT}/admin.html"
+            f"http://127.0.0.1:{PORT}/admin.html",
+            f"http://127.0.0.1:{PORT}/privacy-policy.html",
+            f"http://127.0.0.1:{PORT}/terms-of-service.html",
+            f"http://127.0.0.1:{PORT}/404.html"
         ]
         
         all_passed = True

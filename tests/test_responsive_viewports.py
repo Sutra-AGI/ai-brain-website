@@ -36,7 +36,13 @@ PAGES = [
     f"http://127.0.0.1:{PORT}/contact.html",
     f"http://127.0.0.1:{PORT}/about.html",
     f"http://127.0.0.1:{PORT}/architecture.html",
-    f"http://127.0.0.1:{PORT}/docs.html"
+    f"http://127.0.0.1:{PORT}/docs.html",
+    f"http://127.0.0.1:{PORT}/hi.html",
+    f"http://127.0.0.1:{PORT}/admin.html",
+    f"http://127.0.0.1:{PORT}/privacy-policy.html",
+    f"http://127.0.0.1:{PORT}/terms-of-service.html",
+    f"http://127.0.0.1:{PORT}/404.html",
+    f"http://127.0.0.1:{PORT}/resume.html"
 ]
 
 def start_http_server():
@@ -100,6 +106,8 @@ async def main():
         async with websockets.connect(ws_url) as ws:
             await ws.send(json.dumps({"id": 1, "method": "Page.enable"}))
             await ws.send(json.dumps({"id": 2, "method": "DOM.enable"}))
+            await ws.send(json.dumps({"id": 4, "method": "Network.enable"}))
+            await ws.send(json.dumps({"id": 5, "method": "Network.setCacheDisabled", "params": {"cacheDisabled": True}}))
 
             all_passed = True
             for page in PAGES:

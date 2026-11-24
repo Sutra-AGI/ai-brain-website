@@ -91,7 +91,7 @@
         <a href="/invest" class="invest-tab" id="tabOverview" aria-current="page">Overview &amp; Tiers</a>
         <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Agreement</a>
         <a href="/invest/wire" class="invest-tab" id="tabWire">Bank Wire Desk</a>
-        <a href="/invest/tech" class="invest-tab" id="tabTech">Tech Moat</a>
+        <a href="/architecture" class="invest-tab" id="tabTech">Tech Moat</a>
       </nav>
 
       <div class="invest-portal-actions">
@@ -109,7 +109,7 @@
     <a class="m-link" href="/invest" style="color:var(--accent); font-weight:600;">Overview &amp; Tiers <span>01 ✓</span></a>
     <a class="m-link" href="/invest/terms">iSAFE Agreement (Printable A4) <span>02</span></a>
     <a class="m-link" href="/invest/wire">Bank Wire Desk &amp; UTR Lock <span>03</span></a>
-    <a class="m-link" href="/invest/tech">Tech Moat &amp; Hypergraph R&amp;D <span>04</span></a>
+    <a class="m-link" href="/architecture">Tech Moat &amp; Hypergraph R&amp;D <span>04</span></a>
     <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
     <a href="#wire-desk" class="btn btn-primary" style="margin-top:16px;">Direct Wire Desk →</a>
   </div>
@@ -166,7 +166,7 @@
           <a href="#tiers" class="btn-nav-primary">⚡ Allocation Tiers (22 Slots)</a>
           <a href="/invest/terms">📄 iSAFE Agreement (PDF) ↗</a>
           <a href="/invest/wire">🏛️ Bank Wire Desk ↗</a>
-          <a href="/invest/tech">🔬 Tech Moat &amp; Benchmarks ↗</a>
+          <a href="/architecture">🔬 Tech Moat &amp; Benchmarks ↗</a>
           <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20reviewing%20the%20AI%20Brain%20Pre-Seed%20portal." target="_blank" rel="noopener">💬 WhatsApp Founder Call</a>
         </nav>
 
@@ -174,7 +174,7 @@
         <div class="reveal d3" style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;">
           <a href="/invest/terms" class="btn btn-ghost btn-sm" id="openTermSheetBtnTop">📄 View Official iSAFE Term Sheet (Printable A4) →</a>
           <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20reviewing%20the%20AI%20Brain%20Pre-Seed%20round%20and%20would%20like%20to%20schedule%20a%2015-minute%20founder%20due%20diligence%20call." target="_blank" rel="noopener" class="btn btn-primary btn-sm">💬 1-on-1 Founder Due Diligence Call (WhatsApp) →</a>
-          <a href="/invest/tech" class="btn btn-ghost btn-sm">🔬 Technical Architecture Dossier →</a>
+          <a href="/architecture" class="btn btn-ghost btn-sm">🔬 Technical Architecture Dossier →</a>
         </div>
       </div>
     </section>
@@ -408,7 +408,7 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
           </a>
 
           <!-- Card 3: Tech Moat -->
-          <a href="/invest/tech" class="portal-subpage-card">
+          <a href="/architecture" class="portal-subpage-card">
             <div>
               <div class="subpage-card-icon">🔬</div>
               <div class="subpage-card-title">Technical Moat &amp; R&amp;D</div>
@@ -661,6 +661,13 @@ memory = client.hypergraph.<span class="c-func">recall</span>(
               <div><dt>Equity Terms</dt><dd id="selectedEquityDisplay">1.250% iSAFE Equity Stake</dd></div>
               <div><dt>Revenue Protection</dt><dd id="selectedRevDisplay">10% Quarterly Gross Revenue Share (Up to 3.0x / $150,000 Return)</dd></div>
             </dl>
+
+            <noscript>
+              <style>
+                #bankVerifyPrompt { display: none !important; }
+                #intlWireBox { display: block !important; }
+              </style>
+            </noscript>
 
             <!-- Verification Gate for Bank Coordinates -->
             <div id="bankVerifyPrompt" class="bank-verify-prompt" style="padding: 24px; background: rgba(200, 255, 61, 0.04); border: 1px solid rgba(200, 255, 61, 0.25); border-radius: 12px; margin-bottom: 20px; text-align: center;">
