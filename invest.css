@@ -857,6 +857,169 @@
   margin: 0;
 }
 
+/* ==========================================================================
+   PHASE 4: FOUNDER AUTHORITY & SOVEREIGN GOVERNANCE GRID STYLES
+   ========================================================================== */
+.founder-governance-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 24px;
+  margin-top: 36px;
+}
+@media (max-width: 960px) {
+  .founder-governance-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.founder-card-premium,
+.governance-card-premium {
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.founder-card-premium:hover,
+.governance-card-premium:hover {
+  border-color: rgba(200, 255, 61, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.founder-header-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.founder-avatar-badge {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(200, 255, 61, 0.2) 0%, rgba(0, 210, 255, 0.2) 100%);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(200, 255, 61, 0.2);
+}
+.founder-active-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #138808;
+  border: 2px solid #08090b;
+}
+
+.role-badge {
+  display: inline-block;
+  background: rgba(200, 255, 61, 0.08);
+  border: 1px solid rgba(200, 255, 61, 0.25);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+.location-tag {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+}
+
+.founder-quote {
+  font-size: 0.92rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0 0 24px;
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+}
+
+.founder-actions-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+}
+
+/* Governance Right Card */
+.gov-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.gov-badge-seal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.verified-tag {
+  background: rgba(19, 136, 8, 0.15);
+  border: 1px solid rgba(19, 136, 8, 0.4);
+  color: #55f055;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.gov-cert-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 18px;
+  margin: 0 0 20px;
+}
+@media (max-width: 480px) {
+  .gov-cert-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.gov-cert-grid dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-3);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.gov-cert-grid dd {
+  font-size: 0.88rem;
+  color: var(--text);
+  margin: 0;
+}
+
+.gov-card-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .tech-proof-grid.single-col {
   grid-template-columns: 1fr !important;
 }
