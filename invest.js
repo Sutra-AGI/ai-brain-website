@@ -2,9 +2,11 @@
 (function () {
   'use strict';
 
+  var pageLoadTime = Date.now();
   var currentCurrency = 'USD';
   var selectedTier = '50k';
   var STORAGE_KEY = 'aibrain_invest_slots_v1';
+  var SESS_STORAGE_KEY = 'aibrain_investor_session';
 
   var TIER_DATA = {
     '15k': {
@@ -61,17 +63,25 @@
     }
   };
 
-  // URL query parameter support for direct tier pre-selection (e.g. ?tier=15k)
+  // URL query parameter support for direct tier pre-selection (e.g. ?tier=15k) or session restore
   try {
+    var hasQTier = false;
     if (typeof window !== 'undefined' && window.location && window.location.search) {
       var urlParams = new URLSearchParams(window.location.search);
       var qTier = urlParams.get('tier');
       if (qTier && TIER_DATA[qTier]) {
         selectedTier = qTier;
+        hasQTier = true;
+      }
+    }
+    if (!hasQTier) {
+      var savedSess = JSON.parse(sessionStorage.getItem(SESS_STORAGE_KEY) || '{}');
+      if (savedSess && savedSess.tier && TIER_DATA[savedSess.tier]) {
+        selectedTier = savedSess.tier;
       }
     }
   } catch (e) {
-    console.warn('URLSearchParams check failed', e);
+    console.warn('URLSearchParams/sessionStorage check failed', e);
   }
 
   // Local storage persistence for verified slot allocation
@@ -174,27 +184,38 @@
       investorTierEl.textContent = currentTierData.usd + ' (' + currentTierData.name + ' · ' + currentTierData.equity + ')';
     }
 
-    // 4. Live form fields sync if user typed in wire desk
+    // 4. Live form fields sync if user typed in wire desk, with sessionStorage persistence fallback
     var formEl = document.getElementById('investForm');
+    var nameVal = '';
+    var entityVal = '';
+    var utrVal = '';
+
     if (formEl) {
-      var nameVal = formEl.elements['name'] ? formEl.elements['name'].value.trim() : '';
-      var entityVal = formEl.elements['entity'] ? formEl.elements['entity'].value.trim() : '';
-      var utrVal = formEl.elements['utr'] ? formEl.elements['utr'].value.trim() : '';
+      nameVal = formEl.elements['name'] ? formEl.elements['name'].value.trim() : '';
+      entityVal = formEl.elements['entity'] ? formEl.elements['entity'].value.trim() : '';
+      utrVal = formEl.elements['utr'] ? formEl.elements['utr'].value.trim() : '';
+    }
 
-      var investorSignName = document.getElementById('investorSignName');
-      var investorSignEntity = document.getElementById('investorSignEntity');
-      var investorEntityDisplay = document.getElementById('investorEntityDisplay');
-      var investorSignDate = document.getElementById('investorSignDate');
+    try {
+      var savedSession = JSON.parse(sessionStorage.getItem(SESS_STORAGE_KEY) || '{}');
+      if (!nameVal && savedSession.name) nameVal = savedSession.name;
+      if (!entityVal && savedSession.entity) entityVal = savedSession.entity;
+      if (!utrVal && savedSession.utr) utrVal = savedSession.utr;
+    } catch (e) {}
 
-      if (investorSignName && nameVal) investorSignName.textContent = nameVal;
-      if (investorSignEntity && entityVal) investorSignEntity.textContent = entityVal;
-      if (investorEntityDisplay && entityVal) investorEntityDisplay.textContent = entityVal.toUpperCase();
-      if (investorSignDate) {
-        if (utrVal) {
-          investorSignDate.textContent = dateStr + ' · UTR Ref: ' + utrVal;
-        } else {
-          investorSignDate.textContent = 'Auto-executed upon wire submission';
-        }
+    var investorSignName = document.getElementById('investorSignName');
+    var investorSignEntity = document.getElementById('investorSignEntity');
+    var investorEntityDisplay = document.getElementById('investorEntityDisplay');
+    var investorSignDate = document.getElementById('investorSignDate');
+
+    if (investorSignName && nameVal) investorSignName.textContent = nameVal;
+    if (investorSignEntity && entityVal) investorSignEntity.textContent = entityVal;
+    if (investorEntityDisplay && entityVal) investorEntityDisplay.textContent = entityVal.toUpperCase();
+    if (investorSignDate) {
+      if (utrVal) {
+        investorSignDate.textContent = dateStr + ' · UTR Ref: ' + utrVal;
+      } else {
+        investorSignDate.textContent = 'Auto-executed upon wire submission';
       }
     }
   }
@@ -264,6 +285,15 @@
       if (TIER_DATA[tier] && TIER_DATA[tier].locked) return;
 
       selectedTier = tier;
+
+      tierSelectBtns.forEach(function (b) {
+        if (b.getAttribute('data-select-tier') === tier) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+
       var desk = document.getElementById('wire-desk');
       if (desk) {
         desk.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -283,6 +313,14 @@
     var hiddenTier = document.getElementById('formTier');
     var hiddenAmount = document.getElementById('formAmount');
     var hiddenCur = document.getElementById('formCurrency');
+
+    tierSelectBtns.forEach(function (b) {
+      if (b.getAttribute('data-select-tier') === selectedTier) {
+        b.classList.add('active');
+      } else {
+        b.classList.remove('active');
+      }
+    });
 
     if (amountEl) {
       amountEl.textContent = data.usd;
@@ -328,7 +366,10 @@
   var CALC_DATA = {
     '1m': { vector: '$3,800 / mo', brain: '$340 / mo', savings: '91.0% ($41,520 / yr)' },
     '5m': { vector: '$19,000 / mo', brain: '$1,710 / mo', savings: '91.0% ($207,480 / yr)' },
-    '20m': { vector: '$76,000 / mo', brain: '$6,840 / mo', savings: '91.0% ($829,920 / yr)' }
+    '20m': { vector: '$76,000 / mo', brain: '$6,840 / mo', savings: '91.0% ($829,920 / yr)' },
+    '10m': { vector: '$14,400 / yr', brain: '$2,160 / yr', savings: '$12,240 (85% Saved)' },
+    '100m': { vector: '$144,000 / yr', brain: '$21,600 / yr', savings: '$122,400 (85% Saved)' },
+    '1b': { vector: '$1,440,000 / yr', brain: '$216,000 / yr', savings: '$1,224,000 (85% Saved)' }
   };
 
   calcBtns.forEach(function (btn) {
@@ -348,53 +389,66 @@
   var codeTabBtns = document.querySelectorAll('[data-code-tab]');
   var codeSnippetBody = document.getElementById('codeSnippetBody');
 
+  var pySnippet = '<span class="c-comment"># AI Brain High-Performance Memory Client</span>\n' +
+    '<span class="c-keyword">import</span> aibrain\n\n' +
+    '<span class="c-comment"># Initialize sub-15ms associative hypergraph</span>\n' +
+    'client = aibrain.<span class="c-func">Client</span>(cluster=<span class="c-str">"edge.cluster-01.aibrain.io"</span>)\n\n' +
+    '<span class="c-comment"># Recall associative memory across 3 temporal hops</span>\n' +
+    'memory = client.hypergraph.<span class="c-func">recall</span>(\n' +
+    '    agent_id=<span class="c-str">"agent_enterprise_swarm_42"</span>,\n' +
+    '    query=<span class="c-str">"previous architecture decisions on database migration"</span>,\n' +
+    '    hops=<span class="c-num">3</span>,\n' +
+    '    decay_threshold=<span class="c-num">0.15</span>\n' +
+    ')\n\n' +
+    '<span class="c-keyword">print</span>(<span class="c-str">f"Recall Latency: {memory.latency_ms} ms"</span>)  <span class="c-accent"># Output: 12.4 ms</span>\n' +
+    '<span class="c-keyword">print</span>(<span class="c-str">f"Associative Nodes: {len(memory.nodes)}"</span>)  <span class="c-accent"># 48 connected facts</span>';
+
+  var cppSnippet = '<span class="c-comment">// AI Brain Native In-Memory Hypergraph Kernel</span>\n' +
+    '<span class="c-keyword">#include</span> <span class="c-str">&lt;aibrain/hypergraph.hpp&gt;</span>\n\n' +
+    '<span class="c-keyword">int</span> <span class="c-func">main</span>() {\n' +
+    '    aibrain::<span class="c-func">GraphEngine</span> engine(aibrain::Config::<span class="c-func">LockFreeRCU</span>());\n\n' +
+    '    <span class="c-comment">// Sub-15ms multi-hop traversal across synaptic weights</span>\n' +
+    '    <span class="c-keyword">auto</span> results = engine.<span class="c-func">traverse_associative</span>(\n' +
+    '        <span class="c-comment">/*source_node=*/</span><span class="c-num">0x8f4b21</span>,\n' +
+    '        <span class="c-comment">/*depth=*/</span><span class="c-num">3</span>,\n' +
+    '        <span class="c-comment">/*decay_half_life=*/</span>std::chrono::hours(<span class="c-num">72</span>)\n' +
+    '    );\n\n' +
+    '    <span class="c-comment">// Performance: 12.4ms traversal @ 10M edges</span>\n' +
+    '    <span class="c-keyword">return</span> results.empty() ? <span class="c-num">1</span> : <span class="c-num">0</span>;\n' +
+    '}';
+
+  var benchSnippet = '<span class="c-comment">/* Audited Benchmark Result (50,000 passes) */</span>\n' +
+    '{\n' +
+    '  <span class="c-str">"test_id"</span>: <span class="c-str">"BENCH-2026-042"</span>,\n' +
+    '  <span class="c-str">"target"</span>: <span class="c-str">"AI Brain Associative Hypergraph v0.4.1"</span>,\n' +
+    '  <span class="c-str">"cluster"</span>: <span class="c-str">"8x NVIDIA A100 (80GB SXM4)"</span>,\n' +
+    '  <span class="c-str">"metrics"</span>: {\n' +
+    '    <span class="c-str">"p50_latency_ms"</span>: <span class="c-num">9.8</span>,\n' +
+    '    <span class="c-str">"p95_latency_ms"</span>: <span class="c-num">12.4</span>,\n' +
+    '    <span class="c-str">"p99_latency_ms"</span>: <span class="c-num">14.9</span>,\n' +
+    '    <span class="c-str">"token_cost_savings"</span>: <span class="c-accent">"91.0%"</span>,\n' +
+    '    <span class="c-str">"multi_hop_accuracy"</span>: <span class="c-accent">"96.2%"</span>\n' +
+    '  }\n' +
+    '}';
+
   var CODE_SNIPPETS = {
-    python: '<span class="c-comment"># AI Brain High-Performance Memory Client</span>\n' +
-            '<span class="c-keyword">import</span> aibrain\n\n' +
-            '<span class="c-comment"># Initialize sub-15ms associative hypergraph</span>\n' +
-            'client = aibrain.<span class="c-func">Client</span>(cluster=<span class="c-str">"edge.cluster-01.aibrain.io"</span>)\n\n' +
-            '<span class="c-comment"># Recall associative memory across 3 temporal hops</span>\n' +
-            'memory = client.hypergraph.<span class="c-func">recall</span>(\n' +
-            '    agent_id=<span class="c-str">"agent_enterprise_swarm_42"</span>,\n' +
-            '    query=<span class="c-str">"previous architecture decisions on database migration"</span>,\n' +
-            '    hops=<span class="c-num">3</span>,\n' +
-            '    decay_threshold=<span class="c-num">0.15</span>\n' +
-            ')\n\n' +
-            '<span class="c-keyword">print</span>(<span class="c-str">f"Recall Latency: {memory.latency_ms} ms"</span>)  <span class="c-accent"># Output: 12.4 ms</span>\n' +
-            '<span class="c-keyword">print</span>(<span class="c-str">f"Associative Nodes: {len(memory.nodes)}"</span>)  <span class="c-accent"># 48 connected facts</span>',
-    cpp:    '<span class="c-comment">// AI Brain Native In-Memory Hypergraph Kernel</span>\n' +
-            '<span class="c-keyword">#include</span> <span class="c-str">&lt;aibrain/hypergraph.hpp&gt;</span>\n\n' +
-            '<span class="c-keyword">int</span> <span class="c-func">main</span>() {\n' +
-            '    aibrain::<span class="c-func">GraphEngine</span> engine(aibrain::Config::<span class="c-func">LockFreeRCU</span>());\n\n' +
-            '    <span class="c-comment">// Sub-15ms multi-hop traversal across synaptic weights</span>\n' +
-            '    <span class="c-keyword">auto</span> results = engine.<span class="c-func">traverse_associative</span>(\n' +
-            '        <span class="c-comment">/*source_node=*/</span><span class="c-num">0x8f4b21</span>,\n' +
-            '        <span class="c-comment">/*depth=*/</span><span class="c-num">3</span>,\n' +
-            '        <span class="c-comment">/*decay_half_life=*/</span>std::chrono::hours(<span class="c-num">72</span>)\n' +
-            '    );\n\n' +
-            '    <span class="c-comment">// Performance: 12.4ms traversal @ 10M edges</span>\n' +
-            '    <span class="c-keyword">return</span> results.empty() ? <span class="c-num">1</span> : <span class="c-num">0</span>;\n' +
-            '}',
-    benchmark: '<span class="c-comment">/* Audited Benchmark Result (50,000 passes) */</span>\n' +
-               '{\n' +
-               '  <span class="c-str">"test_id"</span>: <span class="c-str">"BENCH-2026-042"</span>,\n' +
-               '  <span class="c-str">"target"</span>: <span class="c-str">"AI Brain Associative Hypergraph v0.4.1"</span>,\n' +
-               '  <span class="c-str">"cluster"</span>: <span class="c-str">"8x NVIDIA A100 (80GB SXM4)"</span>,\n' +
-               '  <span class="c-str">"metrics"</span>: {\n' +
-               '    <span class="c-str">"p50_latency_ms"</span>: <span class="c-num">9.8</span>,\n' +
-               '    <span class="c-str">"p95_latency_ms"</span>: <span class="c-num">12.4</span>,\n' +
-               '    <span class="c-str">"p99_latency_ms"</span>: <span class="c-num">14.9</span>,\n' +
-               '    <span class="c-str">"token_cost_savings"</span>: <span class="c-accent">"91.0%"</span>,\n' +
-               '    <span class="c-str">"multi_hop_accuracy"</span>: <span class="c-accent">"96.2%"</span>\n' +
-               '  }\n' +
-               '}'
+    py: pySnippet,
+    python: pySnippet,
+    cpp: cppSnippet,
+    'c++': cppSnippet,
+    benchmark: benchSnippet
   };
 
   codeTabBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      codeTabBtns.forEach(function (b) { b.classList.remove('active'); });
+      var parent = btn.parentElement;
+      if (parent) {
+        parent.querySelectorAll('[data-code-tab]').forEach(function (b) { b.classList.remove('active'); });
+      } else {
+        codeTabBtns.forEach(function (b) { b.classList.remove('active'); });
+      }
       btn.classList.add('active');
-      var tab = btn.getAttribute('data-code-tab');
+      var tab = (btn.getAttribute('data-code-tab') || '').toLowerCase();
       if (codeSnippetBody && CODE_SNIPPETS[tab]) {
         codeSnippetBody.innerHTML = '<code>' + CODE_SNIPPETS[tab] + '</code>';
       }
@@ -405,6 +459,22 @@
   var form = document.getElementById('investForm');
   var formStatus = document.getElementById('formStatus');
   var formSuccess = document.getElementById('formSuccess');
+
+  function prefillFormFromSession() {
+    if (!form) return;
+    try {
+      var savedSess = JSON.parse(sessionStorage.getItem(SESS_STORAGE_KEY) || '{}');
+      if (savedSess.name && form.elements['name'] && !form.elements['name'].value) {
+        form.elements['name'].value = savedSess.name;
+      }
+      if (savedSess.entity && form.elements['entity'] && !form.elements['entity'].value) {
+        form.elements['entity'].value = savedSess.entity;
+      }
+      if (savedSess.utr && form.elements['utr'] && !form.elements['utr'].value) {
+        form.elements['utr'].value = savedSess.utr;
+      }
+    } catch (e) {}
+  }
 
   if (form) {
     form.addEventListener('submit', async function (e) {
@@ -417,17 +487,54 @@
       if (formStatus) formStatus.textContent = '';
 
       var payload = {
-        name: form.elements['name'] ? form.elements['name'].value : '',
-        email: form.elements['email'] ? form.elements['email'].value : '',
-        phone: form.elements['phone'] ? form.elements['phone'].value : '',
-        country: form.elements['country'] ? form.elements['country'].value : '',
-        entity: form.elements['entity'] ? form.elements['entity'].value : '',
+        name: form.elements['name'] ? form.elements['name'].value.trim() : '',
+        email: form.elements['email'] ? form.elements['email'].value.trim() : '',
+        phone: form.elements['phone'] ? form.elements['phone'].value.trim() : '',
+        country: form.elements['country'] ? form.elements['country'].value.trim() : '',
+        entity: form.elements['entity'] ? form.elements['entity'].value.trim() : '',
         tier: selectedTier,
         amount: TIER_DATA[selectedTier] ? TIER_DATA[selectedTier].amountUSD : '50,000',
         currency: 'USD',
-        utr: form.elements['utr'] ? form.elements['utr'].value : '',
-        notes: form.elements['notes'] ? form.elements['notes'].value : '',
+        utr: form.elements['utr'] ? form.elements['utr'].value.trim() : '',
+        notes: form.elements['notes'] ? form.elements['notes'].value.trim() : '',
+        elapsed: Date.now() - pageLoadTime,
       };
+
+      if (payload.name.length < 2) {
+        if (formStatus) {
+          formStatus.textContent = 'Please enter your full legal or institutional name.';
+          formStatus.style.color = '#ff6b6b';
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Lock Allocation & Register Wire Transfer →';
+        }
+        return;
+      }
+
+      if (!payload.email.includes('@') || !payload.email.includes('.')) {
+        if (formStatus) {
+          formStatus.textContent = 'Please enter a valid official/angel email address.';
+          formStatus.style.color = '#ff6b6b';
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Lock Allocation & Register Wire Transfer →';
+        }
+        return;
+      }
+
+      if (payload.utr.length < 3) {
+        if (formStatus) {
+          formStatus.textContent = 'Please enter your bank transfer reference number or UTR.';
+          formStatus.style.color = '#ff6b6b';
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Lock Allocation & Register Wire Transfer →';
+        }
+        return;
+      }
 
       try {
         var res = await fetch('/api/invest', {
@@ -437,6 +544,14 @@
         });
         var data = await res.json();
         if (res.ok && data.ok) {
+          try {
+            sessionStorage.setItem(SESS_STORAGE_KEY, JSON.stringify({
+              name: payload.name,
+              entity: payload.entity,
+              utr: payload.utr,
+              tier: selectedTier
+            }));
+          } catch (e) {}
           form.style.display = 'none';
           if (formSuccess) {
             formSuccess.style.display = 'block';
@@ -471,7 +586,7 @@
       } catch (err) {
         if (formStatus) {
           formStatus.textContent = 'Network error. Please try again or email founder@aibrainstartup.com directly.';
-          formStatus.color = '#ff6b6b';
+          formStatus.style.color = '#ff6b6b';
         }
         if (submitBtn) {
           submitBtn.disabled = false;
@@ -488,11 +603,14 @@
   var openTermSheetQuickBtn = document.getElementById('openTermSheetQuickBtn');
   var closeTermSheetBtn = document.getElementById('closeTermSheetBtn');
   var printTermSheetBtn = document.getElementById('printTermSheetBtn');
+  var printTermSheetBtnTop = document.getElementById('printTermSheetBtnTop');
   var printTermSheetBtnBottom = document.getElementById('printTermSheetBtnBottom');
+  var printTermSheetBtnMobile = document.getElementById('printTermSheetBtnMobile');
   var acceptTermSheetBtn = document.getElementById('acceptTermSheetBtn');
   var acceptTermSheetBtnBottom = document.getElementById('acceptTermSheetBtnBottom');
 
-  function openModal() {
+  function openModal(e) {
+    if (e && e.preventDefault) e.preventDefault();
     if (isafeModal) {
       updateTermSheetDynamicData();
       isafeModal.classList.add('active');
@@ -518,8 +636,9 @@
     updateTermSheetDynamicData();
     window.print();
   }
-  if (printTermSheetBtn) printTermSheetBtn.addEventListener('click', triggerPrint);
-  if (printTermSheetBtnBottom) printTermSheetBtnBottom.addEventListener('click', triggerPrint);
+  [printTermSheetBtn, printTermSheetBtnTop, printTermSheetBtnBottom, printTermSheetBtnMobile].forEach(function (btn) {
+    if (btn) btn.addEventListener('click', triggerPrint);
+  });
 
   function acceptAndGoToWire() {
     closeModal();
@@ -563,9 +682,11 @@
   // Dedicated Investor Portal Mobile Menu Drawer Toggle
   var portalMenuBtn = document.getElementById('portalMenuBtn');
   var portalMobilePanel = document.getElementById('portalMobilePanel');
+  var investNav = document.getElementById('investNav');
   if (portalMenuBtn && portalMobilePanel) {
     portalMenuBtn.addEventListener('click', function () {
       var isOpen = portalMobilePanel.classList.toggle('active');
+      if (investNav) investNav.classList.toggle('open', isOpen);
       portalMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       if (isOpen) {
         portalMobilePanel.removeAttribute('inert');
@@ -573,19 +694,47 @@
         portalMobilePanel.setAttribute('inert', '');
       }
     });
-    portalMobilePanel.querySelectorAll('a').forEach(function (link) {
+    portalMobilePanel.querySelectorAll('a, button').forEach(function (link) {
       link.addEventListener('click', function () {
         portalMobilePanel.classList.remove('active');
+        if (investNav) investNav.classList.remove('open');
         portalMenuBtn.setAttribute('aria-expanded', 'false');
         portalMobilePanel.setAttribute('inert', '');
       });
     });
   }
 
-  // Initialize: Load persistent allocations, render slots, format real-time dates, and bind print hook
+  // Lightweight reveal observer for invest sub-pages without home.js
+  function initRevealObserver() {
+    var reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+    if ('IntersectionObserver' in window) {
+      var revealObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            entry.target.classList.add('in');
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      reveals.forEach(function (el) {
+        revealObs.observe(el);
+      });
+    } else {
+      reveals.forEach(function (el) {
+        el.classList.add('visible');
+        el.classList.add('in');
+      });
+    }
+  }
+
+  // Initialize: Load persistent allocations, render slots, format real-time dates, bind print hook & reveal observer
   initSlotsStorage();
+  prefillFormFromSession();
   renderTierSlots();
   updateWireSummary();
   updateTermSheetDynamicData();
+  initRevealObserver();
   window.addEventListener('beforeprint', updateTermSheetDynamicData);
 })();
