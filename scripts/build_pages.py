@@ -11,7 +11,7 @@ import hashlib
 
 ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent)
 # Cache-busting version = content hash of the shared assets (assets are served with a 1-year immutable cache).
-V = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in ("home.css", "pages.css", "home.js", "admin.css", "admin.js"))).hexdigest()[:8]
+V = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in ("home.css", "pages.css", "home.js", "admin.css", "admin.js", "invest.css", "invest.js"))).hexdigest()[:8]
 
 FONTS = '''  <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
