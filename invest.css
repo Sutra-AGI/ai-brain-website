@@ -435,12 +435,9 @@ section[id],
 .page-invest .hero-badge-pill {
   margin-top: 0 !important;
 }
-.page-invest .hero-cta-cluster {
-  margin-top: 24px;
-}
 .page-invest .hero-trust-ribbon {
-  margin-top: 22px;
-  padding-top: 16px;
+  margin-top: 26px;
+  padding-top: 18px;
   color: var(--text-2);
 }
 .page-invest .hero-trust-ribbon b {
@@ -562,15 +559,6 @@ section[id],
     font-size: 2.05rem;
     margin-top: 12px;
   }
-  .page-invest .hero-cta-cluster {
-    margin-top: 18px;
-    gap: 10px;
-  }
-  .page-invest .hero-cta-cluster .btn-lg {
-    width: 100%;
-    padding: 12px 16px !important;
-    font-size: 0.9rem !important;
-  }
   .page-invest .hero-trust-ribbon {
     margin-top: 16px;
     padding-top: 12px;
@@ -689,20 +677,6 @@ section[id],
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-family: var(--font-mono);
-}
-
-/* Clean CTA Cluster */
-.hero-cta-cluster {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-.hero-cta-cluster .btn-lg {
-  padding: 14px 26px !important;
-  font-size: 0.95rem !important;
-  font-weight: 600 !important;
 }
 
 /* Secondary Quick Link Strip */
