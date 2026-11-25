@@ -3137,7 +3137,7 @@ html, body {
    Investor Pitch Deck Presentation & Print Layout (/invest/deck)
    ========================================================================== */
 .deck-body {
-  background: var(--bg);
+  background: var(--ink);
   color: var(--text);
   min-height: 100vh;
 }
