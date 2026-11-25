@@ -1010,61 +1010,31 @@ section[id],
 }
 
 /* ==========================================================================
-   PHASE 2: 3-CORE BUSINESS VALUE PILLARS & ARCHITECTURE BENCHMARK STYLES
+   PHASE 2: PORTAL SECTION DENSITY & COMPACT TIER LAYOUT OVERRIDES
    ========================================================================== */
-.moat-pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 36px;
+.page-invest .page-section {
+  padding: clamp(48px, 5vw, 68px) 0;
 }
-@media (max-width: 900px) {
-  .moat-pillars-grid {
-    grid-template-columns: 1fr;
-  }
+.page-invest .page-section .sec-head {
+  margin-bottom: 28px;
+  align-items: center;
 }
-
-.moat-pillar-card {
-  background: var(--ink-2);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+.page-invest .tiers-grid {
+  margin-top: 24px;
 }
-.moat-pillar-card:hover {
-  border-color: rgba(200, 255, 61, 0.35);
-  transform: translateY(-2px);
+.page-invest .tier-card {
+  padding: 20px 18px;
 }
-.moat-pillar-card.featured-pillar {
-  border-color: rgba(200, 255, 61, 0.4);
-  background: linear-gradient(180deg, rgba(200, 255, 61, 0.04) 0%, var(--ink-2) 100%);
-}
-.moat-pillar-icon {
-  font-size: 1.5rem;
+.page-invest .tier-header {
+  padding-bottom: 12px;
   margin-bottom: 12px;
 }
-.moat-pillar-stat {
-  font-family: var(--font-mono);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin-bottom: 8px;
+.page-invest .tier-features {
+  gap: 8px;
+  margin-bottom: 16px;
 }
-.moat-pillar-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-.moat-pillar-desc {
-  font-size: 0.86rem;
-  color: var(--text-2);
-  line-height: 1.55;
-  margin: 0;
+.page-invest .tech-proof-grid.single-col {
+  margin-top: 0;
 }
 
 /* ==========================================================================

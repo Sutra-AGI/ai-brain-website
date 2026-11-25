@@ -82,7 +82,7 @@
       totalSlots: 10,
       takenSlots: 0,
       remainingSlots: 10,
-      statusBadge: '🟢 10 Slots Total · 10 Available (0 Booked)',
+      statusBadge: '🟢 10 Slots Total · 10 Available',
       locked: false
     },
     '25k': {
@@ -95,7 +95,7 @@
       totalSlots: 6,
       takenSlots: 0,
       remainingSlots: 6,
-      statusBadge: '🟢 6 Slots Total · 6 Available (0 Booked)',
+      statusBadge: '🟢 6 Slots Total · 6 Available',
       locked: false
     },
     '50k': {
@@ -108,7 +108,7 @@
       totalSlots: 4,
       takenSlots: 0,
       remainingSlots: 4,
-      statusBadge: '🔥 Featured · 4 Slots Total · 4 Available',
+      statusBadge: '🟢 4 Slots Total · 4 Available',
       locked: false
     },
     '100k': {
