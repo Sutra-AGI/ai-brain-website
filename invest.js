@@ -44,6 +44,8 @@
     var coordsBox = document.getElementById('intlWireBox') || document.getElementById('bankDetailsContent');
     var revealBtn = document.getElementById('btnRevealBankCoords');
 
+    if (!revealBtn) return;
+
     function showCoords() {
       if (promptEl) promptEl.style.display = 'none';
       if (coordsBox) coordsBox.style.display = 'block';

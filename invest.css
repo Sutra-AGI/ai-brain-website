@@ -1036,6 +1036,14 @@ section[id],
 .page-invest .tech-proof-grid.single-col {
   margin-top: 0;
 }
+.page-invest .settlement-summary-bar {
+  margin-top: 0;
+  margin-bottom: 18px;
+  padding: 18px 22px;
+}
+.page-invest .settlement-gateway-card {
+  padding: 24px 22px;
+}
 
 /* ==========================================================================
    PHASE 4: FOUNDER AUTHORITY & SOVEREIGN GOVERNANCE GRID STYLES
