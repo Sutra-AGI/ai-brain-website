@@ -1108,6 +1108,7 @@ section[id],
 
 .founder-card-premium,
 .governance-card-premium {
+  min-width: 0;
   background: var(--ink-2);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -1157,6 +1158,13 @@ section[id],
   border: 2px solid #08090b;
 }
 
+.founder-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 6px;
+}
 .role-badge {
   display: inline-block;
   background: rgba(200, 255, 61, 0.08);
@@ -1167,12 +1175,13 @@ section[id],
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 4px;
-  margin-right: 8px;
 }
 .location-tag {
+  display: inline-block;
   font-size: 0.78rem;
   color: var(--text-3);
   font-family: var(--font-mono);
+  line-height: 1.4;
 }
 
 .founder-quote {
@@ -3544,8 +3553,11 @@ html, body {
   color: var(--accent);
 }
 .investor-foot-links li a[aria-current="page"] {
-  color: var(--accent);
+  color: var(--text);
   font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(200, 255, 61, 0.55);
 }
 .foot-highlight-link {
   color: var(--accent) !important;
