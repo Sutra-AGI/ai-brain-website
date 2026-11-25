@@ -340,11 +340,17 @@
 
     var heroCounter = document.getElementById('heroSlotsCounter');
     if (heroCounter) {
-      heroCounter.textContent = totalRemaining + ' of ' + totalSlots + ' Slots Open (' + pct + '% Allocated' + (totalTaken === 0 ? ' · Day 0' : '') + ')';
+      heroCounter.textContent = totalTaken === 0
+        ? (totalRemaining + ' of ' + totalSlots + ' Slots Open')
+        : (totalRemaining + ' of ' + totalSlots + ' Slots Open · ' + pct + '% Allocated');
     }
     var heroProgress = document.getElementById('heroProgressBarFill');
+    var heroProgressWrap = document.getElementById('heroProgressWrap');
     if (heroProgress) {
       heroProgress.style.width = Math.max(pct, totalTaken === 0 ? 0 : 4) + '%';
+    }
+    if (heroProgressWrap) {
+      heroProgressWrap.classList.toggle('is-idle', totalTaken === 0);
     }
 
     // Dynamic Navigation Bar Slots Pill

@@ -64,9 +64,9 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=3a056fda">
-  <link rel="stylesheet" href="/pages.css?v=3a056fda">
-  <link rel="stylesheet" href="/invest.css?v=3a056fda">
+  <link rel="stylesheet" href="/home.css?v=79a775be">
+  <link rel="stylesheet" href="/pages.css?v=79a775be">
+  <link rel="stylesheet" href="/invest.css?v=79a775be">
 </head>
 <body class="page-invest">
   <a class="skip" href="#main">Skip to content</a>
@@ -98,7 +98,7 @@
 
       <div class="invest-portal-actions">
         <span class="portal-slots-pill" id="navSlotsPill">🟢 22 Slots Open</span>
-        <a href="#wire-desk" class="btn btn-sm btn-primary">Wire Desk →</a>
+        <a href="#wire-desk" class="btn btn-sm btn-primary">Reserve Slot →</a>
         <a href="/" class="btn btn-sm btn-ghost btn-back-main">← Main Site</a>
         <button class="menu-btn" id="portalMenuBtn" aria-label="Open portal menu" aria-expanded="false" aria-controls="portalMobilePanel"><span></span></button>
       </div>
@@ -114,71 +114,75 @@
     <a class="m-link" href="/invest/policy">Investor Privacy &amp; KYC Policy <span>05</span></a>
     <a class="m-link" href="/invest/disclosures">Regulatory Disclosures &amp; Risk <span>06</span></a>
     <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
-    <a href="#wire-desk" class="btn btn-primary" style="margin-top:8px;">Direct Wire Desk →</a>
+    <a href="#wire-desk" class="btn btn-primary" style="margin-top:8px;">Reserve Allocation Slot →</a>
   </div>
 
 <main id="main">
-    <!-- Hero Section: Redesigned Executive Hub (Phase 1) -->
+    <!-- Hero Section: Executive 2-Column Hub -->
     <section class="page-hero">
-      <div class="wrap">
-        <div class="crumbs reveal"><a href="/">Home</a><span>/</span><span>Invest</span></div>
-        
-        <div class="hero-badge-pill reveal" style="margin-top:24px;">
-          <span class="live-pulse-dot"></span>
-          <span>INSTITUTIONAL PRE-SEED ALLOCATION · $4M VALUATION CAP · 22 SLOTS</span>
-        </div>
-        
-        <h1 class="reveal d1">Back the <span class="serif">Memory Layer</span> of Autonomous AI.</h1>
-        <p class="lead reveal d2">Building persistent, sub-15ms neuromorphic hypergraph memory for autonomous agent swarms. Strategic Pre-Seed allocation ($700K round at $4.0M post-money cap) structured under standard Silicon Valley iSAFE equity with contractual quarterly revenue recovery.</p>
+      <div class="wrap hero-split-grid">
+        <div class="hero-left-col">
+          <div class="hero-badge-pill reveal">
+            <span class="live-pulse-dot"></span>
+            <span>PRE-SEED ROUND · UDYAM VERIFIED</span>
+          </div>
 
-        <!-- 4-Metric Key Investment Terms Bar -->
-        <div class="hero-key-terms-grid reveal d3">
-          <div class="hero-term-card">
-            <span class="hero-term-lbl">Target Round</span>
-            <span class="hero-term-val">$700,000 <span class="accent-txt">USD</span></span>
+          <h1 class="reveal d1">Back the <span class="serif">Memory Layer</span> of Autonomous AI.</h1>
+          <p class="lead reveal d2">Sub-15ms associative hypergraph memory for autonomous agent swarms — cutting LLM context token burn by 91% and scaling to 10M+ persistent nodes on an audited C++20 engine.</p>
+
+          <div class="hero-cta-cluster reveal d3">
+            <a href="#tiers" class="btn btn-primary btn-lg">Explore Tiers ($15K–$100K) ↓</a>
+            <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20reviewing%20the%20AI%20Brain%20Pre-Seed%20round%20and%20would%20like%20to%20schedule%20a%20founder%20due%20diligence%20call." target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Schedule Founder Call →</a>
           </div>
-          <div class="hero-term-card">
-            <span class="hero-term-lbl">Post-Money Valuation Cap</span>
-            <span class="hero-term-val">$4,000,000 <span class="accent-txt">USD</span></span>
-          </div>
-          <div class="hero-term-card">
-            <span class="hero-term-lbl">Strategic Pool</span>
-            <span class="hero-term-val">22 <span class="accent-txt">Slots</span></span>
-          </div>
-          <div class="hero-term-card">
-            <span class="hero-term-lbl">Legal Structure</span>
-            <span class="hero-term-val">iSAFE <span class="accent-txt">+ 3.5x Cap</span></span>
+
+          <div class="hero-trust-ribbon reveal d3">
+            <span class="trust-item-inline">🇮🇳 <b>Govt. MSME</b> · UDYAM-RJ-05-0067280</span>
+            <span class="trust-item-inline">🏛️ <b>SBI Direct Wire</b> · SWIFT / RTGS</span>
+            <span class="trust-item-inline">🛡️ <b>India-Compliant iSAFE</b> · Senior Pref.</span>
           </div>
         </div>
 
-        <!-- Compact Round Allocation Progress Banner -->
-        <div class="round-progress-card reveal d3" style="margin-top:20px; padding:18px 24px;">
-          <div class="round-progress-header" style="margin-bottom:10px;">
-            <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text-2);">
-              Round Status: <strong style="color:var(--text);">Pre-Seed Strategic Pool</strong> · Direct SWIFT / RTGS Settlement
+        <aside class="hero-deal-panel reveal d2" aria-label="Pre-Seed Deal Snapshot">
+          <div class="deal-panel-head">
+            <div>
+              <span class="deal-panel-eyebrow">STRATEGIC POOL SNAPSHOT</span>
+              <h2 class="deal-panel-title">Pre-Seed Term Summary</h2>
             </div>
-            <div style="text-align:right;">
-              <span id="heroSlotsCounter" style="font-family:var(--font-mono); font-size:0.88rem; color:var(--accent); font-weight:600;">22 of 22 Slots Open (0% Allocated · Day 0)</span>
+            <span class="deal-live-tag" id="heroSlotsCounter">22 of 22 Slots Open</span>
+          </div>
+
+          <div class="hero-key-terms-grid">
+            <div class="hero-term-card">
+              <span class="hero-term-lbl">Target Round</span>
+              <span class="hero-term-val">$700,000 <span class="accent-txt">USD</span></span>
+            </div>
+            <div class="hero-term-card">
+              <span class="hero-term-lbl">Valuation Cap</span>
+              <span class="hero-term-val">$4.0M <span class="accent-txt">Post</span></span>
+            </div>
+            <div class="hero-term-card">
+              <span class="hero-term-lbl">Allocation</span>
+              <span class="hero-term-val">$15K – $100K</span>
+            </div>
+            <div class="hero-term-card">
+              <span class="hero-term-lbl">Instrument</span>
+              <span class="hero-term-val">iSAFE <span class="accent-txt">+ 3.5x Cap</span></span>
             </div>
           </div>
-          <div class="round-progress-bar-bg" style="height:6px;">
+
+          <div class="round-progress-bar-bg is-idle" id="heroProgressWrap">
             <div id="heroProgressBarFill" class="round-progress-bar-fill" style="width:0%;"></div>
           </div>
-        </div>
 
-        <!-- Clean 2-Primary Action Cluster -->
-        <div class="hero-cta-cluster reveal d3">
-          <a href="#tiers" class="btn btn-primary btn-lg">⚡ View 22 Allocation Tiers ($15K – $100K) ↓</a>
-          <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20reviewing%20the%20AI%20Brain%20Pre-Seed%20round%20and%20would%20like%20to%20schedule%20a%20founder%20due%20diligence%20call." target="_blank" rel="noopener" class="btn btn-ghost btn-lg">💬 Schedule 1-on-1 Founder Call →</a>
-        </div>
-
-
-        <!-- Institutional Trust Ribbon (Single Clean Line) -->
-        <div class="hero-trust-ribbon reveal d3">
-          <span class="trust-item-inline">🇮🇳 <b>Govt. of India Registered MSME</b> (UDYAM-RJ-05-0067280)</span>
-          <span class="trust-item-inline">🏛️ <b>State Bank of India</b> Direct Escrow Custody</span>
-          <span class="trust-item-inline">🛡️ <b>Senior Liquidation Preference</b> Protection</span>
-        </div>
+          <div class="deal-panel-foot">
+            <span class="deal-settlement-note">Direct Institutional Custody · State Bank of India</span>
+            <div class="deal-quick-links">
+              <a href="/invest/terms">iSAFE Terms →</a>
+              <a href="/invest/deck">Pitch Deck →</a>
+              <a href="/invest/wire" class="accent-link">Wire Desk →</a>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -821,6 +825,6 @@
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="/invest.js?v=3a056fda" defer></script>
+  <script src="/invest.js?v=79a775be" defer></script>
 </body>
 </html>

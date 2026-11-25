@@ -409,34 +409,196 @@ section[id],
 }
 
 .page-invest .page-hero {
-  padding: 104px 0 56px;
+  padding: 108px 0 48px;
+}
+.hero-split-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.24fr) minmax(0, 0.96fr);
+  gap: 36px;
+  align-items: center;
+}
+.hero-left-col {
+  min-width: 0;
 }
 .page-invest .page-hero h1 {
   margin-top: 16px;
-  font-size: clamp(2.35rem, 5.2vw, 4.3rem);
-  max-width: 17ch;
+  font-size: clamp(2.15rem, 4.4vw, 3.85rem);
+  line-height: 1.02;
+  max-width: 15ch;
 }
 .page-invest .page-hero .lead {
   margin-top: 14px;
-  font-size: clamp(0.98rem, 1.3vw, 1.1rem);
-  max-width: 62ch;
+  font-size: clamp(0.96rem, 1.2vw, 1.06rem);
+  line-height: 1.55;
+  max-width: 54ch;
 }
 .page-invest .hero-badge-pill {
-  margin-top: 14px !important;
-}
-.page-invest .hero-key-terms-grid {
-  margin-top: 22px;
-}
-.page-invest .round-progress-card {
-  margin-top: 16px !important;
-  padding: 14px 20px !important;
+  margin-top: 0 !important;
 }
 .page-invest .hero-cta-cluster {
-  margin-top: 22px;
+  margin-top: 24px;
 }
 .page-invest .hero-trust-ribbon {
-  margin-top: 20px;
+  margin-top: 22px;
   padding-top: 16px;
+  color: var(--text-2);
+}
+.page-invest .hero-trust-ribbon b {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Right Column Executive Deal Snapshot Card */
+.hero-deal-panel {
+  min-width: 0;
+  background: linear-gradient(165deg, rgba(200, 255, 61, 0.04) 0%, var(--ink-2) 48%);
+  border: 1px solid rgba(200, 255, 61, 0.22);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+.deal-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.deal-panel-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.deal-panel-title {
+  margin: 4px 0 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.deal-live-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(200, 255, 61, 0.08);
+  border: 1px solid rgba(200, 255, 61, 0.28);
+  padding: 5px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.hero-deal-panel .hero-key-terms-grid {
+  margin-top: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.hero-deal-panel .hero-term-card {
+  padding: 13px 14px;
+  background: rgba(8, 9, 11, 0.55);
+}
+.hero-deal-panel .hero-term-val {
+  font-size: 1.08rem;
+}
+.hero-deal-panel .round-progress-bar-bg {
+  margin-top: 14px;
+  height: 5px;
+}
+.round-progress-bar-bg.is-idle {
+  display: none;
+}
+.deal-panel-foot {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.deal-settlement-note {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-3);
+}
+.deal-quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+.deal-quick-links a {
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.deal-quick-links a:hover,
+.deal-quick-links a.accent-link {
+  color: var(--accent);
+}
+
+@media (max-width: 1024px) {
+  .hero-split-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .page-invest .page-hero {
+    padding: 90px 0 42px;
+  }
+  .page-invest .page-hero h1 {
+    max-width: 18ch;
+  }
+}
+@media (max-width: 560px) {
+  .page-invest .page-hero {
+    padding: 82px 0 36px;
+  }
+  .page-invest .page-hero h1 {
+    font-size: 2.05rem;
+    margin-top: 12px;
+  }
+  .page-invest .hero-cta-cluster {
+    margin-top: 18px;
+    gap: 10px;
+  }
+  .page-invest .hero-cta-cluster .btn-lg {
+    width: 100%;
+    padding: 12px 16px !important;
+    font-size: 0.9rem !important;
+  }
+  .page-invest .hero-trust-ribbon {
+    margin-top: 16px;
+    padding-top: 12px;
+    gap: 8px 14px;
+    font-size: 0.72rem;
+  }
+  .hero-deal-panel {
+    padding: 16px 14px;
+  }
+  .hero-deal-panel .hero-key-terms-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px;
+  }
+  .hero-deal-panel .hero-term-card {
+    padding: 11px 10px;
+  }
+  .hero-deal-panel .hero-term-lbl {
+    font-size: 0.65rem;
+  }
+  .hero-deal-panel .hero-term-val {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 350px) {
+  .hero-deal-panel .hero-term-val {
+    font-size: 0.76rem;
+  }
 }
 
 .hero-badge-pill {
