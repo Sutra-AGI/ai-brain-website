@@ -3604,11 +3604,14 @@ html, body {
 .escrow-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  line-height: 1.45;
 }
 .msme-badge b {
   color: var(--text);
   font-family: var(--font-mono);
+  white-space: nowrap;
 }
 .copy-notice {
   font-family: var(--font-mono);
