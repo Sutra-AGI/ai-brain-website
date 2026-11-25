@@ -51,9 +51,9 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=7026e0cd">
-  <link rel="stylesheet" href="/pages.css?v=7026e0cd">
-  <link rel="stylesheet" href="/invest.css?v=7026e0cd">
+  <link rel="stylesheet" href="/home.css?v=3a056fda">
+  <link rel="stylesheet" href="/pages.css?v=3a056fda">
+  <link rel="stylesheet" href="/invest.css?v=3a056fda">
 </head>
 <body class="page-invest-wire">
   <a class="skip" href="#main">Skip to wire transfer desk</a>
@@ -70,21 +70,23 @@
             <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1"/>
           </svg>
           <span class="portal-logo-title">AI Brain</span>
-          <span class="portal-badge">SETTLEMENT DESK</span>
+          <span class="portal-badge">WIRE DESK</span>
         </a>
       </div>
 
       <nav class="invest-portal-links" aria-label="Investor Portal Sub-Navigation">
-        <a href="/invest" class="invest-tab" id="tabOverview">Overview &amp; Tiers</a>
-        <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Agreement</a>
-        <a href="/invest/wire" class="invest-tab" id="tabWire" aria-current="page">Bank Wire Desk</a>
-        <a href="/architecture" class="invest-tab" id="tabTech">Tech Moat</a>
+        <a href="/invest" class="invest-tab" id="tabOverview">Overview</a>
+        <a href="/invest/deck" class="invest-tab" id="tabDeck">Pitch Deck</a>
+        <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Terms</a>
+        <a href="/invest/wire" class="invest-tab" id="tabWire" aria-current="page">Wire Desk</a>
+        <a href="/invest/policy" class="invest-tab" id="tabPolicy">Privacy</a>
+        <a href="/invest/disclosures" class="invest-tab" id="tabDisclosures">Disclosures</a>
       </nav>
 
       <div class="invest-portal-actions">
         <span class="portal-slots-pill" id="navSlotsPill">🟢 22 Slots Open</span>
-        <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20transmitting%20funds%20via%20the%20Wire%20Desk%20and%20would%20like%20to%20verify%20the%20transfer." target="_blank" rel="noopener" class="btn btn-sm btn-ghost btn-founder-call">💬 Wire Verification (WhatsApp)</a>
-        <a href="/invest" class="btn btn-sm btn-ghost btn-back-main">← Back to Overview</a>
+        <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20transmitting%20funds%20via%20the%20Wire%20Desk%20and%20would%20like%20to%20verify%20the%20transfer." target="_blank" rel="noopener" class="btn btn-sm btn-ghost btn-founder-call">💬 Wire Help</a>
+        <a href="/invest" class="btn btn-sm btn-ghost btn-back-main">← Overview</a>
         <button class="menu-btn" id="portalMenuBtn" aria-label="Open portal menu" aria-expanded="false" aria-controls="portalMobilePanel"><span></span></button>
       </div>
     </div>
@@ -93,14 +95,16 @@
   <!-- Mobile Drawer Menu -->
   <div class="portal-mobile-panel" id="portalMobilePanel" inert>
     <a class="m-link" href="/invest">Overview &amp; Tiers <span>01</span></a>
-    <a class="m-link" href="/invest/terms">iSAFE Agreement (Printable A4) <span>02</span></a>
-    <a class="m-link" href="/invest/wire" style="color:var(--accent); font-weight:600;">Bank Wire Desk &amp; UTR Lock <span>03 ✓</span></a>
-    <a class="m-link" href="/architecture">Tech Moat &amp; Hypergraph R&amp;D <span>04</span></a>
+    <a class="m-link" href="/invest/deck">10-Slide Pitch Deck (PDF) <span>02</span></a>
+    <a class="m-link" href="/invest/terms">iSAFE Agreement (Printable A4) <span>03</span></a>
+    <a class="m-link" href="/invest/wire" style="color:var(--accent); font-weight:600;">Bank Wire Desk &amp; UTR Lock <span>04 ✓</span></a>
+    <a class="m-link" href="/invest/policy">Investor Privacy &amp; KYC Policy <span>05</span></a>
+    <a class="m-link" href="/invest/disclosures">Regulatory Disclosures &amp; Risk <span>06</span></a>
     <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
-    <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20initiating%20a%20wire%20transfer." target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:16px;">💬 Instant Wire Verification</a>
+    <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20initiating%20a%20wire%20transfer." target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px;">💬 Instant Wire Verification</a>
   </div>
 
-  <main id="main" style="padding-top: 104px; padding-bottom: 60px;">
+<main id="main" style="padding-top: 104px; padding-bottom: 60px;">
     <!-- Wire Transfer Desk Section -->
     <section class="page-section" id="wire-desk" style="padding: 0;">
       <div class="wrap">
@@ -159,7 +163,7 @@
             <!-- Verification Gate for Bank Coordinates -->
             <div id="bankVerifyPrompt" class="bank-verify-prompt" style="padding: 24px; background: rgba(200, 255, 61, 0.04); border: 1px solid rgba(200, 255, 61, 0.25); border-radius: 12px; margin-bottom: 24px; text-align: center;">
               <div style="font-size: 1.6rem; margin-bottom: 8px;">🔐</div>
-              <h4 style="margin: 0 0 6px; font-size: 1.05rem; color: var(--text);">Accredited Investor Verification</h4>
+              <h2 style="margin: 0 0 6px; font-size: 1.05rem; color: var(--text);">Accredited Investor Verification</h2>
               <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 14px; max-width: 440px; margin-left: auto; margin-right: auto;">To protect official banking coordinates and prevent automated scraping, please verify accreditation to view full SWIFT / RTGS wire details.</p>
               <button type="button" class="btn btn-primary btn-sm" id="btnRevealBankCoords">Verify Accreditation &amp; Reveal Wire Details →</button>
             </div>
@@ -247,7 +251,7 @@
                     <input type="text" id="formName" name="name" placeholder="e.g. David Vance" required autocomplete="name">
                   </div>
                   <div class="form-group">
-                    <label for="formEmail">Official Institutional / Angel Email *</label>
+                    <label for="formEmail">Official / Angel Email *</label>
                     <input type="email" id="formEmail" name="email" placeholder="david@vance-ventures.com" required autocomplete="email">
                   </div>
                 </div>
@@ -398,6 +402,6 @@
     </div>
   </footer>
 
-  <script src="/invest.js?v=7026e0cd"></script>
+  <script src="/invest.js?v=3a056fda"></script>
 </body>
 </html>

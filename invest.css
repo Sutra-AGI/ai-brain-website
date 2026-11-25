@@ -24,21 +24,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   width: 100%;
 }
 .invest-nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 .invest-nav-logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   text-decoration: none;
   color: var(--text);
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.portal-logo-title {
+  white-space: nowrap;
 }
 .portal-badge {
   display: inline-block;
@@ -47,26 +54,30 @@
   border: 1px solid rgba(200, 255, 61, 0.4);
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   border-radius: 999px;
   vertical-align: middle;
+  white-space: nowrap;
 }
 .invest-portal-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
+  flex-shrink: 0;
 }
 .invest-tab {
   display: inline-flex;
   align-items: center;
-  padding: 8px 14px;
+  padding: 7px 11px;
   color: var(--text-2);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 500;
   border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.2s ease;
   position: relative;
 }
@@ -83,18 +94,24 @@
 .invest-portal-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.invest-portal-actions .btn {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .portal-slots-pill {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 600;
   color: var(--accent);
   background: rgba(200, 255, 61, 0.08);
   border: 1px solid rgba(200, 255, 61, 0.25);
-  padding: 6px 12px;
+  padding: 5px 10px;
   border-radius: 999px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .portal-mobile-panel {
   position: fixed;
@@ -109,7 +126,8 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
+  overflow-y: auto;
   z-index: 99;
   transform: translateY(-100%);
   opacity: 0;
@@ -121,12 +139,15 @@
   opacity: 1;
   pointer-events: auto;
 }
-@media (max-width: 900px) {
+@media (max-width: 1120px) {
   .invest-portal-links {
     display: none;
   }
   .btn-founder-call, .btn-back-main {
     display: none;
+  }
+  #portalMenuBtn {
+    display: inline-flex;
   }
 }
 @media (max-width: 600px) {
@@ -146,7 +167,7 @@
     display: none !important;
   }
 }
-@media (min-width: 901px) {
+@media (min-width: 1121px) {
   #portalMenuBtn {
     display: none;
   }
@@ -382,6 +403,42 @@
 /* ==========================================================================
    PHASE 1: REDESIGNED EXECUTIVE HERO SECTION STYLES
    ========================================================================== */
+section[id],
+.tier-card[data-tier-card] {
+  scroll-margin-top: 88px;
+}
+
+.page-invest .page-hero {
+  padding: 104px 0 56px;
+}
+.page-invest .page-hero h1 {
+  margin-top: 16px;
+  font-size: clamp(2.35rem, 5.2vw, 4.3rem);
+  max-width: 17ch;
+}
+.page-invest .page-hero .lead {
+  margin-top: 14px;
+  font-size: clamp(0.98rem, 1.3vw, 1.1rem);
+  max-width: 62ch;
+}
+.page-invest .hero-badge-pill {
+  margin-top: 14px !important;
+}
+.page-invest .hero-key-terms-grid {
+  margin-top: 22px;
+}
+.page-invest .round-progress-card {
+  margin-top: 16px !important;
+  padding: 14px 20px !important;
+}
+.page-invest .hero-cta-cluster {
+  margin-top: 22px;
+}
+.page-invest .hero-trust-ribbon {
+  margin-top: 20px;
+  padding-top: 16px;
+}
+
 .hero-badge-pill {
   display: inline-flex;
   align-items: center;
@@ -396,6 +453,15 @@
   color: var(--accent);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+@media (max-width: 560px) {
+  .hero-badge-pill,
+  .doc-status-pill {
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
 }
 
 .live-pulse-dot {
@@ -610,6 +676,10 @@
   transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
+.tier-card.tier-selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 12px 28px rgba(0, 0, 0, 0.45);
+}
 .tier-card.featured {
   border-color: var(--accent);
   background: radial-gradient(circle at top right, rgba(200, 255, 61, 0.08), var(--ink-2) 65%);
@@ -786,6 +856,7 @@
   display: block;
   margin-bottom: 12px;
 }
+.milestone-card h3,
 .milestone-card h4 {
   font-size: 1.08rem;
   margin-bottom: 8px;
@@ -1189,6 +1260,7 @@
   align-self: flex-start;
   margin-bottom: 14px;
 }
+.rev-stream-card h3,
 .rev-stream-card h4 {
   font-size: 1.15rem;
   font-weight: 600;
@@ -1274,6 +1346,7 @@
   margin-bottom: 12px;
   line-height: 1;
 }
+.fiduciary-card h3,
 .fiduciary-card h4 {
   font-size: 1.05rem;
   font-weight: 600;
@@ -1449,6 +1522,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
+  align-items: end;
 }
 @media (max-width: 600px) {
   .form-row {
@@ -1814,6 +1888,7 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
+.faq-card h3,
 .faq-card h4 {
   font-size: 1.05rem;
   font-weight: 600;
@@ -1926,6 +2001,8 @@
 .doc-running-header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 14px;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--text-2);
@@ -2325,13 +2402,21 @@
     color: #111111 !important;
   }
 
-  /* Individual A4 Pages: Exactly 3 full sheets */
+  /* Flowing legal documents (Policy, Disclosures): never clip multi-page overflow in print */
   .doc-page {
+    background: #ffffff !important;
+    color: #111111 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .isafe-document:not(.doc-flow) .doc-page {
     page-break-after: always !important;
     break-after: page !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-    box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
@@ -2339,12 +2424,25 @@
     min-height: 275mm !important;
     max-height: 275mm !important;
     overflow: hidden !important;
-    background: #ffffff !important;
+  }
+  .isafe-document.doc-flow .doc-page {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: block !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+  .doc-sign-block {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    background: #f8f9fa !important;
+    border: 1px solid #cccccc !important;
     color: #111111 !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
+  }
+  .doc-sign-block * {
+    color: #111111 !important;
   }
 
   .doc-page:last-child {
@@ -2672,6 +2770,43 @@ html, body {
   }
   .modal-bar-actions .btn {
     width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .doc-crest {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .deck-control-bar {
+    padding: 8px 0;
+  }
+  .deck-control-inner {
+    padding: 0 14px;
+    gap: 8px;
+  }
+  .deck-brand {
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+  .deck-brand .logo,
+  .deck-back-btn {
+    white-space: nowrap;
+    font-size: 0.78rem;
+  }
+  .deck-tag-pill {
+    display: none;
+  }
+  .deck-actions {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .deck-actions .btn {
+    padding: 0 10px;
+    height: 32px;
+    font-size: 0.74rem;
+    white-space: nowrap !important;
   }
 }
 

@@ -56,16 +56,24 @@ def test_definition_lists():
     print("✓ BUG-0005 Verified: All <dt>/<dd> elements are strictly contained within <dl> tags across all HTML files")
 
 def test_invest_headings():
-    invest = (ROOT / 'invest.html').read_text()
-    # Heading tags in order
-    headings = re.findall(r'<h([1-6])\b', invest)
-    headings = [int(h) for h in headings]
-    # Check that no heading level increases by more than 1 (e.g. h2 -> h4 is forbidden)
-    for i in range(len(headings) - 1):
-        curr, nxt = headings[i], headings[i+1]
-        if nxt > curr:
-            assert nxt == curr + 1, f"FATAL: Heading level jump from h{curr} to h{nxt} at index {i} in invest.html"
-    print("✓ BUG-0011 Verified: Heading hierarchy in invest.html has no level skips (WCAG valid)")
+    for fname in ['invest.html', 'invest/deck.html', 'invest/terms.html', 'invest/wire.html', 'invest/policy.html', 'invest/disclosures.html']:
+        txt = (ROOT / fname).read_text()
+        headings = [int(h) for h in re.findall(r'<h([1-6])\b', txt)]
+        for i in range(len(headings) - 1):
+            curr, nxt = headings[i], headings[i+1]
+            if nxt > curr:
+                assert nxt == curr + 1, f"FATAL: Heading level jump from h{curr} to h{nxt} at index {i} in {fname}"
+    print("✓ BUG-0011 Verified: Heading hierarchy across ALL 6 invest pages has no level skips (WCAG valid)")
+
+def test_csp_inline_handlers():
+    html_files = list(ROOT.glob('*.html')) + list((ROOT / 'invest').glob('*.html'))
+    for f in html_files:
+        content = f.read_text()
+        matches = re.findall(r'\bon(?:click|load|change|submit|input)=', content, flags=re.I)
+        assert not matches, f"FATAL: Inline DOM event handler {matches} breaks strict CSP in {f.name}"
+    for fname in ['invest/policy.html', 'invest/disclosures.html']:
+        assert 'isafe-document doc-flow' in (ROOT / fname).read_text(), f"FATAL: doc-flow print unclipping class missing in {fname}"
+    print("✓ CSP & Print Compliance Verified: Zero inline event handlers across all HTML files, doc-flow enabled on policy & disclosures")
 
 def test_admin_accessibility():
     admin = (ROOT / 'admin.html').read_text()
@@ -153,6 +161,7 @@ if __name__ == '__main__':
     test_form_semantics()
     test_definition_lists()
     test_invest_headings()
+    test_csp_inline_handlers()
     test_admin_accessibility()
     test_jsonld_schemas()
     test_sitemap()

@@ -39,9 +39,9 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=7026e0cd">
-  <link rel="stylesheet" href="/pages.css?v=7026e0cd">
-  <link rel="stylesheet" href="/invest.css?v=7026e0cd">
+  <link rel="stylesheet" href="/home.css?v=3a056fda">
+  <link rel="stylesheet" href="/pages.css?v=3a056fda">
+  <link rel="stylesheet" href="/invest.css?v=3a056fda">
 </head>
 <body class="page-invest-terms">
   <a class="skip" href="#main">Skip to policy content</a>
@@ -63,18 +63,18 @@
       </div>
 
       <nav class="invest-portal-links" aria-label="Investor Portal Sub-Navigation">
-        <a href="/invest" class="invest-tab" id="tabOverview">Overview &amp; Tiers</a>
+        <a href="/invest" class="invest-tab" id="tabOverview">Overview</a>
         <a href="/invest/deck" class="invest-tab" id="tabDeck">Pitch Deck</a>
-        <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Agreement</a>
-        <a href="/invest/wire" class="invest-tab" id="tabWire">Bank Wire Desk</a>
-        <a href="/invest/policy" class="invest-tab" id="tabPolicy" aria-current="page">Investor Privacy</a>
+        <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Terms</a>
+        <a href="/invest/wire" class="invest-tab" id="tabWire">Wire Desk</a>
+        <a href="/invest/policy" class="invest-tab" id="tabPolicy" aria-current="page">Privacy</a>
         <a href="/invest/disclosures" class="invest-tab" id="tabDisclosures">Disclosures</a>
       </nav>
 
       <div class="invest-portal-actions">
         <span class="portal-slots-pill" id="navSlotsPill">🟢 22 Slots Open</span>
-        <button type="button" class="btn btn-sm btn-primary no-print" onclick="window.print()">🖨️ Print Policy (A4)</button>
-        <a href="/invest" class="btn btn-sm btn-ghost btn-back-main">← Portal Overview</a>
+        <button type="button" class="btn btn-sm btn-primary no-print" data-print-doc>🖨️ Print / PDF</button>
+        <a href="/invest" class="btn btn-sm btn-ghost btn-back-main">← Overview</a>
         <button class="menu-btn" id="portalMenuBtn" aria-label="Open portal menu" aria-expanded="false" aria-controls="portalMobilePanel"><span></span></button>
       </div>
     </div>
@@ -89,9 +89,10 @@
     <a class="m-link" href="/invest/policy" style="color:var(--accent); font-weight:600;">Investor Privacy &amp; KYC Policy <span>05 ✓</span></a>
     <a class="m-link" href="/invest/disclosures">Regulatory Disclosures &amp; Risk <span>06</span></a>
     <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
+    <button type="button" class="btn btn-primary" data-print-doc style="margin-top:8px; width:100%;">🖨️ Print Policy (A4)</button>
   </div>
 
-  <main id="main" style="padding-top: 96px; padding-bottom: 60px;">
+<main id="main" style="padding-top: 96px; padding-bottom: 60px;">
     <div class="wrap" style="max-width: 960px;">
 
       <!-- Screen-Only Sub-Header Bar -->
@@ -101,13 +102,13 @@
           <span style="font-size:0.85rem; color:var(--text-2); margin-left: 10px;">Classification: Strict Investor &amp; Banking Confidentiality</span>
         </div>
         <div class="modal-bar-actions" style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button type="button" class="btn btn-primary btn-sm" onclick="window.print()">🖨️ Print Policy Document (PDF)</button>
+          <button type="button" class="btn btn-primary btn-sm" data-print-doc>🖨️ Print Policy Document (PDF)</button>
           <a href="/invest/terms" class="btn btn-ghost btn-sm">Review iSAFE Agreement →</a>
         </div>
       </div>
 
       <!-- Institutional Legal Document Container -->
-      <div class="isafe-document">
+      <div class="isafe-document doc-flow">
         
         <article class="doc-page">
           <div class="doc-running-header">
@@ -288,6 +289,6 @@
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="/invest.js?v=7026e0cd" defer></script>
+  <script src="/invest.js?v=3a056fda" defer></script>
 </body>
 </html>

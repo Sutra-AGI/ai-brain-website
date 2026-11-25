@@ -55,9 +55,9 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=7026e0cd">
-  <link rel="stylesheet" href="/pages.css?v=7026e0cd">
-  <link rel="stylesheet" href="/invest.css?v=7026e0cd">
+  <link rel="stylesheet" href="/home.css?v=3a056fda">
+  <link rel="stylesheet" href="/pages.css?v=3a056fda">
+  <link rel="stylesheet" href="/invest.css?v=3a056fda">
 </head>
 <body class="deck-body">
   <a class="skip" href="#deck-container">Skip to content</a>
@@ -72,7 +72,7 @@
       </div>
       
       <div class="deck-actions">
-        <button type="button" class="btn btn-ghost btn-sm" id="btnDeckPrint" onclick="window.print()">
+        <button type="button" class="btn btn-ghost btn-sm" id="btnDeckPrint" data-print-doc>
           🖨️ Print / Save as PDF
         </button>
         <a href="/invest#tiers" class="btn btn-primary btn-sm">
@@ -324,13 +324,13 @@
           <div class="slide-three-col">
             <div class="slide-col-card">
               <span class="eyebrow-mono">Cloud Usage Stream</span>
-              <div class="tam-number" style="font-size:2rem;">$0.002</div>
-              <p><strong>Per Associative Memory Query</strong><br>Plus $0.05 per 1,000 active nodes/month. Recurring developer usage scales directly with autonomous agent activity.</p>
+              <div class="tam-number" style="font-size:2rem;">$0.0004</div>
+              <p><strong>Per Associative Recall</strong><br>Plus Studio SDK ($999–$2,499/mo). Recurring developer usage scales directly with autonomous agent activity.</p>
             </div>
             <div class="slide-col-card highlight-border">
               <span class="eyebrow-mono" style="color:var(--accent);">Enterprise Licensing</span>
-              <div class="tam-number" style="font-size:2rem; color:var(--accent);">$24K–$120K</div>
-              <p><strong>Annual On-Prem Sovereign License</strong><br>Annual subscription per dedicated cluster with priority SLA, custom associative schema design, and compliance audits.</p>
+              <div class="tam-number" style="font-size:2rem; color:var(--accent);">$48,000/yr</div>
+              <p><strong>Annual On-Prem Sovereign License</strong><br>Per dedicated cluster ($24K–$120K by concurrency tier) with priority SLA and private VPC deployment.</p>
             </div>
             <div class="slide-col-card">
               <span class="eyebrow-mono">Unit Margin</span>
@@ -525,5 +525,6 @@
       </div>
     </div>
   </footer>
+  <script src="/invest.js?v=3a056fda" defer></script>
 </body>
 </html>

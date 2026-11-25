@@ -51,9 +51,9 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=7026e0cd">
-  <link rel="stylesheet" href="/pages.css?v=7026e0cd">
-  <link rel="stylesheet" href="/invest.css?v=7026e0cd">
+  <link rel="stylesheet" href="/home.css?v=3a056fda">
+  <link rel="stylesheet" href="/pages.css?v=3a056fda">
+  <link rel="stylesheet" href="/invest.css?v=3a056fda">
 </head>
 <body class="page-invest-terms">
   <a class="skip" href="#main">Skip to legal instrument</a>
@@ -70,22 +70,23 @@
             <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1"/>
           </svg>
           <span class="portal-logo-title">AI Brain</span>
-          <span class="portal-badge">LEGAL INSTRUMENT</span>
+          <span class="portal-badge">iSAFE TERMS</span>
         </a>
       </div>
 
       <nav class="invest-portal-links" aria-label="Investor Portal Sub-Navigation">
-        <a href="/invest" class="invest-tab" id="tabOverview">Overview &amp; Tiers</a>
-        <a href="/invest/terms" class="invest-tab" id="tabTerms" aria-current="page">iSAFE Agreement</a>
-        <a href="/invest/wire" class="invest-tab" id="tabWire">Bank Wire Desk</a>
-        <a href="/architecture" class="invest-tab" id="tabTech">Tech Moat</a>
+        <a href="/invest" class="invest-tab" id="tabOverview">Overview</a>
+        <a href="/invest/deck" class="invest-tab" id="tabDeck">Pitch Deck</a>
+        <a href="/invest/terms" class="invest-tab" id="tabTerms" aria-current="page">iSAFE Terms</a>
+        <a href="/invest/wire" class="invest-tab" id="tabWire">Wire Desk</a>
+        <a href="/invest/policy" class="invest-tab" id="tabPolicy">Privacy</a>
+        <a href="/invest/disclosures" class="invest-tab" id="tabDisclosures">Disclosures</a>
       </nav>
 
       <div class="invest-portal-actions">
         <span class="portal-slots-pill" id="navSlotsPill">🟢 22 Slots Open</span>
-        <button type="button" class="btn btn-sm btn-primary no-print" id="printTermSheetBtn">🖨️ Print / Save PDF (A4)</button>
-        <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20reviewing%20the%20AI%20Brain%20iSAFE%20legal%20agreement%20and%20would%20like%20to%20clarify%20a%20legal%20clause." target="_blank" rel="noopener" class="btn btn-sm btn-ghost btn-founder-call">💬 Counsel Support</a>
-        <a href="/invest" class="btn btn-sm btn-ghost btn-back-main">← Back to Overview</a>
+        <button type="button" class="btn btn-sm btn-primary no-print" id="printTermSheetBtn">🖨️ Print / PDF</button>
+        <a href="/invest" class="btn btn-sm btn-ghost btn-back-main">← Overview</a>
         <button class="menu-btn" id="portalMenuBtn" aria-label="Open portal menu" aria-expanded="false" aria-controls="portalMobilePanel"><span></span></button>
       </div>
     </div>
@@ -94,14 +95,16 @@
   <!-- Mobile Drawer Menu -->
   <div class="portal-mobile-panel" id="portalMobilePanel" inert>
     <a class="m-link" href="/invest">Overview &amp; Tiers <span>01</span></a>
-    <a class="m-link" href="/invest/terms" style="color:var(--accent); font-weight:600;">iSAFE Agreement (Printable A4) <span>02 ✓</span></a>
-    <a class="m-link" href="/invest/wire">Bank Wire Desk &amp; UTR Lock <span>03</span></a>
-    <a class="m-link" href="/architecture">Tech Moat &amp; Hypergraph R&amp;D <span>04</span></a>
+    <a class="m-link" href="/invest/deck">10-Slide Pitch Deck (PDF) <span>02</span></a>
+    <a class="m-link" href="/invest/terms" style="color:var(--accent); font-weight:600;">iSAFE Agreement (Printable A4) <span>03 ✓</span></a>
+    <a class="m-link" href="/invest/wire">Bank Wire Desk &amp; UTR Lock <span>04</span></a>
+    <a class="m-link" href="/invest/policy">Investor Privacy &amp; KYC Policy <span>05</span></a>
+    <a class="m-link" href="/invest/disclosures">Regulatory Disclosures &amp; Risk <span>06</span></a>
     <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
-    <button type="button" class="btn btn-primary" id="printTermSheetBtnMobile" style="margin-top:12px; width:100%;">🖨️ Print / Save as PDF (A4)</button>
+    <button type="button" class="btn btn-primary" id="printTermSheetBtnMobile" style="margin-top:8px; width:100%;">🖨️ Print / Save PDF (A4)</button>
   </div>
 
-  <main id="main" style="padding-top: 96px; padding-bottom: 60px;">
+<main id="main" style="padding-top: 96px; padding-bottom: 60px;">
     <div class="wrap" style="max-width: 960px;">
 
       <!-- Screen-Only Sub-Header Bar -->
@@ -439,7 +442,7 @@
       <!-- Action Navigation Footer -->
       <div class="no-print" style="margin-top: 36px; padding: 24px; border-radius: 8px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
         <div>
-          <h3 style="font-size: 1.1rem; margin: 0 0 4px; color: var(--text);">Ready to transmit funds?</h3>
+          <h2 style="font-size: 1.1rem; margin: 0 0 4px; color: var(--text);">Ready to transmit funds?</h2>
           <p style="margin: 0; font-size: 0.88rem; color: var(--text-2);">Proceed to the secure Bank Wire Desk to copy SBI coordinates and submit your UTR reference.</p>
         </div>
         <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
@@ -523,6 +526,6 @@
     </div>
   </footer>
 
-  <script src="/invest.js?v=7026e0cd"></script>
+  <script src="/invest.js?v=3a056fda"></script>
 </body>
 </html>

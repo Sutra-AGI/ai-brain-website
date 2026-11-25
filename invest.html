@@ -64,11 +64,11 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=7026e0cd">
-  <link rel="stylesheet" href="/pages.css?v=7026e0cd">
-  <link rel="stylesheet" href="/invest.css?v=7026e0cd">
+  <link rel="stylesheet" href="/home.css?v=3a056fda">
+  <link rel="stylesheet" href="/pages.css?v=3a056fda">
+  <link rel="stylesheet" href="/invest.css?v=3a056fda">
 </head>
-<body>
+<body class="page-invest">
   <a class="skip" href="#main">Skip to content</a>
 
   <!-- Dedicated Institutional Investor Portal Header -->
@@ -88,17 +88,17 @@
       </div>
 
       <nav class="invest-portal-links" aria-label="Investor Portal Sub-Navigation">
-        <a href="/invest" class="invest-tab" id="tabOverview" aria-current="page">Overview &amp; Tiers</a>
+        <a href="/invest" class="invest-tab" id="tabOverview" aria-current="page">Overview</a>
         <a href="/invest/deck" class="invest-tab" id="tabDeck">Pitch Deck</a>
-        <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Agreement</a>
-        <a href="/invest/wire" class="invest-tab" id="tabWire">Bank Wire Desk</a>
-        <a href="#tech-moat" class="invest-tab" id="tabTech">Tech Moat</a>
+        <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Terms</a>
+        <a href="/invest/wire" class="invest-tab" id="tabWire">Wire Desk</a>
+        <a href="/invest/policy" class="invest-tab" id="tabPolicy">Privacy</a>
+        <a href="/invest/disclosures" class="invest-tab" id="tabDisclosures">Disclosures</a>
       </nav>
 
       <div class="invest-portal-actions">
         <span class="portal-slots-pill" id="navSlotsPill">🟢 22 Slots Open</span>
-        <a href="#wire-desk" class="btn btn-sm btn-primary">Direct Wire Desk →</a>
-        <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20reviewing%20the%20AI%20Brain%20Pre-Seed%20portal%20and%20would%20like%20to%20connect%20for%20due%20diligence." target="_blank" rel="noopener" class="btn btn-sm btn-ghost btn-founder-call">💬 Founder Call</a>
+        <a href="#wire-desk" class="btn btn-sm btn-primary">Wire Desk →</a>
         <a href="/" class="btn btn-sm btn-ghost btn-back-main">← Main Site</a>
         <button class="menu-btn" id="portalMenuBtn" aria-label="Open portal menu" aria-expanded="false" aria-controls="portalMobilePanel"><span></span></button>
       </div>
@@ -111,12 +111,13 @@
     <a class="m-link" href="/invest/deck">10-Slide Pitch Deck (PDF) <span>02</span></a>
     <a class="m-link" href="/invest/terms">iSAFE Agreement (Printable A4) <span>03</span></a>
     <a class="m-link" href="/invest/wire">Bank Wire Desk &amp; UTR Lock <span>04</span></a>
-    <a class="m-link" href="/architecture">Tech Moat &amp; Hypergraph R&amp;D <span>05</span></a>
+    <a class="m-link" href="/invest/policy">Investor Privacy &amp; KYC Policy <span>05</span></a>
+    <a class="m-link" href="/invest/disclosures">Regulatory Disclosures &amp; Risk <span>06</span></a>
     <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
-    <a href="#wire-desk" class="btn btn-primary" style="margin-top:16px;">Direct Wire Desk →</a>
+    <a href="#wire-desk" class="btn btn-primary" style="margin-top:8px;">Direct Wire Desk →</a>
   </div>
 
-  <main id="main">
+<main id="main">
     <!-- Hero Section: Redesigned Executive Hub (Phase 1) -->
     <section class="page-hero">
       <div class="wrap">
@@ -419,7 +420,7 @@
           <span class="eyebrow-mono" style="color:var(--accent);">Mathematical Payout Roadmap · Annual Run Rate (ARR) Milestones</span>
           <h3 style="font-size:1.35rem; margin:10px 0 6px;">How Revenue Translates into Cash In Your Bank Account</h3>
           <p style="color:var(--text-2); font-size:0.88rem; margin:0 0 16px;">
-            Quarterly revenue-share dividends are disbursed automatically within 15 days of calendar quarter end. When your 3.0x–3.5x hurdle cap is reached, cash payouts conclude while your permanent equity ownership (0.375% to 2.50%) continues compounding forever.
+            Quarterly revenue-share dividends are distributed pro-rata across active pool participants from the dedicated gross revenue pool (capped at 5% to 15% of quarterly gross receipts by tranche) within 15 days of quarter end. Once your 3.0x–3.5x hurdle cap is reached, cash payouts conclude while your permanent equity (0.375% to 2.50%) continues compounding forever.
           </p>
 
           <table class="payout-table">
@@ -564,9 +565,9 @@
             <p class="gateway-card-desc">Transfer funds directly to our corporate State Bank of India account via SWIFT (international) or RTGS / NEFT (domestic India). Zero intermediary gateway fees or transaction cuts.</p>
             
             <ul class="gateway-feature-list">
-              <li><span class="feature-icon">🛡️</span> <strong>State Bank of India Corporate Account:</strong> 100% direct segregated custody.</li>
-              <li><span class="feature-icon">📜</span> <strong>RBI FEMA Compliant:</strong> Purpose Code P0802 with official FIRC issued within 24–48 hours.</li>
-              <li><span class="feature-icon">🔒</span> <strong>Accredited Investor Verification Gate:</strong> Protected coordinate transmission.</li>
+              <li><span class="feature-icon">🛡️</span> <span><strong>State Bank of India Corporate Account:</strong> 100% direct segregated custody.</span></li>
+              <li><span class="feature-icon">📜</span> <span><strong>RBI FEMA Compliant:</strong> Purpose Code P0802 with official FIRC issued within 24–48 hours.</span></li>
+              <li><span class="feature-icon">🔒</span> <span><strong>Accredited Investor Verification Gate:</strong> Protected coordinate transmission.</span></li>
             </ul>
 
             <noscript>
@@ -600,9 +601,9 @@
             <p class="gateway-card-desc">All allocations are executed under the India Simple Agreement for Future Equity (iSAFE) standard, backed by enforceable covenants under the Indian Contract Act, 1872.</p>
             
             <ul class="gateway-feature-list">
-              <li><span class="feature-icon">⚡</span> <strong>Priority Revenue Dividends:</strong> Contractual 10% gross revenue disbursement up to 3.0x–3.5x hurdle.</li>
-              <li><span class="feature-icon">🛡️</span> <strong>Senior Liquidation Preference:</strong> Article 2.3 protects 100% of unspent treasury pro-rata.</li>
-              <li><span class="feature-icon">🏢</span> <strong>MCA Private Limited Shield:</strong> Covenant to incorporate within 30 days and issue CCPS.</li>
+              <li><span class="feature-icon">⚡</span> <span><strong>Priority Revenue Dividends:</strong> Contractual 10% gross revenue disbursement up to 3.0x–3.5x hurdle.</span></li>
+              <li><span class="feature-icon">🛡️</span> <span><strong>Senior Liquidation Preference:</strong> Article 2.3 protects 100% of unspent treasury pro-rata.</span></li>
+              <li><span class="feature-icon">🏢</span> <span><strong>MCA Private Limited Shield:</strong> Covenant to incorporate within 30 days and issue CCPS.</span></li>
             </ul>
 
             <div class="gateway-action-row">
@@ -820,6 +821,6 @@
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="/invest.js?v=7026e0cd" defer></script>
+  <script src="/invest.js?v=3a056fda" defer></script>
 </body>
 </html>
