@@ -51,9 +51,9 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=050b3940">
-  <link rel="stylesheet" href="/pages.css?v=050b3940">
-  <link rel="stylesheet" href="/invest.css?v=050b3940">
+  <link rel="stylesheet" href="/home.css?v=4cd242ca">
+  <link rel="stylesheet" href="/pages.css?v=4cd242ca">
+  <link rel="stylesheet" href="/invest.css?v=4cd242ca">
 </head>
 <body class="page-invest-wire">
   <a class="skip" href="#main">Skip to wire transfer desk</a>
@@ -93,14 +93,15 @@
 
   <!-- Mobile Drawer Menu -->
   <div class="portal-mobile-panel" id="portalMobilePanel" inert>
-    <a class="m-link" href="/invest">Overview &amp; Tiers <span>01</span></a>
-    <a class="m-link" href="/invest/deck">10-Slide Pitch Deck (PDF) <span>02</span></a>
-    <a class="m-link" href="/invest/terms">iSAFE Agreement (Printable A4) <span>03</span></a>
-    <a class="m-link" href="/invest/wire" style="color:var(--accent); font-weight:600;">Bank Wire Desk &amp; UTR Lock <span>04 ✓</span></a>
-    <a class="m-link" href="/invest/policy">Investor Privacy &amp; KYC Policy <span>05</span></a>
-    <a class="m-link" href="/invest/disclosures">Regulatory Disclosures &amp; Risk <span>06</span></a>
-    <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
-    <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20initiating%20a%20wire%20transfer." target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:8px;">💬 Instant Wire Verification</a>
+    <a class="m-link" href="/invest">Overview <span>→</span></a>
+    <a class="m-link" href="/invest/deck">Pitch Deck <span>→</span></a>
+    <a class="m-link" href="/invest/terms">iSAFE Terms <span>→</span></a>
+    <a class="m-link" href="/invest/wire" aria-current="page">Wire Desk <span>Active</span></a>
+    <a class="m-link" href="/invest/policy">Privacy Policy <span>→</span></a>
+    <a class="m-link" href="/invest/disclosures">Disclosures <span>→</span></a>
+    <div class="portal-drawer-divider"></div>
+    <a href="https://wa.me/919461127967?text=Hello%20Bhoja%20Ram,%20I%20am%20initiating%20a%20wire%20transfer." target="_blank" rel="noopener" class="btn btn-primary">💬 Wire Help</a>
+    <a href="/" class="btn btn-ghost">← Main Site</a>
   </div>
 
 <main id="main" style="padding-top: 104px; padding-bottom: 60px;">
@@ -401,6 +402,6 @@
     </div>
   </footer>
 
-  <script src="/invest.js?v=050b3940"></script>
+  <script src="/invest.js?v=4cd242ca"></script>
 </body>
 </html>
