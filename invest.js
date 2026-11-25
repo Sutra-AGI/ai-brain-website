@@ -386,9 +386,6 @@
       document.querySelectorAll('.tier-card[data-tier-card]').forEach(function (c) {
         c.classList.toggle('tier-selected', c.getAttribute('data-tier-card') === tier);
       });
-      document.querySelectorAll('[data-mob-tab]').forEach(function (t) {
-        t.classList.toggle('active', t.getAttribute('data-mob-tab') === tier);
-      });
 
       var desk = document.getElementById('wire-desk');
       if (desk) {
@@ -704,23 +701,6 @@
       }
     });
   }
-
-  // Mobile Tier Switcher Tabs
-  var mobTabs = document.querySelectorAll('[data-mob-tab]');
-  mobTabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      mobTabs.forEach(function (t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-      var tier = tab.getAttribute('data-mob-tab');
-      selectedTier = tier;
-      updateWireSummary();
-      document.querySelectorAll('.tier-card[data-tier-card]').forEach(function (c) {
-        c.classList.toggle('tier-selected', c.getAttribute('data-tier-card') === tier);
-      });
-      var card = document.querySelector('.tier-card[data-tier-card="' + tier + '"]');
-      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
 
   // Dedicated Investor Portal Mobile Menu Drawer Toggle
   var portalMenuBtn = document.getElementById('portalMenuBtn');
