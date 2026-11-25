@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
 }
 .invest-nav-brand {
@@ -64,16 +64,16 @@
 .invest-portal-links {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   flex-shrink: 0;
 }
 .invest-tab {
   display: inline-flex;
   align-items: center;
-  padding: 7px 11px;
+  padding: 6px 9px;
   color: var(--text-2);
   text-decoration: none;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 500;
   border-radius: 6px;
   white-space: nowrap;
@@ -103,12 +103,12 @@
 }
 .portal-slots-pill {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--accent);
   background: rgba(200, 255, 61, 0.08);
   border: 1px solid rgba(200, 255, 61, 0.25);
-  padding: 5px 10px;
+  padding: 4px 9px;
   border-radius: 999px;
   white-space: nowrap;
   flex-shrink: 0;
@@ -139,7 +139,7 @@
   opacity: 1;
   pointer-events: auto;
 }
-@media (max-width: 1120px) {
+@media (max-width: 1220px) {
   .invest-portal-links {
     display: none;
   }
@@ -155,6 +155,9 @@
   #investNav .btn-primary {
     display: none !important;
   }
+  .portal-mobile-panel {
+    top: 63px;
+  }
 }
 @media (max-width: 480px) {
   .portal-badge {
@@ -167,7 +170,7 @@
     display: none !important;
   }
 }
-@media (min-width: 1121px) {
+@media (min-width: 1221px) {
   #portalMenuBtn {
     display: none;
   }
@@ -2915,35 +2918,6 @@ html, body {
     align-items: flex-start;
     gap: 10px;
   }
-  .deck-control-bar {
-    padding: 8px 0;
-  }
-  .deck-control-inner {
-    padding: 0 14px;
-    gap: 8px;
-  }
-  .deck-brand {
-    gap: 8px;
-    flex-wrap: nowrap;
-  }
-  .deck-brand .logo,
-  .deck-back-btn {
-    white-space: nowrap;
-    font-size: 0.78rem;
-  }
-  .deck-tag-pill {
-    display: none;
-  }
-  .deck-actions {
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .deck-actions .btn {
-    padding: 0 10px;
-    height: 32px;
-    font-size: 0.74rem;
-    white-space: nowrap !important;
-  }
 }
 
 @media (max-width: 600px) {
@@ -3167,61 +3141,13 @@ html, body {
   color: var(--text);
   min-height: 100vh;
 }
-.deck-control-bar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(11, 13, 14, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
-  padding: 12px 0;
+.deck-main {
+  padding-top: 72px;
 }
-.deck-control-inner {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.deck-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.deck-back-btn {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-2);
-  padding: 4px 10px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--line);
-  transition: all var(--ease);
-}
-.deck-back-btn:hover {
-  color: var(--text);
-  border-color: rgba(200, 255, 61, 0.3);
-}
-.deck-tag-pill {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: rgba(200, 255, 61, 0.08);
-  border: 1px solid rgba(200, 255, 61, 0.25);
-  padding: 3px 8px;
-  border-radius: 999px;
-}
-.deck-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+@media (max-width: 600px) {
+  .deck-main {
+    padding-top: 63px;
+  }
 }
 .deck-wrap {
   max-width: 1120px;
@@ -3472,10 +3398,12 @@ html, body {
     background: #000 !important;
     color: #fff !important;
   }
-  .deck-control-bar,
   .deck-footer,
   .skip {
     display: none !important;
+  }
+  .deck-main {
+    padding-top: 0 !important;
   }
   .deck-wrap {
     max-width: 100% !important;

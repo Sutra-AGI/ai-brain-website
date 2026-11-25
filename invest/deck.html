@@ -55,35 +55,58 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=38138f50">
-  <link rel="stylesheet" href="/pages.css?v=38138f50">
-  <link rel="stylesheet" href="/invest.css?v=38138f50">
+  <link rel="stylesheet" href="/home.css?v=fce4d651">
+  <link rel="stylesheet" href="/pages.css?v=fce4d651">
+  <link rel="stylesheet" href="/invest.css?v=fce4d651">
 </head>
 <body class="deck-body">
   <a class="skip" href="#deck-container">Skip to content</a>
 
-  <!-- Deck Control Top Bar -->
-  <header class="deck-control-bar">
-    <div class="deck-control-inner">
-      <div class="deck-brand">
-        <a href="/invest" class="deck-back-btn" title="Back to Invest Overview">← Overview</a>
-        <a href="/" class="logo">AI Brain</a>
-        <span class="deck-tag-pill">Pre-Seed Pitch Deck</span>
+  <!-- Dedicated Institutional Investor Portal Header -->
+  <header class="invest-portal-nav" id="investNav">
+    <div class="wrap invest-nav-inner">
+      <div class="invest-nav-brand">
+        <a href="/invest" class="invest-nav-logo" aria-label="AI Brain Investor Portal">
+          <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="15" stroke="#c8ff3d" stroke-opacity=".35"/>
+            <circle cx="9" cy="12" r="2.6" fill="#c8ff3d"/><circle cx="22" cy="9" r="2" fill="#f2f1ec"/>
+            <circle cx="23" cy="21" r="2.6" fill="#c8ff3d"/><circle cx="12" cy="23" r="2" fill="#f2f1ec"/>
+            <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#f2f1ec" stroke-opacity=".5" stroke-width="1"/>
+          </svg>
+          <span class="portal-logo-title">AI Brain</span>
+          <span class="portal-badge">PITCH DECK</span>
+        </a>
       </div>
-      
-      <div class="deck-actions">
-        <button type="button" class="btn btn-ghost btn-sm" id="btnDeckPrint" data-print-doc>
-          🖨️ Print / Save as PDF
-        </button>
-        <a href="/invest#tiers" class="btn btn-primary btn-sm">
-          ⚡ Reserve Slot →
-        </a>
-        <a href="/invest/wire" class="btn btn-ghost btn-sm">
-          🏛️ Wire Desk
-        </a>
+
+      <nav class="invest-portal-links" aria-label="Investor Portal Sub-Navigation">
+        <a href="/invest" class="invest-tab" id="tabOverview">Overview</a>
+        <a href="/invest/deck" class="invest-tab" id="tabDeck" aria-current="page">Pitch Deck</a>
+        <a href="/invest/terms" class="invest-tab" id="tabTerms">iSAFE Terms</a>
+        <a href="/invest/wire" class="invest-tab" id="tabWire">Wire Desk</a>
+        <a href="/invest/policy" class="invest-tab" id="tabPolicy">Privacy</a>
+        <a href="/invest/disclosures" class="invest-tab" id="tabDisclosures">Disclosures</a>
+      </nav>
+
+      <div class="invest-portal-actions">
+        <span class="portal-slots-pill" id="navSlotsPill">🟢 22 Slots Open</span>
+        <button type="button" class="btn btn-sm btn-primary no-print" id="btnDeckPrint" data-print-doc>🖨️ Print / PDF</button>
+        <a href="/invest" class="btn btn-sm btn-ghost btn-back-main">← Overview</a>
+        <button class="menu-btn" id="portalMenuBtn" aria-label="Open portal menu" aria-expanded="false" aria-controls="portalMobilePanel"><span></span></button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="portal-mobile-panel" id="portalMobilePanel" inert>
+    <a class="m-link" href="/invest">Overview &amp; Tiers <span>01</span></a>
+    <a class="m-link" href="/invest/deck" style="color:var(--accent); font-weight:600;">10-Slide Pitch Deck (PDF) <span>02 ✓</span></a>
+    <a class="m-link" href="/invest/terms">iSAFE Agreement (Printable A4) <span>03</span></a>
+    <a class="m-link" href="/invest/wire">Bank Wire Desk &amp; UTR Lock <span>04</span></a>
+    <a class="m-link" href="/invest/policy">Investor Privacy &amp; KYC Policy <span>05</span></a>
+    <a class="m-link" href="/invest/disclosures">Regulatory Disclosures &amp; Risk <span>06</span></a>
+    <a class="m-link" href="/">← Back to AI Brain Main Site <span>↗</span></a>
+    <button type="button" class="btn btn-primary" data-print-doc style="margin-top:8px; width:100%;">🖨️ Print Pitch Deck (PDF)</button>
+  </div>
 
   <main class="deck-main" id="deck-container">
     <div class="deck-wrap">
@@ -525,6 +548,6 @@
       </div>
     </div>
   </footer>
-  <script src="/invest.js?v=38138f50" defer></script>
+  <script src="/invest.js?v=fce4d651" defer></script>
 </body>
 </html>
