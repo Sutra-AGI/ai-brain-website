@@ -11,6 +11,8 @@
   <link rel="alternate" hreflang="en" href="https://aibrainstartup.com/">
   <link rel="alternate" hreflang="hi" href="https://aibrainstartup.com/hi">
   <link rel="alternate" hreflang="x-default" href="https://aibrainstartup.com/">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context">
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Context">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
@@ -391,13 +393,33 @@
         </div>
 
         <div class="agents reveal">
-          <div class="agent-list" role="tablist" aria-label="Agents" id="agentList"></div>
-          <div class="agent-panel" role="tabpanel" id="agentPanel" aria-live="polite">
-            <div class="agent-panel-head"><h3 id="agentName"></h3><p id="agentDesc"></p></div>
-            <ul id="agentFeatures"></ul>
+          <div class="agent-list" role="tablist" aria-label="Agents" id="agentList">
+            <button class="agent-btn" role="tab" id="tab-research" aria-controls="agentPanel" aria-selected="true" tabindex="0" data-i="0">
+              <span class="i">01</span><strong>Research Agent</strong><small>Deep-scan investigator</small>
+            </button>
+            <button class="agent-btn" role="tab" id="tab-coding" aria-controls="agentPanel" aria-selected="false" tabindex="-1" data-i="1">
+              <span class="i">02</span><strong>Coding Agent</strong><small>Software synthesis</small>
+            </button>
+            <button class="agent-btn" role="tab" id="tab-strategy" aria-controls="agentPanel" aria-selected="false" tabindex="-1" data-i="2">
+              <span class="i">03</span><strong>Strategy Agent</strong><small>Tactical risk advisor</small>
+            </button>
+            <button class="agent-btn" role="tab" id="tab-knowledge" aria-controls="agentPanel" aria-selected="false" tabindex="-1" data-i="3">
+              <span class="i">04</span><strong>Knowledge Agent</strong><small>Hypergraph sync</small>
+            </button>
+            <button class="agent-btn" role="tab" id="tab-automation" aria-controls="agentPanel" aria-selected="false" tabindex="-1" data-i="4">
+              <span class="i">05</span><strong>Automation Agent</strong><small>CI/CD &amp; cloud triggers</small>
+            </button>
+          </div>
+          <div class="agent-panel" role="tabpanel" id="agentPanel" aria-live="polite" aria-labelledby="tab-research">
+            <div class="agent-panel-head"><h3 id="agentName">Research Agent</h3><p id="agentDesc">Searches literature, synthesises datasets and writes structured executive reports.</p></div>
+            <ul id="agentFeatures"><li>Paper discovery &amp; citation extraction</li><li>Multi-document cross-referencing</li><li>Live web &amp; database crawling</li></ul>
             <div class="term">
-              <div class="term-bar"><i></i><i></i><i></i><span class="demo-flag mono">illustrative</span><em id="agentFile"></em></div>
-              <pre id="agentTerm" tabindex="0" aria-label="Agent terminal output"></pre>
+              <div class="term-bar"><i></i><i></i><i></i><span class="demo-flag mono">illustrative</span><em id="agentFile">research_agent.sh</em></div>
+              <pre id="agentTerm" tabindex="0" aria-label="Agent terminal output"><span class="t-k">$ aibrain run research --mode=deep_scan</span>
+<span class="t-s">&gt; recalling 214 related memories…</span>
+<span class="t-c">[+] 38 papers analysed</span>
+<span class="t-c">[+] 112 entity nodes linked to graph</span>
+<span class="t-ok">✓ executive synthesis ready (2.4s)</span> <span class="caret"></span></pre>
             </div>
           </div>
         </div>
@@ -428,7 +450,21 @@
               </div>
               <button class="copy-btn" id="copyBtn" type="button">copy</button>
             </div>
-<pre id="sdkCode" tabindex="0" aria-label="SDK code example"></pre>
+<pre id="sdkCode" tabindex="0" aria-label="SDK code example"><span class="t-c"># Pre-release API preview (package not published yet)</span>
+<span class="t-k">import</span> aibrainstartup
+
+client = aibrainstartup.Client(api_key=<span class="t-s">&quot;sk_live_...&quot;</span>)
+
+<span class="t-c"># Recall long-term context for this user</span>
+ctx = client.memory.recall(user_id=<span class="t-s">&quot;usr_42&quot;</span>, query=<span class="t-s">&quot;current sprint&quot;</span>)
+
+<span class="t-c"># Run an agent that remembers</span>
+res = client.agents.run(
+    agent=<span class="t-s">&quot;coding&quot;</span>,
+    prompt=<span class="t-s">&quot;Fix the flaky test&quot;</span>,
+    context=ctx,
+)
+<span class="t-k">print</span>(res.output)</pre>
           </div>
         </div>
       </div>

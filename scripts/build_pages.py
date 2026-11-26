@@ -5,7 +5,7 @@ Usage:  python3 scripts/build_pages.py
 - Keeps each page's existing SEO <head> (title, meta, JSON-LD) and regenerates nav, body and footer.
 - Re-run after editing home.css / pages.css / home.js: it refreshes the ?v= cache-busting hash on every page.
 """
-import re, sys, pathlib
+import re, sys, pathlib, subprocess
 
 import hashlib
 
@@ -14,6 +14,8 @@ ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path(__file__)
 V = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in ("home.css", "pages.css", "home.js", "admin.css", "admin.js", "invest.css", "invest.js"))).hexdigest()[:8]
 
 FONTS = '''  <script>document.documentElement.classList.add('js')</script>
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context">
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Context">
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="home.css?v={v}">
@@ -99,7 +101,7 @@ def clean_head(html):
     head = re.sub(r"<noscript>.*?</noscript>\s*", "", head, flags=re.S)
     head = re.sub(r"[ \t]*<link[^>]*(fonts\.googleapis\.com/css2|styles\.css)[^>]*>\s*\n?", "", head)
     head = re.sub(r"[ \t]*<link[^>]*(preconnect|dns-prefetch)[^>]*>\s*\n?", "", head)
-    head = re.sub(r"[ \t]*<link[^>]*(home\.css|pages\.css|/fonts/)[^>]*>\s*\n?", "", head)
+    head = re.sub(r"[ \t]*<link[^>]*(home\.css|pages\.css|/fonts/|/llms(-full)?\.txt)[^>]*>\s*\n?", "", head)
     head = re.sub(r"[ \t]*<script>document\.documentElement[^<]*</script>\s*\n?", "", head)
     head = re.sub(r"[ \t]*<!--[^>]*(Font|CSS|Stylesheet|Resource Hints|Speed)[^>]*-->\s*\n?", "", head, flags=re.I)
     head = head.replace('content="#070913"', 'content="#08090b"')
@@ -618,14 +620,27 @@ for name, (active, body) in PAGES.items():
     path.write_text(out)
     print(f"built {name}.html ({len(out):,} bytes)")
 
-# Hand-written pages (homepage, Hindi homepage, admin, invest & portal sub-pages): only refresh their asset versions.
-for page in ("index.html", "hi.html", "admin.html", "invest.html", "invest/terms.html", "invest/wire.html", "invest/tech.html", "invest/deck.html", "invest/policy.html", "invest/disclosures.html"):
+# Hand-written pages (homepage, Hindi homepage, resume, admin, invest & portal sub-pages): only refresh their asset versions.
+for page in ("index.html", "hi.html", "resume.html", "admin.html", "invest.html", "invest/terms.html", "invest/wire.html", "invest/tech.html", "invest/deck.html", "invest/policy.html", "invest/disclosures.html"):
     f = ROOT / page
     f.write_text(re.sub(r'((?:home|pages|admin|invest)\.(?:css|js))\?v=[\w]+', rf'\1?v={V}', f.read_text()))
 import datetime
 
+def git_lastmod(rel_path, fallback):
+    try:
+        out = subprocess.check_output(
+            ["git", "log", "-1", "--format=%cs", "--", rel_path],
+            cwd=ROOT, text=True, stderr=subprocess.DEVNULL
+        ).strip()
+        if re.match(r"^\d{4}-\d{2}-\d{2}$", out):
+            return out
+    except Exception:
+        pass
+    return fallback
+
 def update_sitemap():
     today = datetime.date.today().isoformat()
+    lm = lambda p: git_lastmod(p, today)
     sitemap = f'''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -634,7 +649,8 @@ def update_sitemap():
     <loc>https://aibrainstartup.com/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://aibrainstartup.com/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://aibrainstartup.com/hi"/>
-    <lastmod>{today}</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aibrainstartup.com/"/>
+    <lastmod>{lm("index.html")}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -646,86 +662,93 @@ def update_sitemap():
     <loc>https://aibrainstartup.com/hi</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://aibrainstartup.com/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://aibrainstartup.com/hi"/>
-    <lastmod>{today}</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aibrainstartup.com/"/>
+    <lastmod>{lm("hi.html")}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://aibrainstartup.com/architecture</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>{lm("architecture.html")}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://aibrainstartup.com/docs</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>{lm("docs.html")}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://aibrainstartup.com/about</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>{lm("about.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/resume</loc>
+    <lastmod>{lm("resume.html")}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aibrainstartup.com/invest</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>{lm("invest.html")}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://aibrainstartup.com/invest/deck</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>{lm("invest/deck.html")}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.88</priority>
-  </url>
-  <url>
-    <loc>https://aibrainstartup.com/invest/terms</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://aibrainstartup.com/invest/wire</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://aibrainstartup.com/invest/policy</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.82</priority>
-  </url>
-  <url>
-    <loc>https://aibrainstartup.com/invest/disclosures</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.82</priority>
-  </url>
-  <url>
-    <loc>https://aibrainstartup.com/contact</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://aibrainstartup.com/invest/terms</loc>
+    <lastmod>{lm("invest/terms.html")}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/invest/wire</loc>
+    <lastmod>{lm("invest/wire.html")}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/invest/policy</loc>
+    <lastmod>{lm("invest/policy.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/invest/disclosures</loc>
+    <lastmod>{lm("invest/disclosures.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/contact</loc>
+    <lastmod>{lm("contact.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://aibrainstartup.com/privacy-policy</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>{lm("privacy-policy.html")}</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://aibrainstartup.com/terms-of-service</loc>
-    <lastmod>{today}</lastmod>
+    <lastmod>{lm("terms-of-service.html")}</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
   </url>
 </urlset>
 '''
     (ROOT / "sitemap.xml").write_text(sitemap)
-    print(f"generated sitemap.xml with lastmod={today}")
+    print(f"generated sitemap.xml with git lastmod (fallback={today})")
 
 update_sitemap()
 print(f"asset version: {V}")
