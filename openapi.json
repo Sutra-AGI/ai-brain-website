@@ -1,0 +1,228 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AI Brain Cognitive Memory API (Pre-Release Preview)",
+    "version": "1.0.0-preview",
+    "summary": "Planned REST interface for associative hypergraph agent memory and swarm state consensus.",
+    "description": "Pre-release API preview specification for AI Brain. Endpoints are planned and not yet publicly live; request early access at https://aibrainstartup.com/#waitlist. Registered entity: AI BRAIN STARTUPS (UDYAM-RJ-05-0067280).",
+    "contact": {
+      "name": "AI Brain Technical Team",
+      "url": "https://aibrainstartup.com/contact",
+      "email": "team@aibrainstartup.com"
+    },
+    "license": {
+      "name": "Proprietary — Early Access Preview",
+      "url": "https://aibrainstartup.com/terms-of-service"
+    }
+  },
+  "externalDocs": {
+    "description": "Developer Docs (API preview) & Architecture Blueprint",
+    "url": "https://aibrainstartup.com/docs"
+  },
+  "servers": [
+    {
+      "url": "https://api.aibrainstartup.com/v1",
+      "description": "Planned Production API Endpoint (in development — early-access waitlist open at https://aibrainstartup.com/#waitlist)"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/memory/remember": {
+      "post": {
+        "operationId": "rememberMemory",
+        "summary": "Ingest and link new context into the associative hypergraph",
+        "description": "Planned endpoint to store cross-session experiences, architectural rules, entity facts, and agent intentions with temporal decay protection.",
+        "tags": ["Memory"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RememberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Context indexed into hypergraph memory (preview schema)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RememberResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid or missing bearer API key"
+          }
+        }
+      }
+    },
+    "/memory/recall": {
+      "post": {
+        "operationId": "recallMemory",
+        "summary": "Multi-hop associative recall across sessions",
+        "description": "Planned endpoint combining vector similarity with relational hypergraph traversal to retrieve grounded agent context across multi-turn horizons.",
+        "tags": ["Memory"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecallRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Associated memory nodes and traversal telemetry (preview schema)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecallResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid or missing bearer API key"
+          }
+        }
+      }
+    },
+    "/swarm/sync": {
+      "post": {
+        "operationId": "syncSwarmState",
+        "summary": "Synchronize shared memory state across concurrent agents",
+        "description": "Planned Swarm Consensus endpoint allowing planner, coder, reviewer, and specialized agents to broadcast verified state updates without context drift.",
+        "tags": ["Swarm"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SwarmSyncRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Swarm state consensus acknowledgment (preview schema)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SwarmSyncResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid or missing bearer API key"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Early-access API key (e.g. sk_live_...)"
+      }
+    },
+    "schemas": {
+      "RememberRequest": {
+        "type": "object",
+        "required": ["agent_id", "context"],
+        "properties": {
+          "agent_id": {
+            "type": "string",
+            "example": "executive_agent_01"
+          },
+          "context": {
+            "type": "object",
+            "additionalProperties": true,
+            "example": {
+              "user_intent": "Deploy agent swarm",
+              "tech_stack": ["Google Cloud", "Gemini"],
+              "rule": "Zero context decay across sessions"
+            }
+          },
+          "reasoning_weight": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "default": 0.9,
+            "example": 0.98
+          },
+          "decay_protection": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "RememberResponse": {
+        "type": "object",
+        "properties": {
+          "node_id": { "type": "string" },
+          "linked_edges": { "type": "integer" },
+          "status": { "type": "string", "example": "INDEXED" }
+        }
+      },
+      "RecallRequest": {
+        "type": "object",
+        "required": ["agent_id", "query"],
+        "properties": {
+          "agent_id": { "type": "string", "example": "executive_agent_01" },
+          "query": { "type": "string", "example": "What architecture rules were specified?" },
+          "depth": { "type": "integer", "minimum": 1, "maximum": 8, "default": 4 },
+          "top_k": { "type": "integer", "minimum": 1, "maximum": 50, "default": 5 }
+        }
+      },
+      "RecallResponse": {
+        "type": "object",
+        "properties": {
+          "latency_ms": { "type": "number", "description": "Measured traversal duration in ms (<15ms design target)" },
+          "nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": true
+            }
+          }
+        }
+      },
+      "SwarmSyncRequest": {
+        "type": "object",
+        "required": ["swarm_id", "source_agent", "state_key", "payload"],
+        "properties": {
+          "swarm_id": { "type": "string", "example": "swarm_alpha_dev" },
+          "source_agent": { "type": "string", "example": "coder_agent" },
+          "state_key": { "type": "string", "example": "verified_memory_spec" },
+          "payload": { "type": "object", "additionalProperties": true },
+          "consensus_mode": {
+            "type": "string",
+            "enum": ["IMMEDIATE_SYNC", "QUORUM_COMMIT"],
+            "default": "IMMEDIATE_SYNC"
+          }
+        }
+      },
+      "SwarmSyncResponse": {
+        "type": "object",
+        "properties": {
+          "swarm_id": { "type": "string" },
+          "status": { "type": "string", "example": "SYNCHRONIZED" }
+        }
+      }
+    }
+  }
+}

@@ -14,8 +14,10 @@ ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path(__file__)
 V = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in ("home.css", "pages.css", "home.js", "admin.css", "admin.js", "invest.css", "invest.js"))).hexdigest()[:8]
 
 FONTS = '''  <script>document.documentElement.classList.add('js')</script>
+  <link rel="llms-txt" href="/llms.txt">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context">
   <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Context">
+  <link rel="alternate" type="application/rss+xml" title="AI Brain Updates" href="/feed.xml">
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="home.css?v={v}">
@@ -101,7 +103,7 @@ def clean_head(html):
     head = re.sub(r"<noscript>.*?</noscript>\s*", "", head, flags=re.S)
     head = re.sub(r"[ \t]*<link[^>]*(fonts\.googleapis\.com/css2|styles\.css)[^>]*>\s*\n?", "", head)
     head = re.sub(r"[ \t]*<link[^>]*(preconnect|dns-prefetch)[^>]*>\s*\n?", "", head)
-    head = re.sub(r"[ \t]*<link[^>]*(home\.css|pages\.css|/fonts/|/llms(-full)?\.txt)[^>]*>\s*\n?", "", head)
+    head = re.sub(r"[ \t]*<link[^>]*(home\.css|pages\.css|/fonts/|/llms(-full)?\.txt|/feed\.xml|rel=\"llms-txt\")[^>]*>\s*\n?", "", head)
     head = re.sub(r"[ \t]*<script>document\.documentElement[^<]*</script>\s*\n?", "", head)
     head = re.sub(r"[ \t]*<!--[^>]*(Font|CSS|Stylesheet|Resource Hints|Speed)[^>]*-->\s*\n?", "", head, flags=re.I)
     head = head.replace('content="#070913"', 'content="#08090b"')

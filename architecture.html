@@ -10,11 +10,29 @@
   <meta name="robots" content="index, follow">
   
   <link rel="canonical" href="https://aibrainstartup.com/architecture">
+  <link rel="alternate" hreflang="en" href="https://aibrainstartup.com/architecture">
+  <link rel="alternate" hreflang="x-default" href="https://aibrainstartup.com/architecture">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
-  
-<!-- JSON-LD TechArticle & Breadcrumb Schema -->
+
+  <meta property="og:site_name" content="AI Brain">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Architecture — Cloud-Native Associative Hypergraph Engine | AI Brain">
+  <meta property="og:description" content="How AI Brain is designed: a hypergraph memory engine, agent runtime and security layers on Google Cloud.">
+  <meta property="og:url" content="https://aibrainstartup.com/architecture">
+  <meta property="og:image" content="https://aibrainstartup.com/og/architecture.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AI Brain Architecture Blueprint — Cloud-native associative hypergraph memory mesh on Google Cloud">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Architecture — Cloud-Native Associative Hypergraph Engine | AI Brain">
+  <meta name="twitter:description" content="How AI Brain is designed: a hypergraph memory engine, agent runtime and security layers on Google Cloud.">
+  <meta name="twitter:image" content="https://aibrainstartup.com/og/architecture.jpg">
+  <meta name="twitter:image:alt" content="AI Brain Architecture Blueprint — Cloud-native associative hypergraph memory mesh on Google Cloud">
+  <meta name="theme-color" content="#08090b">
+
+<!-- JSON-LD TechArticle, DefinedTermSet & Breadcrumb Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -24,15 +42,70 @@
         "@id": "https://aibrainstartup.com/architecture#techarticle",
         "headline": "Enterprise Cloud Infrastructure & Hypergraph Architecture",
         "description": "Planned architecture: a hypergraph memory engine, Vertex AI and TPU compute, and GKE agent runtimes on Google Cloud.",
+        "isPartOf": {
+          "@id": "https://aibrainstartup.com/#website"
+        },
         "author": {
-          "@type": "Person",
-          "name": "Bhoja Ram Choudhary"
+          "@id": "https://aibrainstartup.com/#founder"
         },
         "publisher": {
-          "@type": "Organization",
-          "name": "AI Brain",
-          "logo": "https://aibrainstartup.com/icons/icon-512.png"
+          "@id": "https://aibrainstartup.com/#organization"
         }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://aibrainstartup.com/#organization",
+        "name": "AI Brain",
+        "legalName": "AI BRAIN STARTUPS",
+        "url": "https://aibrainstartup.com/",
+        "logo": "https://aibrainstartup.com/icons/icon-512.png",
+        "sameAs": [
+          "https://github.com/Sutra-AGI"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://aibrainstartup.com/#founder",
+        "name": "Bhoja Ram Choudhary",
+        "jobTitle": "Founder & Chief Architect",
+        "url": "https://aibrainstartup.com/resume",
+        "sameAs": [
+          "https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/"
+        ]
+      },
+      {
+        "@type": "DefinedTermSet",
+        "@id": "https://aibrainstartup.com/architecture#terms",
+        "name": "AI Brain Cognitive Memory Architecture Glossary",
+        "publisher": {
+          "@id": "https://aibrainstartup.com/#organization"
+        },
+        "hasDefinedTerm": [
+          {
+            "@type": "DefinedTerm",
+            "name": "Associative Hypergraph Memory",
+            "description": "A dual-layer cognitive memory architecture combining vector embeddings with relational hypergraph edges so AI agents recall multi-hop context across sessions instead of relying only on flat similarity chunks.",
+            "inDefinedTermSet": "https://aibrainstartup.com/architecture#terms"
+          },
+          {
+            "@type": "DefinedTerm",
+            "name": "Temporal Decay Protection",
+            "description": "A persistence safeguard designed so architectural decisions, user preferences, and long-horizon reasoning state do not degrade as conversations or context windows grow.",
+            "inDefinedTermSet": "https://aibrainstartup.com/architecture#terms"
+          },
+          {
+            "@type": "DefinedTerm",
+            "name": "Swarm Consensus",
+            "description": "A synchronized multi-agent state protocol enabling planner, coder, evaluator, and specialized agents to share verified graph state concurrently without collisions or context drift.",
+            "inDefinedTermSet": "https://aibrainstartup.com/architecture#terms"
+          },
+          {
+            "@type": "DefinedTerm",
+            "name": "Hybrid Graph Router",
+            "description": "A multi-hop traversal planner combining compiled C++20/systems memory kernels with Google Cloud Run gateways and Vertex AI TPU/GPU cognition compute (targeting sub-15ms p99 recall latency).",
+            "inDefinedTermSet": "https://aibrainstartup.com/architecture#terms"
+          }
+        ]
       },
       {
         "@type": "BreadcrumbList",
@@ -55,14 +128,11 @@
     ]
   }
   </script>
-
-  <meta property="og:image" content="https://aibrainstartup.com/og.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://aibrainstartup.com/og.jpg">
-  <meta name="theme-color" content="#08090b">
   <script>document.documentElement.classList.add('js')</script>
+  <link rel="llms-txt" href="/llms.txt">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context">
   <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Context">
+  <link rel="alternate" type="application/rss+xml" title="AI Brain Updates" href="/feed.xml">
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/home.css?v=5c2499f3">

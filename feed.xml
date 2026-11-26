@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI Brain — Updates, Architecture &amp; Milestones</title>
+    <link>https://aibrainstartup.com/</link>
+    <description>Official engineering milestones, developer API previews, and company announcements from AI BRAIN STARTUPS (UDYAM-RJ-05-0067280).</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Nov 2026 09:30:00 +0000</lastBuildDate>
+    <atom:link href="https://aibrainstartup.com/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>OpenAPI 3.1 Preview Specification &amp; Zero-JS Crawler Support</title>
+      <link>https://aibrainstartup.com/docs</link>
+      <guid isPermaLink="false">https://aibrainstartup.com/updates/openapi-preview-2026-11</guid>
+      <pubDate>Thu, 26 Nov 2026 09:30:00 +0000</pubDate>
+      <description>Published the machine-readable OpenAPI 3.1 specification (/openapi.json) for AI Brain's pre-release Hypergraph Memory and Swarm Consensus REST endpoints (/v1/memory/remember, /v1/memory/recall, /v1/swarm/sync), alongside full SSR HTML extraction for AI search crawlers.</description>
+    </item>
+
+    <item>
+      <title>Founder Executive Dossier Published (/resume)</title>
+      <link>https://aibrainstartup.com/resume</link>
+      <guid isPermaLink="false">https://aibrainstartup.com/updates/founder-dossier-2026-11</guid>
+      <pubDate>Thu, 26 Nov 2026 08:00:00 +0000</pubDate>
+      <description>Released the verified executive technical dossier for Founder &amp; Chief Architect Bhoja Ram Choudhary detailing MSME entity governance and system design milestones for AI BRAIN STARTUPS.</description>
+    </item>
+
+    <item>
+      <title>Cloud-Native Associative Hypergraph Architecture Blueprint</title>
+      <link>https://aibrainstartup.com/architecture</link>
+      <guid isPermaLink="false">https://aibrainstartup.com/updates/architecture-blueprint-2026</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <description>Documented AI Brain's hybrid memory architecture pairing compiled C++20/systems traversal kernels with planned Google Cloud Run, Vertex AI, TPU v5e, GKE, and Cloud Storage layers targeting sub-15ms p99 recall.</description>
+    </item>
+
+    <item>
+      <title>Pre-Seed Strategic Allocation Round ($700K Target / $4.0M Valuation Cap)</title>
+      <link>https://aibrainstartup.com/invest</link>
+      <guid isPermaLink="false">https://aibrainstartup.com/updates/pre-seed-round-2026</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <description>Opened AI Brain's $700,000 USD Pre-Seed Strategic Round (22 slots from $15K to $100K) structured via India iSAFE agreements with contractual 3.0x-3.5x gross revenue share and RBI FEMA P0802 compliant SBI SWIFT settlement.</description>
+    </item>
+
+    <item>
+      <title>AI BRAIN STARTUPS Registered Under Govt. of India MoMSME (UDYAM-RJ-05-0067280)</title>
+      <link>https://aibrainstartup.com/about#registration</link>
+      <guid isPermaLink="false">https://aibrainstartup.com/updates/udyam-registration-2025-10-10</guid>
+      <pubDate>Fri, 10 Oct 2025 00:00:00 +0000</pubDate>
+      <description>AI BRAIN STARTUPS officially registered as a Government of India Ministry of MSME micro enterprise (NIC Code 62099 — IT, software and computer services) in Rajasthan, India.</description>
+    </item>
+  </channel>
+</rss>

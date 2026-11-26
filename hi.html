@@ -11,8 +11,10 @@
   <link rel="alternate" hreflang="en" href="https://aibrainstartup.com/">
   <link rel="alternate" hreflang="hi" href="https://aibrainstartup.com/hi">
   <link rel="alternate" hreflang="x-default" href="https://aibrainstartup.com/">
+  <link rel="llms-txt" href="/llms.txt">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context">
   <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Context">
+  <link rel="alternate" type="application/rss+xml" title="AI Brain Updates" href="/feed.xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
@@ -22,12 +24,16 @@
   <meta property="og:description" content="LLM और AI एजेंट्स के लिए एक स्थायी, जुड़ी हुई मेमोरी लेयर।">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aibrainstartup.com/hi">
-  <meta property="og:image" content="https://aibrainstartup.com/og.jpg">
+  <meta property="og:image" content="https://aibrainstartup.com/og/hi.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AI Brain — AI एजेंट्स और LLMs के लिए स्थायी हाइपरग्राफ़ मेमोरी लेयर">
   <meta property="og:locale" content="hi_IN">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://aibrainstartup.com/og.jpg">
+  <meta name="twitter:title" content="AI Brain — AI एजेंट्स के लिए स्थायी मेमोरी">
+  <meta name="twitter:description" content="LLM और AI एजेंट्स के लिए एक स्थायी, जुड़ी हुई मेमोरी लेयर।">
+  <meta name="twitter:image" content="https://aibrainstartup.com/og/hi.jpg">
+  <meta name="twitter:image:alt" content="AI Brain — AI एजेंट्स और LLMs के लिए स्थायी हाइपरग्राफ़ मेमोरी लेयर">
 
   <script type="application/ld+json">
 {
@@ -39,17 +45,25 @@
       "name": "AI Brain",
       "legalName": "AI BRAIN STARTUPS",
       "alternateName": ["AI Brain Startup", "एआई ब्रेन"],
-      "url": "https://aibrainstartup.com/hi",
+      "url": "https://aibrainstartup.com/",
       "logo": "https://aibrainstartup.com/icons/icon-512.png",
-      "founder": {
-        "@type": "Person",
-        "name": "Bhoja Ram Choudhary",
-        "jobTitle": "संस्थापक एवं मुख्य वास्तुकार (Founder & Chief Architect)",
-        "sameAs": "https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/"
+      "foundingDate": "2025-10-10",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "Govt of India MSME Registration",
+        "value": "UDYAM-RJ-05-0067280"
       },
+      "founder": {
+        "@id": "https://aibrainstartup.com/#founder"
+      },
+      "sameAs": [
+        "https://github.com/Sutra-AGI"
+      ],
       "address": {
         "@type": "PostalAddress",
+        "addressLocality": "Barmer",
         "addressRegion": "Rajasthan",
+        "postalCode": "344001",
         "addressCountry": "IN"
       },
       "contactPoint": {
@@ -60,6 +74,19 @@
       }
     },
     {
+      "@type": "Person",
+      "@id": "https://aibrainstartup.com/#founder",
+      "name": "Bhoja Ram Choudhary",
+      "jobTitle": "संस्थापक एवं मुख्य वास्तुकार (Founder & Chief Architect)",
+      "url": "https://aibrainstartup.com/resume",
+      "worksFor": {
+        "@id": "https://aibrainstartup.com/#organization"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/"
+      ]
+    },
+    {
       "@type": "WebSite",
       "@id": "https://aibrainstartup.com/hi#website",
       "url": "https://aibrainstartup.com/hi",
@@ -68,6 +95,76 @@
       "publisher": {
         "@id": "https://aibrainstartup.com/#organization"
       }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://aibrainstartup.com/hi#webpage",
+      "url": "https://aibrainstartup.com/hi",
+      "name": "AI Brain — AI एजेंट्स के लिए स्थायी मेमोरी",
+      "inLanguage": "hi",
+      "isPartOf": {
+        "@id": "https://aibrainstartup.com/hi#website"
+      },
+      "publisher": {
+        "@id": "https://aibrainstartup.com/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://aibrainstartup.com/hi#faq",
+      "inLanguage": "hi",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "AI Brain क्या है?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI Brain एक शुरुआती चरण का भारतीय स्टार्टअप है जो LLM और AI एजेंट्स के लिए स्थायी, आपस में जुड़ी मेमोरी लेयर बना रहा है। प्रोडक्ट अभी विकास में है — अर्ली एक्सेस के लिए वेटलिस्ट से जुड़ें।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "स्थायी मेमोरी कैसे काम करेगी?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "यह vector embeddings और नॉलेज ग्राफ़ को मिलाकर बातचीत, आइडिया और प्रोजेक्ट के संदर्भ को जुड़े हुए नोड्स के रूप में सहेजेगी, ताकि अगले सेशन में भी वह याद रहे।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "क्या SDK अभी उपलब्ध है?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "नहीं, SDK जल्द आ रहा है। PyPI या npm पर मिलते-जुलते नाम वाले पैकेज (जैसे aibrain) हमारे नहीं हैं — उन्हें इंस्टॉल न करें।"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "AI Brain के संस्थापक कौन हैं?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "भोजा राम चौधरी। AI Brain भारत सरकार के MSME मंत्रालय में पंजीकृत है (Udyam: UDYAM-RJ-05-0067280)।"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://aibrainstartup.com/hi#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://aibrainstartup.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "हिन्दी",
+          "item": "https://aibrainstartup.com/hi"
+        }
+      ]
     }
   ]
 }

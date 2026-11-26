@@ -8,18 +8,31 @@
 - [Architecture](https://aibrainstartup.com/architecture)
 - [Developer docs (API preview)](https://aibrainstartup.com/docs)
 - [About](https://aibrainstartup.com/about)
+- [Founder Executive Dossier](https://aibrainstartup.com/resume)
 - [Pre-Seed Investment & Backers Portal](https://aibrainstartup.com/invest)
 - [10-Slide Investor Pitch Deck](https://aibrainstartup.com/invest/deck)
 - [iSAFE Agreement & Legal Instrument](https://aibrainstartup.com/invest/terms)
 - [Official Bank Wire Settlement Desk](https://aibrainstartup.com/invest/wire)
-- [Founder Executive Dossier](https://aibrainstartup.com/resume)
+- [Investor Privacy & KYC Policy](https://aibrainstartup.com/invest/policy)
+- [Regulatory Disclosures & Risk Factors](https://aibrainstartup.com/invest/disclosures)
 - [Contact](https://aibrainstartup.com/contact)
 - [Privacy policy](https://aibrainstartup.com/privacy-policy)
 - [Terms of service](https://aibrainstartup.com/terms-of-service)
-- [Full details](https://aibrainstartup.com/llms-full.txt)
+
+## Machine-Readable Discovery
+- [Full LLM Context](https://aibrainstartup.com/llms-full.txt)
+- [OpenAPI 3.1 Preview Spec](https://aibrainstartup.com/openapi.json)
+- [Updates RSS Feed](https://aibrainstartup.com/feed.xml)
+- [Security Policy (RFC 9116)](https://aibrainstartup.com/.well-known/security.txt)
+- [XML Sitemap](https://aibrainstartup.com/sitemap.xml)
+
+## AI Brain vs Vector DBs
+- **Flat Vector DBs:** Store isolated text chunks and retrieve approximate top-k neighbors via single-hop cosine similarity, losing causal links and multi-session decisions.
+- **AI Brain (In Development):** Planned dual-layer associative hypergraph memory pairing dense vector embeddings with typed relational edges, temporal decay protection, and multi-hop recall for autonomous agent swarms (<15ms recall and ~91% redundant-token reduction design targets, not yet published benchmarks).
 
 ## Key facts
-- Registered enterprise name: AI BRAIN STARTUPS (Government of India MSME, Udyam UDYAM-RJ-05-0067280)
-- Founder & Chief Architect: Bhoja Ram Choudhary
+- Registered enterprise name: AI BRAIN STARTUPS (Government of India MSME, Udyam UDYAM-RJ-05-0067280, Rajasthan, India)
+- Founder & Chief Architect: Bhoja Ram Choudhary (https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/)
+- Official GitHub Organization: https://github.com/Sutra-AGI
 - Status: in development — no public SDK or API yet
-- Contact: team@aibrainstartup.com · +91 94611 27967
+- Contact: team@aibrainstartup.com · founder@aibrainstartup.com · +91 94611 27967

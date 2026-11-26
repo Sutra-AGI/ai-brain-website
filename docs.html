@@ -5,16 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Developer Docs (API preview) — AI Brain</title>
   <meta name="description" content="API preview for the AI Brain memory SDK. The SDK is coming soon — join the waitlist for early access.">
+  <meta name="author" content="Bhoja Ram Choudhary">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://aibrainstartup.com/docs">
+  <link rel="alternate" hreflang="en" href="https://aibrainstartup.com/docs">
+  <link rel="alternate" hreflang="x-default" href="https://aibrainstartup.com/docs">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
-  <meta property="og:image" content="https://aibrainstartup.com/og.jpg">
+  <meta property="og:site_name" content="AI Brain">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Developer Docs (API preview) — AI Brain">
+  <meta property="og:description" content="API preview for the AI Brain memory SDK (@aibrainstartup/sdk) and planned REST endpoints (/v1/memory/remember, /recall, /swarm/sync).">
+  <meta property="og:url" content="https://aibrainstartup.com/docs">
+  <meta property="og:image" content="https://aibrainstartup.com/og/docs.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AI Brain Developer Docs — Pre-release Hypergraph Memory SDK and OpenAPI 3.1 Preview">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://aibrainstartup.com/og.jpg">
+  <meta name="twitter:title" content="Developer Docs (API preview) — AI Brain">
+  <meta name="twitter:description" content="API preview for the AI Brain memory SDK (@aibrainstartup/sdk) and planned REST endpoints (/v1/memory/remember, /recall, /swarm/sync).">
+  <meta name="twitter:image" content="https://aibrainstartup.com/og/docs.jpg">
+  <meta name="twitter:image:alt" content="AI Brain Developer Docs — Pre-release Hypergraph Memory SDK and OpenAPI 3.1 Preview">
   <meta name="theme-color" content="#08090b">
   
-  <!-- JSON-LD TechArticle & Breadcrumb Schema -->
+  <!-- JSON-LD TechArticle, SoftwareApplication & Breadcrumb Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -24,15 +39,58 @@
         "@id": "https://aibrainstartup.com/docs#techarticle",
         "headline": "AI Brain developer docs (API preview)",
         "description": "API preview for the AI Brain memory SDK. The SDK is coming soon — join the waitlist for early access.",
+        "isPartOf": {
+          "@id": "https://aibrainstartup.com/#website"
+        },
+        "about": {
+          "@id": "https://aibrainstartup.com/#software"
+        },
         "author": {
-          "@type": "Person",
-          "name": "Bhoja Ram Choudhary"
+          "@id": "https://aibrainstartup.com/#founder"
         },
         "publisher": {
-          "@type": "Organization",
-          "name": "AI Brain",
-          "logo": "https://aibrainstartup.com/icons/icon-512.png"
+          "@id": "https://aibrainstartup.com/#organization"
         }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://aibrainstartup.com/#software",
+        "name": "AI Brain",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Linux, macOS, Cloud",
+        "softwareVersion": "Pre-release API Preview",
+        "installUrl": "https://aibrainstartup.com/docs#installation",
+        "softwareHelp": "https://aibrainstartup.com/docs",
+        "releaseNotes": "https://aibrainstartup.com/openapi.json",
+        "publisher": {
+          "@id": "https://aibrainstartup.com/#organization"
+        },
+        "featureList": [
+          "Hypergraph memory API: remember() and multi-hop recall()",
+          "Swarm Consensus Protocol for multi-agent state synchronization",
+          "Planned HTTP REST endpoints (/v1/memory/remember, /v1/memory/recall, /v1/swarm/sync)"
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://aibrainstartup.com/#organization",
+        "name": "AI Brain",
+        "legalName": "AI BRAIN STARTUPS",
+        "url": "https://aibrainstartup.com/",
+        "logo": "https://aibrainstartup.com/icons/icon-512.png",
+        "sameAs": [
+          "https://github.com/Sutra-AGI"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://aibrainstartup.com/#founder",
+        "name": "Bhoja Ram Choudhary",
+        "jobTitle": "Founder & Chief Architect",
+        "url": "https://aibrainstartup.com/resume",
+        "sameAs": [
+          "https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/"
+        ]
       },
       {
         "@type": "BreadcrumbList",
@@ -56,8 +114,10 @@
   }
   </script>
   <script>document.documentElement.classList.add('js')</script>
+  <link rel="llms-txt" href="/llms.txt">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context">
   <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Context">
+  <link rel="alternate" type="application/rss+xml" title="AI Brain Updates" href="/feed.xml">
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/home.css?v=5c2499f3">

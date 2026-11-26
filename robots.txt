@@ -33,7 +33,10 @@ Disallow: /api/
 Disallow: /404
 Disallow: /invest/tech
 
-# LLM Context Discovery & Sitemap
+# LLM Context & Machine-Readable Discovery
 # LLMs: https://aibrainstartup.com/llms.txt
 # LLMs Full: https://aibrainstartup.com/llms-full.txt
+# OpenAPI: https://aibrainstartup.com/openapi.json
+# RSS Feed: https://aibrainstartup.com/feed.xml
+# Security: https://aibrainstartup.com/.well-known/security.txt
 Sitemap: https://aibrainstartup.com/sitemap.xml

@@ -11,8 +11,10 @@
   <link rel="alternate" hreflang="en" href="https://aibrainstartup.com/">
   <link rel="alternate" hreflang="hi" href="https://aibrainstartup.com/hi">
   <link rel="alternate" hreflang="x-default" href="https://aibrainstartup.com/">
+  <link rel="llms-txt" href="/llms.txt">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context">
   <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Context">
+  <link rel="alternate" type="application/rss+xml" title="AI Brain Updates" href="/feed.xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
@@ -26,11 +28,13 @@
   <meta property="og:image" content="https://aibrainstartup.com/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="AI Brain — Associative persistent memory architecture for autonomous AI agents">
   <meta property="og:locale" content="en_IN">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="AI Brain — Persistent Memory for AI Agents">
   <meta name="twitter:description" content="A persistent, associative memory layer for LLMs and autonomous AI agents.">
   <meta name="twitter:image" content="https://aibrainstartup.com/og.jpg">
+  <meta name="twitter:image:alt" content="AI Brain — Associative persistent memory architecture for autonomous AI agents">
 
   <script type="application/ld+json">
 {
@@ -46,8 +50,16 @@
       ],
       "url": "https://aibrainstartup.com/",
       "logo": "https://aibrainstartup.com/icons/icon-512.png",
+      "foundingDate": "2025-10-10",
       "email": "team@aibrainstartup.com",
       "telephone": "+919461127967",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Barmer",
+        "addressRegion": "Rajasthan",
+        "postalCode": "344001",
+        "addressCountry": "IN"
+      },
       "identifier": {
         "@type": "PropertyValue",
         "propertyID": "Govt of India MSME Registration",
@@ -55,19 +67,65 @@
       },
       "knowsAbout": [
         "Persistent AI memory",
+        "Associative hypergraph memory",
         "Knowledge graphs",
         "Autonomous AI agents"
       ],
       "founder": {
-        "@type": "Person",
-        "@id": "https://aibrainstartup.com/#founder",
-        "name": "Bhoja Ram Choudhary",
-        "jobTitle": "Founder & Chief Architect",
-        "sameAs": "https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/"
+        "@id": "https://aibrainstartup.com/#founder"
+      },
+      "sameAs": [
+        "https://github.com/Sutra-AGI"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://aibrainstartup.com/#founder",
+      "name": "Bhoja Ram Choudhary",
+      "jobTitle": "Founder & Chief Architect",
+      "url": "https://aibrainstartup.com/resume",
+      "worksFor": {
+        "@id": "https://aibrainstartup.com/#organization"
       },
       "sameAs": [
         "https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/"
       ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://aibrainstartup.com/#software",
+      "name": "AI Brain",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Linux, macOS, Cloud",
+      "softwareVersion": "Pre-release API Preview",
+      "url": "https://aibrainstartup.com/",
+      "installUrl": "https://aibrainstartup.com/docs#installation",
+      "downloadUrl": "https://aibrainstartup.com/#waitlist",
+      "releaseNotes": "https://aibrainstartup.com/feed.xml",
+      "softwareHelp": {
+        "@type": "WebPage",
+        "url": "https://aibrainstartup.com/docs"
+      },
+      "publisher": {
+        "@id": "https://aibrainstartup.com/#organization"
+      },
+      "creator": {
+        "@id": "https://aibrainstartup.com/#founder"
+      },
+      "featureList": [
+        "Associative hypergraph memory combining vector embeddings and typed graph edges",
+        "Multi-hop relational recall across sessions with sub-15ms p99 design target",
+        "Temporal decay protection preventing cross-session context loss",
+        "Swarm consensus synchronization across Research, Coding, Strategy, Knowledge, and Automation agents",
+        "Pre-release Python and TypeScript SDK interfaces (@aibrainstartup/sdk) and OpenAPI 3.1 spec"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/PreOrder",
+        "url": "https://aibrainstartup.com/#waitlist"
+      }
     },
     {
       "@type": "WebSite",
@@ -87,7 +145,16 @@
       "@type": "WebPage",
       "@id": "https://aibrainstartup.com/#webpage",
       "url": "https://aibrainstartup.com/",
-      "name": "AI Brain Landing Page",
+      "name": "AI Brain — Persistent Memory for AI Agents",
+      "isPartOf": {
+        "@id": "https://aibrainstartup.com/#website"
+      },
+      "about": {
+        "@id": "https://aibrainstartup.com/#software"
+      },
+      "publisher": {
+        "@id": "https://aibrainstartup.com/#organization"
+      },
       "speakable": {
         "@type": "SpeakableSpecification",
         "cssSelector": [
