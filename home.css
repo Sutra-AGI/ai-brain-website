@@ -4,9 +4,9 @@
    ========================================================================== */
 
 /* Self-hosted fonts (SIL OFL): Geist, Geist Mono, Instrument Serif — latin subset */
-@font-face { font-family: 'Geist'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/fonts/geist-latin.woff2') format('woff2'); }
-@font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/fonts/geist-mono-latin.woff2') format('woff2'); }
-@font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap; src: url('/fonts/instrument-serif-italic-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Geist'; font-style: normal; font-weight: 100 900; font-display: optional; src: url('/fonts/geist-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 100 900; font-display: optional; src: url('/fonts/geist-mono-latin.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: optional; src: url('/fonts/instrument-serif-italic-latin.woff2') format('woff2'); }
 
 :root {
   --ink: #08090b;
@@ -485,7 +485,7 @@ body.has-pointer .cursor-glow { opacity: 1; }
 main, .footer { position: relative; z-index: 1; }
 
 /* ---------- Hero ---------- */
-.aurora { position: absolute; inset: -20% -10% 0; z-index: 0; pointer-events: none; filter: blur(70px); opacity: 0.9; contain: layout style; }
+.aurora { position: absolute; top: -120px; left: -10%; right: -10%; height: 640px; z-index: 0; pointer-events: none; filter: blur(70px); opacity: 0.9; contain: layout style size; }
 .aurora i { position: absolute; border-radius: 50%; mix-blend-mode: screen; animation: drift 22s ease-in-out infinite alternate; will-change: transform; }
 .aurora i:nth-child(1) { width: 46vw; height: 46vw; right: 2%; top: 8%; background: radial-gradient(circle, rgba(200,255,61,0.22), transparent 65%); }
 .aurora i:nth-child(2) { width: 38vw; height: 38vw; right: 24%; top: 38%; background: radial-gradient(circle, rgba(139,123,255,0.28), transparent 65%); animation-duration: 28s; animation-delay: -6s; }

@@ -15,11 +15,11 @@
   };
 
   /* ---------- Nav ---------- */
-  function initNav(initialScrollY = 0) {
+  function initNav() {
     const nav = $('#nav'), btn = $('#menuBtn'), panel = $('#mobilePanel');
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
     window.addEventListener('scroll', onScroll, { passive: true });
-    if (initialScrollY > 12) nav.classList.add('scrolled');
+    if (window.location.hash) window.addEventListener('load', () => setTimeout(onScroll, 0), { once: true });
 
     const outside = () => [$('main'), $('.footer')].filter(Boolean);
     const setOpen = (open) => {
@@ -39,7 +39,7 @@
   }
 
   /* ---------- Hero hypergraph canvas ---------- */
-  function initGraph(_scrollY, initialW = 0, initialH = 0) {
+  function initGraph() {
     const canvas = $('#graph');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -49,7 +49,8 @@
 
     function build(cw, ch) {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = cw ?? canvas.clientWidth; h = ch ?? canvas.clientHeight;
+      w = Math.round(cw || 0); h = Math.round(ch || 0);
+      if (!w || !h) return;
       canvas.width = w * dpr; canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = Math.round(Math.min(110, Math.max(40, (w * h) / 14000)));
@@ -114,16 +115,29 @@
       if (!reduceMotion && visible) raf = requestAnimationFrame(frame);
     }
 
-    const start = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); };
+    const start = () => { if (!w || !h) return; cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); };
     let rt;
-    window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); start(); }, 150); });
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(entries => {
+        const cr = entries[0]?.contentRect;
+        if (!cr || cr.width < 1 || cr.height < 1) return;
+        const nw = Math.round(cr.width), nh = Math.round(cr.height);
+        const ndpr = Math.min(window.devicePixelRatio || 1, 2);
+        if (nw === w && nh === h && ndpr === dpr) return;
+        clearTimeout(rt);
+        if (!w) { build(nw, nh); start(); }
+        else { rt = setTimeout(() => { build(nw, nh); start(); }, 150); }
+      }).observe(canvas);
+    } else {
+      window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(canvas.clientWidth, canvas.clientHeight); start(); }, 150); });
+      requestAnimationFrame(() => { build(canvas.clientWidth, canvas.clientHeight); start(); });
+    }
     canvas.parentElement.addEventListener('pointermove', e => {
       const r = canvas.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
     });
     canvas.parentElement.addEventListener('pointerleave', () => { mouse.x = mouse.y = -9999; });
     new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) start(); }).observe(canvas);
     document.addEventListener('visibilitychange', () => { visible = !document.hidden; if (visible) start(); });
-    build(initialW || undefined, initialH || undefined); start();
   }
 
   /* ---------- Scroll reveal + counters ---------- */
@@ -548,15 +562,11 @@ console.log(res.output);` }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Batch all layout reads before any DOM mutations to avoid forced synchronous reflows
-    const initialScrollY = window.scrollY;
-    const canvas = $('#graph');
-    const initialW = canvas ? canvas.clientWidth : 0;
-    const initialH = canvas ? canvas.clientHeight : 0;
     const y = $('#year');
     [initNav, initGraph, initReveal, initSpotlight, initAgents, initSdk, initCalc, initDemo, initWaitlist, initContact, initCopy, initToc, initConsole, initCursorGlow].forEach(fn => {
-      try { fn(initialScrollY, initialW, initialH); } catch (err) { console.error('[AI Brain]', fn.name, err); }
+      try { fn(); } catch (err) { console.error('[AI Brain]', fn.name, err); }
     });
-    if (y) y.textContent = new Date().getFullYear();
+    const yr = String(new Date().getFullYear());
+    if (y && y.textContent !== yr) y.textContent = yr;
   });
 })();
