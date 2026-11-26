@@ -746,31 +746,31 @@ html[lang="hi"] .hero-meta, html[lang="hi"] .kicker, html[lang="hi"] .illus-note
   align-items: center;
   gap: 10px;
   max-width: 100%;
-  padding: 6px 14px 6px 8px;
+  padding: 5px 14px 5px 6px;
   border: 1px solid rgba(200, 255, 61, 0.35);
   border-radius: 999px;
   background: rgba(200, 255, 61, 0.06);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   transition: all 0.25s var(--ease);
   text-decoration: none;
 }
 .hero-invest-pill:hover {
   border-color: var(--accent);
-  background: rgba(200, 255, 61, 0.15);
+  background: rgba(200, 255, 61, 0.14);
   transform: translateY(-1px);
 }
 .hero-invest-pill .pill-badge {
   background: var(--accent);
   color: #08090b;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  line-height: 1.4;
-  padding: 3px 10px;
+  line-height: 1.3;
+  padding: 4px 10px;
   border-radius: 999px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -798,8 +798,9 @@ html[lang="hi"] .hero-meta, html[lang="hi"] .kicker, html[lang="hi"] .illus-note
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    border-radius: 16px;
+    border-radius: 14px;
     padding: 10px 14px;
+    margin-bottom: 20px;
     gap: 6px 10px;
   }
   .hero-invest-pill .pill-arrow {
