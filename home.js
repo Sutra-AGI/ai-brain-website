@@ -15,11 +15,11 @@
   };
 
   /* ---------- Nav ---------- */
-  function initNav() {
+  function initNav(initialScrollY = 0) {
     const nav = $('#nav'), btn = $('#menuBtn'), panel = $('#mobilePanel');
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    if (initialScrollY > 12) nav.classList.add('scrolled');
 
     const outside = () => [$('main'), $('.footer')].filter(Boolean);
     const setOpen = (open) => {
@@ -39,7 +39,7 @@
   }
 
   /* ---------- Hero hypergraph canvas ---------- */
-  function initGraph() {
+  function initGraph(_scrollY, initialW = 0, initialH = 0) {
     const canvas = $('#graph');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -47,9 +47,9 @@
     const mouse = { x: -9999, y: -9999 };
     const ACCENT = [200, 255, 61];
 
-    function build() {
+    function build(cw, ch) {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = canvas.clientWidth; h = canvas.clientHeight;
+      w = cw ?? canvas.clientWidth; h = ch ?? canvas.clientHeight;
       canvas.width = w * dpr; canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = Math.round(Math.min(110, Math.max(40, (w * h) / 14000)));
@@ -123,7 +123,7 @@
     canvas.parentElement.addEventListener('pointerleave', () => { mouse.x = mouse.y = -9999; });
     new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) start(); }).observe(canvas);
     document.addEventListener('visibilitychange', () => { visible = !document.hidden; if (visible) start(); });
-    build(); start();
+    build(initialW || undefined, initialH || undefined); start();
   }
 
   /* ---------- Scroll reveal + counters ---------- */
@@ -333,7 +333,7 @@ console.log(res.output);` }
       el.textContent = text;
       if (mem) { const m = document.createElement('span'); m.className = 'mem'; m.textContent = mem; el.appendChild(m); }
       chat.appendChild(el);
-      chat.scrollTop = chat.scrollHeight;
+      if (chat.childElementCount > 1) requestAnimationFrame(() => { chat.scrollTop = chat.scrollHeight; });
       return el;
     };
     const setCount = () => { $('#memCount').textContent = `${memories.length} ${memories.length === 1 ? 'memory' : 'memories'}`; };
@@ -548,9 +548,15 @@ console.log(res.output);` }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
+    // Batch all layout reads before any DOM mutations to avoid forced synchronous reflows
+    const initialScrollY = window.scrollY;
+    const canvas = $('#graph');
+    const initialW = canvas ? canvas.clientWidth : 0;
+    const initialH = canvas ? canvas.clientHeight : 0;
+    const y = $('#year');
     [initNav, initGraph, initReveal, initSpotlight, initAgents, initSdk, initCalc, initDemo, initWaitlist, initContact, initCopy, initToc, initConsole, initCursorGlow].forEach(fn => {
-      try { fn(); } catch (err) { console.error('[AI Brain]', fn.name, err); }
+      try { fn(initialScrollY, initialW, initialH); } catch (err) { console.error('[AI Brain]', fn.name, err); }
     });
+    if (y) y.textContent = new Date().getFullYear();
   });
 })();

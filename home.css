@@ -485,8 +485,8 @@ body.has-pointer .cursor-glow { opacity: 1; }
 main, .footer { position: relative; z-index: 1; }
 
 /* ---------- Hero ---------- */
-.aurora { position: absolute; inset: -20% -10% 0; z-index: 0; pointer-events: none; filter: blur(70px); opacity: 0.9; }
-.aurora i { position: absolute; border-radius: 50%; mix-blend-mode: screen; animation: drift 22s ease-in-out infinite alternate; }
+.aurora { position: absolute; inset: -20% -10% 0; z-index: 0; pointer-events: none; filter: blur(70px); opacity: 0.9; contain: layout style; }
+.aurora i { position: absolute; border-radius: 50%; mix-blend-mode: screen; animation: drift 22s ease-in-out infinite alternate; will-change: transform; }
 .aurora i:nth-child(1) { width: 46vw; height: 46vw; right: 2%; top: 8%; background: radial-gradient(circle, rgba(200,255,61,0.22), transparent 65%); }
 .aurora i:nth-child(2) { width: 38vw; height: 38vw; right: 24%; top: 38%; background: radial-gradient(circle, rgba(139,123,255,0.28), transparent 65%); animation-duration: 28s; animation-delay: -6s; }
 .aurora i:nth-child(3) { width: 30vw; height: 30vw; right: -6%; top: 52%; background: radial-gradient(circle, rgba(56,224,200,0.18), transparent 65%); animation-duration: 34s; animation-delay: -12s; }

@@ -5,13 +5,13 @@ Usage:  python3 scripts/build_pages.py
 - Keeps each page's existing SEO <head> (title, meta, JSON-LD) and regenerates nav, body and footer.
 - Re-run after editing home.css / pages.css / home.js: it refreshes the ?v= cache-busting hash on every page.
 """
-import re, sys, pathlib, subprocess
-
-import hashlib
+import re, sys, pathlib, subprocess, hashlib
+from minify import build_minified_assets
 
 ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parent.parent)
-# Cache-busting version = content hash of the shared assets (assets are served with a 1-year immutable cache).
-V = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in ("home.css", "pages.css", "home.js", "admin.css", "admin.js", "invest.css", "invest.js"))).hexdigest()[:8]
+build_minified_assets(ROOT)
+# Cache-busting version = content hash of the shared minified assets (assets are served with a 1-year immutable cache).
+V = hashlib.sha1(b"".join((ROOT / f).read_bytes() for f in ("home.min.css", "pages.min.css", "home.min.js", "admin.min.css", "admin.min.js", "invest.min.css", "invest.min.js"))).hexdigest()[:8]
 
 FONTS = '''  <script>document.documentElement.classList.add('js')</script>
   <link rel="llms-txt" href="/llms.txt">
@@ -19,9 +19,10 @@ FONTS = '''  <script>document.documentElement.classList.add('js')</script>
   <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Context">
   <link rel="alternate" type="application/rss+xml" title="AI Brain Updates" href="/feed.xml">
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="home.css?v={v}">
-  <link rel="stylesheet" href="pages.css?v={v}">
+  <link rel="stylesheet" href="home.min.css?v={v}">
+  <link rel="stylesheet" href="pages.min.css?v={v}">
 '''.format(v=V)
 
 LOGO = '''<svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -92,7 +93,7 @@ FOOTER = f'''
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="home.js?v={V}" defer></script>
+  <script src="home.min.js?v={V}" defer></script>
 </body>
 </html>
 '''
@@ -104,7 +105,7 @@ def clean_head(html):
     head = re.sub(r"<noscript>.*?</noscript>\s*", "", head, flags=re.S)
     head = re.sub(r"[ \t]*<link[^>]*(fonts\.googleapis\.com/css2|styles\.css)[^>]*>\s*\n?", "", head)
     head = re.sub(r"[ \t]*<link[^>]*(preconnect|dns-prefetch)[^>]*>\s*\n?", "", head)
-    head = re.sub(r"[ \t]*<link[^>]*(home\.css|pages\.css|/fonts/|/llms(-full)?\.txt|/feed\.xml|rel=\"llms-txt\")[^>]*>\s*\n?", "", head)
+    head = re.sub(r"[ \t]*<link[^>]*(home(?:\.min)?\.css|pages(?:\.min)?\.css|/fonts/|/llms(-full)?\.txt|/feed\.xml|rel=\"llms-txt\")[^>]*>\s*\n?", "", head)
     head = re.sub(r"[ \t]*<script>document\.documentElement[^<]*</script>\s*\n?", "", head)
     head = re.sub(r"[ \t]*<!--[^>]*(Font|CSS|Stylesheet|Resource Hints|Speed)[^>]*-->\s*\n?", "", head, flags=re.I)
     head = head.replace('content="#070913"', 'content="#08090b"')
@@ -996,7 +997,7 @@ for name, (active, body) in PAGES.items():
     src = src.replace('AI Brain Inc. / ', '').replace('AI Brain Inc.', 'AI BRAIN STARTUPS')
     out = clean_head(src) + FONTS + "</head>\n<body>\n  <a class=\"skip\" href=\"#main\">Skip to content</a>\n" + nav(active) + body + FOOTER
     # Root-absolute URLs so pages (esp. 404 or nested /research/*) never resolve relatively
-    out = re.sub(r'(href|src)="(about|architecture|docs|compare|benchmarks|research|contact|invest|privacy-policy|terms-of-service|home\.css|pages\.css|invest\.css|home\.js|invest\.js|favicon\.ico|logo\.png|manifest\.json)(["?#])',
+    out = re.sub(r'(href|src)="(about|architecture|docs|compare|benchmarks|research|contact|invest|privacy-policy|terms-of-service|home(?:\.min)?\.css|pages(?:\.min)?\.css|invest(?:\.min)?\.css|home(?:\.min)?\.js|invest(?:\.min)?\.js|favicon\.ico|logo\.png|manifest\.json)(["?#])',
                  r'\1="/\2\3', out)
     # Assets: new icons / OG image; make sure every page has a social preview image.
     out = (out.replace('href="/logo.png"', 'href="/icons/apple-touch-icon.png"')
@@ -1007,10 +1008,15 @@ for name, (active, body) in PAGES.items():
     path.write_text(out)
     print(f"built {name}.html ({len(out):,} bytes)")
 
-# Hand-written pages (homepage, Hindi homepage, resume, admin, invest & portal sub-pages): only refresh their asset versions.
+# Hand-written pages (homepage, Hindi homepage, resume, admin, invest & portal sub-pages): refresh minified asset references & inline homepage CSS.
+inline_home = (ROOT / "home.min.css").read_text()
 for page in ("index.html", "hi.html", "resume.html", "admin.html", "invest.html", "invest/terms.html", "invest/wire.html", "invest/tech.html", "invest/deck.html", "invest/policy.html", "invest/disclosures.html"):
     f = ROOT / page
-    f.write_text(re.sub(r'((?:home|pages|admin|invest)\.(?:css|js))\?v=[\w]+', rf'\1?v={V}', f.read_text()))
+    txt = f.read_text()
+    txt = re.sub(r'((?:home|pages|admin|invest))(?:\.min)?\.(css|js)\?v=[\w]+', rf'\1.min.\2?v={V}', txt)
+    if page in ("index.html", "hi.html"):
+        txt = re.sub(r'<style id="inlineHomeCss">.*?</style>', lambda _m: f'<style id="inlineHomeCss">{inline_home}</style>', txt, flags=re.S)
+    f.write_text(txt)
 import datetime
 
 def git_lastmod(rel_path, fallback):

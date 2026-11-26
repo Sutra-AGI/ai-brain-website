@@ -106,10 +106,17 @@ async def main():
         "--no-first-run",
         "--user-data-dir=/tmp/chrome-resp-profile"
     ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    time.sleep(1.5)
 
     try:
-        tabs = json.loads(urllib.request.urlopen(f"http://127.0.0.1:{CDP_PORT}/json").read())
+        tabs = None
+        for _ in range(30):
+            try:
+                tabs = json.loads(urllib.request.urlopen(f"http://127.0.0.1:{CDP_PORT}/json").read())
+                if tabs:
+                    break
+            except Exception:
+                time.sleep(0.2)
+        assert tabs, "FATAL: Chrome CDP did not open on 9223"
         ws_url = tabs[0]["webSocketDebuggerUrl"]
 
         async with websockets.connect(ws_url) as ws:
