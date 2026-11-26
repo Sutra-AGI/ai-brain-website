@@ -449,30 +449,32 @@ console.log(res.output);` }
     let nodeCount = 2418, timers = [];
     const later = (fn, ms) => timers.push(setTimeout(fn, ms));
 
-    function play(i) {
+    function play(i, immediate = false) {
       const s = SCENES[i % SCENES.length];
       timers.forEach(clearTimeout); timers = [];
       q.textContent = ''; out.classList.remove('on'); out.innerHTML = '';
       path.innerHTML = s.path.map((p, k) => (k ? '<span class="hop">→</span>' : '') + `<span class="node-chip">${p}</span>`).join('');
       const chips = $$('.node-chip', path), arrows = $$('.hop', path);
-      if (reduceMotion) {
+      if (immediate || reduceMotion) {
         q.textContent = s.q; chips.forEach(c => c.classList.add('on')); arrows.forEach(a => a.classList.add('on'));
         chips[s.hit].classList.add('hit'); out.innerHTML = `${s.out}<small>${s.meta}</small>`; out.classList.add('on');
-        lat.textContent = s.ms + 'ms'; hops.textContent = s.hops; return;
+        lat.textContent = s.ms + 'ms'; hops.textContent = s.hops;
+        if (!reduceMotion) later(() => { if (onScreen && !document.hidden) play(i + 1); else { paused = true; nextScene = i + 1; } }, 4200);
+        return;
       }
       let t = 0;
-      [...s.q].forEach((ch, k) => later(() => { q.textContent += ch; }, (t = 300 + k * 28)));
-      t += 350;
+      [...s.q].forEach((ch, k) => later(() => { q.textContent += ch; }, (t = 180 + k * 18)));
+      t += 220;
       chips.forEach((c, k) => {
-        later(() => { if (arrows[k - 1]) arrows[k - 1].classList.add('on'); c.classList.add('on'); jiggle(); }, t + k * 380);
+        later(() => { if (arrows[k - 1]) arrows[k - 1].classList.add('on'); c.classList.add('on'); jiggle(); }, t + k * 240);
       });
-      t += chips.length * 380 + 200;
+      t += chips.length * 240 + 160;
       later(() => { chips[s.hit].classList.add('hit'); }, t);
       later(() => {
         out.innerHTML = `${s.out}<small>${s.meta}</small>`; out.classList.add('on');
         lat.textContent = s.ms + 'ms'; hops.textContent = s.hops;
         nodeCount += 1 + Math.floor(Math.random() * 3); nodes.textContent = nodeCount.toLocaleString('en-US');
-      }, t + 300);
+      }, t + 200);
       later(() => { if (onScreen && !document.hidden) play(i + 1); else { paused = true; nextScene = i + 1; } }, t + 4200);
     }
 
@@ -481,7 +483,7 @@ console.log(res.output);` }
     const resume = () => { if (paused && onScreen && !document.hidden) { paused = false; play(nextScene); } };
     new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; resume(); }).observe(q.closest('.console'));
     document.addEventListener('visibilitychange', resume);
-    play(0);
+    play(0, true);
   }
 
   /* ---------- Cursor glow (fine pointers only) ---------- */

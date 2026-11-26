@@ -100,16 +100,16 @@ body::before {
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   border-bottom-color: var(--line);
 }
-.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
-.logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.05rem; letter-spacing: -0.02em; }
-.logo-mark { width: 26px; height: 26px; }
-.nav-links { display: flex; gap: 4px; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.05rem; letter-spacing: -0.02em; white-space: nowrap; flex-shrink: 0; }
+.logo-mark { width: 26px; height: 26px; flex-shrink: 0; }
+.nav-links { display: flex; gap: 2px; align-items: center; min-width: 0; }
 .nav-links a {
-  padding: 8px 14px; border-radius: 999px; font-size: 0.9rem; color: var(--text-2);
-  transition: color 0.2s, background 0.2s;
+  padding: 8px 11px; border-radius: 999px; font-size: 0.88rem; color: var(--text-2);
+  white-space: nowrap; flex-shrink: 0; transition: color 0.2s, background 0.2s;
 }
 .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
-.nav-cta { display: flex; align-items: center; gap: 10px; }
+.nav-cta { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .menu-btn {
   display: none; width: 42px; height: 42px; border-radius: 999px;
   border: 1px solid var(--line-strong); background: transparent; cursor: pointer;
@@ -740,10 +740,12 @@ html[lang="hi"] .hero-meta, html[lang="hi"] .kicker, html[lang="hi"] .illus-note
 }
 
 /* Hero Invest Announcement Pill */
+.hero-copy { min-width: 0; }
 .hero-invest-pill {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  max-width: 100%;
   padding: 6px 14px 6px 8px;
   border: 1px solid rgba(200, 255, 61, 0.35);
   border-radius: 999px;
@@ -765,21 +767,51 @@ html[lang="hi"] .hero-meta, html[lang="hi"] .kicker, html[lang="hi"] .illus-note
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 2px 8px;
+  line-height: 1.4;
+  padding: 3px 10px;
   border-radius: 999px;
   letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .hero-invest-pill .pill-text {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
   color: var(--text);
+  min-width: 0;
 }
 .hero-invest-pill .pill-arrow {
   color: var(--accent);
   font-weight: 700;
+  flex-shrink: 0;
   transition: transform 0.2s;
 }
 .hero-invest-pill:hover .pill-arrow {
   transform: translateX(3px);
+}
+@media (max-width: 1180px) and (min-width: 1025px) {
+  .nav-links a { padding: 7px 8px; font-size: 0.83rem; }
+  .nav-cta .btn-sm { padding: 0 11px; font-size: 0.8rem; }
+}
+@media (max-width: 680px) {
+  .hero-invest-pill {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border-radius: 16px;
+    padding: 10px 14px;
+    gap: 6px 10px;
+  }
+  .hero-invest-pill .pill-arrow {
+    order: 2;
+    margin-left: auto;
+  }
+  .hero-invest-pill .pill-text {
+    order: 3;
+    flex: 1 1 100%;
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
 }
 
 /* Strategic Investor Section on Landing Page */
