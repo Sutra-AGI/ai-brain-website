@@ -15,15 +15,16 @@ AI Brain is in development. There is no public SDK, package or API yet. Packages
 - Valuation Cap: $4,000,000 USD ($4.0M) Post-Money
 - Instrument: India Simple Agreement for Future Equity (iSAFE) with contractual 3.0x–3.5x gross revenue share protection and MCA CCPS conversion covenant
 - Backers Portal: https://aibrainstartup.com/invest
+- 10-Slide Pitch Deck: https://aibrainstartup.com/invest/deck
 - iSAFE Agreement: https://aibrainstartup.com/invest/terms
 - Official Bank Wire Desk: https://aibrainstartup.com/invest/wire
-- Founder Resume: https://aibrainstartup.com/resume
+- Founder Dossier: https://aibrainstartup.com/resume
 
 ## What is being built
 - A persistent memory layer for LLM applications and agents, combining vector embeddings with a knowledge graph so context can be recalled across sessions.
 - Multi-hop (associative) recall across linked memories: conversations, ideas, projects and entities.
 - Specialised agents (research, coding, strategy, knowledge, automation) that share one memory graph.
-- Planned infrastructure on Google Cloud (Cloud Run, Vertex AI, GKE, Cloud Storage).
+- Hybrid architecture: lightweight compiled C++20/systems traversal kernels paired with planned Google Cloud infrastructure (Cloud Run, Vertex AI, GKE, Cloud Storage) and GPU/TPU inference nodes.
 
 ## Design targets (not yet benchmarked)
 - Recall latency target: under 15 ms (p99)

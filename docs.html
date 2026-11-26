@@ -58,8 +58,8 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=bff5f9a8">
-  <link rel="stylesheet" href="/pages.css?v=bff5f9a8">
+  <link rel="stylesheet" href="/home.css?v=5c2499f3">
+  <link rel="stylesheet" href="/pages.css?v=5c2499f3">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -167,10 +167,11 @@ export AIBRAIN_API_KEY=<span class="t-s">"sk_live_..."</span></pre>
             <div class="code reveal">
           <div class="term">
             <div class="term-bar"><i></i><i></i><i></i><span style="margin-left:8px">memory.py — API preview</span><span class="tag tag-good">preview</span><button class="copy-btn" type="button" data-copy="memoryCode">copy</button></div>
-<pre id="memoryCode" tabindex="0" aria-label="memory.py — API preview"><span class="t-k">import</span> aibrain
+<pre id="memoryCode" tabindex="0" aria-label="memory.py — API preview"><span class="t-c"># Pre-release API preview — package not published yet</span>
+<span class="t-k">import</span> aibrainstartup
 
 <span class="t-c"># 1. Initialise the hypergraph client</span>
-brain = aibrain.HypergraphClient(
+brain = aibrainstartup.HypergraphClient(
     api_key=<span class="t-s">"sk_live_..."</span>,
     tier=<span class="t-s">"ENTERPRISE"</span>,
 )
@@ -208,10 +209,11 @@ graph_result = brain.recall(
             <div class="code reveal">
           <div class="term">
             <div class="term-bar"><i></i><i></i><i></i><span style="margin-left:8px">swarm.py — API preview</span><span class="tag tag-good">preview</span><button class="copy-btn" type="button" data-copy="swarmCode">copy</button></div>
-<pre id="swarmCode" tabindex="0" aria-label="swarm.py — API preview"><span class="t-k">import</span> aibrain
+<pre id="swarmCode" tabindex="0" aria-label="swarm.py — API preview"><span class="t-c"># Pre-release API preview — package not published yet</span>
+<span class="t-k">import</span> aibrainstartup
 
 <span class="t-c"># 1. Connect an agent swarm</span>
-swarm = aibrain.SwarmGrid(
+swarm = aibrainstartup.SwarmGrid(
     swarm_id=<span class="t-s">"swarm_alpha_dev"</span>,
     agents=[<span class="t-s">"planner_agent"</span>, <span class="t-s">"coder_agent"</span>, <span class="t-s">"evaluator_agent"</span>],
     consensus_protocol=<span class="t-s">"BYZANTINE_HYPERGRAPH_AGREEMENT"</span>,
@@ -292,6 +294,6 @@ current_state = swarm.read_state(
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="/home.js?v=bff5f9a8" defer></script>
+  <script src="/home.js?v=5c2499f3" defer></script>
 </body>
 </html>

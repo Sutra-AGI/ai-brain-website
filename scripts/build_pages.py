@@ -263,7 +263,7 @@ ARCH = hero("Architecture", "Infrastructure blueprint",
           <p class="lead reveal d2">Every request is served from the edge, enriched from the memory graph and written back so the next one starts smarter.</p>
         </div>
         <div class="flow reveal">
-          <div><span class="mono">01 · CLIENT</span><strong>@aibrain/sdk</strong><small>Python / TS over gRPC &amp; REST</small></div>
+          <div><span class="mono">01 · CLIENT</span><strong>@aibrainstartup/sdk</strong><small>Preview Python / TS over gRPC &amp; REST</small></div>
           <div><span class="mono">02 · GATEWAY</span><strong>Cloud Run</strong><small>Serverless API, auth, rate limits</small></div>
           <div><span class="mono">03 · ROUTER</span><strong>Hypergraph router</strong><small>Multi-hop traversal planner</small></div>
           <div><span class="mono">04 · COGNITION</span><strong>Vertex AI · TPU</strong><small>Embeddings &amp; reasoning</small></div>
@@ -340,10 +340,11 @@ INSTALL = '''<span class="t-c"># SDK packages are not published yet — coming s
 <span class="t-c"># Once you have early access, configure your key:</span>
 export AIBRAIN_API_KEY=<span class="t-s">"sk_live_..."</span>'''
 
-MEMORY = '''<span class="t-k">import</span> aibrain
+MEMORY = '''<span class="t-c"># Pre-release API preview — package not published yet</span>
+<span class="t-k">import</span> aibrainstartup
 
 <span class="t-c"># 1. Initialise the hypergraph client</span>
-brain = aibrain.HypergraphClient(
+brain = aibrainstartup.HypergraphClient(
     api_key=<span class="t-s">"sk_live_..."</span>,
     tier=<span class="t-s">"ENTERPRISE"</span>,
 )
@@ -371,10 +372,11 @@ graph_result = brain.recall(
 <span class="t-k">print</span>(<span class="t-s">"Recall latency:"</span>, graph_result.latency_ms, <span class="t-s">"ms"</span>)
 <span class="t-k">print</span>(<span class="t-s">"Retrieved nodes:"</span>, graph_result.nodes)'''
 
-SWARM = '''<span class="t-k">import</span> aibrain
+SWARM = '''<span class="t-c"># Pre-release API preview — package not published yet</span>
+<span class="t-k">import</span> aibrainstartup
 
 <span class="t-c"># 1. Connect an agent swarm</span>
-swarm = aibrain.SwarmGrid(
+swarm = aibrainstartup.SwarmGrid(
     swarm_id=<span class="t-s">"swarm_alpha_dev"</span>,
     agents=[<span class="t-s">"planner_agent"</span>, <span class="t-s">"coder_agent"</span>, <span class="t-s">"evaluator_agent"</span>],
     consensus_protocol=<span class="t-s">"BYZANTINE_HYPERGRAPH_AGREEMENT"</span>,

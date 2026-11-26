@@ -242,9 +242,10 @@
 
   /* ---------- SDK snippet ---------- */
   const SDK = {
-    py: { plain: `import aibrain
+    py: { plain: `# Pre-release API preview (package not published yet)
+import aibrainstartup
 
-client = aibrain.Client(api_key="sk_live_...")
+client = aibrainstartup.Client(api_key="sk_live_...")
 
 # Recall long-term context for this user
 ctx = client.memory.recall(user_id="usr_42", query="current sprint")
@@ -256,7 +257,8 @@ res = client.agents.run(
     context=ctx,
 )
 print(res.output)` },
-    ts: { plain: `import { AIBrain } from "@aibrain/sdk";
+    ts: { plain: `// Pre-release API preview (package not published yet)
+import { AIBrain } from "@aibrainstartup/sdk";
 
 const brain = new AIBrain({ apiKey: process.env.AIBRAIN_KEY });
 

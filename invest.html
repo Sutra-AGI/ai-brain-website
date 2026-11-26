@@ -64,9 +64,9 @@
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/home.css?v=bff5f9a8">
-  <link rel="stylesheet" href="/pages.css?v=bff5f9a8">
-  <link rel="stylesheet" href="/invest.css?v=bff5f9a8">
+  <link rel="stylesheet" href="/home.css?v=5c2499f3">
+  <link rel="stylesheet" href="/pages.css?v=5c2499f3">
+  <link rel="stylesheet" href="/invest.css?v=5c2499f3">
 </head>
 <body class="page-invest">
   <a class="skip" href="#main">Skip to content</a>
@@ -293,10 +293,10 @@
           <div class="tech-proof-card">
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
               <div>
-                <span class="eyebrow-mono" style="color:var(--accent);">Internal Kernel Benchmarks</span>
-                <h3 style="font-size: 1.25rem; margin: 4px 0 0;">AI Brain vs Traditional Vector Databases</h3>
+                <span class="eyebrow-mono" style="color:var(--accent);">Architecture Targets vs. Flat Vector Baseline</span>
+                <h3 style="font-size: 1.25rem; margin: 4px 0 0;">AI Brain Hypergraph vs Traditional Vector Databases</h3>
               </div>
-              <a href="/architecture" class="btn btn-ghost btn-sm">🔬 Full C++ Kernel &amp; Architecture Whitepaper →</a>
+              <a href="/architecture" class="btn btn-ghost btn-sm">🔬 View Architecture Blueprint &amp; Targets →</a>
             </div>
             
             <table class="bench-table">
@@ -304,14 +304,14 @@
                 <tr>
                   <th>Performance Metric</th>
                   <th>Pinecone / Milvus / Chroma</th>
-                  <th class="highlight-col">AI Brain Hypergraph</th>
+                  <th class="highlight-col">AI Brain Hypergraph (Target)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td class="metric-name">Multi-Hop Traversal Latency</td>
                   <td style="color:#ff7b72;">142 ms (Multi-turn RAG)</td>
-                  <td class="highlight-col"><strong>12.4 ms</strong> <span class="perf-badge">11.4x Faster</span></td>
+                  <td class="highlight-col"><strong>&lt;15 ms</strong> <span class="perf-badge">vs 142 ms RAG</span></td>
                 </tr>
                 <tr>
                   <td class="metric-name">1M Agent Query Cost</td>
@@ -337,8 +337,8 @@
             </table>
 
             <div style="margin-top:16px; font-size:0.78rem; color:var(--text-3); font-family:var(--font-mono); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-              <span>✓ Verified across 50,000 multi-turn reasoning passes (NVIDIA A100 &amp; Apple Silicon clusters).</span>
-              <a href="/architecture" style="color:var(--accent); text-decoration:none;">Inspect C++ Source &amp; Benchmark JSON ↗</a>
+              <span>Design targets modeled against stateless vector RAG baselines prior to GA publication (not yet third-party audited).</span>
+              <a href="/architecture" style="color:var(--accent); text-decoration:none;">View Architecture Blueprint &amp; Targets ↗</a>
             </div>
           </div>
         </div>
@@ -788,6 +788,6 @@
   </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
-  <script src="/invest.js?v=bff5f9a8" defer></script>
+  <script src="/invest.js?v=5c2499f3" defer></script>
 </body>
 </html>
