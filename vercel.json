@@ -127,7 +127,7 @@
       ]
     },
     {
-      "source": "/(llms\\.txt|llms-full\\.txt|\\.well-known/security\\.txt)",
+      "source": "/(llms\\.txt|llms-full\\.txt|\\.well-known/security\\.txt|8f3c9b2e4d1a705f6e2b8c4a91d37e50\\.txt)",
       "headers": [
         {
           "key": "Content-Type",
