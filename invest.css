@@ -131,15 +131,18 @@
   z-index: 99;
   transform: translateY(-100%);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
 }
 .portal-mobile-panel.active {
   transform: translateY(0);
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 .portal-mobile-panel a.m-link {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -181,7 +184,9 @@
   margin: 6px 0;
 }
 .portal-mobile-panel .btn {
+  flex-shrink: 0;
   width: 100%;
+  min-height: 44px;
   height: 44px;
   justify-content: center;
 }
@@ -1206,6 +1211,8 @@ section[id],
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px 12px;
   margin-bottom: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--line);
@@ -1681,7 +1688,7 @@ section[id],
   padding: 12px 14px;
   border-radius: 6px;
   font-family: inherit;
-  font-size: 0.92rem;
+  font-size: 1rem;
   transition: border-color 0.2s;
 }
 .form-group input:focus,
@@ -2364,10 +2371,16 @@ section[id],
   }
 }
 .sig-card {
+  min-width: 0;
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 14px 16px;
+}
+@media (max-width: 340px) {
+  .sig-card {
+    padding: 12px;
+  }
 }
 .sig-card-h {
   font-family: var(--font-mono);
@@ -2394,8 +2407,10 @@ section[id],
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 10px;
   margin: 8px 0 10px;
-  padding: 0 4px;
+  padding: 4px;
 }
 .sig-draw-box.blank-sig {
   justify-content: center;
@@ -3129,6 +3144,28 @@ html, body {
   margin-bottom: 12px;
 }
 
+.wire-safeguards-strip {
+  margin-top: 48px;
+  padding: 24px 28px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 24px;
+}
+.wire-safeguards-strip > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  .wire-safeguards-strip {
+    margin-top: 32px;
+    padding: 18px 14px;
+    gap: 18px;
+  }
+}
+
 /* ==========================================================================
    Investor Pitch Deck Presentation & Print Layout (/invest/deck)
    ========================================================================== */
@@ -3194,7 +3231,7 @@ html, body {
   border-radius: 4px;
 }
 .slide-title {
-  font-size: 2rem;
+  font-size: clamp(1.35rem, 4.2vw, 2rem);
   font-weight: 600;
   line-height: 1.2;
   color: var(--text);
@@ -3218,7 +3255,15 @@ html, body {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 520px) {
+  .deck-key-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+}
 .deck-stat-box {
+  min-width: 0;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -3226,6 +3271,24 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+@media (max-width: 600px) {
+  .deck-wrap {
+    margin: 20px auto 40px;
+    padding: 0 12px;
+    gap: 20px;
+  }
+  .deck-slide {
+    padding: 24px 18px;
+    min-width: 0;
+  }
+  .slide-subtitle {
+    font-size: 0.94rem;
+    margin-bottom: 20px;
+  }
+  .deck-stat-box {
+    padding: 14px 16px;
+  }
 }
 .deck-stat-lbl {
   font-family: var(--font-mono);
@@ -3291,6 +3354,7 @@ html, body {
   }
 }
 .slide-col-card {
+  min-width: 0;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -3320,11 +3384,12 @@ html, body {
 }
 .tam-number {
   font-family: var(--font-mono);
-  font-size: 2.2rem;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
   font-weight: 700;
   color: #fff;
   margin: 10px 0 8px;
   line-height: 1.1;
+  overflow-wrap: anywhere;
 }
 .slide-list {
   list-style: none;

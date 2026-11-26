@@ -379,7 +379,7 @@ input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 
 .wl-form { display: grid; gap: 10px; }
 .wl-form input, .wl-form select {
   height: 54px; padding: 0 20px; border-radius: 14px; border: 1px solid rgba(11,13,2,0.18);
-  background: rgba(255,255,255,0.45); color: var(--accent-ink); outline: none; font-size: 0.98rem;
+  background: rgba(255,255,255,0.45); color: var(--accent-ink); outline: none; font-size: 1rem;
   transition: border-color 0.2s, background 0.2s;
 }
 .wl-form input::placeholder { color: rgba(11,13,2,0.55); }

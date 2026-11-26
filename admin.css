@@ -20,3 +20,6 @@
 .admin-table td.msg { max-width: 420px; white-space: pre-wrap; color: var(--text-2); }
 .admin-table tr:last-child td { border-bottom: 0; }
 .admin-table .empty { text-align: center; color: var(--text-2); padding: 40px; }
+@media (max-width: 768px) {
+  .admin-filter { font-size: 1rem; min-width: 0; width: 100%; }
+}

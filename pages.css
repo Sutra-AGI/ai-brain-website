@@ -139,7 +139,7 @@ a.contact-row:hover .go { color: var(--accent); transform: translate(2px, -2px);
 .f label { display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
 .f input, .f select, .f textarea {
   width: 100%; height: 50px; padding: 0 16px; border-radius: 12px; background: var(--ink); border: 1px solid var(--line-strong);
-  outline: none; font-size: 0.96rem; transition: border-color 0.2s;
+  outline: none; font-size: 1rem; transition: border-color 0.2s;
 }
 .f textarea { height: 140px; padding: 14px 16px; resize: vertical; line-height: 1.55; }
 .f select { appearance: none; -webkit-appearance: none; cursor: pointer;
