@@ -40,7 +40,8 @@ def nav(active):
     links = "\n        ".join(
         f'<a href="{h}"{" aria-current=\"page\"" if active and k == active else ""}>{t}</a>' for h, t, k in NAV_ITEMS)
     mob = [("/", "Home", "↗"), ("/#memory", "Memory", "01"), ("/#agents", "Agents", "02"), ("/#sdk", "SDK", "03"),
-           ("/#demo", "Live demo", "04"), ("/architecture", "Architecture", "↗"), ("/docs", "Docs", "↗"),
+           ("/architecture", "Architecture", "↗"), ("/docs", "Docs", "↗"), ("/compare", "Compare", "↗"),
+           ("/benchmarks", "Benchmarks", "↗"), ("/research", "Research", "↗"),
            ("/about", "About", "↗"), ("/invest", "Invest", "↗"), ("/contact", "Contact", "↗")]
     mlinks = "\n    ".join(f'<a class="m-link" href="{h}">{t} <span>{n}</span></a>' for h, t, n in mob)
     contact_cur = ' aria-current="page"' if active == "contact" else ""
@@ -78,9 +79,9 @@ FOOTER = f'''
           <a class="mail" href="mailto:founder@aibrainstartup.com">founder@aibrainstartup.com</a>
           <a class="mail" href="mailto:team@aibrainstartup.com">team@aibrainstartup.com</a>
         </div>
-        <div><p class="foot-h">Product</p><ul><li><a href="/#memory">Memory</a></li><li><a href="/#agents">Agents</a></li><li><a href="/#sdk">SDK</a></li><li><a href="/#demo">Live demo</a></li><li><a href="/docs">Docs</a></li></ul></div>
-        <div><p class="foot-h">Company</p><ul><li><a href="/about">About</a></li><li><a href="/architecture">Architecture</a></li><li><a href="/invest">Invest</a></li><li><a href="/contact">Contact</a></li><li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
-        <div><p class="foot-h">Legal</p><ul><li><a href="/privacy-policy">Privacy policy</a></li><li><a href="/terms-of-service">Terms of service</a></li><li><a href="/hi" hreflang="hi" lang="hi">हिन्दी</a></li></ul></div>
+        <div><p class="foot-h">Product</p><ul><li><a href="/architecture">Architecture</a></li><li><a href="/compare">Compare</a></li><li><a href="/benchmarks">Benchmarks</a></li><li><a href="/research">Research</a></li><li><a href="/docs">Docs</a></li></ul></div>
+        <div><p class="foot-h">Company</p><ul><li><a href="/about">About</a></li><li><a href="/resume">Founder Dossier</a></li><li><a href="/invest">Invest</a></li><li><a href="/contact">Contact</a></li><li><a href="https://github.com/Sutra-AGI" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.linkedin.com/in/bhoja-ram-choudhary-ai-brain-/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li></ul></div>
+        <div><p class="foot-h">Specs &amp; Legal</p><ul><li><a href="/openapi.json">OpenAPI 3.1</a></li><li><a href="/feed.xml">Updates RSS</a></li><li><a href="/privacy-policy">Privacy policy</a></li><li><a href="/terms-of-service">Terms of service</a></li><li><a href="/hi" hreflang="hi" lang="hi">हिन्दी</a></li></ul></div>
       </div>
       <div class="foot-bottom">
         <span class="msme">🇮🇳 Govt. of India registered MSME · Udyam <b>UDYAM-RJ-05-0067280</b></span>
@@ -599,8 +600,392 @@ NOTFOUND = '''
   </main>
 '''
 
+# ---------------------------------------------------------------- COMPARE
+AUTHOR_BOX = '''
+        <div class="author-box reveal">
+          <div class="a-id">
+            <div class="avatar" aria-hidden="true" style="width:52px;height:52px;font-size:1.1rem;border-radius:14px">BR</div>
+            <div class="a-meta">
+              <strong>Bhoja Ram Choudhary</strong>
+              <span>Founder &amp; Chief Architect · AI BRAIN STARTUPS (UDYAM-RJ-05-0067280)</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a href="/resume" class="btn btn-ghost btn-sm">Founder dossier</a>
+            <a href="/about" class="btn btn-ghost btn-sm">Company</a>
+          </div>
+        </div>
+'''
+
+def article_hero(title, lead, kicker, meta):
+    return f'''
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="crumbs reveal"><a href="/">Home</a><span>/</span><a href="/research">Research</a><span>/</span><span>{kicker}</span></div>
+        <span class="kicker reveal" style="margin-top:28px">{kicker}</span>
+        <h1 class="reveal d1">{title}</h1>
+        <p class="lead reveal d2">{lead}</p>
+        <div class="meta-row reveal d3"><span>Published 2026-11-26</span><span>{meta}</span><span>By Bhoja Ram Choudhary</span></div>
+      </div>
+    </section>
+'''
+
+COMPARE = hero("Compare", "Architectural Comparison · Honest Tradeoffs",
+               'How AI Brain <span class="serif">compares</span>.',
+               "An objective engineering breakdown of flat vector databases, extracted-memory SDKs, temporal knowledge graphs, agentic paging systems, and AI Brain's planned associative hypergraph.",
+               '<div class="hero-actions reveal d3"><a href="/benchmarks" class="btn btn-primary">View evaluation protocol <span class="arrow">→</span></a><a href="/architecture" class="btn btn-ghost">System blueprint</a></div>') + '''
+    <section class="page-section">
+      <div class="wrap">
+        <div class="status-banner reveal">
+          <div>
+            <strong>Development Status Disclosure</strong>
+            <p>Mem0, Zep/Graphiti, Letta, and Cognee are publicly installable packages today. AI Brain is in active pre-release development (early-access waitlist and OpenAPI preview only — no fabricated head-to-head scores).</p>
+          </div>
+          <a href="/benchmarks" class="btn btn-ghost btn-sm">See protocol →</a>
+        </div>
+
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">Side-by-side matrix</span>
+            <h2 class="h2 reveal d1">Memory paradigms <span class="serif">evaluated</span>.</h2>
+          </div>
+          <p class="lead reveal d2">Architectural characteristics determine which failure mode appears first when agents cross hundreds of sessions.</p>
+        </div>
+
+        <div class="table-scroll reveal">
+          <table class="cmp-table">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Flat Vector DBs (Pinecone, Qdrant, pgvector)</th>
+                <th>Extracted Fact Memory (Mem0 pattern)</th>
+                <th>Temporal Knowledge Graph (Zep / Graphiti)</th>
+                <th>Agentic OS Paging (Letta / MemGPT)</th>
+                <th>Graph-Vector ETL (Cognee)</th>
+                <th class="cmp-hi">AI Brain (Planned Design)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Core Data Model</th>
+                <td>Isolated text chunks + dense ANN vector index</td>
+                <td>LLM-extracted facts + key-value user/session store</td>
+                <td>Bi-temporal episodic nodes + binary entity edges</td>
+                <td>Core/archival/recall memory blocks managed by LLM tool calls</td>
+                <td>Document ETL pipeline building ontology graphs + vectors</td>
+                <td class="cmp-hi">Dual-layer associative N-ary hypergraph + dense embeddings</td>
+              </tr>
+              <tr>
+                <th>Multi-Hop Causal Chains</th>
+                <td>Single-step similarity; drops non-lexical bridging context</td>
+                <td>Limited when extracted atomic facts lose provenance</td>
+                <td>Good 2–3 hop entity walks with validity timestamps</td>
+                <td>Requires extra LLM turns to search archival pages</td>
+                <td>Strong offline ETL; slower on high-frequency live turn mutations</td>
+                <td class="cmp-hi">Native multi-hop hyperedge traversal linking conversations, code, and decisions</td>
+              </tr>
+              <tr>
+                <th>Multi-Agent Coordination</th>
+                <td>External locking required by app team</td>
+                <td>Scoped by user_id / agent_id namespace</td>
+                <td>Shared graph storage with app-managed orchestration</td>
+                <td>Message passing across independent stateful agents</td>
+                <td>Shared dataset graph</td>
+                <td class="cmp-hi">Built-in Swarm Consensus protocol (planned <code class="mono">/v1/swarm/sync</code>)</td>
+              </tr>
+              <tr>
+                <th>Latency &amp; Compute Plane</th>
+                <td>Fast ANN lookup (single index)</td>
+                <td>Write path incurs LLM extraction latency</td>
+                <td>Graph + embedding hybrid query</td>
+                <td>Tool-call round trips add LLM inference latency</td>
+                <td>Batch/pipeline ingestion latency</td>
+                <td class="cmp-hi">Compiled C++20/systems traversal kernels (&lt;15ms design target) + GCP Cloud plane</td>
+              </tr>
+              <tr>
+                <th>DPDP / Deterministic Erasure</th>
+                <td>Needs full chunk re-scan &amp; metadata filter rebuild</td>
+                <td>Delete by extracted fact ID</td>
+                <td>Graph node/edge tombstone or deletion</td>
+                <td>Delete archival blocks via storage engine</td>
+                <td>Graph + vector cleanup pipeline</td>
+                <td class="cmp-hi">Tenant-partitioned graph subtrees + Cloud KMS &amp; VPC-SC controls (planned)</td>
+              </tr>
+              <tr>
+                <th>Public Availability</th>
+                <td>Mature production products</td>
+                <td>Public OSS / Hosted SaaS available today</td>
+                <td>Public OSS / Hosted Cloud available today</td>
+                <td>Public OSS / Server available today</td>
+                <td>Public OSS available today</td>
+                <td class="cmp-hi">In development (Waitlist &amp; OpenAPI 3.1 preview at <a href="/docs" class="accent">/docs</a>)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">When to choose what</span>
+            <h2 class="h2 reveal d1">Pragmatic <span class="serif">engineering</span> guidance.</h2>
+          </div>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <span class="eyebrow-mono">Use Today</span>
+            <h3>Shipping immediately</h3>
+            <p>If your agent stack needs an installable pip/npm package in production this week for lightweight chat personalization or bi-temporal enterprise timeline tracking, evaluate established open-source offerings like Mem0, Zep/Graphiti, Letta, or Cognee.</p>
+          </article>
+          <article class="card reveal d1">
+            <span class="eyebrow-mono">Flat Vector Limit</span>
+            <h3>When cosine RAG breaks</h3>
+            <p>If your multi-agent system loses architectural constraints across 100+ turns, fails multi-hop code provenance lookups, or suffers runaway context replay bills, flat chunk retrieval cannot express N-ary relationships without graph structure.</p>
+          </article>
+          <article class="card reveal d2">
+            <span class="eyebrow-mono">Evaluate AI Brain</span>
+            <h3>For early-access R&amp;D</h3>
+            <p>Join our <a href="/#waitlist" class="accent">early-access waitlist</a> or review the <a href="/openapi.json" class="accent">OpenAPI 3.1 preview</a> if you want sub-15ms graph traversal kernels, Swarm Consensus state sync, and India/global data residency readiness.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+''' + CTA + '''  </main>\n'''
+
+# ---------------------------------------------------------------- BENCHMARKS
+BENCHMARKS = hero("Benchmarks", "Evaluation Protocol · Transparent Status",
+                  'Benchmarks &amp; <span class="serif">protocol</span>.',
+                  "How we plan to evaluate associative hypergraph recall, multi-hop latency, and redundant token savings — with zero fabricated or pre-audit numbers.",
+                  '<div class="hero-actions reveal d3"><a href="/benchmarks.json" class="btn btn-primary">Download benchmarks.json ↗</a><a href="/compare" class="btn btn-ghost">Compare architectures</a></div>') + '''
+    <section class="page-section">
+      <div class="wrap">
+        <div class="status-banner reveal">
+          <div>
+            <strong>Integrity Commitment · Published Scores Pending</strong>
+            <p>AI Brain is currently in active development. We distinguish pre-release engineering targets from audited test results and will never publish unverified synthetic LoCoMo or LongMemEval claims.</p>
+          </div>
+          <a href="/benchmarks.json" class="btn btn-ghost btn-sm">Inspect JSON schema</a>
+        </div>
+
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">Planned Evaluation Suite</span>
+            <h2 class="h2 reveal d1">Four verification <span class="serif">dimensions</span>.</h2>
+          </div>
+          <p class="lead reveal d2">Once our public evaluation harness ships under <a href="https://github.com/Sutra-AGI" target="_blank" rel="noopener noreferrer" class="accent">github.com/Sutra-AGI</a>, every metric below will link directly to reproducible scripts.</p>
+        </div>
+
+        <div class="table-scroll reveal">
+          <table class="cmp-table">
+            <thead>
+              <tr>
+                <th>Suite / Metric</th>
+                <th>What It Measures</th>
+                <th>Pre-Release Status</th>
+                <th class="cmp-hi">Design Target / Planned Protocol</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>LoCoMo</th>
+                <td>Long-term multi-session conversational QA, multi-hop causal inference, and temporal recall over 300+ turn dialogues.</td>
+                <td>Harness Planned (Measured: pending)</td>
+                <td class="cmp-hi">Evaluate F1, LLM-Judge precision, and Multi-Hop Recall@k against flat vector baseline.</td>
+              </tr>
+              <tr>
+                <th>LongMemEval</th>
+                <td>Belief updates, contradiction resolution, user preference shifts, and hallucination abstention.</td>
+                <td>Harness Planned (Measured: pending)</td>
+                <td class="cmp-hi">Measure temporal update accuracy and false-positive recall abstention rate.</td>
+              </tr>
+              <tr>
+                <th>4-Hop Graph Traversal Latency</th>
+                <td>Wall-clock p99 query latency across compiled C++20/systems associative traversal kernels.</td>
+                <td>Engineering Design Target</td>
+                <td class="cmp-hi"><code class="mono">&lt; 15 ms (p99)</code> under concurrent multi-agent load.</td>
+              </tr>
+              <tr>
+                <th>Context Token Efficiency</th>
+                <td>Prompt input tokens injected via bounded subgraph recall vs naive full-session history replay.</td>
+                <td>Mathematical Model Target</td>
+                <td class="cmp-hi"><code class="mono">~91%</code> redundant input-token reduction vs full re-send (see <a href="/research/hypergraph-vs-vector-rag-token-math" class="accent">token math derivation</a>).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mini-stats reveal" style="margin-top:28px">
+          <div><strong>Pending</strong><span>Published LoCoMo score</span><small>Public harness forthcoming</small></div>
+          <div><strong>&lt; 15ms</strong><span>4-hop p99 latency target</span><small>Design goal · not yet benchmarked</small></div>
+          <div><strong>0%</strong><span>Target context decay</span><small>Temporal decay protection goal</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker reveal">Baseline Topology</span>
+            <h2 class="h2 reveal d1">Planned reference <span class="serif">environment</span>.</h2>
+          </div>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal"><span class="eyebrow-mono">Traversal Plane</span><h3>Compiled systems kernel</h3><p>Low-overhead C++20 graph traversal workers designed to avoid Python GIL bottlenecks on deep multi-hop neighborhood expansion.</p></article>
+          <article class="card reveal d1"><span class="eyebrow-mono">Cloud Plane</span><h3>Google Cloud Run · GKE · TPU</h3><p>Horizontal serverless routing via Cloud Run paired with Vertex AI cognition and GCS/hypergraph persistence (see <a href="/architecture" class="accent">architecture</a>).</p></article>
+          <article class="card reveal d2"><span class="eyebrow-mono">Reproducibility</span><h3>Machine-readable output</h3><p>All planned harness outputs conform to <a href="/benchmarks.json" class="accent">/benchmarks.json</a> with hardware specs, commit SHA, and nullable raw scores.</p></article>
+        </div>
+      </div>
+    </section>
+''' + CTA + '''  </main>\n'''
+
+# ---------------------------------------------------------------- RESEARCH INDEX
+RESEARCH = hero("Research", "Engineering Notes · Technical Depth",
+                'Research &amp; <span class="serif">architecture</span> notes.',
+                "First-principles engineering essays on why vector similarity plateaus on multi-hop agent reasoning, prompt-window token economics, and DPDP Act 2023 compliance in India.",
+                '<div class="hero-actions reveal d3"><a href="/feed.xml" class="btn btn-primary">Subscribe RSS feed ↗</a><a href="/compare" class="btn btn-ghost">View comparison matrix</a></div>') + '''
+    <section class="page-section">
+      <div class="wrap">
+        <div class="article-list">
+          <article class="article-card reveal">
+            <div>
+              <div class="article-meta"><span class="topic">Graph Retrieval</span><span>2026-11-26</span><span>6 min read</span></div>
+              <h2><a href="/research/why-cosine-similarity-fails-multi-hop-reasoning">Why Cosine Similarity Fails Multi-Hop Agent Reasoning</a></h2>
+              <p>Dense single-step ANN search drops transitive causal links when intermediate decisions do not share surface tokens with the final query. Here is the structural fix with N-ary hyperedges.</p>
+            </div>
+            <a href="/research/why-cosine-similarity-fails-multi-hop-reasoning" class="btn btn-ghost">Read paper →</a>
+          </article>
+
+          <article class="article-card reveal d1">
+            <div>
+              <div class="article-meta"><span class="topic">Token Economics</span><span>2026-11-26</span><span>5 min read</span></div>
+              <h2><a href="/research/hypergraph-vs-vector-rag-token-math">Hypergraph vs Vector RAG: The Token Cost Math</a></h2>
+              <p>Explicit token-cost equations comparing naive quadratic history replay, oversized RAG top-k chunk stuffing, and bounded associative subgraph injection.</p>
+            </div>
+            <a href="/research/hypergraph-vs-vector-rag-token-math" class="btn btn-ghost">Read paper →</a>
+          </article>
+
+          <article class="article-card reveal d2">
+            <div>
+              <div class="article-meta"><span class="topic">India &amp; Governance</span><span>2026-11-26</span><span>7 min read</span></div>
+              <h2><a href="/research/dpdp-compliant-agent-memory-india">Building DPDP-Compliant Agent Memory in India</a></h2>
+              <p>Designing cryptographic tenant isolation, minimal retention boundaries, and deterministic node/edge erasure under India’s Digital Personal Data Protection (DPDP) Act, 2023.</p>
+            </div>
+            <a href="/research/dpdp-compliant-agent-memory-india" class="btn btn-ghost">Read paper →</a>
+          </article>
+        </div>
+''' + AUTHOR_BOX + '''
+      </div>
+    </section>
+''' + CTA + '''  </main>\n'''
+
+# ---------------------------------------------------------------- RESEARCH ARTICLES
+ART_COSINE = article_hero(
+    'Why Cosine Similarity <span class="serif">Fails</span> Multi-Hop Agent Reasoning',
+    "Single-step approximate nearest neighbor search retrieves lexically or topically adjacent fragments — not causal reasoning chains across multi-session timelines.",
+    "Graph Retrieval",
+    "6 min read"
+) + '''
+    <section class="page-section">
+      <div class="wrap article-body">
+        <h2>1. The Transitivity Blind Spot in Dense Vectors</h2>
+        <p>Consider a real engineering workflow spanning three sessions over two weeks:</p>
+        <ul>
+          <li><strong>Session 1 (Day 1):</strong> An architect specifies that tenant payment settlement logs must stay inside <code class="mono">asia-south1</code> for regulatory residency.</li>
+          <li><strong>Session 14 (Day 9):</strong> A service module <code class="mono">settlement_worker.py</code> is introduced to process async webhooks.</li>
+          <li><strong>Session 42 (Day 14):</strong> A coding agent is asked: <em>“Where should we deploy the new async webhook worker?”</em></li>
+        </ul>
+        <p>Notice the geometric failure: the query embedding mentions <strong>“async webhook worker deployment”</strong>. Session 1’s policy node mentions <strong>“payment settlement logs residency”</strong>. Their pairwise cosine similarity is frequently below the <code class="mono">top-k</code> cutoff because the bridging entity (<code class="mono">settlement_worker.py</code>) lives in Session 14.</p>
+
+        <h2>2. Why Larger Top-K and Rerankers Only Mask the Bug</h2>
+        <p>Standard vector RAG pipelines try to patch missing bridges by fetching <code class="mono">top-k = 40</code> or <code class="mono">80</code> chunks and feeding them to a cross-encoder reranker. That approach runs into two walls:</p>
+        <ol>
+          <li><strong>Quadratic dilution ("lost in the middle"):</strong> Flooding the prompt with 25,000+ semi-relevant tokens degrades attention over rare constraint rules.</li>
+          <li><strong>Broken cross-chunk provenance:</strong> Even when Session 1 and Session 14 appear separately, nothing structurally proves that Session 1 constrains Session 14’s deployment target unless a relational edge connects them.</li>
+        </ol>
+
+        <h2>3. Associative N-ary Hypergraphs as the Retrieval Substrate</h2>
+        <p>In AI Brain’s planned associative hypergraph model, an atomic memory is not an isolated chunk — it participates in typed <strong>hyperedges</strong> binding actors, intents, files, policies, and temporal validity together.</p>
+        <div class="formula">Recall(Q) = ExpandEdges(ANN_Seeds(Q), depth=4, decay_guard=True) -> BoundedSubgraph(k)</div>
+        <p>When <code class="mono">recall()</code> seeds on <code class="mono">settlement_worker.py</code> via vector similarity, traversing typed edges over 2 to 4 hops surfaces the upstream <code class="mono">asia-south1</code> residency policy automatically — without scanning unrelated turns.</p>
+
+        <h3>Related Engineering Resources</h3>
+        <ul>
+          <li><a href="/compare" class="accent">Compare Flat Vector DBs vs Temporal Graphs vs AI Brain</a></li>
+          <li><a href="/research/hypergraph-vs-vector-rag-token-math" class="accent">Hypergraph vs Vector RAG: The Token Cost Math</a></li>
+          <li><a href="/architecture" class="accent">Explore AI Brain System Architecture Blueprint</a></li>
+        </ul>
+''' + AUTHOR_BOX + '''
+      </div>
+    </section>
+''' + CTA + '''  </main>\n'''
+
+ART_TOKEN_MATH = article_hero(
+    'Hypergraph vs Vector RAG: The <span class="serif">Token</span> Cost Math',
+    "Explicit algebraic comparison showing why naive history replay scales quadratically with conversation length while bounded subgraph injection stays near-constant per turn.",
+    "Token Economics",
+    "5 min read"
+) + '''
+    <section class="page-section">
+      <div class="wrap article-body">
+        <h2>1. The Quadratic Replay Trap</h2>
+        <p>When an application has no persistent external memory and simply appends each conversation turn back into the LLM context window, cumulative input token consumption across <code class="mono">N</code> turns grows as an arithmetic series:</p>
+        <div class="formula">T_replay(N) = Sum_{i=1..N} (S_sys + i * L_turn) = N * S_sys + L_turn * N * (N + 1) / 2</div>
+        <p>Where <code class="mono">S_sys</code> is system prompt overhead and <code class="mono">L_turn</code> is average tokens added per turn. Doubling session length roughly <strong>quadruples</strong> cumulative input token billing and increases time-to-first-token latency linearly per turn.</p>
+
+        <h2>2. Why Oversized Chunk RAG Still Overpays</h2>
+        <p>Naive chunk RAG breaks sessions into fixed 500-token slices and retrieves <code class="mono">K = 20</code> chunks per query (<code class="mono">10,000</code> tokens of surrounding boilerplate) even when the actual decision rule requires only three structured facts totaling ~120 tokens.</p>
+
+        <h2>3. Bounded Associative Subgraph Model (Design Target)</h2>
+        <p>Under a structured graph retrieval policy, each query pays only for system framing plus a bounded <code class="mono">k</code>-node subgraph serialized concisely:</p>
+        <div class="formula">T_graph(N) = N * (S_sys + K_nodes * L_node + Q_turn)   [O(N) cumulative vs O(N^2) replay]</div>
+        <p>For illustration in our <a href="/#calculator" class="accent">homepage savings model</a> (150 files, 850 tokens/file baseline, 80 daily queries across 5 developers): naive full-file re-send touches roughly <code class="mono">1.53B</code> input tokens/month, whereas retrieving compact subgraphs targets up to <strong>~91% redundant token reduction</strong> depending on query graph fan-out.</p>
+        <p><em>Honesty note:</em> Actual production savings vary by workload sparsity, cache hit rate (prompt caching), and embedding frequency. See <a href="/benchmarks" class="accent">/benchmarks</a> for our planned reproducible measurement methodology.</p>
+''' + AUTHOR_BOX + '''
+      </div>
+    </section>
+''' + CTA + '''  </main>\n'''
+
+ART_DPDP = article_hero(
+    'Building <span class="serif">DPDP-Compliant</span> Agent Memory in India',
+    "Architectural patterns for strict tenant isolation, purpose limitation, and deterministic memory erasure under India’s Digital Personal Data Protection Act, 2023.",
+    "India &amp; Governance",
+    "7 min read"
+) + '''
+    <section class="page-section">
+      <div class="wrap article-body">
+        <h2>1. Why Vector Stores Struggle with Right-to-Erasure</h2>
+        <p>Under India’s <strong>DPDP Act, 2023</strong> (Section 12 — Right to correction and erasure of personal data), Data Principals can withdraw consent and demand verifiable deletion of their personal context. Append-only RAG stores face serious operational friction:</p>
+        <ul>
+          <li>A single conversation chunk often entangles multiple entities and shared system summaries.</li>
+          <li>Rebuilding HNSW vector indexes after sparse metadata deletion causes write amplification or temporarily leaked stale vectors in replicas.</li>
+        </ul>
+
+        <h2>2. Tenant-Partitioned Memory Graphs + Deterministic Tombstones</h2>
+        <p>AI Brain’s planned architecture models privacy as a first-class graph boundary rather than an afterthought:</p>
+        <ol>
+          <li><strong>Cryptographic Tenant Namespaces:</strong> Per-tenant envelope keys managed with Cloud KMS (AES-256 at rest) and TLS 1.3 in transit inside VPC Service Controls boundaries.</li>
+          <li><strong>Scoped Node Ownership:</strong> Every episodic memory node carries explicit <code class="mono">tenant_id</code> and <code class="mono">subject_id</code> ownership so deletion cascades deterministically along owned hyperedges.</li>
+          <li><strong>Regional Residency Enforcement:</strong> Separating stateless compute gateways from regional graph storage planes (<code class="mono">asia-south1</code> Mumbai / Delhi) for regulated Indian fintech and enterprise deployments.</li>
+        </ol>
+
+        <h2>3. Auditability for Enterprise &amp; Cross-Border Teams</h2>
+        <p>Registered in Rajasthan, India (<code class="mono">AI BRAIN STARTUPS · UDYAM-RJ-05-0067280</code>), AI Brain is architected to serve both domestic Indian DPDP workloads and global enterprise compliance requirements. Review our <a href="/privacy-policy" class="accent">Privacy Policy</a> and <a href="/architecture" class="accent">Security Architecture</a> for full control specifications.</p>
+''' + AUTHOR_BOX + '''
+      </div>
+    </section>
+''' + CTA + '''  </main>\n'''
+
 PAGES = {
     "about": ("about", ABOUT), "architecture": ("architecture", ARCH), "docs": ("docs", DOCS),
+    "compare": ("compare", COMPARE), "benchmarks": ("benchmarks", BENCHMARKS), "research": ("research", RESEARCH),
+    "research/why-cosine-similarity-fails-multi-hop-reasoning": ("research", ART_COSINE),
+    "research/hypergraph-vs-vector-rag-token-math": ("research", ART_TOKEN_MATH),
+    "research/dpdp-compliant-agent-memory-india": ("research", ART_DPDP),
     "contact": ("contact", CONTACT), "privacy-policy": (None, PRIVACY), "terms-of-service": (None, TERMS),
     "404": (None, NOTFOUND),
 }
@@ -610,8 +995,8 @@ for name, (active, body) in PAGES.items():
     src = path.read_text()
     src = src.replace('AI Brain Inc. / ', '').replace('AI Brain Inc.', 'AI BRAIN STARTUPS')
     out = clean_head(src) + FONTS + "</head>\n<body>\n  <a class=\"skip\" href=\"#main\">Skip to content</a>\n" + nav(active) + body + FOOTER
-    # Root-absolute URLs so pages (esp. 404 served at nested paths) never resolve relatively
-    out = re.sub(r'(href|src)="(about|architecture|docs|contact|invest|privacy-policy|terms-of-service|home\.css|pages\.css|invest\.css|home\.js|invest\.js|favicon\.ico|logo\.png|manifest\.json)([?"#])',
+    # Root-absolute URLs so pages (esp. 404 or nested /research/*) never resolve relatively
+    out = re.sub(r'(href|src)="(about|architecture|docs|compare|benchmarks|research|contact|invest|privacy-policy|terms-of-service|home\.css|pages\.css|invest\.css|home\.js|invest\.js|favicon\.ico|logo\.png|manifest\.json)(["?#])',
                  r'\1="/\2\3', out)
     # Assets: new icons / OG image; make sure every page has a social preview image.
     out = (out.replace('href="/logo.png"', 'href="/icons/apple-touch-icon.png"')
@@ -680,6 +1065,42 @@ def update_sitemap():
     <lastmod>{lm("docs.html")}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/compare</loc>
+    <lastmod>{lm("compare.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/benchmarks</loc>
+    <lastmod>{lm("benchmarks.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/research</loc>
+    <lastmod>{lm("research.html")}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/research/why-cosine-similarity-fails-multi-hop-reasoning</loc>
+    <lastmod>{lm("research/why-cosine-similarity-fails-multi-hop-reasoning.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/research/hypergraph-vs-vector-rag-token-math</loc>
+    <lastmod>{lm("research/hypergraph-vs-vector-rag-token-math.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aibrainstartup.com/research/dpdp-compliant-agent-memory-india</loc>
+    <lastmod>{lm("research/dpdp-compliant-agent-memory-india.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aibrainstartup.com/about</loc>

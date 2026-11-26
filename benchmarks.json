@@ -1,0 +1,50 @@
+{
+  "$schema": "https://aibrainstartup.com/benchmarks.json",
+  "project": "AI Brain",
+  "legalEntity": "AI BRAIN STARTUPS",
+  "registration": "Govt. of India MoMSME UDYAM-RJ-05-0067280",
+  "status": "pre_release_specification",
+  "publishedBenchmarksAvailable": false,
+  "lastUpdated": "2026-11-26",
+  "disclosure": "All metrics listed below are pre-release engineering design targets and planned evaluation suites. Verified empirical benchmark results will be published in this file and open-sourced only after public harness execution.",
+  "plannedSuites": [
+    {
+      "id": "locomo",
+      "name": "LoCoMo (Long-Term Conversational Memory)",
+      "focus": "Multi-session QA, multi-hop causal inference, and temporal ordering across 300+ turn dialogues.",
+      "metrics": ["F1 / LLM-Judge Accuracy", "Multi-hop Recall@k", "p99 Query Latency (ms)"],
+      "measuredResult": null,
+      "status": "harness_planned"
+    },
+    {
+      "id": "longmemeval",
+      "name": "LongMemEval",
+      "focus": "Knowledge updates, belief revision, preference tracking, and hallucination abstention over evolving sessions.",
+      "metrics": ["Information Extraction Accuracy", "Temporal Update Consistency", "Abstention Precision"],
+      "measuredResult": null,
+      "status": "harness_planned"
+    },
+    {
+      "id": "multi_hop_latency",
+      "name": "4-Hop Associative Hypergraph Traversal",
+      "focus": "Compiled C++20/systems kernel traversal latency under concurrent agent queries.",
+      "designTarget": "< 15 ms (p99)",
+      "measuredResult": null,
+      "status": "design_target"
+    },
+    {
+      "id": "token_efficiency",
+      "name": "Context-Window Token Reduction vs Full Replay",
+      "focus": "Subgraph context injection token count compared against naive full conversation replay.",
+      "designTarget": "~91% reduction vs full re-send",
+      "measuredResult": null,
+      "status": "design_target"
+    }
+  ],
+  "plannedBaselineEnvironment": {
+    "traversalPlane": "C++20 / systems memory kernel",
+    "cloudOrchestration": "Google Cloud Run + GKE + Vertex AI / TPU v5e",
+    "securityBoundary": "Cloud KMS AES-256 + TLS 1.3 + VPC Service Controls"
+  },
+  "documentationUrl": "https://aibrainstartup.com/benchmarks"
+}

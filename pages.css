@@ -247,3 +247,67 @@ a.contact-row:hover .go { color: var(--accent); transform: translate(2px, -2px);
     overflow-x: auto;
   }
 }
+
+/* ---------- GEO Content Cluster: Compare Tables, Benchmarks & Research Articles ---------- */
+.status-banner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px;
+  padding: 18px 24px; border: 1px solid rgba(200, 255, 61, 0.28); border-radius: var(--radius);
+  background: rgba(200, 255, 61, 0.05); margin-bottom: 32px;
+}
+.status-banner strong { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.status-banner p { color: var(--text-2); font-size: 0.94rem; margin: 0; }
+
+.table-scroll {
+  width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--ink-2);
+}
+.cmp-table { width: 100%; border-collapse: collapse; min-width: 720px; text-align: left; font-size: 0.92rem; }
+.cmp-table th, .cmp-table td { padding: 16px 18px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.5; }
+.cmp-table thead th {
+  font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--text-3); background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--line-strong);
+}
+.cmp-table th.cmp-hi, .cmp-table td.cmp-hi { background: rgba(200, 255, 61, 0.05); color: var(--text); border-left: 1px solid rgba(200, 255, 61, 0.22); }
+.cmp-table thead th.cmp-hi { color: var(--accent); }
+.cmp-table tbody tr:last-child th, .cmp-table tbody tr:last-child td { border-bottom: 0; }
+.cmp-table tbody th { font-weight: 600; color: var(--text); width: 190px; }
+.cmp-table td { color: var(--text-2); }
+
+.article-list { display: grid; gap: 16px; }
+.article-card {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 28px; align-items: center;
+  padding: clamp(24px, 3.5vw, 34px); border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--ink-2); transition: border-color 0.2s, background 0.2s;
+}
+.article-card:hover { border-color: rgba(200, 255, 61, 0.35); background: var(--ink-3); }
+.article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+.article-meta .topic { color: var(--accent); }
+.article-card h2 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 600; letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 10px; }
+.article-card p { color: var(--text-2); font-size: 0.96rem; max-width: 68ch; }
+
+.article-body { max-width: 72ch; }
+.article-body h2 { font-size: clamp(1.45rem, 2.5vw, 1.9rem); font-weight: 600; letter-spacing: -0.025em; margin: 44px 0 14px; line-height: 1.2; }
+.article-body h2:first-child { margin-top: 0; }
+.article-body h3 { font-size: 1.15rem; font-weight: 600; margin: 28px 0 10px; color: var(--text); }
+.article-body p { color: var(--text-2); font-size: 1.02rem; line-height: 1.72; margin-bottom: 18px; }
+.article-body ul, .article-body ol { padding-left: 22px; margin: 0 0 22px; color: var(--text-2); line-height: 1.68; }
+.article-body li { margin-bottom: 8px; }
+.article-body strong { color: var(--text); }
+.article-body .formula {
+  padding: 18px 22px; margin: 24px 0; border-radius: var(--radius); border: 1px solid var(--line-strong);
+  background: #050607; font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent);
+  overflow-x: auto; max-width: 100%; line-height: 1.6;
+}
+.author-box {
+  margin-top: 48px; padding: 24px 28px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--ink-2); display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between;
+}
+.author-box .a-id { display: flex; align-items: center; gap: 16px; }
+.author-box .a-meta strong { display: block; font-size: 1.02rem; }
+.author-box .a-meta span { font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-3); }
+
+@media (max-width: 680px) {
+  .article-card { grid-template-columns: 1fr; }
+  .article-card .btn { width: 100%; }
+}
+

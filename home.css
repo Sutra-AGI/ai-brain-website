@@ -300,7 +300,8 @@ body::before {
 @keyframes blink { 50% { opacity: 0; } }
 
 .sdk { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: center; }
-.sdk-card { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #050607; }
+.sdk > * { min-width: 0; }
+.sdk-card { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #050607; min-width: 0; max-width: 100%; }
 .sdk-card .term { border-top: 0; }
 .sdk-tabs { display: flex; gap: 4px; margin-left: 8px; }
 .sdk-tabs button { background: none; border: 0; color: var(--text-3); font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; cursor: pointer; }

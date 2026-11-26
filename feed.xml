@@ -5,8 +5,24 @@
     <link>https://aibrainstartup.com/</link>
     <description>Official engineering milestones, developer API previews, and company announcements from AI BRAIN STARTUPS (UDYAM-RJ-05-0067280).</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Nov 2026 09:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 10:00:00 +0000</lastBuildDate>
     <atom:link href="https://aibrainstartup.com/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Engineering Research Cluster: Multi-Hop Reasoning, Token Math &amp; India DPDP Memory</title>
+      <link>https://aibrainstartup.com/research</link>
+      <guid isPermaLink="false">https://aibrainstartup.com/updates/research-cluster-2026-11</guid>
+      <pubDate>Thu, 26 Nov 2026 10:00:00 +0000</pubDate>
+      <description>Published three foundational architecture notes (/research): Why Cosine Similarity Fails Multi-Hop Agent Reasoning, Hypergraph vs Vector RAG Token Cost Math, and Building DPDP-Compliant Agent Memory in India.</description>
+    </item>
+
+    <item>
+      <title>Memory Architecture Comparison &amp; Transparent Benchmark Protocol (/compare &amp; /benchmarks)</title>
+      <link>https://aibrainstartup.com/compare</link>
+      <guid isPermaLink="false">https://aibrainstartup.com/updates/compare-benchmarks-2026-11</guid>
+      <pubDate>Thu, 26 Nov 2026 09:45:00 +0000</pubDate>
+      <description>Launched an objective engineering matrix comparing Flat Vector DBs, Mem0, Zep/Graphiti, Letta, and Cognee against AI Brain's planned associative hypergraph alongside our downloadable /benchmarks.json evaluation protocol.</description>
+    </item>
 
     <item>
       <title>OpenAPI 3.1 Preview Specification &amp; Zero-JS Crawler Support</title>

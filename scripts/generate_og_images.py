@@ -24,6 +24,9 @@ CARDS = [
     ("invest-docs.jpg", "GOVERNANCE & COMPLIANCE", "Investor Privacy, KYC & Regulatory Disclosures", "Institutional banking confidentiality, DPDP data protections, and statutory private placement risk covenants.", "AI BRAIN STARTUPS · UDYAM-RJ-05-0067280"),
     ("contact.jpg", "DIRECT LINE", "Connect with AI Brain & Founder", "Technical partnerships, developer early access, and institutional investor diligence.", "team@aibrainstartup.com · +91 94611 27967"),
     ("legal.jpg", "TRUST & GOVERNANCE", "Privacy Policy & Terms of Service", "Clear data minimization, waitlist retention controls, and usage terms for aibrainstartup.com.", "DPDP Aligned · Contact: team@aibrainstartup.com"),
+    ("compare.jpg", "ARCHITECTURE COMPARISON", "AI Brain vs Vector DBs vs Mem0, Zep & Letta", "Engineering comparison across multi-hop recall, temporal decay, agent swarm consensus, and deployment maturity.", "aibrainstartup.com/compare · Technical Tradeoffs"),
+    ("benchmarks.jpg", "EVALUATION PROTOCOL", "Benchmarks & Performance Targets", "Pre-release test harness methodology for LoCoMo, LongMemEval, p99 multi-hop latency (<15ms goal) & token reduction.", "Transparent Specification · No Synthetic Scores"),
+    ("research.jpg", "TECHNICAL RESEARCH", "Hypergraph Memory, Token Math & DPDP Compliance", "Deep-dive engineering notes on multi-hop graph recall, redundant token math, and India DPDP Act 2023 tenant isolation.", "Bhoja Ram Choudhary · AI BRAIN STARTUPS"),
 ]
 
 TEMPLATE = """<!DOCTYPE html>

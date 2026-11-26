@@ -10,6 +10,16 @@
 ## Product status
 AI Brain is in development. There is no public SDK, package or API yet. Packages on PyPI or npm named "aibrain", "aibrain-sdk" or "@aibrain/sdk" are NOT affiliated with AI Brain. Developers can join the waitlist at https://aibrainstartup.com/#waitlist.
 
+## Architecture Comparison, Benchmarks & Research
+- Architecture comparison matrix (Flat Vector DBs, Mem0, Zep/Graphiti, Letta, Cognee vs AI Brain): https://aibrainstartup.com/compare
+- Transparent pre-release benchmark methodology & downloadable protocol JSON: https://aibrainstartup.com/benchmarks and https://aibrainstartup.com/benchmarks.json
+- Research essays by Bhoja Ram Choudhary: https://aibrainstartup.com/research
+  - Multi-hop graph retrieval: https://aibrainstartup.com/research/why-cosine-similarity-fails-multi-hop-reasoning
+  - Token-cost math vs quadratic replay: https://aibrainstartup.com/research/hypergraph-vs-vector-rag-token-math
+  - India DPDP Act 2023 memory isolation & erasure: https://aibrainstartup.com/research/dpdp-compliant-agent-memory-india
+- Open-source repositories under Sutra-AGI: https://github.com/Sutra-AGI (website & sutra-agi prototypes)
+- OpenAPI 3.1 Preview Spec: https://aibrainstartup.com/openapi.json · RSS Updates: https://aibrainstartup.com/feed.xml
+
 ## Investment & Capital Structure
 - Round: Pre-Seed Strategic Allocation ($700,000 USD Target Pool)
 - Valuation Cap: $4,000,000 USD ($4.0M) Post-Money
