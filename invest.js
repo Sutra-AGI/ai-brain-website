@@ -76,7 +76,7 @@
   var TIER_DATA = {
     '15k': {
       usd: '$15,000 USD',
-      name: 'Strategic Angel (Tier 1)',
+      name: 'Founding Angel (Tier 1)',
       equity: '0.375% iSAFE Equity Stake',
       revshare: '5% Quarterly Gross Revenue Share (Up to 3.0x / $45,000 Return)',
       multiplier: '3.0x Return Cap ($45,000 USD)',
@@ -89,7 +89,7 @@
     },
     '25k': {
       usd: '$25,000 USD',
-      name: 'Co-Founding Syndicate (Tier 2)',
+      name: 'Syndicate Partner (Tier 2)',
       equity: '0.625% iSAFE Equity Stake',
       revshare: '7% Quarterly Gross Revenue Share (Up to 3.0x / $75,000 Return)',
       multiplier: '3.0x Return Cap ($75,000 USD)',
@@ -102,7 +102,7 @@
     },
     '50k': {
       usd: '$50,000 USD',
-      name: 'Strategic Lead Anchor (Tier 3)',
+      name: 'Strategic Anchor (Tier 3)',
       equity: '1.250% iSAFE Equity Stake',
       revshare: '10% Quarterly Gross Revenue Share (Up to 3.0x / $150,000 Return)',
       multiplier: '3.0x Return Cap ($150,000 USD)',
@@ -115,7 +115,7 @@
     },
     '100k': {
       usd: '$100,000 USD',
-      name: 'Institutional Anchor Lead (Tier 4)',
+      name: 'Sovereign Partner (Tier 4)',
       equity: '2.500% Major Equity Stake',
       revshare: '15% Quarterly Gross Revenue Share (Up to 3.5x / $350,000 Return)',
       multiplier: '3.5x Return Cap ($350,000 USD)',
