@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AI Brain — Day Mode Preview | Persistent Memory for AI Agents</title>
+  <meta name="description" content="Daylight editorial preview of AI Brain: persistent associative hypergraph memory for LLMs and autonomous agent swarms.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#faf9f6">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/day.css">
+  <script src="/day.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav-inner">
+      <a href="/day" class="logo" aria-label="AI Brain Day Mode Preview">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="14.5" stroke="#0d1117" stroke-opacity="0.22" stroke-width="1.2"/>
+          <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#0d1117" stroke-opacity="0.45" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="9" cy="12" r="2.8" fill="#a8eb12" stroke="#2f6f00" stroke-width="1.2"/>
+          <circle cx="22" cy="9" r="2.2" fill="#0d1117"/>
+          <circle cx="23" cy="21" r="2.8" fill="#2f6f00"/>
+          <circle cx="12" cy="23" r="2.2" fill="#0d1117"/>
+        </svg>
+        <span>AI Brain</span>
+        <span class="day-badge">DAY PREVIEW</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#memory">Memory</a>
+        <a href="#compare">Compare</a>
+        <a href="#tiers">Tiers</a>
+        <a href="/architecture">Architecture</a>
+        <a href="/docs">Docs</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="/" class="btn btn-ghost btn-sm">Dark Mode (Live)</a>
+        <a href="/invest" class="btn btn-primary btn-sm">Invest ⚡</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="mobilePanel" inert>
+    <a class="m-link" href="#memory">Memory <span>01</span></a>
+    <a class="m-link" href="#compare">Compare <span>02</span></a>
+    <a class="m-link" href="#tiers">Tiers <span>03</span></a>
+    <a class="m-link" href="/architecture">Architecture <span>↗</span></a>
+    <a class="m-link" href="/docs">Docs <span>↗</span></a>
+    <a class="m-link" href="/about">About <span>↗</span></a>
+    <a class="m-link" href="/contact">Contact <span>↗</span></a>
+    <a href="/" class="btn btn-ghost">Dark Mode (Live)</a>
+    <a href="/invest" class="btn btn-primary">Invest in Pre-Seed ⚡</a>
+  </div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+      <canvas class="hero-canvas" id="graph" aria-hidden="true"></canvas>
+
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <a href="/invest" class="hero-invest-pill" aria-label="Pre-Seed Open — $700K Round, $4.0M Cap, iSAFE + Up to 3.5x Rev-Share">
+            <span class="pill-badge">PRE-SEED OPEN</span><span class="sr-only"> — </span>
+            <span class="pill-text">$700K Round · $4.0M Cap · iSAFE + Up to 3.5x Rev-Share</span><span class="sr-only"> </span>
+            <span class="pill-arrow" aria-hidden="true">→</span>
+          </a>
+
+          <h1 class="hero-title">AI that <span class="serif">never</span> forgets.</h1>
+          <p class="hero-sub">Hypergraph memory for LLMs and agent swarms — preserving every conversation, decision, and codebase in persistent associative context across every session.</p>
+
+          <div class="hero-actions">
+            <a href="/invest" class="btn btn-primary">Invest in Pre-Seed <span class="arrow" aria-hidden="true">→</span></a>
+            <a href="/invest/deck" class="btn btn-dark">View pitch deck</a>
+            <a href="/" class="btn btn-ghost">Compare Dark Mode ↗</a>
+          </div>
+
+          <div class="hero-meta">
+            <span><i aria-hidden="true"></i>TARGET: SUB-15MS RECALL</span>
+            <span><i aria-hidden="true"></i>MULTI-HOP GRAPH MEMORY</span>
+            <span><i aria-hidden="true"></i>GOVT. OF INDIA MSME REGISTERED</span>
+          </div>
+        </div>
+
+        <div class="console-wrap" aria-hidden="true">
+          <div class="console">
+            <div class="console-head">
+              <span class="live-dot"></span>
+              <span class="mono">memory.recall()</span>
+              <span class="demo-flag mono">illustrative</span>
+              <span class="console-tag mono" id="cxLatency">9ms</span>
+            </div>
+            <div class="console-q mono"><span class="t-c">query</span> <span id="cxQuery"></span><span class="caret"></span></div>
+            <div class="console-path" id="cxPath"></div>
+            <div class="console-out" id="cxOut"></div>
+            <div class="console-foot">
+              <div class="spark" id="cxSpark"></div>
+              <div class="console-stats mono">
+                <span><b id="cxNodes">2,418</b> nodes</span>
+                <span><b id="cxHops">3</b> hops</span>
+                <span><b>0%</b> decay</span>
+              </div>
+            </div>
+          </div>
+          <div class="float-chip chip-a mono"><i></i>+1 memory written</div>
+          <div class="float-chip chip-b mono">↳ context restored · 4 sessions ago</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARE -->
+    <section class="section" id="compare">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker">Latency &amp; token efficiency · Design targets</span>
+            <h2 class="h2">Stateless Vector RAG <span class="serif">vs.</span> Hypergraph Memory.</h2>
+          </div>
+          <p class="lead">Flat vector stores flatten causal structure and re-send redundant prompt windows. AI Brain traverses typed hyperedges to recall only active context.</p>
+        </div>
+
+        <div class="compare in">
+          <div class="compare-col bad">
+            <span class="tag tag-bad">Stateless Vector RAG · 142 ms</span>
+            <h3>Context decays as sessions scale</h3>
+            <div class="decay">
+              <div class="decay-row"><span class="mono">Turn 1</span><div class="bar"><i style="--w:100%"></i></div><span class="mono">100%</span></div>
+              <div class="decay-row"><span class="mono">Turn 20</span><div class="bar"><i style="--w:64%"></i></div><span class="mono">64%</span></div>
+              <div class="decay-row"><span class="mono">Turn 80</span><div class="bar"><i style="--w:31%"></i></div><span class="mono">31%</span></div>
+              <div class="decay-row"><span class="mono">Session +1</span><div class="bar"><i style="--w:4%"></i></div><span class="mono">~0%</span></div>
+            </div>
+            <p class="compare-note">142 ms multi-turn traversal with ~$3,800/mo prompt token burn per 1M agent queries. Decisions drop between sessions.</p>
+          </div>
+
+          <div class="compare-col good">
+            <span class="tag tag-good">AI Brain Hypergraph · &lt;15 ms · 91% cost cut</span>
+            <h3>Persistent multi-hop recall</h3>
+            <div class="decay">
+              <div class="decay-row"><span class="mono">Turn 1</span><div class="bar"><i style="--w:100%"></i></div><span class="mono">100%</span></div>
+              <div class="decay-row"><span class="mono">Turn 20</span><div class="bar"><i style="--w:100%"></i></div><span class="mono">100%</span></div>
+              <div class="decay-row"><span class="mono">Turn 80</span><div class="bar"><i style="--w:100%"></i></div><span class="mono">100%</span></div>
+              <div class="decay-row"><span class="mono">Session +1</span><div class="bar"><i style="--w:100%"></i></div><span class="mono">100%</span></div>
+            </div>
+            <p class="compare-note">Target &lt;15 ms p99 recall and $340/mo per 1M queries (91% token cost cut) via C++20 lock-free graph traversal.</p>
+          </div>
+        </div>
+
+        <div class="stats" aria-label="Target performance metrics">
+          <div class="stat">
+            <div class="stat-val">&lt;15<small>ms</small></div>
+            <div class="stat-label">Graph recall latency<span class="mono">p99 design target</span></div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">91<small>%</small></div>
+            <div class="stat-label">Token cost reduction<span class="mono">vs stateless re-send</span></div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">10<small>M+</small></div>
+            <div class="stat-label">Nodes per tenant<span class="mono">associative mesh</span></div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">0<small>%</small></div>
+            <div class="stat-label">Cross-session decay<span class="mono">causal edge retention</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMORY BENTO -->
+    <section class="section" id="memory">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker">Cognitive architecture</span>
+            <h2 class="h2">Four memory primitives. <span class="serif">One</span> shared graph.</h2>
+          </div>
+          <p class="lead">Built for autonomous swarms and enterprise engineering teams that need deterministic recall without prompt bloat.</p>
+        </div>
+
+        <div class="bento">
+          <article class="card b-wide">
+            <span class="num">01 / ASSOCIATIVE RECALL</span>
+            <h3>Associative Recall</h3>
+            <p>Retrieves relevant history by semantic proximity and graph topology simultaneously — restoring exact architectural decisions, sprint state, and user context in under 15 ms.</p>
+            <div class="chips">
+              <span class="chip">sub-15ms p99</span>
+              <span class="chip">cross-session</span>
+              <span class="chip">91% token cut</span>
+            </div>
+          </article>
+
+          <article class="card b-tall">
+            <span class="num">02 / CAUSAL GRAPH</span>
+            <h3>Bidirectional Causal Edges</h3>
+            <p>Every conversation, commit, and rationale binds forward and backward in time so agents know not only what changed, but why it was decided.</p>
+            <div class="mini-graph">
+              <svg viewBox="0 0 240 180" aria-hidden="true">
+                <line class="edge" x1="40" y1="40" x2="120" y2="30"/>
+                <line class="edge hot" x1="40" y1="40" x2="110" y2="100"/>
+                <line class="edge" x1="120" y1="30" x2="200" y2="60"/>
+                <line class="edge hot" x1="110" y1="100" x2="200" y2="60"/>
+                <line class="edge" x1="110" y1="100" x2="60" y2="150"/>
+                <line class="edge hot" x1="110" y1="100" x2="180" y2="150"/>
+                <line class="edge" x1="60" y1="150" x2="180" y2="150"/>
+                <line class="edge" x1="120" y1="30" x2="110" y2="100"/>
+                <circle class="node hot" cx="40" cy="40" r="7"/>
+                <circle class="node" cx="120" cy="30" r="6"/>
+                <circle class="node hot" cx="110" cy="100" r="9"/>
+                <circle class="node hot" cx="200" cy="60" r="6"/>
+                <circle class="node" cx="60" cy="150" r="6"/>
+                <circle class="node hot" cx="180" cy="150" r="7"/>
+              </svg>
+            </div>
+          </article>
+
+          <article class="card b-third">
+            <span class="num">03 / AGENT SWARMS</span>
+            <h3>Multi-Agent Memory Plane</h3>
+            <p>Lock-free read-copy-update state lets Research, Coding, Strategy, and Automation agents share one coherent memory mesh.</p>
+          </article>
+
+          <article class="card b-third">
+            <span class="num">04 / GOVERNANCE</span>
+            <h3>Zero-Trust MSME Compliance</h3>
+            <p>Per-tenant key scopes, AES-256 encryption at rest, TLS 1.3 transport, and verified Govt. of India MSME custody (UDYAM-RJ-05-0067280).</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIERS -->
+    <section class="section" id="tiers">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <span class="kicker">Pre-Seed Round · 22 Total Slots</span>
+            <h2 class="h2">Strategic <span class="serif">Allocation</span> Tiers.</h2>
+          </div>
+          <p class="lead">$700K USD Pre-Seed at a $4.0M post-money cap — structured via India-compliant iSAFE equity conversion plus quarterly revenue-share up to 3.5x.</p>
+        </div>
+
+        <div class="tiers-grid">
+          <article class="tier-card">
+            <span class="tier-badge">Tier 01 · 10 Slots</span>
+            <div class="tier-price">$15,000 <span class="mono">USD</span></div>
+            <div class="tier-stake">0.375% iSAFE Equity</div>
+            <div class="tier-multiplier">3.0x Cash Return Cap ($45K)</div>
+            <h3>Founding Angel</h3>
+            <ul class="tier-features">
+              <li>0.375% conversion at $4.0M cap</li>
+              <li>5% quarterly gross rev-share pool</li>
+              <li>10M lifetime enterprise API nodes</li>
+            </ul>
+            <div class="tier-action">
+              <a href="/invest/wire?tier=15k" class="btn btn-ghost">Founding Angel →</a>
+            </div>
+          </article>
+
+          <article class="tier-card">
+            <span class="tier-badge">Tier 02 · 6 Slots</span>
+            <div class="tier-price">$25,000 <span class="mono">USD</span></div>
+            <div class="tier-stake">0.625% iSAFE Equity</div>
+            <div class="tier-multiplier">3.0x Cash Return Cap ($75K)</div>
+            <h3>Syndicate Partner</h3>
+            <ul class="tier-features">
+              <li>0.625% conversion at $4.0M cap</li>
+              <li>7% quarterly gross rev-share pool</li>
+              <li>Advisory observer &amp; bundling rights</li>
+            </ul>
+            <div class="tier-action">
+              <a href="/invest/wire?tier=25k" class="btn btn-ghost">Syndicate Partner →</a>
+            </div>
+          </article>
+
+          <article class="tier-card featured">
+            <span class="tier-badge">Most Popular · 4 Slots</span>
+            <div class="tier-price">$50,000 <span class="mono">USD</span></div>
+            <div class="tier-stake">1.250% iSAFE Equity</div>
+            <div class="tier-multiplier">3.0x Cash Return Cap ($150K)</div>
+            <h3>Strategic Anchor</h3>
+            <ul class="tier-features">
+              <li>1.250% conversion at $4.0M cap</li>
+              <li>10% quarterly gross rev-share pool</li>
+              <li>Dedicated private VPC swarm cluster</li>
+            </ul>
+            <div class="tier-action">
+              <a href="/invest/wire?tier=50k" class="btn btn-primary">Strategic Anchor →</a>
+            </div>
+          </article>
+
+          <article class="tier-card institutional">
+            <span class="tier-badge">Institutional · 2 Slots</span>
+            <div class="tier-price">$100,000 <span class="mono">USD</span></div>
+            <div class="tier-stake">2.500% Major Equity</div>
+            <div class="tier-multiplier">3.5x Cash Return Cap ($350K)</div>
+            <h3>Sovereign Partner</h3>
+            <ul class="tier-features">
+              <li>2.500% conversion at $4.0M cap</li>
+              <li>15% quarterly gross rev-share pool</li>
+              <li>Permanent board observer &amp; licensing</li>
+            </ul>
+            <div class="tier-action">
+              <a href="/invest/wire?tier=100k" class="btn btn-dark">Sovereign Partner →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="/day" class="logo">
+            <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <circle cx="16" cy="16" r="14.5" stroke="#0d1117" stroke-opacity="0.22" stroke-width="1.2"/>
+              <path d="M9 12L22 9M9 12l14 9M22 9l1 12M9 12l3 11M12 23l11-2" stroke="#0d1117" stroke-opacity="0.45" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="9" cy="12" r="2.8" fill="#a8eb12" stroke="#2f6f00" stroke-width="1.2"/>
+              <circle cx="22" cy="9" r="2.2" fill="#0d1117"/>
+              <circle cx="23" cy="21" r="2.8" fill="#2f6f00"/>
+              <circle cx="12" cy="23" r="2.2" fill="#0d1117"/>
+            </svg>
+            <span>AI Brain</span>
+          </a>
+          <p>Daylight preview of persistent associative hypergraph memory for autonomous AI agent swarms.</p>
+          <a class="mail" href="mailto:founder@aibrainstartup.com">founder@aibrainstartup.com</a>
+        </div>
+
+        <div>
+          <p class="foot-h">Platform</p>
+          <ul>
+            <li><a href="/">Dark Mode (Live)</a></li>
+            <li><a href="/architecture">Architecture</a></li>
+            <li><a href="/docs">Documentation</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="foot-h">Pre-Seed Round</p>
+          <ul>
+            <li><a href="/invest">Investor Portal</a></li>
+            <li><a href="/invest/deck">Pitch Deck</a></li>
+            <li><a href="/invest/wire">Bank Wire Desk</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="foot-h">Company &amp; Legal</p>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <span class="msme">🇮🇳 Govt. of India MSME Registered · <b>UDYAM-RJ-05-0067280</b></span>
+        <span>© <span id="year">2026</span> AI Brain. Day Mode Preview.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
