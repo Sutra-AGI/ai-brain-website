@@ -365,33 +365,55 @@
     updateTermSheetDynamicData();
   }
 
+  function persistSelectedTier(tier) {
+    try {
+      var sess = JSON.parse(sessionStorage.getItem(SESS_STORAGE_KEY) || '{}');
+      sess.tier = tier;
+      sessionStorage.setItem(SESS_STORAGE_KEY, JSON.stringify(sess));
+    } catch (e) {}
+  }
+
+  // Persist URL ?tier= immediately when arriving on /invest/wire or /invest/terms
+  if (typeof window !== 'undefined' && window.location && window.location.search) {
+    try {
+      var initQ = new URLSearchParams(window.location.search).get('tier');
+      if (initQ && TIER_DATA[initQ]) persistSelectedTier(initQ);
+    } catch (e) {}
+  }
+
   // Tier Selection
   var tierSelectBtns = document.querySelectorAll('[data-select-tier]');
   tierSelectBtns.forEach(function (btn) {
     btn.addEventListener('click', function (e) {
-      e.preventDefault();
       var tier = btn.getAttribute('data-select-tier');
-      if (TIER_DATA[tier] && TIER_DATA[tier].locked) return;
+      if (TIER_DATA[tier] && TIER_DATA[tier].locked) {
+        e.preventDefault();
+        return;
+      }
 
       selectedTier = tier;
+      persistSelectedTier(tier);
 
-      tierSelectBtns.forEach(function (b) {
-        if (b.getAttribute('data-select-tier') === tier) {
-          b.classList.add('active');
-        } else {
-          b.classList.remove('active');
-        }
-      });
+      // Direct 1-click Tier Card CTA navigates cleanly to /invest/wire?tier=...
+      if (btn.hasAttribute('data-direct-wire')) {
+        return;
+      }
+
+      e.preventDefault();
+      updateWireSummary();
 
       document.querySelectorAll('.tier-card[data-tier-card]').forEach(function (c) {
         c.classList.toggle('tier-selected', c.getAttribute('data-tier-card') === tier);
       });
 
+      if (window.location && window.location.pathname && window.location.pathname.indexOf('/invest/wire') !== -1 && window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', '/invest/wire?tier=' + encodeURIComponent(tier));
+      }
+
       var desk = document.getElementById('wire-desk');
-      if (desk) {
+      if (desk && window.location.pathname.indexOf('/invest/wire') === -1) {
         desk.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        updateWireSummary();
-      } else {
+      } else if (!desk) {
         window.location.href = '/invest/wire?tier=' + encodeURIComponent(tier);
       }
     });
@@ -430,13 +452,19 @@
     if (hiddenTier) hiddenTier.value = selectedTier;
     if (hiddenAmount) hiddenAmount.value = data.amountUSD;
     if (hiddenCur) hiddenCur.value = 'USD';
-    
-    // Phase 5: Dynamically sync Bank Wire Desk link with selected tier
+
+    // Sync all Wire Desk & iSAFE Agreement cross-links with selected tier
     var wireBtn = document.getElementById('btnGoToWireDesk');
     if (wireBtn) {
       wireBtn.href = '/invest/wire?tier=' + encodeURIComponent(selectedTier);
     }
-    
+    document.querySelectorAll('a[href="/invest/terms"], a[href^="/invest/terms?"]').forEach(function (a) {
+      a.href = '/invest/terms?tier=' + encodeURIComponent(selectedTier);
+    });
+    document.querySelectorAll('a[href="/invest/wire"], a[href^="/invest/wire?"]:not([data-direct-wire])').forEach(function (a) {
+      a.href = '/invest/wire?tier=' + encodeURIComponent(selectedTier);
+    });
+
     updateTermSheetDynamicData();
   }
 
